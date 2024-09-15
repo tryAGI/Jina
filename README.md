@@ -17,6 +17,20 @@
 using Jina;
 
 using var api = new JinaApi(apiKey);
+
+var response = await api.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
+{
+    Model = "jina-clip-v1",
+    Input = new List<ApiSchemasEmbeddingTextDoc>
+    {
+        new()
+        {
+            Text = "Hello, world!",
+        }
+    }
+});
+
+Console.WriteLine($"[{string.Join(", ", response.Data[0].Embedding ?? [])}]");
 ```
 
 ## Support

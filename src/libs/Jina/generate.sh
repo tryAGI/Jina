@@ -13,3 +13,14 @@ autosdk generate openapi.yaml \
   --output Generated \
   --exclude-deprecated-operations \
   --methodNamingConvention Summary
+
+#curl -o segment-openapi.yaml https://segment.jina.ai/openapi.json
+#autosdk generate segment-openapi.yaml \
+#  --namespace Jina \
+#  --clientClassName SegmentApi \
+#  --targetFramework net8.0 \
+#  --output Generated \
+#  --exclude-deprecated-operations \
+#  --methodNamingConvention Summary
+  
+  
