@@ -402,7 +402,6 @@ components:
           title: Id
           type: string
           description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: 4832d7aa75c02fe80ea8dbd67051421e
         url:
           title: Url
           maxLength: 65536
@@ -790,7 +789,6 @@ components:
           title: Id
           type: string
           description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: 4832d7aa75c02fe80ea8dbd67051421e
         text:
           title: Text
           type: string
@@ -820,7 +818,6 @@ components:
           title: Id
           type: string
           description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: 4832d7aa75c02fe80ea8dbd67051421e
         text:
           title: Text
           type: string

@@ -1,5 +1,4 @@
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
@@ -14,7 +13,10 @@ text = text
 
 var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
 
-//openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
+openApiDocument.Components.Schemas["ImageDoc"]!.Properties["id"].Example = null;
+openApiDocument.Components.Schemas["api_schemas__embedding__TextDoc"]!.Properties["id"].Example = null;
+openApiDocument.Components.Schemas["api_schemas__rank__TextDoc"]!.Properties["id"].Example = null;
+
 openApiDocument.SecurityRequirements = new List<OpenApiSecurityRequirement>
 {
     new()
