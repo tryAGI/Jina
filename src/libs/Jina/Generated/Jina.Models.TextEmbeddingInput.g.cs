@@ -43,7 +43,7 @@ namespace Jina
         /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
-        public bool Normalized { get; set; }
+        public bool? Normalized { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

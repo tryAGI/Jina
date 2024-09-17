@@ -43,14 +43,14 @@ namespace Jina
         /// The number of most relevant documents or indices to return, defaults to the length of `documents`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("top_n")]
-        public int TopN { get; set; }
+        public int? TopN { get; set; }
 
         /// <summary>
         /// If false, returns results without the doc text - the api will return a list of {index, relevance score} where index is inferred from the list passed into the request. If true, returns results with the doc text passed in - the api will return an ordered list of {index, text, relevance score} where index + text refers to the list passed into the request. Defaults to true<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("return_documents")]
-        public bool ReturnDocuments { get; set; } = true;
+        public bool? ReturnDocuments { get; set; } = true;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
