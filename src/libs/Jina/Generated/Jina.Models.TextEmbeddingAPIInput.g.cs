@@ -46,7 +46,7 @@ namespace Jina
         /// Dimensions of the vectors to be returned. Only valid for v2 colbert models. Defaults to 128
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
-        public int Dimensions { get; set; }
+        public int? Dimensions { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

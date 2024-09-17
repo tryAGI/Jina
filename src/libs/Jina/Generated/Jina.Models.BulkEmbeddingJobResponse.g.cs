@@ -55,13 +55,13 @@ namespace Jina
         /// Time of creation of the job.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
-        public global::System.DateTime CreatedAt { get; set; }
+        public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// Time of completion of the job.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completed_at")]
-        public global::System.DateTime CompletedAt { get; set; }
+        public global::System.DateTime? CompletedAt { get; set; }
 
         /// <summary>
         /// The error message of the job
@@ -80,7 +80,7 @@ namespace Jina
         /// The number of tokens used for the job
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("used_token_count")]
-        public int UsedTokenCount { get; set; }
+        public int? UsedTokenCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
