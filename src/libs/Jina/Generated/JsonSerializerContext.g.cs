@@ -19,6 +19,8 @@ namespace Jina
             typeof(global::Jina.JsonConverters.TextEmbeddingInputEmbeddingTypeNullableJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingInputEmbeddingTypeItemJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingInputEmbeddingTypeItemNullableJsonConverter),
+            typeof(global::Jina.JsonConverters.TextEmbeddingInputTaskJsonConverter),
+            typeof(global::Jina.JsonConverters.TextEmbeddingInputTaskNullableJsonConverter),
             typeof(global::Jina.JsonConverters.ImageEmbeddingInputEmbeddingTypeJsonConverter),
             typeof(global::Jina.JsonConverters.ImageEmbeddingInputEmbeddingTypeNullableJsonConverter),
             typeof(global::Jina.JsonConverters.ImageEmbeddingInputEmbeddingTypeItemJsonConverter),

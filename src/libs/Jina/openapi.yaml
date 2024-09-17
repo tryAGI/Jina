@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.51
+  version: 0.1.53
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -717,7 +717,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
         input:
           title: Input
           anyOf:
@@ -748,10 +748,28 @@ components:
                   - ubinary
                 type: string
           description: 'The format in which you want the embeddings to be returned.Possible value are `float`, `base64`, `binary`, `ubinary` or a list containing any of them. Defaults to `float`'
+        task:
+          title: Task
+          enum:
+            - retrieval.query
+            - retrieval.passage
+            - text-matching
+            - classification
+            - separation
+          type: string
+          description: "Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:\n- \"retrieval.query\": Specifies the given text is a query in a search or retrieval setting.\n- \"retrieval.passage\": Specifies the given text is a document in a search or retrieval setting.\n- \"text-matching\": Specifies the given text is used for Semantic Textual Similarity.\n- \"classification\": Specifies that the embedding is used for classification.\n- \"separation\": Specifies that the embedding is used for clustering.\n"
+        dimensions:
+          title: Dimensions
+          type: integer
+          description: 'Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.'
         normalized:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        late_chunking:
+          title: Late Chunking
+          type: boolean
+          description: 'Flag to determine if late chunking is applied. If True, all the sentences in inputs will be concatenated and used as input for late chunking.'
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
