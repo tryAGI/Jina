@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Jina
@@ -31,12 +29,11 @@ namespace Jina
         public required global::System.Collections.Generic.IList<global::Jina.RankingOutputResult> Results { get; set; }
 
         /// <summary>
-        /// Total usage of the request.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AllOfJsonConverterFactory1))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AllOf<global::Jina.ApiSchemasRankUsage> Usage { get; set; }
+        public required global::Jina.ApiSchemasRankUsage Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
