@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Jina
@@ -37,12 +35,11 @@ namespace Jina
         public required global::System.Collections.Generic.IList<global::Jina.ColbertModelEmbeddingsOutputDataItem> Data { get; set; }
 
         /// <summary>
-        /// Total usage of the request. Sums up the usage from each individual input
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AllOfJsonConverterFactory1))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AllOf<global::Jina.ApiSchemasEmbeddingUsage> Usage { get; set; }
+        public required global::Jina.ApiSchemasEmbeddingUsage Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

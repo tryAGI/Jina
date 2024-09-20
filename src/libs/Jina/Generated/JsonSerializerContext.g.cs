@@ -35,7 +35,6 @@ namespace Jina
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeNullableJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeItemJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeItemNullableJsonConverter),
-            typeof(global::Jina.JsonConverters.AllOfJsonConverterFactory1),
             typeof(global::Jina.JsonConverters.EmbeddingInputJsonConverter),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory4),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2),

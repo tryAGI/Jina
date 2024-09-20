@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Jina
@@ -31,12 +29,12 @@ namespace Jina
         public string? ModelPackageArn { get; set; }
 
         /// <summary>
-        /// The status of the job
+        /// An enumeration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AllOfJsonConverterFactory1))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BulkEmbeddingJobStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AllOf<global::Jina.BulkEmbeddingJobStatus?> Status { get; set; }
+        public required global::Jina.BulkEmbeddingJobStatus Status { get; set; }
 
         /// <summary>
         /// The name of the input file
