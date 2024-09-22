@@ -29,7 +29,7 @@ namespace Jina
         public required global::System.Collections.Generic.IList<global::Jina.RankingOutputResult> Results { get; set; }
 
         /// <summary>
-        /// 
+        /// Total usage of the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]

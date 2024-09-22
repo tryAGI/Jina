@@ -29,7 +29,7 @@ namespace Jina
         public string? ModelPackageArn { get; set; }
 
         /// <summary>
-        /// An enumeration.
+        /// The status of the job
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BulkEmbeddingJobStatusJsonConverter))]
