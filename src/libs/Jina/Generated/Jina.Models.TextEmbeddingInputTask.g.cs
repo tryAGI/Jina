@@ -14,23 +14,23 @@ namespace Jina
     public enum TextEmbeddingInputTask
     {
         /// <summary>
-        /// 
+        /// Specifies the given text is a query in a search or retrieval setting.
         /// </summary>
         RetrievalQuery,
         /// <summary>
-        /// 
+        /// Specifies the given text is a document in a search or retrieval setting.
         /// </summary>
         RetrievalPassage,
         /// <summary>
-        /// 
+        /// Specifies the given text is used for Semantic Textual Similarity.
         /// </summary>
         TextMatching,
         /// <summary>
-        /// 
+        /// Specifies that the embedding is used for classification.
         /// </summary>
         Classification,
         /// <summary>
-        /// 
+        /// Specifies that the embedding is used for clustering.
         /// </summary>
         Separation,
     }
