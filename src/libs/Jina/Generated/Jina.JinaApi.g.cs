@@ -16,6 +16,7 @@ namespace Jina
         public const string BaseUrl = "https://api.jina.ai/";
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
+        private global::Jina.EndPointAuthorization? _authorization;
 
         /// <summary>
         /// 
@@ -26,7 +27,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public EmbeddingsClient Embeddings => new EmbeddingsClient(_httpClient)
+        public EmbeddingsClient Embeddings => new EmbeddingsClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -34,7 +35,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(_httpClient)
+        public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -42,7 +43,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public RerankClient Rerank => new RerankClient(_httpClient)
+        public RerankClient Rerank => new RerankClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -50,7 +51,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public MultiVectorClient MultiVector => new MultiVectorClient(_httpClient)
+        public MultiVectorClient MultiVector => new MultiVectorClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -61,13 +62,16 @@ namespace Jina
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
         /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param> 
+        /// <param name="baseUri"></param>
+        /// <param name="authorization"></param>
         public JinaApi(
             global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null)
+            global::System.Uri? baseUri = null,
+            global::Jina.EndPointAuthorization? authorization = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
+            _authorization = authorization;
 
             Initialized(_httpClient);
         }

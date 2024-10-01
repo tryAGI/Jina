@@ -149,6 +149,64 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::Jina.TextEmbeddingInput?, TResult>? text = null,
+            global::System.Func<global::Jina.ImageEmbeddingInput?, TResult>? image = null,
+            global::System.Func<global::Jina.MixedEmbeddingInput?, TResult>? mixed = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsText && text != null)
+            {
+                return text(Text!);
+            }
+            else if (IsImage && image != null)
+            {
+                return image(Image!);
+            }
+            else if (IsMixed && mixed != null)
+            {
+                return mixed(Mixed!);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Match(
+            global::System.Action<global::Jina.TextEmbeddingInput?>? text = null,
+            global::System.Action<global::Jina.ImageEmbeddingInput?>? image = null,
+            global::System.Action<global::Jina.MixedEmbeddingInput?>? mixed = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsText)
+            {
+                text?.Invoke(Text!);
+            }
+            else if (IsImage)
+            {
+                image?.Invoke(Image!);
+            }
+            else if (IsMixed)
+            {
+                mixed?.Invoke(Mixed!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public override int GetHashCode()
         {
             var fields = new object?[]
