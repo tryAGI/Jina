@@ -14,11 +14,14 @@ namespace Jina
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorization = new global::Jina.EndPointAuthorization
+            _authorizations.Clear();
+            _authorizations.Add(new global::Jina.EndPointAuthorization
             {
+                Type = "Http",
+                Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,
-            };
+            });
         }
     }
 }
