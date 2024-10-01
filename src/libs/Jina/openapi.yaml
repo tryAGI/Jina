@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.70
+  version: 0.1.71
 servers:
   - url: https://api.jina.ai/
 paths:
