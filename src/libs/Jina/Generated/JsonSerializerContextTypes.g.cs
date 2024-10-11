@@ -198,7 +198,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.HealthModel? Type45 { get; set; }
+        public object? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
