@@ -202,54 +202,90 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RankAPIInput? Type46 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ModelEmbeddingOutputDataItem>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc>? Type47 { get; set; }
+        public global::Jina.ModelEmbeddingOutputDataItem? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ApiSchemasRankTextDoc? Type48 { get; set; }
+        public global::System.Collections.Generic.IList<float>? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>>? Type49 { get; set; }
+        public float? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>? Type50 { get; set; }
+        public global::Jina.RankAPIInput? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RankingOutput? Type51 { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc>? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ApiSchemasRankUsage? Type52 { get; set; }
+        public global::Jina.ApiSchemasRankTextDoc? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextEmbeddingAPIInput? Type53 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>>? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextEmbeddingAPIInputInputType? Type54 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.TextEmbeddingAPIInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>>? Type55 { get; set; }
+        public global::Jina.RankingOutput? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextEmbeddingAPIInputEmbeddingType? Type56 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.RankingOutputResult>? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>? Type57 { get; set; }
+        public global::Jina.RankingOutputResult? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem? Type58 { get; set; }
+        public long? Type58 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? Type59 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.RankingOutputResultDocument? Type60 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.ApiSchemasRankUsage? Type61 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.TextEmbeddingAPIInput? Type62 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.TextEmbeddingAPIInputInputType? Type63 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.AnyOf<global::Jina.TextEmbeddingAPIInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>>? Type64 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.TextEmbeddingAPIInputEmbeddingType? Type65 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>? Type66 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem? Type67 { get; set; }
     }
 }

@@ -539,7 +539,18 @@ components:
         data:
           title: Data
           type: array
-          items: { }
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              embedding:
+                type: array
+                items:
+                  type: number
+                  format: float
+              object:
+                type: string
           description: A list of Embedding Objects returned by the embedding service
         usage:
           title: Usage
@@ -624,7 +635,20 @@ components:
         results:
           title: Results
           type: array
-          items: { }
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+                format: int64
+              relevance_score:
+                type: number
+                format: double
+              document:
+                type: object
+                properties:
+                  text:
+                    type: string
           description: An ordered list of ranked documents
         usage:
           title: Usage

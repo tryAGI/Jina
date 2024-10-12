@@ -32,7 +32,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<object> Data { get; set; }
+        public required global::System.Collections.Generic.IList<global::Jina.ModelEmbeddingOutputDataItem> Data { get; set; }
 
         /// <summary>
         /// Total usage of the request. Sums up the usage from each individual input

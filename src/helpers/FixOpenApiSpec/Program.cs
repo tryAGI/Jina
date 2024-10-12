@@ -1,22 +1,77 @@
+using AutoSDK.Helpers;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
 
 var path = args[0];
-var text = await File.ReadAllTextAsync(path);
+var yamlOrJson = await File.ReadAllTextAsync(path);
 
-text = text
-        .Replace("openapi: 3.1.0", "openapi: 3.0.1")
-        .Replace("\"openapi\":\"3.1.0\"", "\"openapi\":\"3.0.1\"")
-    ;
+if (OpenApi31Support.IsOpenApi31(yamlOrJson))
+{
+    yamlOrJson = OpenApi31Support.ConvertToOpenApi30(yamlOrJson);
+}
 
-var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
+var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
 
 openApiDocument.Components.Schemas["ImageDoc"]!.Properties["id"].Example = null;
 openApiDocument.Components.Schemas["api_schemas__embedding__TextDoc"]!.Properties["id"].Example = null;
 openApiDocument.Components.Schemas["api_schemas__rank__TextDoc"]!.Properties["id"].Example = null;
 
+openApiDocument.Components.Schemas["ModelEmbeddingOutput"]!.Properties["data"].Items = new OpenApiSchema
+{
+    Type = "object",
+    Properties = new Dictionary<string, OpenApiSchema>
+    {
+        ["index"] = new()
+        {
+            Type = "integer",
+        },
+        ["embedding"] = new()
+        {
+            Type = "array",
+            Items = new OpenApiSchema
+            {
+                Type = "number",
+                Format = "float",
+            }
+        },
+        ["object"] = new()
+        {
+            Type = "string",
+        }
+    }
+};
+
+openApiDocument.Components.Schemas["RankingOutput"]!.Properties["results"].Items = new OpenApiSchema
+{
+    Type = "object",
+    Properties = new Dictionary<string, OpenApiSchema>
+    {
+        ["index"] = new()
+        {
+            Type = "integer",
+            Format = "int64",
+        },
+        ["relevance_score"] = new()
+        {
+            Type = "number",
+            Format = "double",
+        },
+        ["document"] = new()
+        {
+            Type = "object",
+            Properties = new Dictionary<string, OpenApiSchema>
+            {
+                ["text"] = new()
+                {
+                    Type = "string",
+                }
+            }
+        }
+    }
+};
+    
 openApiDocument.SecurityRequirements = new List<OpenApiSecurityRequirement>
 {
     new()
@@ -42,8 +97,8 @@ openApiDocument.Servers = new List<OpenApiServer>
     }
 };
 
-text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
-_ = new OpenApiStringReader().Read(text, out diagnostics);
+yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+_ = new OpenApiStringReader().Read(yamlOrJson, out diagnostics);
 
 if (diagnostics.Errors.Count > 0)
 {
@@ -55,5 +110,5 @@ if (diagnostics.Errors.Count > 0)
     Environment.Exit(1);
 }
 
-await File.WriteAllTextAsync(path, text);
+await File.WriteAllTextAsync(path, yamlOrJson);
 return;
