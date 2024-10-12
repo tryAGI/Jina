@@ -26,7 +26,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.RankingOutputResult> Results { get; set; }
+        public required global::System.Collections.Generic.IList<object> Results { get; set; }
 
         /// <summary>
         /// Total usage of the request.
