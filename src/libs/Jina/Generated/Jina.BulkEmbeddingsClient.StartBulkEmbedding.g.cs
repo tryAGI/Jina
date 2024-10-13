@@ -126,7 +126,7 @@ namespace Jina
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Jina.BulkEmbeddingJobResponse), JsonSerializerContext) as global::Jina.BulkEmbeddingJobResponse ??
+                global::Jina.BulkEmbeddingJobResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
 
