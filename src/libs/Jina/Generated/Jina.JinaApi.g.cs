@@ -51,14 +51,6 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public ClassificationClient Classification => new ClassificationClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
         public MultiVectorClient MultiVector => new MultiVectorClient(_httpClient, authorizations: _authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,

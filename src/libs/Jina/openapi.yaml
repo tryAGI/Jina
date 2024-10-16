@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.71
+  version: 0.1.76
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -134,62 +134,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RankingOutput'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - HTTPBearer: [ ]
-  /v1/train:
-    post:
-      tags:
-        - classification
-      summary: Train
-      description: Rank pairs.
-      operationId: train_v1_train_post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TrainingAPIInput'
-        required: true
-      responses:
-        '200':
-          description: Training output
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TrainingOutput'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-      security:
-        - HTTPBearer: [ ]
-  /v1/classify:
-    post:
-      tags:
-        - classification
-      summary: Classify
-      description: Classify.
-      operationId: classify_v1_classify_post
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ClassificationAPIInput'
-        required: true
-      responses:
-        '200':
-          description: Classification output
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClassificationOutput'
         '422':
           description: Validation Error
           content:
@@ -359,77 +303,6 @@ components:
         - completed
       type: string
       description: An enumeration.
-    ClassificationAPIInput:
-      title: ClassificationAPIInput
-      required:
-        - input
-      type: object
-      properties:
-        model:
-          title: Model
-          type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
-        classifier_id:
-          title: Classifier Id
-          type: string
-          description: "The identifier of the classifier. If not provided, a new classifier will be created.\nYou can provide only either `model` or `classifier_id`"
-        input:
-          title: Input
-          anyOf:
-            - type: array
-              items:
-                anyOf:
-                  - $ref: '#/components/schemas/api_schemas__classification__TextDoc'
-                  - $ref: '#/components/schemas/api_schemas__classification__ImageDoc'
-                  - type: string
-            - $ref: '#/components/schemas/api_schemas__classification__TextDoc'
-            - $ref: '#/components/schemas/api_schemas__classification__ImageDoc'
-            - type: string
-          description: List of text and images or a single text and image for classification
-        labels:
-          title: Labels
-          type: array
-          items:
-            type: string
-          description: List of labels used for classification
-      additionalProperties: false
-      description: The input to the API for classify endpoint. OpenAI compatible
-      example:
-        classifier_id: classifier_id
-        input:
-          - text: text1
-          - text: text2
-    ClassificationOutput:
-      title: ClassificationOutput
-      required:
-        - data
-        - usage
-      type: object
-      properties:
-        data:
-          title: Data
-          type: array
-          items: { }
-          description: A list of Classification Objects returned by the classification service
-        usage:
-          title: Usage
-          allOf:
-            - $ref: '#/components/schemas/api_schemas__classification__Usage'
-          description: Total usage of the request. Sums up the usage from each individual input
-      description: Output of the classification service
-      example:
-        data:
-          - index: 0
-            prediction: label1
-            object: classification
-            score: 0.75
-          - index: 1
-            prediction: label2
-            object: classification
-            score: 0.54
-        usage:
-          total_tokens: 15
-          prompt_tokens: 15
     ColbertModelEmbeddingsOutput:
       title: ColbertModelEmbeddingsOutput
       required:
@@ -521,6 +394,38 @@ components:
       title: HealthModel
       type: object
       description: 'Pydantic BaseModel for Jina health check, used as the response model in REST app.'
+    ImageDoc:
+      title: ImageDoc
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
+          example: 13a18da61ff49a9dce308dabc8d304a2
+        url:
+          title: Url
+          maxLength: 65536
+          minLength: 1
+          type: string
+          description: URL of an image file
+          format: uri
+        bytes:
+          title: Bytes
+          type: string
+          description: base64 representation of the Image.
+          format: binary
+        image:
+          title: Image
+          anyOf:
+            - maxLength: 65536
+              minLength: 1
+              type: string
+              format: uri
+            - type: string
+              format: binary
+          description: Image representation that can hold URL of an image or a base64 representation
+      description: ImageDoc with fields
     ImageEmbeddingInput:
       title: ImageEmbeddingInput
       required:
@@ -535,10 +440,10 @@ components:
         input:
           title: Input
           anyOf:
-            - $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+            - $ref: '#/components/schemas/ImageDoc'
             - type: array
               items:
-                $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+                $ref: '#/components/schemas/ImageDoc'
           description: List of images to embed
         embedding_type:
           title: Embedding Type
@@ -568,46 +473,6 @@ components:
         model: clip
         input:
           - bytes or URL
-    ImageExampleDoc:
-      title: ImageExampleDoc
-      required:
-        - label
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
-        url:
-          title: Url
-          maxLength: 65536
-          minLength: 1
-          type: string
-          description: URL of an image file
-          format: uri
-        bytes:
-          title: Bytes
-          type: string
-          description: base64 representation of the Image.
-          format: binary
-        image:
-          title: Image
-          anyOf:
-            - maxLength: 65536
-              minLength: 1
-              type: string
-              format: uri
-            - type: string
-              format: binary
-          description: Image representation that can hold URL of an image or a base64 representation
-        label:
-          title: Label
-          anyOf:
-            - type: boolean
-            - type: string
-          description: The label of the image
-      description: ImageDoc with fields and a label
     MixedEmbeddingInput:
       title: MixedEmbeddingInput
       required:
@@ -624,7 +489,7 @@ components:
           type: array
           items:
             anyOf:
-              - $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+              - $ref: '#/components/schemas/ImageDoc'
               - $ref: '#/components/schemas/api_schemas__embedding__TextDoc'
               - type: string
           description: List of text and images to embed
@@ -936,100 +801,6 @@ components:
         model: jina-embeddings-v2-base-en
         input:
           - 'Hello, world!'
-    TextExampleDoc:
-      title: TextExampleDoc
-      required:
-        - text
-        - label
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
-        text:
-          title: Text
-          type: string
-          description: The example text
-        label:
-          title: Label
-          anyOf:
-            - type: boolean
-            - type: string
-          description: The label of the text
-      description: Document containing a text field and a label
-    TrainingAPIInput:
-      title: TrainingAPIInput
-      required:
-        - input
-      type: object
-      properties:
-        model:
-          title: Model
-          type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n\nYou can provide only either `model` or `classifier_id`"
-        classifier_id:
-          title: Classifier Id
-          type: string
-          description: "The identifier of the classifier. If not provided, a new classifier will be created.\nYou can provide only either `model` or `classifier_id`"
-        visibility:
-          title: Visibility
-          enum:
-            - public
-            - private
-          type: string
-          description: The visibility of the classifier when created. Will be ignored if `classifier_id` is provided
-          default: public
-        input:
-          title: Input
-          anyOf:
-            - type: array
-              items:
-                anyOf:
-                  - $ref: '#/components/schemas/TextExampleDoc'
-                  - $ref: '#/components/schemas/ImageExampleDoc'
-            - $ref: '#/components/schemas/TextExampleDoc'
-            - $ref: '#/components/schemas/ImageExampleDoc'
-          description: List of text and images and labels or a single text and image and label to train the classifier
-      additionalProperties: false
-      description: The input to the API for train the classifier. OpenAI compatible
-      example:
-        model: jina-embeddings-v2-base-en
-        visibility: public
-        input:
-          - text: text1
-            label: label1
-          - text: text2
-            label: label2
-    TrainingOutput:
-      title: TrainingOutput
-      required:
-        - classifier_id
-        - num_samples
-        - usage
-      type: object
-      properties:
-        classifier_id:
-          title: Classifier Id
-          type: string
-          description: The identifier of the classifier that was trained
-        num_samples:
-          title: Num Samples
-          type: integer
-          description: The number of samples that were used to train the classifier
-        usage:
-          title: Usage
-          allOf:
-            - $ref: '#/components/schemas/api_schemas__training__Usage'
-          description: Total usage of the request. Sums up the usage from each individual input
-      description: Output of the training service
-      example:
-        classifier_id: classifier_id
-        num_samples: 10
-        usage:
-          total_tokens: 15
-          prompt_tokens: 15
     ValidationError:
       title: ValidationError
       required:
@@ -1051,100 +822,6 @@ components:
         type:
           title: Error Type
           type: string
-    api_schemas__classification__ImageDoc:
-      title: ImageDoc
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
-        url:
-          title: Url
-          maxLength: 65536
-          minLength: 1
-          type: string
-          description: URL of an image file
-          format: uri
-        bytes:
-          title: Bytes
-          type: string
-          description: base64 representation of the Image.
-          format: binary
-        image:
-          title: Image
-          anyOf:
-            - maxLength: 65536
-              minLength: 1
-              type: string
-              format: uri
-            - type: string
-              format: binary
-          description: Image representation that can hold URL of an image or a base64 representation
-      description: ImageDoc with fields
-    api_schemas__classification__TextDoc:
-      title: TextDoc
-      required:
-        - text
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
-        text:
-          title: Text
-          type: string
-      description: Document containing a text field
-    api_schemas__classification__Usage:
-      title: Usage
-      required:
-        - total_tokens
-        - prompt_tokens
-      type: object
-      properties:
-        total_tokens:
-          title: Total Tokens
-          type: integer
-          description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: Same as total_tokens
-    api_schemas__embedding__ImageDoc:
-      title: ImageDoc
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
-        url:
-          title: Url
-          maxLength: 65536
-          minLength: 1
-          type: string
-          description: URL of an image file
-          format: uri
-        bytes:
-          title: Bytes
-          type: string
-          description: base64 representation of the Image.
-          format: binary
-        image:
-          title: Image
-          anyOf:
-            - maxLength: 65536
-              minLength: 1
-              type: string
-              format: uri
-            - type: string
-              format: binary
-          description: Image representation that can hold URL of an image or a base64 representation
-      description: ImageDoc with fields
     api_schemas__embedding__TextDoc:
       title: TextDoc
       required:
@@ -1155,7 +832,7 @@ components:
           title: Id
           type: string
           description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
+          example: 13a18da61ff49a9dce308dabc8d304a2
         text:
           title: Text
           type: string
@@ -1185,7 +862,7 @@ components:
           title: Id
           type: string
           description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: e10b550cf99e2e072e22420af5c6eb47
+          example: 13a18da61ff49a9dce308dabc8d304a2
         text:
           title: Text
           type: string
@@ -1208,21 +885,6 @@ components:
       example:
         total_tokens: 15
         prompt_tokens: 15
-    api_schemas__training__Usage:
-      title: Usage
-      required:
-        - total_tokens
-        - prompt_tokens
-      type: object
-      properties:
-        total_tokens:
-          title: Total Tokens
-          type: integer
-          description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: Same as total_tokens
   securitySchemes:
     HTTPBearer:
       type: http
