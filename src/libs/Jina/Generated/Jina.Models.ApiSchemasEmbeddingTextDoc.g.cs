@@ -9,7 +9,8 @@ namespace Jina
     public sealed partial class ApiSchemasEmbeddingTextDoc
     {
         /// <summary>
-        /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value
+        /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value<br/>
+        /// Example: e10b550cf99e2e072e22420af5c6eb47
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }

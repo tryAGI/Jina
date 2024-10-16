@@ -14,10 +14,6 @@ if (OpenApi31Support.IsOpenApi31(yamlOrJson))
 
 var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
 
-openApiDocument.Components.Schemas["ImageDoc"]!.Properties["id"].Example = null;
-openApiDocument.Components.Schemas["api_schemas__embedding__TextDoc"]!.Properties["id"].Example = null;
-openApiDocument.Components.Schemas["api_schemas__rank__TextDoc"]!.Properties["id"].Example = null;
-
 openApiDocument.Components.Schemas["ModelEmbeddingOutput"]!.Properties["data"].Items = new OpenApiSchema
 {
     Type = "object",
