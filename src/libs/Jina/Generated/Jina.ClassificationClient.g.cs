@@ -4,11 +4,10 @@
 namespace Jina
 {
     /// <summary>
-    /// This is the UniversalAPI to access all the Jina embedding models<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public sealed partial class JinaApi : global::Jina.IJinaApi, global::System.IDisposable
+    public sealed partial class ClassificationClient : global::Jina.IClassificationClient, global::System.IDisposable
     {
         /// <summary>
         /// 
@@ -25,54 +24,14 @@ namespace Jina
 
 
         /// <summary>
-        /// 
-        /// </summary>
-        public EmbeddingsClient Embeddings => new EmbeddingsClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public RerankClient Rerank => new RerankClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ClassificationClient Classification => new ClassificationClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MultiVectorClient MultiVector => new MultiVectorClient(_httpClient, authorizations: _authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Creates a new instance of the JinaApi.
+        /// Creates a new instance of the ClassificationClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
         /// <param name="httpClient"></param>
         /// <param name="baseUri"></param>
         /// <param name="authorizations"></param>
-        public JinaApi(
+        public ClassificationClient(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations = null)

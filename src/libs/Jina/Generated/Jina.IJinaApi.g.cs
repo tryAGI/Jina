@@ -34,6 +34,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public ClassificationClient Classification { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public MultiVectorClient MultiVector { get; }
 
     }
