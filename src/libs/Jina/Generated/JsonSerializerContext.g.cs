@@ -35,10 +35,12 @@ namespace Jina
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeNullableJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeItemJsonConverter),
             typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputEmbeddingTypeItemNullableJsonConverter),
-            typeof(global::Jina.JsonConverters.EmbeddingInputJsonConverter),
+            typeof(global::Jina.JsonConverters.TrainingAPIInputVisibilityJsonConverter),
+            typeof(global::Jina.JsonConverters.TrainingAPIInputVisibilityNullableJsonConverter),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory4),
-            typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory3),
+            typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2),
+            typeof(global::Jina.JsonConverters.EmbeddingInputJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.JsonSerializerContextTypes))]

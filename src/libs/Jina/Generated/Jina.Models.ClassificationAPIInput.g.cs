@@ -1,26 +1,50 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Jina
 {
     /// <summary>
-    /// Document containing a text field
+    /// The input to the API for classify endpoint. OpenAI compatible
     /// </summary>
-    public sealed partial class ApiSchemasRankTextDoc
+    public sealed partial class ClassificationAPIInput
     {
         /// <summary>
-        /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value<br/>
-        /// Example: dd3600303080943d04579e8898664890
+        /// The identifier of the model.<br/>
+        /// Available models and corresponding param size and dimension:<br/>
+        /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-embeddings-v2-base-en`,	137M,	768<br/>
+        /// - `jina-embeddings-v2-base-es`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-de`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-zh`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-code`,	137M,	768<br/>
+        /// - `jina-embeddings-v3`,	570M,	1024<br/>
+        /// For more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string? Model { get; set; }
 
         /// <summary>
-        /// 
+        /// The identifier of the classifier. If not provided, a new classifier will be created.<br/>
+        /// You can provide only either `model` or `classifier_id`
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("classifier_id")]
+        public string? ClassifierId { get; set; }
+
+        /// <summary>
+        /// List of text and images or a single text and image for classification
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory4))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Text { get; set; }
+        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string> Input { get; set; }
+
+        /// <summary>
+        /// List of labels used for classification
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.IList<string>? Labels { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -59,14 +83,14 @@ namespace Jina
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Jina.ApiSchemasRankTextDoc? FromJson(
+        public static global::Jina.ClassificationAPIInput? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Jina.ApiSchemasRankTextDoc),
-                jsonSerializerContext) as global::Jina.ApiSchemasRankTextDoc;
+                typeof(global::Jina.ClassificationAPIInput),
+                jsonSerializerContext) as global::Jina.ClassificationAPIInput;
         }
 
         /// <summary>
@@ -76,11 +100,11 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Jina.ApiSchemasRankTextDoc? FromJson(
+        public static global::Jina.ClassificationAPIInput? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ApiSchemasRankTextDoc>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ClassificationAPIInput>(
                 json,
                 jsonSerializerOptions);
         }
