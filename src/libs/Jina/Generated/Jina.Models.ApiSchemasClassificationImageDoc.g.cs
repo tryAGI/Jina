@@ -12,7 +12,7 @@ namespace Jina
     {
         /// <summary>
         /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value<br/>
-        /// Example: 50336949b5bd1f1ed97f3085d76258a1
+        /// Example: 5b469b33e5ea59cd6442950009e892af
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
