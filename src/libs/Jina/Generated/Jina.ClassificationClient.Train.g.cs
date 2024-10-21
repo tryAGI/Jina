@@ -135,8 +135,8 @@ namespace Jina
         /// The identifier of the classifier. If not provided, a new classifier will be created.<br/>
         /// You can provide only either `model` or `classifier_id`
         /// </param>
-        /// <param name="visibility">
-        /// The visibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
+        /// <param name="access">
+        /// The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
         /// Default Value: public
         /// </param>
         /// <param name="input">
@@ -152,7 +152,7 @@ namespace Jina
             global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc> input,
             string? model = default,
             string? classifierId = default,
-            global::Jina.TrainingAPIInputVisibility? visibility = global::Jina.TrainingAPIInputVisibility.Public,
+            global::Jina.TrainingAPIInputAccess? access = global::Jina.TrainingAPIInputAccess.Public,
             int? numIters = 10,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -160,7 +160,7 @@ namespace Jina
             {
                 Model = model,
                 ClassifierId = classifierId,
-                Visibility = visibility,
+                Access = access,
                 Input = input,
                 NumIters = numIters,
             };

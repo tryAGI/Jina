@@ -334,7 +334,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TrainingAPIInputVisibility? Type79 { get; set; }
+        public global::Jina.TrainingAPIInputAccess? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>

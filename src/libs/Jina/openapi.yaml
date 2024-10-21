@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.76
+  version: 0.1.79
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -190,6 +190,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationOutput'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - HTTPBearer: [ ]
+  /v1/classifiers:
+    get:
+      tags:
+        - classification
+      summary: List Classifier
+      description: List classifiers.
+      operationId: list_classifier_v1_classifiers_get
+      responses:
+        '200':
+          description: List classifiers
+          content:
+            application/json:
+              schema: { }
+      security:
+        - HTTPBearer: [ ]
+  '/v1/classifiers/{classifier_id}':
+    delete:
+      tags:
+        - classification
+      summary: Delete Classifier
+      description: List classifiers.
+      operationId: delete_classifier_v1_classifiers__classifier_id__delete
+      parameters:
+        - name: classifier_id
+          in: path
+          required: true
+          schema:
+            title: Classifier ID
+            type: string
+      responses:
+        '200':
+          description: Delete classifiers
+          content:
+            application/json:
+              schema: { }
         '422':
           description: Validation Error
           content:
@@ -970,13 +1013,13 @@ components:
           title: Classifier Id
           type: string
           description: "The identifier of the classifier. If not provided, a new classifier will be created.\nYou can provide only either `model` or `classifier_id`"
-        visibility:
-          title: Visibility
+        access:
+          title: Access
           enum:
             - public
             - private
           type: string
-          description: The visibility of the classifier when created. Will be ignored if `classifier_id` is provided
+          description: The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided
           default: public
         input:
           title: Input
@@ -998,7 +1041,7 @@ components:
       description: The input to the API for train the classifier. OpenAI compatible
       example:
         model: jina-embeddings-v2-base-en
-        visibility: public
+        access: public
         input:
           - text: text1
             label: label1

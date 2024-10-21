@@ -3,10 +3,10 @@
 namespace Jina.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class TrainingAPIInputVisibilityJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.TrainingAPIInputVisibility>
+    public sealed class TrainingAPIInputAccessNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.TrainingAPIInputAccess?>
     {
         /// <inheritdoc />
-        public override global::Jina.TrainingAPIInputVisibility Read(
+        public override global::Jina.TrainingAPIInputAccess? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Jina.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Jina.TrainingAPIInputVisibilityExtensions.ToEnum(stringValue) ?? default;
+                        return global::Jina.TrainingAPIInputAccessExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Jina.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Jina.TrainingAPIInputVisibility)numValue;
+                    return (global::Jina.TrainingAPIInputAccess)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,12 +38,19 @@ namespace Jina.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Jina.TrainingAPIInputVisibility value,
+            global::Jina.TrainingAPIInputAccess? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Jina.TrainingAPIInputVisibilityExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Jina.TrainingAPIInputAccessExtensions.ToValueString(value.Value));
+            }
         }
     }
 }
