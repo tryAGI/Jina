@@ -1,5 +1,6 @@
 using AutoSDK.Helpers;
 using Microsoft.OpenApi;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
@@ -13,6 +14,18 @@ if (OpenApi31Support.IsOpenApi31(yamlOrJson))
 }
 
 var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
+
+// Use static examples for id properties from the OpenAPI spec because they change every time the spec is generated
+foreach (var pair in openApiDocument.Components.Schemas)
+{
+    foreach (var (propertyName, property) in pair.Value.Properties)
+    {
+        if (propertyName == "id")
+        {
+            property.Example = new OpenApiString("50336949b5bd1f1ed97f3085d76258a1");
+        }
+    }
+}
 
 openApiDocument.Components.Schemas["ModelEmbeddingOutput"]!.Properties["data"].Items = new OpenApiSchema
 {

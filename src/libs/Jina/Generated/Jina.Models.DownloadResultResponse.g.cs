@@ -9,7 +9,8 @@ namespace Jina
     public sealed partial class DownloadResultResponse
     {
         /// <summary>
-        /// The ID of the job
+        /// The ID of the job<br/>
+        /// Example: 50336949b5bd1f1ed97f3085d76258a1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
