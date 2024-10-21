@@ -4,10 +4,10 @@
 namespace Jina
 {
     /// <summary>
-    /// The visibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
+    /// The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
     /// Default Value: public
     /// </summary>
-    public enum TrainingAPIInputVisibility
+    public enum TrainingAPIInputAccess
     {
         /// <summary>
         /// 
@@ -22,29 +22,29 @@ namespace Jina
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class TrainingAPIInputVisibilityExtensions
+    public static class TrainingAPIInputAccessExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this TrainingAPIInputVisibility value)
+        public static string ToValueString(this TrainingAPIInputAccess value)
         {
             return value switch
             {
-                TrainingAPIInputVisibility.Public => "public",
-                TrainingAPIInputVisibility.Private => "private",
+                TrainingAPIInputAccess.Public => "public",
+                TrainingAPIInputAccess.Private => "private",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static TrainingAPIInputVisibility? ToEnum(string value)
+        public static TrainingAPIInputAccess? ToEnum(string value)
         {
             return value switch
             {
-                "public" => TrainingAPIInputVisibility.Public,
-                "private" => TrainingAPIInputVisibility.Private,
+                "public" => TrainingAPIInputAccess.Public,
+                "private" => TrainingAPIInputAccess.Private,
                 _ => null,
             };
         }
