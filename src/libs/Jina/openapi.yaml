@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.80
+  version: 0.1.81
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -1020,7 +1020,7 @@ components:
             - private
           type: string
           description: The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided
-          default: public
+          default: private
         input:
           title: Input
           anyOf:

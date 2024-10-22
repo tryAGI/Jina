@@ -34,11 +34,11 @@ namespace Jina
 
         /// <summary>
         /// The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
-        /// Default Value: public
+        /// Default Value: private
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("access")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.TrainingAPIInputAccessJsonConverter))]
-        public global::Jina.TrainingAPIInputAccess? Access { get; set; } = global::Jina.TrainingAPIInputAccess.Public;
+        public global::Jina.TrainingAPIInputAccess? Access { get; set; } = global::Jina.TrainingAPIInputAccess.Private;
 
         /// <summary>
         /// List of text and images and labels or a single text and image and label to train the classifier
