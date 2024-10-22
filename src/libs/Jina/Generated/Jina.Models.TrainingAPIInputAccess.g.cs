@@ -5,7 +5,7 @@ namespace Jina
 {
     /// <summary>
     /// The accessibility of the classifier when created. Will be ignored if `classifier_id` is provided<br/>
-    /// Default Value: public
+    /// Default Value: private
     /// </summary>
     public enum TrainingAPIInputAccess
     {
