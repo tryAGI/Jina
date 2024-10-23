@@ -14,8 +14,8 @@ namespace Jina
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorizations.Clear();
-            _authorizations.Add(new global::Jina.EndPointAuthorization
+            Authorizations.Clear();
+            Authorizations.Add(new global::Jina.EndPointAuthorization
             {
                 Type = "Http",
                 Location = "Header",
