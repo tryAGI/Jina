@@ -13,10 +13,18 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public const string BaseUrl = "https://api.jina.ai/";
+        public const string DefaultBaseUrl = "https://api.jina.ai/";
 
-        private readonly global::System.Net.Http.HttpClient _httpClient;
-        private global::System.Collections.Generic.List<global::Jina.EndPointAuthorization> _authorizations;
+        private bool _disposeHttpClient = true;
+
+        /// <inheritdoc/>
+        public global::System.Net.Http.HttpClient HttpClient { get; }
+
+        /// <inheritdoc/>
+        public System.Uri? BaseUri => HttpClient.BaseAddress;
+
+        /// <inheritdoc/>
+        public global::System.Collections.Generic.List<global::Jina.EndPointAuthorization> Authorizations { get; }
 
         /// <summary>
         /// 
@@ -27,7 +35,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public EmbeddingsClient Embeddings => new EmbeddingsClient(_httpClient, authorizations: _authorizations)
+        public EmbeddingsClient Embeddings => new EmbeddingsClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -35,7 +43,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(_httpClient, authorizations: _authorizations)
+        public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -43,7 +51,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public RerankClient Rerank => new RerankClient(_httpClient, authorizations: _authorizations)
+        public RerankClient Rerank => new RerankClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -51,7 +59,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public ClassificationClient Classification => new ClassificationClient(_httpClient, authorizations: _authorizations)
+        public ClassificationClient Classification => new ClassificationClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -59,7 +67,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public MultiVectorClient MultiVector => new MultiVectorClient(_httpClient, authorizations: _authorizations)
+        public MultiVectorClient MultiVector => new MultiVectorClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -69,25 +77,31 @@ namespace Jina
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
-        /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param>
-        /// <param name="authorizations"></param>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public JinaApi(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations = null)
+            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true)
         {
-            _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
-            _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
-            _authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>();
+            HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
+            HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
+            Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>();
+            _disposeHttpClient = disposeHttpClient;
 
-            Initialized(_httpClient);
+            Initialized(HttpClient);
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
-            _httpClient.Dispose();
+            if (_disposeHttpClient)
+            {
+                HttpClient.Dispose();
+            }
         }
 
         partial void Initialized(
