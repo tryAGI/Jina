@@ -33,7 +33,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.TextEmbeddingAPIInputInputTypeJsonConverter))]
-        public global::Jina.TextEmbeddingAPIInputInputType? InputType { get; set; } = global::Jina.TextEmbeddingAPIInputInputType.Document;
+        public global::Jina.TextEmbeddingAPIInputInputType? InputType { get; set; }
 
         /// <summary>
         /// The format in which you want the embeddings to be returned.Possible value are `float`, `base64`, `binary`, `ubinary` or a list containing any of them. Defaults to `float`

@@ -52,8 +52,8 @@ namespace Jina
             global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc> input,
             string? model = default,
             string? classifierId = default,
-            global::Jina.TrainingAPIInputAccess? access = global::Jina.TrainingAPIInputAccess.Private,
-            int? numIters = 10,
+            global::Jina.TrainingAPIInputAccess? access = default,
+            int? numIters = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

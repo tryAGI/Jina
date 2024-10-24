@@ -42,7 +42,7 @@ namespace Jina
         global::System.Threading.Tasks.Task<global::Jina.ColbertModelEmbeddingsOutput> CreateMultiVectorAsync(
             string model,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, string, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingTextDoc>, global::Jina.ApiSchemasEmbeddingTextDoc> input,
-            global::Jina.TextEmbeddingAPIInputInputType? inputType = global::Jina.TextEmbeddingAPIInputInputType.Document,
+            global::Jina.TextEmbeddingAPIInputInputType? inputType = default,
             global::Jina.AnyOf<global::Jina.TextEmbeddingAPIInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>>? embeddingType = default,
             int? dimensions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
