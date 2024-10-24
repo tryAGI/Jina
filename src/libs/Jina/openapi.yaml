@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.81
+  version: 0.1.83
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -472,7 +472,6 @@ components:
             score: 0.54
         usage:
           total_tokens: 15
-          prompt_tokens: 15
     ColbertModelEmbeddingsOutput:
       title: ColbertModelEmbeddingsOutput
       required:
@@ -497,7 +496,7 @@ components:
         usage:
           title: Usage
           allOf:
-            - $ref: '#/components/schemas/api_schemas__embedding__Usage'
+            - $ref: '#/components/schemas/api_schemas__multi_embeddings__Usage'
           description: Total usage of the request. Sums up the usage from each individual input
       description: Output of the embedding service
       example:
@@ -526,7 +525,6 @@ components:
             object: embeddings
         usage:
           total_tokens: 15
-          prompt_tokens: 15
     DownloadResultResponse:
       title: DownloadResultResponse
       required:
@@ -609,7 +607,7 @@ components:
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
-        model: clip
+        model: jina-clip-v1
         input:
           - bytes or URL
     ImageExampleDoc:
@@ -695,7 +693,7 @@ components:
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
-        model: clip
+        model: jina-clip-v1
         input:
           - bytes or URL
     ModelEmbeddingOutput:
@@ -752,7 +750,6 @@ components:
             object: embedding
         usage:
           total_tokens: 15
-          prompt_tokens: 15
     RankAPIInput:
       title: RankAPIInput
       required:
@@ -793,7 +790,7 @@ components:
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
-        model: jina-reranker-v1-base-en
+        model: jina-reranker-v2-base-multilingual
         query: Search query
         documents:
           - Document to rank 1
@@ -975,7 +972,7 @@ components:
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
-        model: jina-embeddings-v2-base-en
+        model: jina-embeddings-v3
         input:
           - 'Hello, world!'
     TextExampleDoc:
@@ -1040,8 +1037,8 @@ components:
       additionalProperties: false
       description: The input to the API for train the classifier. OpenAI compatible
       example:
-        model: jina-embeddings-v2-base-en
-        access: public
+        model: jina-embeddings-v3
+        access: private
         input:
           - text: text1
             label: label1
@@ -1077,7 +1074,6 @@ components:
         num_samples: 10
         usage:
           total_tokens: 15
-          prompt_tokens: 15
     ValidationError:
       title: ValidationError
       required:
@@ -1150,17 +1146,12 @@ components:
       title: Usage
       required:
         - total_tokens
-        - prompt_tokens
       type: object
       properties:
         total_tokens:
           title: Total Tokens
           type: integer
           description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: Same as total_tokens
     api_schemas__embedding__ImageDoc:
       title: ImageDoc
       type: object
@@ -1222,7 +1213,17 @@ components:
         prompt_tokens:
           title: Prompt Tokens
           type: integer
-          description: Same as total_tokens
+          description: The number of tokens used by all the texts in the input
+    api_schemas__multi_embeddings__Usage:
+      title: Usage
+      required:
+        - total_tokens
+      type: object
+      properties:
+        total_tokens:
+          title: Total Tokens
+          type: integer
+          description: The number of tokens used by all the texts in the input
     api_schemas__rank__TextDoc:
       title: TextDoc
       required:
@@ -1242,35 +1243,24 @@ components:
       title: Usage
       required:
         - total_tokens
-        - prompt_tokens
       type: object
       properties:
         total_tokens:
           title: Total Tokens
           type: integer
           description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: Same as total_tokens
       example:
         total_tokens: 15
-        prompt_tokens: 15
     api_schemas__training__Usage:
       title: Usage
       required:
         - total_tokens
-        - prompt_tokens
       type: object
       properties:
         total_tokens:
           title: Total Tokens
           type: integer
           description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: Same as total_tokens
   securitySchemes:
     HTTPBearer:
       type: http

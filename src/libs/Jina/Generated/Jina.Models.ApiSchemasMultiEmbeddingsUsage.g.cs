@@ -6,7 +6,7 @@ namespace Jina
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ApiSchemasTrainingUsage
+    public sealed partial class ApiSchemasMultiEmbeddingsUsage
     {
         /// <summary>
         /// The number of tokens used by all the texts in the input
@@ -52,14 +52,14 @@ namespace Jina
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Jina.ApiSchemasTrainingUsage? FromJson(
+        public static global::Jina.ApiSchemasMultiEmbeddingsUsage? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Jina.ApiSchemasTrainingUsage),
-                jsonSerializerContext) as global::Jina.ApiSchemasTrainingUsage;
+                typeof(global::Jina.ApiSchemasMultiEmbeddingsUsage),
+                jsonSerializerContext) as global::Jina.ApiSchemasMultiEmbeddingsUsage;
         }
 
         /// <summary>
@@ -69,11 +69,11 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Jina.ApiSchemasTrainingUsage? FromJson(
+        public static global::Jina.ApiSchemasMultiEmbeddingsUsage? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ApiSchemasTrainingUsage>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ApiSchemasMultiEmbeddingsUsage>(
                 json,
                 jsonSerializerOptions);
         }
