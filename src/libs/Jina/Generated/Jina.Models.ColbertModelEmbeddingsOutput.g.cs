@@ -39,7 +39,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.ApiSchemasEmbeddingUsage Usage { get; set; }
+        public required global::Jina.ApiSchemasMultiEmbeddingsUsage Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -16,13 +16,6 @@ namespace Jina
         public required int TotalTokens { get; set; }
 
         /// <summary>
-        /// Same as total_tokens
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("prompt_tokens")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int PromptTokens { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]

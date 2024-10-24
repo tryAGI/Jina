@@ -16,7 +16,7 @@ namespace Jina
         public required int TotalTokens { get; set; }
 
         /// <summary>
-        /// Same as total_tokens
+        /// The number of tokens used by all the texts in the input
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
