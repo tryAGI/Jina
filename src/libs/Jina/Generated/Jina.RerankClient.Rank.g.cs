@@ -148,7 +148,7 @@ namespace Jina
             global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc> query,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>> documents,
             int? topN = default,
-            bool? returnDocuments = true,
+            bool? returnDocuments = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Jina.RankAPIInput

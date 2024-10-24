@@ -38,7 +38,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("access")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.TrainingAPIInputAccessJsonConverter))]
-        public global::Jina.TrainingAPIInputAccess? Access { get; set; } = global::Jina.TrainingAPIInputAccess.Private;
+        public global::Jina.TrainingAPIInputAccess? Access { get; set; }
 
         /// <summary>
         /// List of text and images and labels or a single text and image and label to train the classifier
@@ -53,7 +53,7 @@ namespace Jina
         /// Default Value: 10
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("num_iters")]
-        public int? NumIters { get; set; } = 10;
+        public int? NumIters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
