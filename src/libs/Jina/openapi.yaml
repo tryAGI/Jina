@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.83
+  version: 0.1.84
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -466,10 +466,20 @@ components:
             prediction: label1
             object: classification
             score: 0.75
+            predictions:
+              - label: label1
+                score: 0.75
+              - label: label2
+                score: 0.25
           - index: 1
             prediction: label2
             object: classification
             score: 0.54
+            predictions:
+              - label: label2
+                score: 0.54
+              - label: label1
+                score: 0.46
         usage:
           total_tokens: 15
     ColbertModelEmbeddingsOutput:
