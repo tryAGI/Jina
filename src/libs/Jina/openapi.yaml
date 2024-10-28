@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.84
+  version: 0.1.85
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -921,6 +921,7 @@ components:
       title: TextEmbeddingInput
       required:
         - model
+        - input
       type: object
       properties:
         model:
