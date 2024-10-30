@@ -60,7 +60,8 @@ namespace Jina
         public int? Dimensions { get; set; }
 
         /// <summary>
-        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm. Defaults to True<br/>
+        /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
         public bool? Normalized { get; set; }
