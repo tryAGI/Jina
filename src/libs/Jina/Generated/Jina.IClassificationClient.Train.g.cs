@@ -10,7 +10,7 @@ namespace Jina
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Jina.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Jina.TrainingOutput> TrainAsync(
             global::Jina.TrainingAPIInput request,
             global::System.Threading.CancellationToken cancellationToken = default);

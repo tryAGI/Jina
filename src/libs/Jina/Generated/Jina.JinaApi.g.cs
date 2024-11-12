@@ -26,6 +26,11 @@ namespace Jina
         /// <inheritdoc/>
         public global::System.Collections.Generic.List<global::Jina.EndPointAuthorization> Authorizations { get; }
 
+        /// <inheritdoc/>
+        public bool ReadResponseAsString { get; set; }
+#if DEBUG
+            = true;
+#endif
         /// <summary>
         /// 
         /// </summary>
@@ -37,6 +42,7 @@ namespace Jina
         /// </summary>
         public EmbeddingsClient Embeddings => new EmbeddingsClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -45,6 +51,7 @@ namespace Jina
         /// </summary>
         public BulkEmbeddingsClient BulkEmbeddings => new BulkEmbeddingsClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -53,6 +60,7 @@ namespace Jina
         /// </summary>
         public RerankClient Rerank => new RerankClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -61,6 +69,7 @@ namespace Jina
         /// </summary>
         public ClassificationClient Classification => new ClassificationClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
@@ -69,6 +78,7 @@ namespace Jina
         /// </summary>
         public MultiVectorClient MultiVector => new MultiVectorClient(HttpClient, authorizations: Authorizations)
         {
+            ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
