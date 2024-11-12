@@ -52,91 +52,49 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ClassificationAPIInput" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="model">
+        /// The identifier of the model.<br/>
+        /// Available models and corresponding param size and dimension:<br/>
+        /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-embeddings-v2-base-en`,	137M,	768<br/>
+        /// - `jina-embeddings-v2-base-es`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-de`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-zh`,	161M,	768<br/>
+        /// - `jina-embeddings-v2-base-code`,	137M,	768<br/>
+        /// - `jina-embeddings-v3`,	570M,	1024<br/>
+        /// For more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).
+        /// </param>
+        /// <param name="classifierId">
+        /// The identifier of the classifier. If not provided, a new classifier will be created.<br/>
+        /// You can provide only either `model` or `classifier_id`
+        /// </param>
+        /// <param name="input">
+        /// List of text and images or a single text and image for classification
+        /// </param>
+        /// <param name="labels">
+        /// List of labels used for classification
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ClassificationAPIInput(
+            global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string> input,
+            string? model,
+            string? classifierId,
+            global::System.Collections.Generic.IList<string>? labels)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Input = input;
+            this.Model = model;
+            this.ClassifierId = classifierId;
+            this.Labels = labels;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ClassificationAPIInput" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ClassificationAPIInput()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Jina.ClassificationAPIInput? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Jina.ClassificationAPIInput),
-                jsonSerializerContext) as global::Jina.ClassificationAPIInput;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Jina.ClassificationAPIInput? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ClassificationAPIInput>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Jina.ClassificationAPIInput?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Jina.ClassificationAPIInput),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Jina.ClassificationAPIInput;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Jina.ClassificationAPIInput?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Jina.ClassificationAPIInput?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }
