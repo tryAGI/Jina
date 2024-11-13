@@ -27,7 +27,7 @@ namespace Jina
         /// The search query
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.ApiSchemasRankTextDoc>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc> Query { get; set; }
 
@@ -35,7 +35,7 @@ namespace Jina
         /// A list of text documents or strings to rerank. If a document is provided the text fields is required and all other fields will be preserved in the response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>> Documents { get; set; }
 

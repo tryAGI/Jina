@@ -44,7 +44,7 @@ namespace Jina
         /// List of text and images and labels or a single text and image and label to train the classifier
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory3))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc> Input { get; set; }
 
