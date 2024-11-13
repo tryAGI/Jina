@@ -40,7 +40,7 @@ namespace Jina
         /// Image representation that can hold URL of an image or a base64 representation
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, byte[]>))]
         public global::Jina.AnyOf<string, byte[]>? Image { get; set; }
 
         /// <summary>
