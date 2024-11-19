@@ -14,6 +14,7 @@ namespace Jina
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
         /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-clip-v2`,	865M,	1024<br/>
         /// - `jina-embeddings-v2-base-en`,	137M,	768<br/>
         /// - `jina-embeddings-v2-base-es`,	161M,	768<br/>
         /// - `jina-embeddings-v2-base-de`,	161M,	768<br/>
@@ -59,6 +60,7 @@ namespace Jina
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
         /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-clip-v2`,	865M,	1024<br/>
         /// - `jina-embeddings-v2-base-en`,	137M,	768<br/>
         /// - `jina-embeddings-v2-base-es`,	161M,	768<br/>
         /// - `jina-embeddings-v2-base-de`,	161M,	768<br/>
