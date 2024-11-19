@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.89
+  version: 0.1.92
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -411,7 +411,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-clip-v2`,\t865M,\t1024\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
         classifier_id:
           title: Classifier Id
           type: string
@@ -583,7 +583,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-clip-v2`,\t865M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).\n"
         input:
           title: Input
           anyOf:
@@ -614,6 +614,10 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        dimensions:
+          title: Dimensions
+          type: integer
+          description: 'Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.'
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
@@ -668,7 +672,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-clip-v2`,\t865M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).\n"
         input:
           title: Input
           type: array
@@ -700,6 +704,10 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        dimensions:
+          title: Dimensions
+          type: integer
+          description: 'Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.'
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
@@ -927,7 +935,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-clip-v2`,\t865M,\t1024\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n- `jina-embeddings-v3`,\t570M,\t1024\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n"
         input:
           title: Input
           anyOf:
@@ -1017,7 +1025,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n\nYou can provide only either `model` or `classifier_id`"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-clip-v1`,\t223M,\t768\n- `jina-clip-v2`,\t865M,\t1024\n- `jina-embeddings-v2-base-en`,\t137M,\t768\n- `jina-embeddings-v2-base-es`,\t161M,\t768\n- `jina-embeddings-v2-base-de`,\t161M,\t768\n- `jina-embeddings-v2-base-zh`,\t161M,\t768\n- `jina-embeddings-v2-base-code`,\t137M,\t768\n\nFor more information, please checkout our [technical blog](https://arxiv.org/abs/2307.11224).\n\nYou can provide only either `model` or `classifier_id`"
         classifier_id:
           title: Classifier Id
           type: string

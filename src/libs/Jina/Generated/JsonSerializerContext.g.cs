@@ -56,6 +56,7 @@ namespace Jina
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.TextEmbeddingAPIInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.TextEmbeddingAPIInputEmbeddingTypeItem>>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>),
+            typeof(global::Jina.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.JsonSerializerContextTypes))]

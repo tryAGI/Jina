@@ -14,6 +14,7 @@ namespace Jina
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
         /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-clip-v2`,	865M,	1024<br/>
         /// For more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
@@ -41,6 +42,12 @@ namespace Jina
         public bool? Normalized { get; set; }
 
         /// <summary>
+        /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public int? Dimensions { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,6 +60,7 @@ namespace Jina
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
         /// - `jina-clip-v1`,	223M,	768<br/>
+        /// - `jina-clip-v2`,	865M,	1024<br/>
         /// For more information, please checkout our [technical blog](https://arxiv.org/abs/2405.20204).
         /// </param>
         /// <param name="input">
@@ -64,17 +72,22 @@ namespace Jina
         /// <param name="normalized">
         /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
         /// </param>
+        /// <param name="dimensions">
+        /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public MixedEmbeddingInput(
             string model,
             global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>> input,
             global::Jina.AnyOf<global::Jina.MixedEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.MixedEmbeddingInputEmbeddingTypeItem>>? embeddingType,
-            bool? normalized)
+            bool? normalized,
+            int? dimensions)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.EmbeddingType = embeddingType;
             this.Normalized = normalized;
+            this.Dimensions = dimensions;
         }
 
         /// <summary>
