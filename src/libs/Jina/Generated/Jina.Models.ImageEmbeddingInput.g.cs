@@ -37,7 +37,8 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.ImageEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ImageEmbeddingInputEmbeddingTypeItem>>? EmbeddingType { get; set; }
 
         /// <summary>
-        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm<br/>
+        /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
         public bool? Normalized { get; set; }
@@ -83,7 +84,8 @@ namespace Jina
         /// The format in which you want the embeddings to be returned.Possible value are `float`, `base64`, `binary`, `ubinary` or a list containing any of them. Defaults to `float`
         /// </param>
         /// <param name="normalized">
-        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        /// Flag to determine if the embeddings should be normalized to have a unit L2 norm<br/>
+        /// Default Value: true
         /// </param>
         /// <param name="task">
         /// Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:<br/>

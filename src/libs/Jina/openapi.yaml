@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.93
+  version: 0.1.94
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -614,6 +614,7 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+          default: true
         task:
           title: Task
           enum:
@@ -714,6 +715,7 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+          default: true
         task:
           title: Task
           enum:
