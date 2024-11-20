@@ -43,6 +43,18 @@ namespace Jina
         public bool? Normalized { get; set; }
 
         /// <summary>
+        /// Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:<br/>
+        /// - "retrieval.query": Specifies the given text is a query in a search or retrieval setting.<br/>
+        /// - "retrieval.passage": Specifies the given text is a document in a search or retrieval setting.<br/>
+        /// - "text-matching": Specifies the given text is used for Semantic Textual Similarity.<br/>
+        /// - "classification": Specifies that the embedding is used for classification.<br/>
+        /// - "separation": Specifies that the embedding is used for clustering.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("task")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ImageEmbeddingInputTaskJsonConverter))]
+        public global::Jina.ImageEmbeddingInputTask? Task { get; set; }
+
+        /// <summary>
         /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
@@ -73,6 +85,14 @@ namespace Jina
         /// <param name="normalized">
         /// Flag to determine if the embeddings should be normalized to have a unit L2 norm
         /// </param>
+        /// <param name="task">
+        /// Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:<br/>
+        /// - "retrieval.query": Specifies the given text is a query in a search or retrieval setting.<br/>
+        /// - "retrieval.passage": Specifies the given text is a document in a search or retrieval setting.<br/>
+        /// - "text-matching": Specifies the given text is used for Semantic Textual Similarity.<br/>
+        /// - "classification": Specifies that the embedding is used for classification.<br/>
+        /// - "separation": Specifies that the embedding is used for clustering.
+        /// </param>
         /// <param name="dimensions">
         /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
         /// </param>
@@ -82,12 +102,14 @@ namespace Jina
             global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>> input,
             global::Jina.AnyOf<global::Jina.ImageEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ImageEmbeddingInputEmbeddingTypeItem>>? embeddingType,
             bool? normalized,
+            global::Jina.ImageEmbeddingInputTask? task,
             int? dimensions)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Input = input;
             this.EmbeddingType = embeddingType;
             this.Normalized = normalized;
+            this.Task = task;
             this.Dimensions = dimensions;
         }
 

@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.92
+  version: 0.1.93
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -614,6 +614,16 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        task:
+          title: Task
+          enum:
+            - retrieval.query
+            - retrieval.passage
+            - text-matching
+            - classification
+            - separation
+          type: string
+          description: "Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:\n- \"retrieval.query\": Specifies the given text is a query in a search or retrieval setting.\n- \"retrieval.passage\": Specifies the given text is a document in a search or retrieval setting.\n- \"text-matching\": Specifies the given text is used for Semantic Textual Similarity.\n- \"classification\": Specifies that the embedding is used for classification.\n- \"separation\": Specifies that the embedding is used for clustering.\n"
         dimensions:
           title: Dimensions
           type: integer
@@ -704,6 +714,16 @@ components:
           title: Normalized
           type: boolean
           description: Flag to determine if the embeddings should be normalized to have a unit L2 norm
+        task:
+          title: Task
+          enum:
+            - retrieval.query
+            - retrieval.passage
+            - text-matching
+            - classification
+            - separation
+          type: string
+          description: "Used to convey intended downstream application to help the model produce better embeddings. Must be one of the following values:\n- \"retrieval.query\": Specifies the given text is a query in a search or retrieval setting.\n- \"retrieval.passage\": Specifies the given text is a document in a search or retrieval setting.\n- \"text-matching\": Specifies the given text is used for Semantic Textual Similarity.\n- \"classification\": Specifies that the embedding is used for classification.\n- \"separation\": Specifies that the embedding is used for clustering.\n"
         dimensions:
           title: Dimensions
           type: integer
