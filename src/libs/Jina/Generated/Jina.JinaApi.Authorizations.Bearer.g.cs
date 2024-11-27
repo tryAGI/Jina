@@ -5,10 +5,7 @@ namespace Jina
 {
     public sealed partial class JinaApi
     {
-        /// <summary>
-        /// Authorize using bearer authentication.
-        /// </summary>
-        /// <param name="apiKey"></param>
+        /// <inheritdoc/>
         public void AuthorizeUsingBearer(
             string apiKey)
         {
