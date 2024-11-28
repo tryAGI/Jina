@@ -40,7 +40,7 @@ namespace Jina
         /// List of text and images or a single text and image for classification
         /// </param>
         /// <param name="labels">
-        /// List of labels used for classification
+        /// List of labels or a dictionary of structured labels for zero-shot classification
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -48,7 +48,7 @@ namespace Jina
             global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string> input,
             string? model = default,
             string? classifierId = default,
-            global::System.Collections.Generic.IList<string>? labels = default,
+            global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>? labels = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

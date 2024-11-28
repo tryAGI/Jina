@@ -45,6 +45,7 @@ namespace Jina
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, byte[]>),
+            typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, string, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingTextDoc>, global::Jina.ApiSchemasEmbeddingTextDoc>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.TextEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.TextEmbeddingInputEmbeddingTypeItem>>),
             typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>>),

@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.96
+  version: 0.1.98
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -431,17 +431,28 @@ components:
           description: List of text and images or a single text and image for classification
         labels:
           title: Labels
-          type: array
-          items:
-            type: string
-          description: List of labels used for classification
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+          description: List of labels or a dictionary of structured labels for zero-shot classification
       additionalProperties: false
       description: The input to the API for classify endpoint. OpenAI compatible
       example:
-        classifier_id: classifier_id
+        model: jina-embeddings-v3
         input:
           - text: text1
           - text: text2
+          - text: text3
+        labels:
+          - label1
+          - label2
+          - label3
     ClassificationOutput:
       title: ClassificationOutput
       required:

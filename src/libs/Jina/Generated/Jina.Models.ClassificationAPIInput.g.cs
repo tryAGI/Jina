@@ -42,10 +42,11 @@ namespace Jina
         public required global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string> Input { get; set; }
 
         /// <summary>
-        /// List of labels used for classification
+        /// List of labels or a dictionary of structured labels for zero-shot classification
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
-        public global::System.Collections.Generic.IList<string>? Labels { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>))]
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>? Labels { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -77,14 +78,14 @@ namespace Jina
         /// List of text and images or a single text and image for classification
         /// </param>
         /// <param name="labels">
-        /// List of labels used for classification
+        /// List of labels or a dictionary of structured labels for zero-shot classification
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ClassificationAPIInput(
             global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string>>, global::Jina.ApiSchemasClassificationTextDoc, global::Jina.ApiSchemasClassificationImageDoc, string> input,
             string? model,
             string? classifierId,
-            global::System.Collections.Generic.IList<string>? labels)
+            global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>? labels)
         {
             this.Input = input;
             this.Model = model;
