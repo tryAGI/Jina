@@ -49,7 +49,9 @@ namespace Jina
         /// <param name="label">
         /// The label of the text
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TextExampleDoc(
             string text,
             string label,

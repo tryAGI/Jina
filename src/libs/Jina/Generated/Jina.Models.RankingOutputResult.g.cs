@@ -38,7 +38,9 @@ namespace Jina
         /// <param name="index"></param>
         /// <param name="relevanceScore"></param>
         /// <param name="document"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RankingOutputResult(
             long? index,
             double? relevanceScore,

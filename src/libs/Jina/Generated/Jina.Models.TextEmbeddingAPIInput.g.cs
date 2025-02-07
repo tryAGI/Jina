@@ -75,7 +75,9 @@ namespace Jina
         /// <param name="dimensions">
         /// Dimensions of the vectors to be returned. Only valid for v2 colbert models. Defaults to 128
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TextEmbeddingAPIInput(
             string model,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, string, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingTextDoc>, global::Jina.ApiSchemasEmbeddingTextDoc> input,

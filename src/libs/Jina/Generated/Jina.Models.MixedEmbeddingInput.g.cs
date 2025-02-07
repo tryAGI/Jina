@@ -97,7 +97,9 @@ namespace Jina
         /// <param name="dimensions">
         /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public MixedEmbeddingInput(
             string model,
             global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>> input,

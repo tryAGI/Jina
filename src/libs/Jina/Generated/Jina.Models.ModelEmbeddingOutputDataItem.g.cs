@@ -38,7 +38,9 @@ namespace Jina
         /// <param name="index"></param>
         /// <param name="embedding"></param>
         /// <param name="object"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ModelEmbeddingOutputDataItem(
             int? index,
             global::System.Collections.Generic.IList<float>? embedding,

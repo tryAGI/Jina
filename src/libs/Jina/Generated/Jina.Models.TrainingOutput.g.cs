@@ -47,7 +47,9 @@ namespace Jina
         /// <param name="usage">
         /// Total usage of the request. Sums up the usage from each individual input
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TrainingOutput(
             string classifierId,
             int numSamples,

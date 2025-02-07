@@ -93,7 +93,9 @@ namespace Jina
         /// The number of iterations to train the classifier<br/>
         /// Default Value: 10
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TrainingAPIInput(
             global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc>>, global::Jina.TextExampleDoc, global::Jina.ImageExampleDoc> input,
             string? model,

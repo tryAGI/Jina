@@ -27,7 +27,9 @@ namespace Jina
         /// <param name="totalTokens">
         /// The number of tokens used by all the texts in the input
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ApiSchemasClassificationUsage(
             int totalTokens)
         {

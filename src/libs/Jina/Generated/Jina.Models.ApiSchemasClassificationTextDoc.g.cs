@@ -37,7 +37,9 @@ namespace Jina
         /// Example: 50336949b5bd1f1ed97f3085d76258a1
         /// </param>
         /// <param name="text"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ApiSchemasClassificationTextDoc(
             string text,
             string? id)
