@@ -24,7 +24,9 @@ namespace Jina
         /// Initializes a new instance of the <see cref="RankingOutputResultDocument" /> class.
         /// </summary>
         /// <param name="text"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RankingOutputResultDocument(
             string? text)
         {

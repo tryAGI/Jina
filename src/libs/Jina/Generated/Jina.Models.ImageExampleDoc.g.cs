@@ -78,7 +78,9 @@ namespace Jina
         /// <param name="label">
         /// The label of the image
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ImageExampleDoc(
             string label,
             string? id,
