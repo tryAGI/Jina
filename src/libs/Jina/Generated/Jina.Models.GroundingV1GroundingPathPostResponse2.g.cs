@@ -6,7 +6,7 @@ namespace Jina
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class GroundingV1GroundingPathGetResponse2
+    public sealed partial class GroundingV1GroundingPathPostResponse2
     {
 
         /// <summary>
