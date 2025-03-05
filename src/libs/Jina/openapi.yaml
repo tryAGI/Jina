@@ -303,7 +303,7 @@ paths:
       tags:
         - grounding
       summary: Grounding
-      operationId: grounding_v1_grounding__path__get
+      operationId: grounding_v1_grounding__path__post
       parameters:
         - name: path
           in: path
@@ -327,7 +327,7 @@ paths:
       tags:
         - grounding
       summary: Grounding
-      operationId: grounding_v1_grounding__path__get
+      operationId: grounding_v1_grounding__path__post
       parameters:
         - name: path
           in: path
