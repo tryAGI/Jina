@@ -3,8 +3,7 @@ namespace Jina.IntegrationTests;
 [TestClass]
 public partial class Tests
 {
-    [TestMethod]
-    public JinaApi GetAuthenticatedApi()
+    private static JinaApi GetAuthenticatedApi()
     {
         var apiKey =
             Environment.GetEnvironmentVariable("JINA_API_KEY") ??
