@@ -3,7 +3,7 @@
 
 namespace Jina
 {
-    public sealed partial class JinaApi
+    public sealed partial class JinaClient
     {
         /// <inheritdoc/>
         public void AuthorizeUsingBearer(

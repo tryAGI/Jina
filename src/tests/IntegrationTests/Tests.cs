@@ -3,14 +3,14 @@ namespace Jina.IntegrationTests;
 [TestClass]
 public partial class Tests
 {
-    private static JinaApi GetAuthenticatedApi()
+    private static JinaClient GetAuthenticatedClient()
     {
         var apiKey =
             Environment.GetEnvironmentVariable("JINA_API_KEY") ??
             throw new AssertInconclusiveException("JINA_API_KEY environment variable is not found.");
 
-        var api = new JinaApi(apiKey);
+        var client = new JinaClient(apiKey);
         
-        return api;
+        return client;
     }
 }

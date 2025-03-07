@@ -3,7 +3,7 @@
 
 namespace Jina
 {
-    public partial class JinaApi
+    public partial class JinaClient
     {
         partial void PrepareGetTheHealthOfUniversalAPIServiceArguments(
             global::System.Net.Http.HttpClient httpClient);

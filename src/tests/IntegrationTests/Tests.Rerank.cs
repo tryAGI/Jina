@@ -5,9 +5,9 @@ public partial class Tests
     [TestMethod]
     public async Task Rerank()
     {
-        using var api = GetAuthenticatedApi();
+	    using var client = GetAuthenticatedClient();
 
-        RankingOutput output = await api.Rerank.RankAsync(
+        RankingOutput output = await client.Rerank.RankAsync(
             model: "jina-reranker-v2-base-multilingual",
             query: "Organic skincare products for sensitive skin",
             topN: 3,

@@ -5,9 +5,9 @@ public partial class Tests
     [TestMethod]
     public async Task CreateEmbedding()
     {
-        using var api = GetAuthenticatedApi();
+        using var client = GetAuthenticatedClient();
 
-        var response = await api.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
+        var response = await client.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
         {
             Model = "jina-clip-v1",
             Input = new List<ApiSchemasEmbeddingTextDoc>

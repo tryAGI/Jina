@@ -8,7 +8,7 @@ namespace Jina
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public partial interface IJinaApi : global::System.IDisposable
+    public partial interface IJinaClient : global::System.IDisposable
     {
         /// <summary>
         /// The HttpClient instance.

@@ -3,7 +3,7 @@
 
 namespace Jina
 {
-    public partial interface IJinaApi
+    public partial interface IJinaClient
     {
         /// <summary>
         /// Authorize using bearer authentication.

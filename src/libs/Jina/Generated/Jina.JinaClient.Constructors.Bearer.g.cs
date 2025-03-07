@@ -3,10 +3,10 @@
 
 namespace Jina
 {
-    public sealed partial class JinaApi
+    public sealed partial class JinaClient
     {
-        /// <inheritdoc cref="JinaApi(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Jina.EndPointAuthorization}?, bool)"/>
-        public JinaApi(
+        /// <inheritdoc cref="JinaClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Jina.EndPointAuthorization}?, bool)"/>
+        public JinaClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,

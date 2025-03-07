@@ -2,7 +2,7 @@
 
 namespace Jina
 {
-    public partial interface IJinaApi
+    public partial interface IJinaClient
     {
         /// <summary>
         /// Get the health of Universal API service<br/>
