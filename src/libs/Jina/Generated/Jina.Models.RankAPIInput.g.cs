@@ -27,17 +27,16 @@ namespace Jina
         /// The search query
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.ApiSchemasRankTextDoc>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc> Query { get; set; }
+        public required global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc> Query { get; set; }
 
         /// <summary>
-        /// A list of text documents or strings to rerank. If a document is provided the text fields is required and all other fields will be preserved in the response.
+        /// A list of text documents, image documents or strings to rerank. If a document is provided the text or image fields are required and all other fields will be preserved in the response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>> Documents { get; set; }
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> Documents { get; set; }
 
         /// <summary>
         /// The number of most relevant documents or indices to return, defaults to the length of `documents`
@@ -74,7 +73,7 @@ namespace Jina
         /// The search query
         /// </param>
         /// <param name="documents">
-        /// A list of text documents or strings to rerank. If a document is provided the text fields is required and all other fields will be preserved in the response.
+        /// A list of text documents, image documents or strings to rerank. If a document is provided the text or image fields are required and all other fields will be preserved in the response.
         /// </param>
         /// <param name="topN">
         /// The number of most relevant documents or indices to return, defaults to the length of `documents`
@@ -88,14 +87,14 @@ namespace Jina
 #endif
         public RankAPIInput(
             string model,
-            global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc> query,
-            global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>> documents,
+            global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc> query,
+            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> documents,
             int? topN,
             bool? returnDocuments)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Query = query;
-            this.Documents = documents;
+            this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
             this.TopN = topN;
             this.ReturnDocuments = returnDocuments;
         }
