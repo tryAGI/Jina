@@ -8,7 +8,7 @@ namespace Jina
     /// <summary>
     /// ImageDoc with fields
     /// </summary>
-    public sealed partial class ApiSchemasEmbeddingImageDoc
+    public sealed partial class ApiSchemasImageImageDoc
     {
         /// <summary>
         /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value<br/>
@@ -50,7 +50,7 @@ namespace Jina
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSchemasEmbeddingImageDoc" /> class.
+        /// Initializes a new instance of the <see cref="ApiSchemasImageImageDoc" /> class.
         /// </summary>
         /// <param name="id">
         /// The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value<br/>
@@ -71,7 +71,7 @@ namespace Jina
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ApiSchemasEmbeddingImageDoc(
+        public ApiSchemasImageImageDoc(
             string? id,
             string? url,
             byte[]? bytes,
@@ -86,9 +86,9 @@ namespace Jina
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSchemasEmbeddingImageDoc" /> class.
+        /// Initializes a new instance of the <see cref="ApiSchemasImageImageDoc" /> class.
         /// </summary>
-        public ApiSchemasEmbeddingImageDoc()
+        public ApiSchemasImageImageDoc()
         {
         }
     }

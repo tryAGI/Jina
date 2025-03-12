@@ -62,10 +62,5 @@ namespace Jina
         /// </summary>
         public MultiVectorClient MultiVector { get; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public GroundingClient Grounding { get; }
-
     }
 }

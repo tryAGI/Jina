@@ -211,7 +211,7 @@ namespace Jina
         /// The search query
         /// </param>
         /// <param name="documents">
-        /// A list of text documents or strings to rerank. If a document is provided the text fields is required and all other fields will be preserved in the response.
+        /// A list of text documents, image documents or strings to rerank. If a document is provided the text or image fields are required and all other fields will be preserved in the response.
         /// </param>
         /// <param name="topN">
         /// The number of most relevant documents or indices to return, defaults to the length of `documents`
@@ -224,8 +224,8 @@ namespace Jina
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Jina.RankingOutput> RankAsync(
             string model,
-            global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc> query,
-            global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>> documents,
+            global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc> query,
+            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> documents,
             int? topN = default,
             bool? returnDocuments = default,
             global::System.Threading.CancellationToken cancellationToken = default)

@@ -25,9 +25,9 @@ namespace Jina
         /// List of images to embed
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ApiSchemasImageImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasImageImageDoc>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>> Input { get; set; }
+        public required global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasImageImageDoc>> Input { get; set; }
 
         /// <summary>
         /// The format in which you want the embeddings to be returned.Possible value are `float`, `base64`, `binary`, `ubinary` or a list containing any of them. Defaults to `float`
@@ -103,7 +103,7 @@ namespace Jina
 #endif
         public ImageEmbeddingInput(
             string model,
-            global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>> input,
+            global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasImageImageDoc>> input,
             global::Jina.AnyOf<global::Jina.ImageEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ImageEmbeddingInputEmbeddingTypeItem>>? embeddingType,
             bool? normalized,
             global::Jina.ImageEmbeddingInputTask? task,
