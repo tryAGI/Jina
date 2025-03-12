@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.107
+  version: 0.1.109
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -298,55 +298,6 @@ paths:
       deprecated: true
       security:
         - HTTPBearer: [ ]
-  '/v1/grounding/{path}':
-    get:
-      tags:
-        - grounding
-      summary: Grounding
-      operationId: grounding_v1_grounding__path__get
-      parameters:
-        - name: path
-          in: path
-          required: true
-          schema:
-            title: Path
-            type: string
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: { }
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-    post:
-      tags:
-        - grounding
-      summary: Grounding
-      operationId: grounding_v1_grounding__path__get
-      parameters:
-        - name: path
-          in: path
-          required: true
-          schema:
-            title: Path
-            type: string
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: { }
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
   /:
     get:
       summary: Get the health of Universal API service
@@ -647,10 +598,10 @@ components:
         input:
           title: Input
           anyOf:
-            - $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+            - $ref: '#/components/schemas/api_schemas__image__ImageDoc'
             - type: array
               items:
-                $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+                $ref: '#/components/schemas/api_schemas__image__ImageDoc'
           description: List of images to embed
         embedding_type:
           title: Embedding Type
@@ -749,7 +700,7 @@ components:
           type: array
           items:
             anyOf:
-              - $ref: '#/components/schemas/api_schemas__embedding__ImageDoc'
+              - $ref: '#/components/schemas/api_schemas__image__ImageDoc'
               - $ref: '#/components/schemas/api_schemas__embedding__TextDoc'
               - type: string
           description: List of text and images to embed
@@ -867,17 +818,17 @@ components:
           anyOf:
             - type: string
             - $ref: '#/components/schemas/api_schemas__rank__TextDoc'
+            - $ref: '#/components/schemas/api_schemas__image__ImageDoc'
           description: The search query
         documents:
           title: Documents
-          anyOf:
-            - type: array
-              items:
-                type: string
-            - type: array
-              items:
-                $ref: '#/components/schemas/api_schemas__rank__TextDoc'
-          description: A list of text documents or strings to rerank. If a document is provided the text fields is required and all other fields will be preserved in the response.
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/api_schemas__image__ImageDoc'
+              - $ref: '#/components/schemas/api_schemas__rank__TextDoc'
+              - type: string
+          description: 'A list of text documents, image documents or strings to rerank. If a document is provided the text or image fields are required and all other fields will be preserved in the response.'
         top_n:
           title: Top N
           type: integer
@@ -1071,6 +1022,11 @@ components:
           title: Late Chunking
           type: boolean
           description: 'Flag to determine if late chunking is applied. If True, all the sentences in inputs will be concatenated and used as input for late chunking.'
+        truncate:
+          title: Truncate
+          type: boolean
+          description: Flag to determine if the text needs to be truncated when exceeding the maximum token length
+          default: false
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:
@@ -1254,7 +1210,37 @@ components:
           title: Total Tokens
           type: integer
           description: The number of tokens used by all the texts in the input
-    api_schemas__embedding__ImageDoc:
+    api_schemas__embedding__TextDoc:
+      title: TextDoc
+      required:
+        - text
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
+          example: 50336949b5bd1f1ed97f3085d76258a1
+        text:
+          title: Text
+          type: string
+      description: Document containing a text field
+    api_schemas__embedding__Usage:
+      title: Usage
+      required:
+        - total_tokens
+        - prompt_tokens
+      type: object
+      properties:
+        total_tokens:
+          title: Total Tokens
+          type: integer
+          description: The number of tokens used by all the texts in the input
+        prompt_tokens:
+          title: Prompt Tokens
+          type: integer
+          description: The number of tokens used by all the texts in the input
+    api_schemas__image__ImageDoc:
       title: ImageDoc
       type: object
       properties:
@@ -1286,36 +1272,6 @@ components:
               format: binary
           description: Image representation that can hold URL of an image or a base64 representation
       description: ImageDoc with fields
-    api_schemas__embedding__TextDoc:
-      title: TextDoc
-      required:
-        - text
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
-          example: 50336949b5bd1f1ed97f3085d76258a1
-        text:
-          title: Text
-          type: string
-      description: Document containing a text field
-    api_schemas__embedding__Usage:
-      title: Usage
-      required:
-        - total_tokens
-        - prompt_tokens
-      type: object
-      properties:
-        total_tokens:
-          title: Total Tokens
-          type: integer
-          description: The number of tokens used by all the texts in the input
-        prompt_tokens:
-          title: Prompt Tokens
-          type: integer
-          description: The number of tokens used by all the texts in the input
     api_schemas__multi_embeddings__Usage:
       title: Usage
       required:

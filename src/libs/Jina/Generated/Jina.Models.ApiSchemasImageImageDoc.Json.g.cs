@@ -2,7 +2,7 @@
 
 namespace Jina
 {
-    public sealed partial class GroundingV1GroundingPathGetResponse2
+    public sealed partial class ApiSchemasImageImageDoc
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Jina
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Jina.GroundingV1GroundingPathGetResponse2? FromJson(
+        public static global::Jina.ApiSchemasImageImageDoc? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Jina.GroundingV1GroundingPathGetResponse2),
-                jsonSerializerContext) as global::Jina.GroundingV1GroundingPathGetResponse2;
+                typeof(global::Jina.ApiSchemasImageImageDoc),
+                jsonSerializerContext) as global::Jina.ApiSchemasImageImageDoc;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Jina.GroundingV1GroundingPathGetResponse2? FromJson(
+        public static global::Jina.ApiSchemasImageImageDoc? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.GroundingV1GroundingPathGetResponse2>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Jina.ApiSchemasImageImageDoc>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Jina
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Jina.GroundingV1GroundingPathGetResponse2?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Jina.ApiSchemasImageImageDoc?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Jina.GroundingV1GroundingPathGetResponse2),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Jina.GroundingV1GroundingPathGetResponse2;
+                typeof(global::Jina.ApiSchemasImageImageDoc),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Jina.ApiSchemasImageImageDoc;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Jina.GroundingV1GroundingPathGetResponse2?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Jina.ApiSchemasImageImageDoc?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Jina.GroundingV1GroundingPathGetResponse2?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Jina.ApiSchemasImageImageDoc?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

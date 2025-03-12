@@ -74,6 +74,13 @@ namespace Jina
         public bool? LateChunking { get; set; }
 
         /// <summary>
+        /// Flag to determine if the text needs to be truncated when exceeding the maximum token length<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncate")]
+        public bool? Truncate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -119,6 +126,10 @@ namespace Jina
         /// <param name="lateChunking">
         /// Flag to determine if late chunking is applied. If True, all the sentences in inputs will be concatenated and used as input for late chunking.
         /// </param>
+        /// <param name="truncate">
+        /// Flag to determine if the text needs to be truncated when exceeding the maximum token length<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -129,7 +140,8 @@ namespace Jina
             global::Jina.TextEmbeddingInputTask? task,
             int? dimensions,
             bool? normalized,
-            bool? lateChunking)
+            bool? lateChunking,
+            bool? truncate)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Input = input;
@@ -138,6 +150,7 @@ namespace Jina
             this.Dimensions = dimensions;
             this.Normalized = normalized;
             this.LateChunking = lateChunking;
+            this.Truncate = truncate;
         }
 
         /// <summary>

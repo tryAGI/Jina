@@ -170,15 +170,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>>? Type36 { get; set; }
+        public global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::System.Collections.Generic.IList<global::Jina.ApiSchemasImageImageDoc>>? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ApiSchemasEmbeddingImageDoc? Type37 { get; set; }
+        public global::Jina.ApiSchemasImageImageDoc? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ApiSchemasEmbeddingImageDoc>? Type38 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ApiSchemasImageImageDoc>? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -206,11 +206,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>>? Type45 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>>? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.ApiSchemasEmbeddingImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>? Type46 { get; set; }
+        public global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasEmbeddingTextDoc, string>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -286,7 +286,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc>? Type65 { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc>? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -294,11 +294,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>>? Type67 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>>? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ApiSchemasRankTextDoc>? Type68 { get; set; }
+        public global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>

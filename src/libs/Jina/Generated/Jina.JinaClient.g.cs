@@ -83,15 +83,6 @@ namespace Jina
         };
 
         /// <summary>
-        /// 
-        /// </summary>
-        public GroundingClient Grounding => new GroundingClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
         /// Creates a new instance of the JinaClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
