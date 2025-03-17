@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.109
+  version: 0.1.110
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -741,6 +741,11 @@ components:
           title: Dimensions
           type: integer
           description: 'Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.'
+        truncate:
+          title: Truncate
+          type: boolean
+          description: Flag to determine if the text needs to be truncated when exceeding the maximum token length
+          default: false
       additionalProperties: false
       description: The input to the API for text embedding. OpenAI compatible
       example:

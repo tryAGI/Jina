@@ -61,6 +61,13 @@ namespace Jina
         public int? Dimensions { get; set; }
 
         /// <summary>
+        /// Flag to determine if the text needs to be truncated when exceeding the maximum token length<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncate")]
+        public bool? Truncate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,6 +104,10 @@ namespace Jina
         /// <param name="dimensions">
         /// Used to specify output embedding size. If set, output embeddings will be truncated to the size specified.
         /// </param>
+        /// <param name="truncate">
+        /// Flag to determine if the text needs to be truncated when exceeding the maximum token length<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -106,7 +117,8 @@ namespace Jina
             global::Jina.AnyOf<global::Jina.MixedEmbeddingInputEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.MixedEmbeddingInputEmbeddingTypeItem>>? embeddingType,
             bool? normalized,
             global::Jina.MixedEmbeddingInputTask? task,
-            int? dimensions)
+            int? dimensions,
+            bool? truncate)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
@@ -114,6 +126,7 @@ namespace Jina
             this.Normalized = normalized;
             this.Task = task;
             this.Dimensions = dimensions;
+            this.Truncate = truncate;
         }
 
         /// <summary>
