@@ -46,7 +46,7 @@ namespace Jina
         global::System.Threading.Tasks.Task<global::Jina.RankingOutput> RankAsync(
             string model,
             global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc> query,
-            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> documents,
+            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string, global::Jina.TextOrImageDoc>> documents,
             int? topN = default,
             bool? returnDocuments = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.111
+  version: 0.1.113
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -833,6 +833,7 @@ components:
               - $ref: '#/components/schemas/api_schemas__image__ImageDoc'
               - $ref: '#/components/schemas/api_schemas__rank__TextDoc'
               - type: string
+              - $ref: '#/components/schemas/TextOrImageDoc'
           description: 'A list of text documents, image documents or strings to rerank. If a document is provided the text or image fields are required and all other fields will be preserved in the response.'
         top_n:
           title: Top N
@@ -1059,6 +1060,41 @@ components:
           type: string
           description: The label of the text
       description: Document containing a text field and a label
+    TextOrImageDoc:
+      title: TextOrImageDoc
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: 'The ID of the BaseDoc. This is useful for indexing in vector stores. If not set by user, it will automatically be assigned a random value'
+          example: 50336949b5bd1f1ed97f3085d76258a1
+        text:
+          title: Text
+          type: string
+        url:
+          title: Url
+          maxLength: 65536
+          minLength: 1
+          type: string
+          description: URL of an image file
+          format: uri
+        bytes:
+          title: Bytes
+          type: string
+          description: base64 representation of the Image.
+          format: binary
+        image:
+          title: Image
+          anyOf:
+            - maxLength: 65536
+              minLength: 1
+              type: string
+              format: uri
+            - type: string
+              format: binary
+          description: Image representation that can hold URL of an image or a base64 representation
+      description: "BaseDoc is the base class for all Documents. This class should be subclassed\nto create new Document types with a specific schema.\n\nThe schema of a Document is defined by the fields of the class.\n\nExample:\n```python\nfrom docarray import BaseDoc\nfrom docarray.typing import NdArray, ImageUrl\nimport numpy as np\n\n\nclass MyDoc(BaseDoc):\n    embedding: NdArray[512]\n    image: ImageUrl\n\n\ndoc = MyDoc(embedding=np.zeros(512), image='https://example.com/image.jpg')\n```\n\n\nBaseDoc is a subclass of [pydantic.BaseModel](\nhttps://docs.pydantic.dev/usage/models/) and can be used in a similar way."
     TrainingAPIInput:
       title: TrainingAPIInput
       required:
