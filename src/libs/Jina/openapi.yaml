@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.113
+  version: 0.1.118
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -817,7 +817,7 @@ components:
         model:
           title: Model
           type: string
-          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-reranker-v2-base-multilingual`,\t278M\n- `jina-reranker-v1-base-en`,\t137M\n- `jina-reranker-v1-tiny-en`,\t33M\n- `jina-reranker-v1-turbo-en`,\t38M\n- `jina-colbert-v1-en`,\t137M\n"
+          description: "The identifier of the model.\n\nAvailable models and corresponding param size and dimension:\n- `jina-reranker-m0`,\t2B\n- `jina-reranker-v2-base-multilingual`,\t278M\n- `jina-reranker-v1-base-en`,\t137M\n- `jina-reranker-v1-tiny-en`,\t33M\n- `jina-reranker-v1-turbo-en`,\t38M\n- `jina-colbert-v1-en`,\t137M\n"
         query:
           title: Query
           anyOf:
