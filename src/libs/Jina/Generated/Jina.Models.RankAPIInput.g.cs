@@ -13,7 +13,6 @@ namespace Jina
         /// <summary>
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
-        /// - `jina-reranker-m0`,	2B<br/>
         /// - `jina-reranker-v2-base-multilingual`,	278M<br/>
         /// - `jina-reranker-v1-base-en`,	137M<br/>
         /// - `jina-reranker-v1-tiny-en`,	33M<br/>
@@ -37,7 +36,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string, global::Jina.TextOrImageDoc>> Documents { get; set; }
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> Documents { get; set; }
 
         /// <summary>
         /// The number of most relevant documents or indices to return, defaults to the length of `documents`
@@ -64,7 +63,6 @@ namespace Jina
         /// <param name="model">
         /// The identifier of the model.<br/>
         /// Available models and corresponding param size and dimension:<br/>
-        /// - `jina-reranker-m0`,	2B<br/>
         /// - `jina-reranker-v2-base-multilingual`,	278M<br/>
         /// - `jina-reranker-v1-base-en`,	137M<br/>
         /// - `jina-reranker-v1-tiny-en`,	33M<br/>
@@ -90,7 +88,7 @@ namespace Jina
         public RankAPIInput(
             string model,
             global::Jina.AnyOf<string, global::Jina.ApiSchemasRankTextDoc, global::Jina.ApiSchemasImageImageDoc> query,
-            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string, global::Jina.TextOrImageDoc>> documents,
+            global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.ApiSchemasImageImageDoc, global::Jina.ApiSchemasRankTextDoc, string>> documents,
             int? topN,
             bool? returnDocuments)
         {
