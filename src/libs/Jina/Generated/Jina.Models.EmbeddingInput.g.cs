@@ -29,7 +29,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator EmbeddingInput(global::Jina.TextEmbeddingInput value) => new EmbeddingInput(value);
+        public static implicit operator EmbeddingInput(global::Jina.TextEmbeddingInput value) => new EmbeddingInput((global::Jina.TextEmbeddingInput?)value);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator EmbeddingInput(global::Jina.ImageEmbeddingInput value) => new EmbeddingInput(value);
+        public static implicit operator EmbeddingInput(global::Jina.ImageEmbeddingInput value) => new EmbeddingInput((global::Jina.ImageEmbeddingInput?)value);
 
         /// <summary>
         /// 
@@ -99,7 +99,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator EmbeddingInput(global::Jina.MixedEmbeddingInput value) => new EmbeddingInput(value);
+        public static implicit operator EmbeddingInput(global::Jina.MixedEmbeddingInput value) => new EmbeddingInput((global::Jina.MixedEmbeddingInput?)value);
 
         /// <summary>
         /// 
