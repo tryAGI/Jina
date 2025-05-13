@@ -28,6 +28,10 @@ namespace Jina.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Jina.MixedEmbeddingInputTask)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Jina.MixedEmbeddingInputTask);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
