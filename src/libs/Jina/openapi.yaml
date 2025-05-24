@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.119
+  version: 0.1.120
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -298,6 +298,55 @@ paths:
       deprecated: true
       security:
         - HTTPBearer: [ ]
+  '/v1/serp/{path}':
+    get:
+      tags:
+        - serp
+      summary: Serp
+      operationId: serp_v1_serp__path__get
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            title: Path
+            type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - serp
+      summary: Serp
+      operationId: serp_v1_serp__path__get
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            title: Path
+            type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: { }
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /:
     get:
       summary: Get the health of Universal API service
