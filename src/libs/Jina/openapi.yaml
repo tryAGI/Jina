@@ -303,7 +303,7 @@ paths:
       tags:
         - serp
       summary: Serp
-      operationId: serp_v1_serp__path__get
+      operationId: serp_v1_serp__path__post
       parameters:
         - name: path
           in: path
@@ -327,7 +327,7 @@ paths:
       tags:
         - serp
       summary: Serp
-      operationId: serp_v1_serp__path__get
+      operationId: serp_v1_serp__path__post
       parameters:
         - name: path
           in: path
