@@ -6,7 +6,7 @@ namespace Jina
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class SerpV1SerpPathGetResponse2
+    public sealed partial class SerpV1SerpPathPostResponse2
     {
 
         /// <summary>
