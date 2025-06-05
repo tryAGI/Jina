@@ -34,7 +34,7 @@ namespace Jina
             PrepareGetTheHealthOfUniversalAPIServiceArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Jina.PathBuilder(
                 path: "/",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

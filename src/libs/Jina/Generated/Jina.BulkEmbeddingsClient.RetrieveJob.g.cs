@@ -37,7 +37,7 @@ namespace Jina
                 httpClient: HttpClient,
                 jobId: ref jobId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Jina.PathBuilder(
                 path: $"/v1/bulk-embeddings/{jobId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
