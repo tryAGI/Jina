@@ -37,7 +37,7 @@ namespace Jina
                 httpClient: HttpClient,
                 path: ref path);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Jina.PathBuilder(
                 path: $"/v1/serp/{path}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
