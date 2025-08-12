@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.1.125
+  version: 0.1.126
 servers:
   - url: https://api.jina.ai/
 paths:
@@ -303,7 +303,7 @@ paths:
       tags:
         - serp
       summary: Serp
-      operationId: serp_v1_serp__path__post
+      operationId: serp_v1_serp__path__get
       parameters:
         - name: path
           in: path
@@ -327,7 +327,7 @@ paths:
       tags:
         - serp
       summary: Serp
-      operationId: serp_v1_serp__path__post
+      operationId: serp_v1_serp__path__get
       parameters:
         - name: path
           in: path
