@@ -10,10 +10,10 @@ C# SDK for the [Jina AI](https://jina.ai/) platform (embeddings, reranking, clas
 
 ```bash
 # Build the solution
-dotnet build Jina.sln
+dotnet build Jina.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Jina.sln -c Release
+dotnet build Jina.slnx -c Release
 
 # Run integration tests (requires JINA_API_KEY env var)
 dotnet test src/tests/IntegrationTests/Jina.IntegrationTests.csproj
