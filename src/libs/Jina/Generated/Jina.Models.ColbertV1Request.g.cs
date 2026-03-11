@@ -15,15 +15,15 @@ namespace Jina
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>>))]
-        public global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>>? EmbeddingType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>, object>))]
+        public global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
         /// The ColBERT model to use.
         /// </summary>
+        /// <default>"jina-colbert-v1-en"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ColbertV1RequestModelJsonConverter))]
-        public global::Jina.ColbertV1RequestModel Model { get; set; }
+        public string Model { get; set; } = "jina-colbert-v1-en";
 
         /// <summary>
         /// Text to embed: a string, `TextDoc`, or a list of items.
@@ -31,15 +31,14 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; } = default!;
 
         /// <summary>
         /// Role of the input: `query` for search queries, `document` for passages.<br/>
         /// Default Value: document
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ColbertV1RequestInputTypeJsonConverter))]
-        public global::Jina.ColbertV1RequestInputType? InputType { get; set; }
+        public global::Jina.ColbertV1RequestInputType2? InputType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,9 +67,9 @@ namespace Jina
 #endif
         public ColbertV1Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
-            global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>>? embeddingType,
-            global::Jina.ColbertV1RequestModel model,
-            global::Jina.ColbertV1RequestInputType? inputType)
+            global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>, object>? embeddingType,
+            global::Jina.ColbertV1RequestInputType2? inputType,
+            string model = "jina-colbert-v1-en")
         {
             this.Input = input;
             this.EmbeddingType = embeddingType;

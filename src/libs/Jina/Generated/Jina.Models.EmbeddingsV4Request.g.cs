@@ -6,8 +6,7 @@
 namespace Jina
 {
     /// <summary>
-    /// Jina Embeddings v4 multimodal model for text, images, and PDFs.<br/>
-    /// Example: {"dimensions":512,"embedding_type":"float","input":[{"image":"https://i.ibb.co/nQNGqL0/beach1.jpg"},{"text":"A beautiful sunset over the beach"}],"model":"jina-embeddings-v4"}
+    /// Jina Embeddings v4 multimodal model for text, images, and PDFs.
     /// </summary>
     public sealed partial class EmbeddingsV4Request
     {
@@ -15,15 +14,15 @@ namespace Jina
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>>))]
-        public global::Jina.AnyOf<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>>? EmbeddingType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>, object>))]
+        public global::Jina.AnyOf<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
         /// The embedding model to use.
         /// </summary>
+        /// <default>"jina-embeddings-v4"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV4RequestModelJsonConverter))]
-        public global::Jina.EmbeddingsV4RequestModel Model { get; set; }
+        public string Model { get; set; } = "jina-embeddings-v4";
 
         /// <summary>
         /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB; PDFs up to 8MB.
@@ -31,7 +30,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; } = default!;
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -57,8 +56,7 @@ namespace Jina
         /// Default Value: text-matching
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV4RequestTaskJsonConverter))]
-        public global::Jina.EmbeddingsV4RequestTask? Task { get; set; }
+        public global::Jina.EmbeddingsV4RequestTask2? Task { get; set; }
 
         /// <summary>
         /// If true, returns one embedding per token. Cannot be used with `dimensions`.<br/>
@@ -119,14 +117,14 @@ namespace Jina
 #endif
         public EmbeddingsV4Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> input,
-            global::Jina.AnyOf<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>>? embeddingType,
-            global::Jina.EmbeddingsV4RequestModel model,
+            global::Jina.AnyOf<global::Jina.EmbeddingsV4RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>, object>? embeddingType,
             bool? truncate,
             bool? lateChunking,
             int? dimensions,
-            global::Jina.EmbeddingsV4RequestTask? task,
+            global::Jina.EmbeddingsV4RequestTask2? task,
             bool? returnMultivector,
-            bool? returnTokenizedInput)
+            bool? returnTokenizedInput,
+            string model = "jina-embeddings-v4")
         {
             this.Input = input;
             this.EmbeddingType = embeddingType;

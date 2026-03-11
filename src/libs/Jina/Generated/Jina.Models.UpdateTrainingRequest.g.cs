@@ -15,7 +15,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("classifier_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ClassifierId { get; set; }
+        public string ClassifierId { get; set; } = default!;
 
         /// <summary>
         /// Input(s) for updating training. Accepts a `TextTrainingItem`, `ImageTrainingItem`, or a list of them. For batch update, provide a list with up to 512 items.
@@ -23,7 +23,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>> Input { get; set; }
+        public global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>> Input { get; set; } = default!;
 
         /// <summary>
         /// Number of iterations for the training process.<br/>

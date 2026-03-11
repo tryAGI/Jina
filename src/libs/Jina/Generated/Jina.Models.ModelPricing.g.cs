@@ -13,42 +13,42 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Prompt { get; set; }
+        public string Prompt { get; set; } = default!;
 
         /// <summary>
         /// Price per completion token.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completion")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Completion { get; set; }
+        public string Completion { get; set; } = default!;
 
         /// <summary>
         /// Price per image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Image { get; set; }
+        public string Image { get; set; } = default!;
 
         /// <summary>
         /// Price per request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Request { get; set; }
+        public string Request { get; set; } = default!;
 
         /// <summary>
         /// Price for input cache read.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_cache_read")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string InputCacheRead { get; set; }
+        public string InputCacheRead { get; set; } = default!;
 
         /// <summary>
         /// Price for input cache write.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_cache_write")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string InputCacheWrite { get; set; }
+        public string InputCacheWrite { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

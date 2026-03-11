@@ -17,7 +17,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>> Labels { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>> Labels { get; set; } = default!;
 
         /// <summary>
         /// The CLIP model to use.
@@ -25,7 +25,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ClipZeroShotClassificationRequestModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.ClipZeroShotClassificationRequestModel Model { get; set; }
+        public global::Jina.ClipZeroShotClassificationRequestModel Model { get; set; } = default!;
 
         /// <summary>
         /// Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.
@@ -33,7 +33,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

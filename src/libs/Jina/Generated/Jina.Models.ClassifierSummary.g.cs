@@ -13,63 +13,63 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("classifier_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid ClassifierId { get; set; }
+        public global::System.Guid ClassifierId { get; set; } = default!;
 
         /// <summary>
         /// User ID who owns the classifier
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid UserId { get; set; }
+        public global::System.Guid UserId { get; set; } = default!;
 
         /// <summary>
         /// Name of the model used
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public string Model { get; set; } = default!;
 
         /// <summary>
         /// List of classification labels
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Labels { get; set; }
+        public global::System.Collections.Generic.IList<string> Labels { get; set; } = default!;
 
         /// <summary>
         /// Access level (e.g., private, public)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("access")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Access { get; set; }
+        public string Access { get; set; } = default!;
 
         /// <summary>
         /// Number of times updated
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_number")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int UpdatedNumber { get; set; }
+        public int UpdatedNumber { get; set; } = default!;
 
         /// <summary>
         /// Number of times used
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("used_number")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int UsedNumber { get; set; }
+        public int UsedNumber { get; set; } = default!;
 
         /// <summary>
         /// Creation timestamp
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime CreatedAt { get; set; }
+        public global::System.DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// Last update timestamp
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime UpdatedAt { get; set; }
+        public global::System.DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// Last used timestamp

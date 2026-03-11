@@ -13,14 +13,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TotalTokens { get; set; }
+        public int TotalTokens { get; set; } = default!;
 
         /// <summary>
         /// Number of tokens in the input.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int PromptTokens { get; set; }
+        public int PromptTokens { get; set; } = default!;
 
         /// <summary>
         /// Number of tokens from image inputs.

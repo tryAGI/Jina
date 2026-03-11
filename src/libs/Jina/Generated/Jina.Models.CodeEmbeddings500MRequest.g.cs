@@ -6,8 +6,7 @@
 namespace Jina
 {
     /// <summary>
-    /// Code embedding model (500M) for code search and understanding.<br/>
-    /// Example: {"dimensions":512,"embedding_type":"float","input":["import * as ElementPlusIconsVue from \u0027@element-plus/icons-vue\u0027\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"],"model":"jina-code-embeddings-0.5b","task":"nl2code.passage"}
+    /// Code embedding model (500M) for code search and understanding.
     /// </summary>
     public sealed partial class CodeEmbeddings500MRequest
     {
@@ -15,15 +14,15 @@ namespace Jina
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>>))]
-        public global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>>? EmbeddingType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>, object>))]
+        public global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
         /// The code embedding model to use.
         /// </summary>
+        /// <default>"jina-code-embeddings-0.5b"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestModelJsonConverter))]
-        public global::Jina.CodeEmbeddings500MRequestModel Model { get; set; }
+        public string Model { get; set; } = "jina-code-embeddings-0.5b";
 
         /// <summary>
         /// Code or text to embed: a string, `TextDoc`, or a list of items.
@@ -31,7 +30,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; } = default!;
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -51,8 +50,7 @@ namespace Jina
         /// Default Value: nl2code.query
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestTaskJsonConverter))]
-        public global::Jina.CodeEmbeddings500MRequestTask? Task { get; set; }
+        public global::Jina.CodeEmbeddings500MRequestTask2? Task { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -88,11 +86,11 @@ namespace Jina
 #endif
         public CodeEmbeddings500MRequest(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
-            global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>>? embeddingType,
-            global::Jina.CodeEmbeddings500MRequestModel model,
+            global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>, object>? embeddingType,
             bool? truncate,
             int? dimensions,
-            global::Jina.CodeEmbeddings500MRequestTask? task)
+            global::Jina.CodeEmbeddings500MRequestTask2? task,
+            string model = "jina-code-embeddings-0.5b")
         {
             this.Input = input;
             this.EmbeddingType = embeddingType;

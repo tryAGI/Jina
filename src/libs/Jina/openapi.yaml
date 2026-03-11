@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: '3.2.0'
 info:
   title: Jina Search Foundation API
   description: "\nBest-in-class embeddings, rerankers, and classifiers. Search AI for multilingual and multimodal data.\n\n## Capabilities\n\n- **Text Embeddings**: Dense vector representations for semantic search, similarity, and classification\n- **Multimodal Embeddings**: Process images, PDFs, and text in a unified vector space\n- **Reranking**: Refine search results with precise relevance scoring\n- **Classification**: Zero-shot and few-shot text classification\n- **Multi-vector Embeddings**: Token-level embeddings for ColBERT and late interaction\n- **Batch Embeddings**: Asynchronous bulk embedding processing via JSONL input/output\n\n## Authentication\n\nInclude your API key in the `Authorization` header:\n\n```\nAuthorization: Bearer jina_YOUR_API_KEY\n```\n\nGet your API key at [jina.ai/api-dashboard/key-manager](https://jina.ai/api-dashboard/key-manager). New users receive **10M free tokens**.\n\n## Rate Limits\n\n| Tier | RPM | TPM | Concurrency |\n|------|-----|-----|-------------|\n| Free | 500 | 1M | 5 |\n| Tier 1 | 500 | 10M | 50 |\n| Tier 2 | 5,000 | 100M | 500 |\n\nRate limit headers are included in responses: `X-RateLimit-Remaining-Requests`, `X-RateLimit-Remaining-Tokens`.\n\n## Error Codes\n\nAll endpoints may return the following errors. Endpoint-specific errors are documented per operation.\n\n| Code | Status | Description |\n|------|--------|-------------|\n| `INPUT_MODEL_NOT_FOUND` | 400 | Model 'X' not found |\n| `INPUT_INVALID_LABELS` | 400 | Invalid training labels |\n| `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: {current} labels provided, maximum N allowed for your plan |\n| `AUTH_MISSING_API_KEY` | 401 | Authentication required |\n| `AUTH_INVALID_API_KEY` | 401 | Invalid API key |\n| `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |\n| `AUTHZ_INSUFFICIENT_BALANCE` | 403 | Insufficient account balance |\n| `AUTHZ_RESOURCE_LIMIT_EXCEEDED` | 403 | Resource limit exceeded for your plan |\n| `RESOURCE_NOT_FOUND` | 404 | {resource_type} '{resource_id}' not found or access denied |\n| `CONFLICT_RESOURCE_BUSY` | 409 | {resource_type} '{resource_id}' is currently being modified |\n| `RATE_REQUEST_LIMIT_EXCEEDED` | 429 | Request rate limit exceeded: {current}/N requests per minute |\n| `RATE_TOKEN_LIMIT_EXCEEDED` | 429 | Token rate limit exceeded: {current:,}/{limit:,} tokens per minute |\n| `RATE_CONCURRENCY_LIMIT_EXCEEDED` | 429 | Concurrency limit exceeded: {current}/N concurrent requests |\n| `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |\n| `INTERNAL_ERROR` | 500 | An unexpected error occurred |\n| `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |\n| `SERVICE_TIMEOUT` | 504 | Request timed out after {timeout_seconds} seconds |\n"
@@ -384,14 +384,14 @@ paths:
         - Zero/Few-shot Classification
       summary: List Classifiers
       description: List all classifiers owned by the authenticated user.
-      operationId: list_classifiers_v1_classifiers_post
+      operationId: list_classifiers_v1_classifiers_get
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                title: Response List Classifiers V1 Classifiers Post
+                title: Response List Classifiers V1 Classifiers Get
                 type: array
                 items:
                   $ref: '#/components/schemas/ClassifierSummary'
@@ -420,14 +420,14 @@ paths:
         - Zero/Few-shot Classification
       summary: List Classifiers
       description: List all classifiers owned by the authenticated user.
-      operationId: list_classifiers_v1_classifiers_post
+      operationId: list_classifiers_v1_classifiers_get
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                title: Response List Classifiers V1 Classifiers Post
+                title: Response List Classifiers V1 Classifiers Get
                 type: array
                 items:
                   $ref: '#/components/schemas/ClassifierSummary'
@@ -905,6 +905,20 @@ components:
           type: integer
           description: Total number of tokens processed.
     BatchEmbeddingRequest:
+      examples:
+        - dimensions: 512
+          input_url: gs://my-bucket/inputs.jsonl
+          model: jina-embeddings-v5-text-small
+          task: retrieval
+        - input:
+            - body:
+                input: Hello world
+              custom_id: req-1
+            - body:
+                input: Batch embeddings
+              custom_id: req-2
+          model: jina-embeddings-v5-text-nano
+          task: text-matching
       title: BatchEmbeddingRequest
       required:
         - model
@@ -919,47 +933,47 @@ components:
           description: The embedding model to use for batch processing.
         input_url:
           title: Input Url
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: 'URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.'
-          nullable: true
         input:
           title: Input
-          type: array
-          items:
-            type: object
+          anyOf:
+            - type: array
+              items:
+                type: object
+            - type: 'null'
           description: Inline JSONL lines for small batches. Either input_url or input must be provided.
-          nullable: true
         task:
           title: Task
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: 'Task optimization: retrieval, text-matching, clustering, or classification.'
           default: text-matching
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 1024.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 1024.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: Number of dimensions for output embeddings (1-1024).
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         webhook_url:
           title: Webhook Url
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: URL to POST notification when job completes.
-          nullable: true
       description: Request to create a batch embedding job.
-      example:
-        dimensions: 512
-        input_url: gs://my-bucket/inputs.jsonl
-        model: jina-embeddings-v5-text-small
-        task: retrieval
     BatchStats:
       title: BatchStats
       required:
@@ -987,6 +1001,18 @@ components:
           default: 0
       description: Statistics for a batch job.
     BatchStatus:
+      examples:
+        - batch_id: batch_abc123
+          completed_at: '2024-01-15T10:35:00Z'
+          created_at: '2024-01-15T10:30:00Z'
+          expires_at: '2024-01-16T10:30:00Z'
+          model: jina-embeddings-v5-text-small
+          output_url: https://storage.googleapis.com/...
+          stats:
+            completed: 998
+            failed: 2
+            total: 1000
+          status: completed
       title: BatchStatus
       required:
         - batch_id
@@ -1020,44 +1046,40 @@ components:
           description: ISO 8601 timestamp when job was created.
         completed_at:
           title: Completed At
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: ISO 8601 timestamp when job completed (if finished).
-          nullable: true
         expires_at:
           title: Expires At
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: ISO 8601 timestamp when output URL expires (created_at + 24h).
-          nullable: true
         output_url:
           title: Output Url
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: Signed URL to download output JSONL (24h expiry).
-          nullable: true
         error_file_url:
           title: Error File Url
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: URL to download error JSONL for failed lines.
-          nullable: true
         error:
           title: Error
-          type: string
+          anyOf:
+            - type: string
+            - type: 'null'
           description: Error message if job failed.
-          nullable: true
         stats:
-          $ref: '#/components/schemas/BatchStats'
+          anyOf:
+            - $ref: '#/components/schemas/BatchStats'
+            - type: 'null'
+          description: Processing statistics.
       description: Status of a batch embedding job.
-      example:
-        batch_id: batch_abc123
-        completed_at: '2024-01-15T10:35:00Z'
-        created_at: '2024-01-15T10:30:00Z'
-        expires_at: '2024-01-16T10:30:00Z'
-        model: jina-embeddings-v5-text-small
-        output_url: https://storage.googleapis.com/...
-        stats:
-          completed: 998
-          failed: 2
-          total: 1000
-        status: completed
     ClassificationPrediction:
       title: ClassificationPrediction
       required:
@@ -1135,6 +1157,7 @@ components:
             $ref: '#/components/schemas/ClassificationPrediction'
           description: 'Classification results, one per input item.'
         usage:
+          description: Token usage statistics.
           $ref: '#/components/schemas/BaseUsage'
       description: Response containing classification results.
     ClassifierSummary:
@@ -1195,10 +1218,11 @@ components:
           format: date-time
         used_at:
           title: Used At
-          type: string
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
           description: Last used timestamp
-          format: date-time
-          nullable: true
         is_active:
           title: Is Active
           type: boolean
@@ -1280,24 +1304,25 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         model:
+          const: jina-clip-v1
           title: Model
-          enum:
-            - jina-clip-v1
           type: string
           description: The CLIP model to use.
         input:
@@ -1346,24 +1371,25 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         model:
+          const: jina-clip-v2
           title: Model
-          enum:
-            - jina-clip-v2
           type: string
           description: The CLIP model to use.
         input:
@@ -1382,19 +1408,19 @@ components:
           description: 'Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.'
         task:
           title: Task
-          enum:
-            - retrieval.query
-          type: string
+          anyOf:
+            - const: retrieval.query
+              type: string
+            - type: 'null'
           description: Set to `retrieval.query` to optimize for search queries. Leave unset for documents.
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 1024.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 1024.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-1024.'
-          nullable: true
       description: CLIP v2 with Matryoshka representation learning for flexible dimensions.
       example:
         dimensions: 512
@@ -1456,6 +1482,12 @@ components:
           - Scene
         model: jina-clip-v2
     CodeEmbeddings1500MRequest:
+      examples:
+        - dimensions: 512
+          input:
+            - "import * as ElementPlusIconsVue from '@element-plus/icons-vue'\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"
+          model: jina-code-embeddings-1.5b
+          task: nl2code.passage
       title: CodeEmbeddings1500MRequest
       required:
         - model
@@ -1479,12 +1511,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: jina-code-embeddings-1.5b
           title: Model
-          enum:
-            - jina-code-embeddings-1.5b
           type: string
           description: The code embedding model to use.
         input:
@@ -1500,43 +1531,46 @@ components:
           description: 'Code or text to embed: a string, `TextDoc`, or a list of items.'
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 1536.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 1536.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-1536.'
-          nullable: true
         task:
           title: Task
-          enum:
-            - nl2code.query
-            - nl2code.passage
-            - qa.query
-            - qa.passage
-            - code2code.query
-            - code2code.passage
-            - code2nl.query
-            - code2nl.passage
-            - code2completion.query
-            - code2completion.passage
-          type: string
+          anyOf:
+            - enum:
+                - nl2code.query
+                - nl2code.passage
+                - qa.query
+                - qa.passage
+                - code2code.query
+                - code2code.passage
+                - code2nl.query
+                - code2nl.passage
+                - code2completion.query
+                - code2completion.passage
+              type: string
+            - type: 'null'
           description: 'Task type: `nl2code`, `qa`, `code2code`, `code2nl`, or `code2completion`. Use `.query` for queries, `.passage` for documents.'
           default: nl2code.query
-          nullable: true
       description: Code embedding model (1.5B) for code search and understanding.
-      example:
-        dimensions: 512
-        input:
-          - "import * as ElementPlusIconsVue from '@element-plus/icons-vue'\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"
-        model: jina-code-embeddings-1.5b
-        task: nl2code.passage
     CodeEmbeddings500MRequest:
+      examples:
+        - dimensions: 512
+          embedding_type: float
+          input:
+            - "import * as ElementPlusIconsVue from '@element-plus/icons-vue'\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"
+          model: jina-code-embeddings-0.5b
+          task: nl2code.passage
       title: CodeEmbeddings500MRequest
       required:
         - model
@@ -1560,12 +1594,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: jina-code-embeddings-0.5b
           title: Model
-          enum:
-            - jina-code-embeddings-0.5b
           type: string
           description: The code embedding model to use.
         input:
@@ -1581,43 +1614,38 @@ components:
           description: 'Code or text to embed: a string, `TextDoc`, or a list of items.'
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 896.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 896.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-896.'
-          nullable: true
         task:
           title: Task
-          enum:
-            - nl2code.query
-            - nl2code.passage
-            - qa.query
-            - qa.passage
-            - code2code.query
-            - code2code.passage
-            - code2nl.query
-            - code2nl.passage
-            - code2completion.query
-            - code2completion.passage
-          type: string
+          anyOf:
+            - enum:
+                - nl2code.query
+                - nl2code.passage
+                - qa.query
+                - qa.passage
+                - code2code.query
+                - code2code.passage
+                - code2nl.query
+                - code2nl.passage
+                - code2completion.query
+                - code2completion.passage
+              type: string
+            - type: 'null'
           description: 'Task type: `nl2code`, `qa`, `code2code`, `code2nl`, or `code2completion`. Use `.query` for queries, `.passage` for documents.'
           default: nl2code.query
-          nullable: true
       description: Code embedding model (500M) for code search and understanding.
-      example:
-        dimensions: 512
-        embedding_type: float
-        input:
-          - "import * as ElementPlusIconsVue from '@element-plus/icons-vue'\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"
-        model: jina-code-embeddings-0.5b
-        task: nl2code.passage
     CodeEmbeddingsZeroShotClassificationRequest:
       title: CodeEmbeddingsZeroShotClassificationRequest
       required:
@@ -1691,12 +1719,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: jina-colbert-v1-en
           title: Model
-          enum:
-            - jina-colbert-v1-en
           type: string
           description: The ColBERT model to use.
         input:
@@ -1712,13 +1739,14 @@ components:
           description: 'Text to embed: a string, `TextDoc`, or a list of items.'
         input_type:
           title: Input Type
-          enum:
-            - query
-            - document
-          type: string
+          anyOf:
+            - enum:
+                - query
+                - document
+              type: string
+            - type: 'null'
           description: 'Role of the input: `query` for search queries, `document` for passages.'
           default: document
-          nullable: true
       description: ColBERT v1 for token-level late interaction retrieval.
       example:
         embedding_type: float
@@ -1751,12 +1779,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: jina-colbert-v2
           title: Model
-          enum:
-            - jina-colbert-v2
           type: string
           description: The ColBERT model to use.
         input:
@@ -1772,22 +1799,24 @@ components:
           description: 'Text to embed: a string, `TextDoc`, or a list of items.'
         input_type:
           title: Input Type
-          enum:
-            - query
-            - document
-          type: string
+          anyOf:
+            - enum:
+                - query
+                - document
+              type: string
+            - type: 'null'
           description: 'Role of the input: `query` for search queries, `document` for passages.'
           default: document
-          nullable: true
         dimensions:
           title: Dimensions
-          enum:
-            - 64
-            - 96
-            - 128
-          type: integer
+          anyOf:
+            - enum:
+                - 64
+                - 96
+                - 128
+              type: integer
+            - type: 'null'
           description: 'Dimensions per token: `64`, `96`, or `128`. Defaults to 128.'
-          nullable: true
       description: ColBERT v2 with Matryoshka representation learning for flexible dimensions.
       example:
         dimensions: 128
@@ -1841,12 +1870,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: elser-v2
           title: Model
-          enum:
-            - elser-v2
           type: string
           description: The sparse embedding model to use.
         input:
@@ -1862,12 +1890,13 @@ components:
           description: 'Text to embed: a string, `TextDoc`, or a list of items.'
         task:
           title: Task
-          enum:
-            - retrieval.query
-            - retrieval.passage
-          type: string
+          anyOf:
+            - enum:
+                - retrieval.query
+                - retrieval.passage
+              type: string
+            - type: 'null'
           description: 'Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.'
-          nullable: true
       description: ELSER v2 request schema.
       example:
         input:
@@ -1932,9 +1961,10 @@ components:
           description: Number of tokens in the input.
         image_tokens:
           title: Image Tokens
-          type: integer
+          anyOf:
+            - type: integer
+            - type: 'null'
           description: Number of tokens from image inputs.
-          nullable: true
       description: Token usage statistics for embedding requests.
     EmbeddingsV2CreateTrainingRequest:
       title: EmbeddingsV2CreateTrainingRequest
@@ -2004,20 +2034,22 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         model:
           title: Model
           enum:
@@ -2117,9 +2149,8 @@ components:
           description: Number of iterations for the training process.
           default: 10
         model:
+          const: jina-embeddings-v3
           title: Model
-          enum:
-            - jina-embeddings-v3
           type: string
           description: Text embedding model for zero-shot classification.
         input:
@@ -2163,24 +2194,25 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         model:
+          const: jina-embeddings-v3
           title: Model
-          enum:
-            - jina-embeddings-v3
           type: string
           description: The embedding model to use.
         input:
@@ -2196,28 +2228,30 @@ components:
           description: 'Text to embed: a string, `TextDoc`, or a list of items.'
         task:
           title: Task
-          enum:
-            - retrieval.query
-            - retrieval.passage
-            - text-matching
-            - classification
-            - separation
-          type: string
+          anyOf:
+            - enum:
+                - retrieval.query
+                - retrieval.passage
+                - text-matching
+                - classification
+                - separation
+              type: string
+            - type: 'null'
           description: 'Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents, `text-matching` for similarity, `classification`, or `separation` for clustering.'
-          nullable: true
         late_chunking:
           title: Late Chunking
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, concatenates all inputs and processes as one sequence before splitting. Useful for context across chunks.'
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 1024.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 1024.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-1024.'
-          nullable: true
       description: Jina Embeddings v3 with task-specific optimization and flexible dimensions.
       example:
         dimensions: 512
@@ -2249,9 +2283,8 @@ components:
                   type: string
           description: 'Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.'
         model:
+          const: jina-embeddings-v3
           title: Model
-          enum:
-            - jina-embeddings-v3
           type: string
           description: The embedding model to use.
         input:
@@ -2293,9 +2326,8 @@ components:
           description: Number of iterations for the training process.
           default: 10
         model:
+          const: jina-embeddings-v4
           title: Model
-          enum:
-            - jina-embeddings-v4
           type: string
           description: Multimodal embedding model for zero-shot classification.
         input:
@@ -2318,6 +2350,24 @@ components:
         model: jina-embeddings-v4
         num_iters: 25
     EmbeddingsV4Request:
+      examples:
+        - dimensions: 512
+          embedding_type: float
+          input:
+            - image: https://i.ibb.co/nQNGqL0/beach1.jpg
+            - text: A beautiful sunset over the beach
+          model: jina-embeddings-v4
+        - embedding_type: float
+          input:
+            - Jina AI - Your Search Foundation - Supercharged
+          late_chunking: true
+          model: jina-embeddings-v4
+          task: retrieval.passage
+        - dimensions: 512
+          embedding_type: float
+          input:
+            pdf: https://example.com/sample.pdf
+          model: jina-embeddings-v4
       title: EmbeddingsV4Request
       required:
         - model
@@ -2341,12 +2391,11 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         model:
+          const: jina-embeddings-v4
           title: Model
-          enum:
-            - jina-embeddings-v4
           type: string
           description: The embedding model to use.
         input:
@@ -2365,55 +2414,53 @@ components:
           description: 'Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB; PDFs up to 8MB.'
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         late_chunking:
           title: Late Chunking
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, concatenates all text inputs and processes as one sequence before splitting. Only works with text.'
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 2048.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 2048.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-2048.'
-          nullable: true
         task:
           title: Task
-          enum:
-            - text-matching
-            - retrieval.query
-            - retrieval.passage
-            - code.query
-            - code.passage
-          type: string
+          anyOf:
+            - enum:
+                - text-matching
+                - retrieval.query
+                - retrieval.passage
+                - code.query
+                - code.passage
+              type: string
+            - type: 'null'
           description: 'Task optimization: `text-matching` (default), `retrieval.query`, `retrieval.passage`, `code.query`, or `code.passage`.'
           default: text-matching
-          nullable: true
         return_multivector:
           title: Return Multivector
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, returns one embedding per token. Cannot be used with `dimensions`.'
           default: false
-          nullable: true
         return_tokenized_input:
           title: Return Tokenized Input
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, returns tokens alongside multi-vector embeddings. Requires `return_multivector=true`.'
           default: false
-          nullable: true
       description: 'Jina Embeddings v4 multimodal model for text, images, and PDFs.'
-      example:
-        dimensions: 512
-        embedding_type: float
-        input:
-          - image: https://i.ibb.co/nQNGqL0/beach1.jpg
-          - text: A beautiful sunset over the beach
-        model: jina-embeddings-v4
     EmbeddingsV4ZeroShotClassificationRequest:
       title: EmbeddingsV4ZeroShotClassificationRequest
       required:
@@ -2435,9 +2482,8 @@ components:
                   type: string
           description: 'Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.'
         model:
+          const: jina-embeddings-v4
           title: Model
-          enum:
-            - jina-embeddings-v4
           type: string
           description: The embedding model to use.
         input:
@@ -2526,20 +2572,22 @@ components:
                   - binary
                   - ubinary
                 type: string
+            - type: 'null'
           description: 'Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.'
-          nullable: true
         normalized:
           title: Normalized
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), embeddings are L2-normalized to unit length.'
           default: true
-          nullable: true
         truncate:
           title: Truncate
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates input exceeding the model''s max token limit instead of returning an error.'
           default: false
-          nullable: true
         model:
           title: Model
           enum:
@@ -2560,24 +2608,25 @@ components:
           description: 'Text to embed: a string, `TextDoc`, or a list of items.'
         task:
           title: Task
-          enum:
-            - retrieval.query
-            - retrieval.passage
-            - text-matching
-            - clustering
-            - classification
-          type: string
+          anyOf:
+            - enum:
+                - retrieval.query
+                - retrieval.passage
+                - text-matching
+                - clustering
+                - classification
+              type: string
+            - type: 'null'
           description: 'Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents, `text-matching` for similarity, `clustering`, or `classification`.'
           default: text-matching
-          nullable: true
         dimensions:
           title: Dimensions
-          maximum: 1024.0
-          minimum: 0.0
-          exclusiveMinimum: true
-          type: integer
+          anyOf:
+            - maximum: 1024.0
+              exclusiveMinimum: 0.0
+              type: integer
+            - type: 'null'
           description: 'Number of dimensions for the output embedding. Range: 1-1024.'
-          nullable: true
       description: Jina Embeddings v5 text-only model with task-specific LoRA adapters and flexible dimensions.
       example:
         dimensions: 512
@@ -2746,7 +2795,7 @@ components:
           title: Id
           type: string
           description: 'Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).'
-          example: 50336949b5bd1f1ed97f3085d76258a1
+          default: 50336949b5bd1f1ed97f3085d76258a1
         hugging_face_id:
           title: Hugging Face Id
           type: string
@@ -2784,6 +2833,7 @@ components:
           type: integer
           description: Maximum output dimensions.
         pricing:
+          description: Pricing information.
           $ref: '#/components/schemas/ModelPricing'
         supported_sampling_parameters:
           title: Supported Sampling Parameters
@@ -2912,11 +2962,12 @@ components:
           description: Per-token embedding vectors. Each is a list of floats or base64 string.
         tokenized_input:
           title: Tokenized Input
-          type: array
-          items:
-            type: string
+          anyOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
           description: 'Tokens corresponding to each embedding, if `return_tokenized_input=true`.'
-          nullable: true
       description: Multi-vector embedding result (one vector per token).
     PDFDoc:
       title: PDFDoc
@@ -2942,25 +2993,27 @@ components:
           description: The search query to rank documents against.
         top_n:
           title: Top N
-          minimum: 1.0
-          type: integer
+          anyOf:
+            - minimum: 1.0
+              type: integer
+            - type: 'null'
           description: 'Number of top results to return. If not set, returns all documents.'
-          nullable: true
         return_documents:
           title: Return Documents
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), includes document content in each result.'
           default: true
-          nullable: true
         truncation:
           title: Truncation
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates documents exceeding the model''s max token limit.'
-          nullable: true
         model:
+          const: jina-reranker-m0
           title: Model
-          enum:
-            - jina-reranker-m0
           type: string
           description: The multimodal reranking model to use.
         documents:
@@ -3000,25 +3053,27 @@ components:
           description: The search query to rank documents against.
         top_n:
           title: Top N
-          minimum: 1.0
-          type: integer
+          anyOf:
+            - minimum: 1.0
+              type: integer
+            - type: 'null'
           description: 'Number of top results to return. If not set, returns all documents.'
-          nullable: true
         return_documents:
           title: Return Documents
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), includes document content in each result.'
           default: true
-          nullable: true
         truncation:
           title: Truncation
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates documents exceeding the model''s max token limit.'
-          nullable: true
         model:
+          const: jina-reranker-v3
           title: Model
-          enum:
-            - jina-reranker-v3
           type: string
           description: The reranking model to use.
         documents:
@@ -3039,9 +3094,10 @@ components:
           default: 2048
         return_embeddings:
           title: Return Embeddings
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, returns the document embedding alongside the relevance score.'
-          nullable: true
       description: Reranker v3 listwise model for high-quality multilingual retrieval.
       example:
         documents:
@@ -3074,6 +3130,7 @@ components:
           description: 'Object type, always `list`.'
           default: list
         usage:
+          description: Token usage statistics.
           $ref: '#/components/schemas/BaseUsage'
         results:
           title: Results
@@ -3103,15 +3160,16 @@ components:
             - type: string
             - $ref: '#/components/schemas/TextDoc'
             - $ref: '#/components/schemas/ImageDoc'
+            - type: 'null'
           description: 'Document content, if `return_documents=true`.'
-          nullable: true
         embedding:
           title: Embedding
-          type: array
-          items:
-            type: number
+          anyOf:
+            - type: array
+              items:
+                type: number
+            - type: 'null'
           description: 'Document embedding, if `return_embeddings=true`.'
-          nullable: true
       description: A single reranking result.
     SingleEmbeddingData:
       title: SingleEmbeddingData
@@ -3165,21 +3223,24 @@ components:
           description: The search query to rank documents against.
         top_n:
           title: Top N
-          minimum: 1.0
-          type: integer
+          anyOf:
+            - minimum: 1.0
+              type: integer
+            - type: 'null'
           description: 'Number of top results to return. If not set, returns all documents.'
-          nullable: true
         return_documents:
           title: Return Documents
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true (default), includes document content in each result.'
           default: true
-          nullable: true
         truncation:
           title: Truncation
-          type: boolean
+          anyOf:
+            - type: boolean
+            - type: 'null'
           description: 'If true, truncates documents exceeding the model''s max token limit.'
-          nullable: true
         model:
           title: Model
           enum:
@@ -3244,6 +3305,7 @@ components:
           type: integer
           description: Number of training samples processed in this request.
         usage:
+          description: Token usage statistics for the training request.
           $ref: '#/components/schemas/BaseUsage'
       example:
         classifier_id: 00000000-0000-0000-0000-000000000000

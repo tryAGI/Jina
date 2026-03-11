@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public string Model { get; set; } = default!;
 
         /// <summary>
         /// Object type, always `list`.<br/>
@@ -23,18 +23,18 @@ namespace Jina
         public string? Object { get; set; }
 
         /// <summary>
-        /// 
+        /// Token usage statistics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BaseUsage Usage { get; set; }
+        public global::Jina.BaseUsage Usage { get; set; } = default!;
 
         /// <summary>
         /// Ranked documents, sorted by relevance score descending.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.RerankingResult> Results { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.RerankingResult> Results { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,7 +52,9 @@ namespace Jina
         /// Object type, always `list`.<br/>
         /// Default Value: list
         /// </param>
-        /// <param name="usage"></param>
+        /// <param name="usage">
+        /// Token usage statistics.
+        /// </param>
         /// <param name="results">
         /// Ranked documents, sorted by relevance score descending.
         /// </param>

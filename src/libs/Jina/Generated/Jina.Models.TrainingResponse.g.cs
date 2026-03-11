@@ -13,17 +13,17 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("classifier_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ClassifierId { get; set; }
+        public string ClassifierId { get; set; } = default!;
 
         /// <summary>
         /// Number of training samples processed in this request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("num_samples")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int NumSamples { get; set; }
+        public int NumSamples { get; set; } = default!;
 
         /// <summary>
-        /// 
+        /// Token usage statistics for the training request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Jina.BaseUsage? Usage { get; set; }
@@ -43,7 +43,9 @@ namespace Jina
         /// <param name="numSamples">
         /// Number of training samples processed in this request.
         /// </param>
-        /// <param name="usage"></param>
+        /// <param name="usage">
+        /// Token usage statistics for the training request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

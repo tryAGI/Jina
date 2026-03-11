@@ -9,7 +9,7 @@ fi
 autosdk generate openapi.yaml \
   --namespace Jina \
   --clientClassName JinaClient \
-  --targetFramework net8.0 \
+  --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations \
   --methodNamingConvention Summary \
@@ -20,7 +20,7 @@ autosdk generate openapi.yaml \
 #autosdk generate segment-openapi.yaml \
 #  --namespace Jina \
 #  --clientClassName SegmentApi \
-#  --targetFramework net8.0 \
+#  --targetFramework net10.0 \
 #  --output Generated \
 #  --exclude-deprecated-operations \
 #  --methodNamingConvention Summary \

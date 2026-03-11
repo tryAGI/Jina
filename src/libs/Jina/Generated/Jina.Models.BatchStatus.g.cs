@@ -4,8 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// Status of a batch embedding job.<br/>
-    /// Example: {"batch_id":"batch_abc123","completed_at":"2024-01-15T10:35:00Z","created_at":"2024-01-15T10:30:00Z","expires_at":"2024-01-16T10:30:00Z","model":"jina-embeddings-v5-text-small","output_url":"https://storage.googleapis.com/...","stats":{"completed":998,"failed":2,"total":1000},"status":"completed"}
+    /// Status of a batch embedding job.
     /// </summary>
     public sealed partial class BatchStatus
     {
@@ -14,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("batch_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string BatchId { get; set; }
+        public string BatchId { get; set; } = default!;
 
         /// <summary>
         /// Current status of the batch job.
@@ -22,21 +21,21 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchStatusStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BatchStatusStatus Status { get; set; }
+        public global::Jina.BatchStatusStatus Status { get; set; } = default!;
 
         /// <summary>
         /// The model used for embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; }
+        public string Model { get; set; } = default!;
 
         /// <summary>
         /// ISO 8601 timestamp when job was created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CreatedAt { get; set; }
+        public string CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// ISO 8601 timestamp when job completed (if finished).
@@ -69,7 +68,7 @@ namespace Jina
         public string? Error { get; set; }
 
         /// <summary>
-        /// Statistics for a batch job.
+        /// Processing statistics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
         public global::Jina.BatchStats? Stats { get; set; }
@@ -111,7 +110,7 @@ namespace Jina
         /// Error message if job failed.
         /// </param>
         /// <param name="stats">
-        /// Statistics for a batch job.
+        /// Processing statistics.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

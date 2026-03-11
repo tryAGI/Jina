@@ -27,16 +27,16 @@ namespace Jina
         /// <summary>
         /// Multimodal embedding model for zero-shot classification.
         /// </summary>
+        /// <default>"jina-embeddings-v4"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV4CreateTrainingRequestModelJsonConverter))]
-        public global::Jina.EmbeddingsV4CreateTrainingRequestModel Model { get; set; }
+        public string Model { get; set; } = "jina-embeddings-v4";
 
         /// <summary>
         /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,7 +68,7 @@ namespace Jina
             global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> input,
             string? access,
             int? numIters,
-            global::Jina.EmbeddingsV4CreateTrainingRequestModel model)
+            string model = "jina-embeddings-v4")
         {
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Access = access;

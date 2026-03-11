@@ -28,14 +28,14 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV2CreateTrainingRequestModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.EmbeddingsV2CreateTrainingRequestModel Model { get; set; }
+        public global::Jina.EmbeddingsV2CreateTrainingRequestModel Model { get; set; } = default!;
 
         /// <summary>
         /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

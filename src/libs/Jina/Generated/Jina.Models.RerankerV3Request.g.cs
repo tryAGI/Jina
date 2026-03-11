@@ -16,7 +16,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Query { get; set; }
+        public string Query { get; set; } = default!;
 
         /// <summary>
         /// Number of top results to return. If not set, returns all documents.
@@ -40,16 +40,16 @@ namespace Jina
         /// <summary>
         /// The reranking model to use.
         /// </summary>
+        /// <default>"jina-reranker-v3"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.RerankerV3RequestModelJsonConverter))]
-        public global::Jina.RerankerV3RequestModel Model { get; set; }
+        public string Model { get; set; } = "jina-reranker-v3";
 
         /// <summary>
         /// Documents to rank: strings or `TextDoc` objects.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>> Documents { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>> Documents { get; set; } = default!;
 
         /// <summary>
         /// Maximum tokens per document. Range: 1-8192. Default: 2048.<br/>
@@ -108,9 +108,9 @@ namespace Jina
             int? topN,
             bool? returnDocuments,
             bool? truncation,
-            global::Jina.RerankerV3RequestModel model,
             int? maxDocLength,
-            bool? returnEmbeddings)
+            bool? returnEmbeddings,
+            string model = "jina-reranker-v3")
         {
             this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));

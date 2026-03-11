@@ -22,7 +22,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Index { get; set; }
+        public int Index { get; set; } = default!;
 
         /// <summary>
         /// Predicted label, or a dict of labels per group.
@@ -30,7 +30,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("prediction")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.Dictionary<string, string>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::System.Collections.Generic.Dictionary<string, string>> Prediction { get; set; }
+        public global::Jina.AnyOf<string, global::System.Collections.Generic.Dictionary<string, string>> Prediction { get; set; } = default!;
 
         /// <summary>
         /// Confidence score, or a dict of scores per group.
@@ -38,7 +38,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<double?, global::System.Collections.Generic.Dictionary<string, double>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<double?, global::System.Collections.Generic.Dictionary<string, double>> Score { get; set; }
+        public global::Jina.AnyOf<double?, global::System.Collections.Generic.Dictionary<string, double>> Score { get; set; } = default!;
 
         /// <summary>
         /// All candidate labels with scores, or a dict per group.
@@ -46,7 +46,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("predictions")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>> Predictions { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>> Predictions { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

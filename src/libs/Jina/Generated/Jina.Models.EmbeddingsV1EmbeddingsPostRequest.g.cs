@@ -69,8 +69,7 @@ namespace Jina
         public bool IsJinaEmbeddingsV5TextNano => JinaEmbeddingsV5TextNano != null;
 
         /// <summary>
-        /// Jina Embeddings v4 multimodal model for text, images, and PDFs.<br/>
-        /// Example: {"dimensions":512,"embedding_type":"float","input":[{"image":"https://i.ibb.co/nQNGqL0/beach1.jpg"},{"text":"A beautiful sunset over the beach"}],"model":"jina-embeddings-v4"}
+        /// Jina Embeddings v4 multimodal model for text, images, and PDFs.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.EmbeddingsV4Request? JinaEmbeddingsV4 { get; init; }
@@ -87,8 +86,7 @@ namespace Jina
         public bool IsJinaEmbeddingsV4 => JinaEmbeddingsV4 != null;
 
         /// <summary>
-        /// Code embedding model (500M) for code search and understanding.<br/>
-        /// Example: {"dimensions":512,"embedding_type":"float","input":["import * as ElementPlusIconsVue from \u0027@element-plus/icons-vue\u0027\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"],"model":"jina-code-embeddings-0.5b","task":"nl2code.passage"}
+        /// Code embedding model (500M) for code search and understanding.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.CodeEmbeddings500MRequest? JinaCodeEmbeddings05b { get; init; }
@@ -105,8 +103,7 @@ namespace Jina
         public bool IsJinaCodeEmbeddings05b => JinaCodeEmbeddings05b != null;
 
         /// <summary>
-        /// Code embedding model (1.5B) for code search and understanding.<br/>
-        /// Example: {"dimensions":512,"input":["import * as ElementPlusIconsVue from \u0027@element-plus/icons-vue\u0027\nconst app = createApp(App)\nfor (const [key, component] of Object.entries(ElementPlusIconsVue)) {\n  app.component(key, component)\n}"],"model":"jina-code-embeddings-1.5b","task":"nl2code.passage"}
+        /// Code embedding model (1.5B) for code search and understanding.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.CodeEmbeddings1500MRequest? JinaCodeEmbeddings15b { get; init; }

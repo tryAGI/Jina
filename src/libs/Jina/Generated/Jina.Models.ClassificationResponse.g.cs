@@ -13,14 +13,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.ClassificationPrediction> Data { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ClassificationPrediction> Data { get; set; } = default!;
 
         /// <summary>
-        /// 
+        /// Token usage statistics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BaseUsage Usage { get; set; }
+        public global::Jina.BaseUsage Usage { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -34,7 +34,9 @@ namespace Jina
         /// <param name="data">
         /// Classification results, one per input item.
         /// </param>
-        /// <param name="usage"></param>
+        /// <param name="usage">
+        /// Token usage statistics.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

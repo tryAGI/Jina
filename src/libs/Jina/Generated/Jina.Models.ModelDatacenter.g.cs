@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("country_code")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CountryCode { get; set; }
+        public string CountryCode { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

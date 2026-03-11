@@ -4,8 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// Request to create a batch embedding job.<br/>
-    /// Example: {"dimensions":512,"input_url":"gs://my-bucket/inputs.jsonl","model":"jina-embeddings-v5-text-small","task":"retrieval"}
+    /// Request to create a batch embedding job.
     /// </summary>
     public sealed partial class BatchEmbeddingRequest
     {
@@ -15,7 +14,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchEmbeddingRequestModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BatchEmbeddingRequestModel Model { get; set; }
+        public global::Jina.BatchEmbeddingRequestModel Model { get; set; } = default!;
 
         /// <summary>
         /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
