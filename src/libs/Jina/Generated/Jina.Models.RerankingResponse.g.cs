@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Model { get; set; } = default!;
+        public required string Model { get; set; }
 
         /// <summary>
         /// Object type, always `list`.<br/>
@@ -27,14 +27,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.BaseUsage Usage { get; set; } = default!;
+        public required global::Jina.BaseUsage Usage { get; set; }
 
         /// <summary>
         /// Ranked documents, sorted by relevance score descending.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.RerankingResult> Results { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.RerankingResult> Results { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

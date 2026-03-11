@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pdf")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Pdf { get; set; } = default!;
+        public required string Pdf { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

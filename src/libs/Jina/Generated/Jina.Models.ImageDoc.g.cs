@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Image { get; set; } = default!;
+        public required string Image { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

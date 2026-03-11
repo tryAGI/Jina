@@ -30,14 +30,14 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ClipCreateTrainingRequestModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.ClipCreateTrainingRequestModel Model { get; set; } = default!;
+        public required global::Jina.ClipCreateTrainingRequestModel Model { get; set; }
 
         /// <summary>
         /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

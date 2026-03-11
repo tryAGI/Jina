@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Total { get; set; } = default!;
+        public required int Total { get; set; }
 
         /// <summary>
         /// Number of successfully processed lines.<br/>
