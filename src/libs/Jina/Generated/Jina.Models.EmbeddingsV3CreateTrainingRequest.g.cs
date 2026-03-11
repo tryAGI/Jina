@@ -34,7 +34,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

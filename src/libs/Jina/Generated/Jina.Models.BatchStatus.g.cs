@@ -13,7 +13,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("batch_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string BatchId { get; set; } = default!;
+        public required string BatchId { get; set; }
 
         /// <summary>
         /// Current status of the batch job.
@@ -21,21 +21,21 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchStatusStatusJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.BatchStatusStatus Status { get; set; } = default!;
+        public required global::Jina.BatchStatusStatus Status { get; set; }
 
         /// <summary>
         /// The model used for embedding.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Model { get; set; } = default!;
+        public required string Model { get; set; }
 
         /// <summary>
         /// ISO 8601 timestamp when job was created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CreatedAt { get; set; } = default!;
+        public required string CreatedAt { get; set; }
 
         /// <summary>
         /// ISO 8601 timestamp when job completed (if finished).

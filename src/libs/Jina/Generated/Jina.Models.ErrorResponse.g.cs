@@ -15,7 +15,7 @@ namespace Jina
         /// <example>Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Detail { get; set; } = default!;
+        public required string Detail { get; set; }
 
         /// <summary>
         /// Machine-readable error code for programmatic handling<br/>

@@ -13,14 +13,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("label")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Label { get; set; } = default!;
+        public required string Label { get; set; }
 
         /// <summary>
         /// Confidence score for this label.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double Score { get; set; } = default!;
+        public required double Score { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

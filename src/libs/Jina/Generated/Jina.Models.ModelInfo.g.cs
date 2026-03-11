@@ -15,21 +15,21 @@ namespace Jina
         /// <default>"50336949b5bd1f1ed97f3085d76258a1"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Id { get; set; } = default!;
+        public required string Id { get; set; } = "50336949b5bd1f1ed97f3085d76258a1";
 
         /// <summary>
         /// HuggingFace model ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hugging_face_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string HuggingFaceId { get; set; } = default!;
+        public required string HuggingFaceId { get; set; }
 
         /// <summary>
         /// Human-readable model name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// Unix timestamp when the model was released.
@@ -37,77 +37,77 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.UnixTimestampJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.DateTimeOffset Created { get; set; } = default!;
+        public required global::System.DateTimeOffset Created { get; set; }
 
         /// <summary>
         /// Supported input types: `text`, `image`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_modalities")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<string> InputModalities { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<string> InputModalities { get; set; }
 
         /// <summary>
         /// Output types: `embeddings`, `text`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_modalities")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<string> OutputModalities { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<string> OutputModalities { get; set; }
 
         /// <summary>
         /// Quantization level, if any.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quantization")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Quantization { get; set; } = default!;
+        public required string Quantization { get; set; }
 
         /// <summary>
         /// Maximum context length in tokens.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_length")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int ContextLength { get; set; } = default!;
+        public required int ContextLength { get; set; }
 
         /// <summary>
         /// Maximum output dimensions.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_length")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int MaxOutputLength { get; set; } = default!;
+        public required int MaxOutputLength { get; set; }
 
         /// <summary>
         /// Pricing information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricing")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.ModelPricing Pricing { get; set; } = default!;
+        public required global::Jina.ModelPricing Pricing { get; set; }
 
         /// <summary>
         /// Supported sampling parameters.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supported_sampling_parameters")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<string> SupportedSamplingParameters { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<string> SupportedSamplingParameters { get; set; }
 
         /// <summary>
         /// Supported features.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supported_features")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<string> SupportedFeatures { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<string> SupportedFeatures { get; set; }
 
         /// <summary>
         /// Model description.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Description { get; set; } = default!;
+        public required string Description { get; set; }
 
         /// <summary>
         /// Available datacenter locations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("datacenters")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.ModelDatacenter> Datacenters { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.ModelDatacenter> Datacenters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

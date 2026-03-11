@@ -13,14 +13,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("classifier_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string ClassifierId { get; set; } = default!;
+        public required string ClassifierId { get; set; }
 
         /// <summary>
         /// Number of training samples processed in this request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("num_samples")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int NumSamples { get; set; } = default!;
+        public required int NumSamples { get; set; }
 
         /// <summary>
         /// Token usage statistics for the training request.

@@ -22,7 +22,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Index { get; set; } = default!;
+        public required int Index { get; set; }
 
         /// <summary>
         /// The embedding vector: a list of floats for dense embeddings, a dict of token-&gt;score for sparse embeddings, or a base64 string for other encodings.
@@ -30,7 +30,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>> Embedding { get; set; } = default!;
+        public required global::Jina.AnyOf<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>> Embedding { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

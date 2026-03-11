@@ -14,7 +14,7 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchEmbeddingRequestModelJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.BatchEmbeddingRequestModel Model { get; set; } = default!;
+        public required global::Jina.BatchEmbeddingRequestModel Model { get; set; }
 
         /// <summary>
         /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.

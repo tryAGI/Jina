@@ -15,14 +15,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Index { get; set; } = default!;
+        public required int Index { get; set; }
 
         /// <summary>
         /// Relevance score. Higher is more relevant.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("relevance_score")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double RelevanceScore { get; set; } = default!;
+        public required double RelevanceScore { get; set; }
 
         /// <summary>
         /// Document content, if `return_documents=true`.

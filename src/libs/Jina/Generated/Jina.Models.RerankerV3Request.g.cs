@@ -16,7 +16,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Query { get; set; } = default!;
+        public required string Query { get; set; }
 
         /// <summary>
         /// Number of top results to return. If not set, returns all documents.
@@ -49,7 +49,7 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>> Documents { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>> Documents { get; set; }
 
         /// <summary>
         /// Maximum tokens per document. Range: 1-8192. Default: 2048.<br/>

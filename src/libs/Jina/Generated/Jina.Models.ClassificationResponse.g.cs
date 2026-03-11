@@ -13,14 +13,14 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Jina.ClassificationPrediction> Data { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Jina.ClassificationPrediction> Data { get; set; }
 
         /// <summary>
         /// Token usage statistics.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Jina.BaseUsage Usage { get; set; } = default!;
+        public required global::Jina.BaseUsage Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
