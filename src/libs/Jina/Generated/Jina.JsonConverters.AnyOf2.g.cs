@@ -39,8 +39,9 @@ namespace Jina.JsonConverters
             {
             }
 
-            var result = new global::Jina.AnyOf<T1, T2>(
+            var __value = new global::Jina.AnyOf<T1, T2>(
                 value1,
+
                 value2
                 );
 
@@ -57,7 +58,7 @@ namespace Jina.JsonConverters
                 _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            return result;
+            return __value;
         }
 
         /// <inheritdoc />

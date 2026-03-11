@@ -7,21 +7,18 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        var response = await client.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
-        {
-            Model = "jina-clip-v1",
-            Input = new List<ApiSchemasEmbeddingTextDoc>
+        var response = await client.SearchFoundationModels.EmbeddingsAsync(
+            new EmbeddingsV2Request
             {
-                new()
-                {
-                    Id = "1",
-                    Text = "Hello, world!",
-                }
-            }
-        });
-        
-        Console.WriteLine($"[{string.Join(", ", response.Data[0].Embedding ?? [])}]");
-        
-        response.Data[0].Should().NotBeNull();
+                Model = EmbeddingsV2RequestModel.JinaEmbeddingsV2BaseEn,
+                Input = "Hello, world!",
+            });
+
+        response.Data.Value1.Should().NotBeNullOrEmpty();
+
+        var embedding = response.Data.Value1![0].Embedding.Value2;
+        Console.WriteLine($"[{string.Join(", ", embedding ?? [])}]");
+
+        embedding.Should().NotBeNullOrEmpty();
     }
 }

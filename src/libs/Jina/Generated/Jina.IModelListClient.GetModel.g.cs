@@ -1,0 +1,20 @@
+#nullable enable
+
+namespace Jina
+{
+    public partial interface IModelListClient
+    {
+        /// <summary>
+        /// Get Model<br/>
+        /// Get details for a specific model.<br/>
+        /// Accepts both full form (`jina-ai/jina-embeddings-v3`) and<br/>
+        /// short form (`jina-embeddings-v3`).
+        /// </summary>
+        /// <param name="modelId"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Jina.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Jina.ModelInfo> GetModelAsync(
+            string modelId,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

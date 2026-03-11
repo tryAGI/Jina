@@ -12,7 +12,13 @@ namespace Jina
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
-        public global::System.Collections.Generic.IList<global::Jina.ValidationError>? Detail { get; set; }
+        public string? Detail { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errors")]
+        public global::System.Collections.Generic.IList<global::Jina.HTTPValidationErrorError>? Errors { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -24,13 +30,16 @@ namespace Jina
         /// Initializes a new instance of the <see cref="HTTPValidationError" /> class.
         /// </summary>
         /// <param name="detail"></param>
+        /// <param name="errors"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public HTTPValidationError(
-            global::System.Collections.Generic.IList<global::Jina.ValidationError>? detail)
+            string? detail,
+            global::System.Collections.Generic.IList<global::Jina.HTTPValidationErrorError>? errors)
         {
             this.Detail = detail;
+            this.Errors = errors;
         }
 
         /// <summary>

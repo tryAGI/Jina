@@ -12,7 +12,9 @@ autosdk generate openapi.yaml \
   --targetFramework net8.0 \
   --output Generated \
   --exclude-deprecated-operations \
-  --methodNamingConvention Summary
+  --methodNamingConvention Summary \
+  --base-url https://api.jina.ai/ \
+  --security-scheme Http:Header:Bearer
 
 #curl -o segment-openapi.yaml https://segment.jina.ai/openapi.json
 #autosdk generate segment-openapi.yaml \
@@ -21,6 +23,6 @@ autosdk generate openapi.yaml \
 #  --targetFramework net8.0 \
 #  --output Generated \
 #  --exclude-deprecated-operations \
-#  --methodNamingConvention Summary
-  
-  
+#  --methodNamingConvention Summary \
+#  --base-url https://api.jina.ai/ \
+#  --security-scheme Http:Header:Bearer
