@@ -9,13 +9,11 @@ namespace Jina
     public sealed partial class ModelInfo
     {
         /// <summary>
-        /// Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).<br/>
-        /// Default Value: 50336949b5bd1f1ed97f3085d76258a1
+        /// Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).
         /// </summary>
-        /// <default>"50336949b5bd1f1ed97f3085d76258a1"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; } = "50336949b5bd1f1ed97f3085d76258a1";
+        public required string Id { get; set; }
 
         /// <summary>
         /// HuggingFace model ID.
@@ -119,8 +117,7 @@ namespace Jina
         /// Initializes a new instance of the <see cref="ModelInfo" /> class.
         /// </summary>
         /// <param name="id">
-        /// Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).<br/>
-        /// Default Value: 50336949b5bd1f1ed97f3085d76258a1
+        /// Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).
         /// </param>
         /// <param name="huggingFaceId">
         /// HuggingFace model ID.
