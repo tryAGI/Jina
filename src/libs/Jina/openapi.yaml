@@ -384,14 +384,14 @@ paths:
         - Zero/Few-shot Classification
       summary: List Classifiers
       description: List all classifiers owned by the authenticated user.
-      operationId: list_classifiers_v1_classifiers_post
+      operationId: list_classifiers_v1_classifiers_get
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                title: Response List Classifiers V1 Classifiers Post
+                title: Response List Classifiers V1 Classifiers Get
                 type: array
                 items:
                   $ref: '#/components/schemas/ClassifierSummary'
@@ -420,14 +420,14 @@ paths:
         - Zero/Few-shot Classification
       summary: List Classifiers
       description: List all classifiers owned by the authenticated user.
-      operationId: list_classifiers_v1_classifiers_post
+      operationId: list_classifiers_v1_classifiers_get
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                title: Response List Classifiers V1 Classifiers Post
+                title: Response List Classifiers V1 Classifiers Get
                 type: array
                 items:
                   $ref: '#/components/schemas/ClassifierSummary'
