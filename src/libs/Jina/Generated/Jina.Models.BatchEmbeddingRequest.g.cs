@@ -9,18 +9,10 @@ namespace Jina
     public sealed partial class BatchEmbeddingRequest
     {
         /// <summary>
-        /// The embedding model to use for batch processing.
+        /// Number of dimensions for output embeddings (1-1024).
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchEmbeddingRequestModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BatchEmbeddingRequestModel Model { get; set; }
-
-        /// <summary>
-        /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input_url")]
-        public string? InputUrl { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public int? Dimensions { get; set; }
 
         /// <summary>
         /// Inline JSONL lines for small batches. Either input_url or input must be provided.
@@ -29,17 +21,18 @@ namespace Jina
         public global::System.Collections.Generic.IList<object>? Input { get; set; }
 
         /// <summary>
-        /// Task optimization: retrieval, text-matching, clustering, or classification.<br/>
-        /// Default Value: text-matching
+        /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public string? Task { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("input_url")]
+        public string? InputUrl { get; set; }
 
         /// <summary>
-        /// Number of dimensions for output embeddings (1-1024).
+        /// The embedding model to use for batch processing.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
-        public int? Dimensions { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.BatchEmbeddingRequestModelJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.BatchEmbeddingRequestModel Model { get; set; }
 
         /// <summary>
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
@@ -47,6 +40,13 @@ namespace Jina
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
         public bool? Normalized { get; set; }
+
+        /// <summary>
+        /// Task optimization: retrieval, text-matching, clustering, or classification.<br/>
+        /// Default Value: text-matching
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("task")]
+        public string? Task { get; set; }
 
         /// <summary>
         /// URL to POST notification when job completes.
@@ -63,25 +63,25 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchEmbeddingRequest" /> class.
         /// </summary>
-        /// <param name="model">
-        /// The embedding model to use for batch processing.
-        /// </param>
-        /// <param name="inputUrl">
-        /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
+        /// <param name="dimensions">
+        /// Number of dimensions for output embeddings (1-1024).
         /// </param>
         /// <param name="input">
         /// Inline JSONL lines for small batches. Either input_url or input must be provided.
         /// </param>
-        /// <param name="task">
-        /// Task optimization: retrieval, text-matching, clustering, or classification.<br/>
-        /// Default Value: text-matching
+        /// <param name="inputUrl">
+        /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
         /// </param>
-        /// <param name="dimensions">
-        /// Number of dimensions for output embeddings (1-1024).
+        /// <param name="model">
+        /// The embedding model to use for batch processing.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
+        /// </param>
+        /// <param name="task">
+        /// Task optimization: retrieval, text-matching, clustering, or classification.<br/>
+        /// Default Value: text-matching
         /// </param>
         /// <param name="webhookUrl">
         /// URL to POST notification when job completes.
@@ -91,19 +91,19 @@ namespace Jina
 #endif
         public BatchEmbeddingRequest(
             global::Jina.BatchEmbeddingRequestModel model,
-            string? inputUrl,
-            global::System.Collections.Generic.IList<object>? input,
-            string? task,
             int? dimensions,
+            global::System.Collections.Generic.IList<object>? input,
+            string? inputUrl,
             bool? normalized,
+            string? task,
             string? webhookUrl)
         {
             this.Model = model;
-            this.InputUrl = inputUrl;
-            this.Input = input;
-            this.Task = task;
             this.Dimensions = dimensions;
+            this.Input = input;
+            this.InputUrl = inputUrl;
             this.Normalized = normalized;
+            this.Task = task;
             this.WebhookUrl = webhookUrl;
         }
 

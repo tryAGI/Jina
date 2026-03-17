@@ -79,43 +79,6 @@ namespace Jina
             ProcessListClassifiersResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
-            // - **RATE_REQUEST_LIMIT_EXCEEDED**: Request rate limit exceeded: {current}/N requests per minute. Reduce request frequency or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_TOKEN_LIMIT_EXCEEDED**: Token rate limit exceeded: {current:,}/{limit:,} tokens per minute. Reduce batch sizes or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_CONCURRENCY_LIMIT_EXCEEDED**: Concurrency limit exceeded: {current}/N concurrent requests. Wait for pending requests to complete before sending new ones. - **RATE_IP_LIMIT_EXCEEDED**: IP rate limit exceeded. Too many requests from this IP address. Reduce request frequency.
-            if ((int)__response.StatusCode == 429)
-            {
-                string? __content_429 = null;
-                global::System.Exception? __exception_429 = null;
-                global::Jina.ErrorResponse? __value_429 = null;
-                try
-                {
-                    if (ReadResponseAsString)
-                    {
-                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = global::Jina.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
-                    }
-                }
-                catch (global::System.Exception __ex)
-                {
-                    __exception_429 = __ex;
-                }
-
-                throw new global::Jina.ApiException<global::Jina.ErrorResponse>(
-                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_429,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content_429,
-                    ResponseObject = __value_429,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
             // - **INPUT_MODEL_NOT_FOUND**: Model 'model_name' not found. Available models: .... - **INPUT_INVALID_LABELS**: Invalid training labels. At least {min_labels} unique labels are required for training. - **INPUT_LABEL_LIMIT_EXCEEDED**: Label limit exceeded: {current} labels provided, maximum N allowed for your plan. Reduce the number of labels or upgrade your plan at https://jina.ai/api-dashboard/key-manager.
             if ((int)__response.StatusCode == 400)
             {
@@ -264,6 +227,80 @@ namespace Jina
                         h => h.Value),
                 };
             }
+            // - **CONFLICT_RESOURCE_BUSY**: {resource_type} '{resource_id}' is currently being modified. Please retry after a few moments.
+            if ((int)__response.StatusCode == 409)
+            {
+                string? __content_409 = null;
+                global::System.Exception? __exception_409 = null;
+                global::Jina.ErrorResponse? __value_409 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_409 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_409 = global::Jina.ErrorResponse.FromJson(__content_409, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_409 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_409 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_409, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_409 = __ex;
+                }
+
+                throw new global::Jina.ApiException<global::Jina.ErrorResponse>(
+                    message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_409,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_409,
+                    ResponseObject = __value_409,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // - **RATE_REQUEST_LIMIT_EXCEEDED**: Request rate limit exceeded: {current}/N requests per minute. Reduce request frequency or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_TOKEN_LIMIT_EXCEEDED**: Token rate limit exceeded: {current:,}/{limit:,} tokens per minute. Reduce batch sizes or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_CONCURRENCY_LIMIT_EXCEEDED**: Concurrency limit exceeded: {current}/N concurrent requests. Wait for pending requests to complete before sending new ones. - **RATE_IP_LIMIT_EXCEEDED**: IP rate limit exceeded. Too many requests from this IP address. Reduce request frequency.
+            if ((int)__response.StatusCode == 429)
+            {
+                string? __content_429 = null;
+                global::System.Exception? __exception_429 = null;
+                global::Jina.ErrorResponse? __value_429 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = global::Jina.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_429 = __ex;
+                }
+
+                throw new global::Jina.ApiException<global::Jina.ErrorResponse>(
+                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_429,
+                    ResponseObject = __value_429,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
             // - **INTERNAL_ERROR**: An unexpected error occurred. If this persists, contact support with the request_id from this response.
             if ((int)__response.StatusCode == 500)
             {
@@ -369,43 +406,6 @@ namespace Jina
                 {
                     ResponseBody = __content_504,
                     ResponseObject = __value_504,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
-            // - **CONFLICT_RESOURCE_BUSY**: {resource_type} '{resource_id}' is currently being modified. Please retry after a few moments.
-            if ((int)__response.StatusCode == 409)
-            {
-                string? __content_409 = null;
-                global::System.Exception? __exception_409 = null;
-                global::Jina.ErrorResponse? __value_409 = null;
-                try
-                {
-                    if (ReadResponseAsString)
-                    {
-                        __content_409 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_409 = global::Jina.ErrorResponse.FromJson(__content_409, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        var __contentStream_409 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_409 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_409, JsonSerializerContext).ConfigureAwait(false);
-                    }
-                }
-                catch (global::System.Exception __ex)
-                {
-                    __exception_409 = __ex;
-                }
-
-                throw new global::Jina.ApiException<global::Jina.ErrorResponse>(
-                    message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_409,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content_409,
-                    ResponseObject = __value_409,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,

@@ -9,11 +9,10 @@ namespace Jina
     public sealed partial class EmbeddingUsage
     {
         /// <summary>
-        /// Total number of tokens processed.
+        /// Number of tokens from image inputs.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("total_tokens")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TotalTokens { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("image_tokens")]
+        public int? ImageTokens { get; set; }
 
         /// <summary>
         /// Number of tokens in the input.
@@ -23,10 +22,11 @@ namespace Jina
         public required int PromptTokens { get; set; }
 
         /// <summary>
-        /// Number of tokens from image inputs.
+        /// Total number of tokens processed.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("image_tokens")]
-        public int? ImageTokens { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_tokens")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int TotalTokens { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,25 +37,25 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingUsage" /> class.
         /// </summary>
-        /// <param name="totalTokens">
-        /// Total number of tokens processed.
+        /// <param name="imageTokens">
+        /// Number of tokens from image inputs.
         /// </param>
         /// <param name="promptTokens">
         /// Number of tokens in the input.
         /// </param>
-        /// <param name="imageTokens">
-        /// Number of tokens from image inputs.
+        /// <param name="totalTokens">
+        /// Total number of tokens processed.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbeddingUsage(
-            int totalTokens,
             int promptTokens,
+            int totalTokens,
             int? imageTokens)
         {
-            this.TotalTokens = totalTokens;
             this.PromptTokens = promptTokens;
+            this.TotalTokens = totalTokens;
             this.ImageTokens = imageTokens;
         }
 

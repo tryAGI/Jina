@@ -12,32 +12,17 @@ namespace Jina
     public sealed partial class ClipV2Request
     {
         /// <summary>
+        /// Number of dimensions for the output embedding. Range: 1-1024.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public int? Dimensions { get; set; }
+
+        /// <summary>
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ClipV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ClipV2RequestEmbeddingTypeItem>, object>))]
         public global::Jina.AnyOf<global::Jina.ClipV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ClipV2RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
-
-        /// <summary>
-        /// If true (default), embeddings are L2-normalized to unit length.<br/>
-        /// Default Value: true
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
-        public bool? Normalized { get; set; }
-
-        /// <summary>
-        /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("truncate")]
-        public bool? Truncate { get; set; }
-
-        /// <summary>
-        /// The CLIP model to use.
-        /// </summary>
-        /// <default>"jina-clip-v2"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "jina-clip-v2";
 
         /// <summary>
         /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
@@ -48,16 +33,31 @@ namespace Jina
         public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
 
         /// <summary>
+        /// The CLIP model to use.
+        /// </summary>
+        /// <default>"jina-clip-v2"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string Model { get; set; } = "jina-clip-v2";
+
+        /// <summary>
+        /// If true (default), embeddings are L2-normalized to unit length.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("normalized")]
+        public bool? Normalized { get; set; }
+
+        /// <summary>
         /// Set to `retrieval.query` to optimize for search queries. Leave unset for documents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
         public string? Task { get; set; }
 
         /// <summary>
-        /// Number of dimensions for the output embedding. Range: 1-1024.
+        /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
+        /// Default Value: false
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
-        public int? Dimensions { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncate")]
+        public bool? Truncate { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,48 +68,48 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ClipV2Request" /> class.
         /// </summary>
+        /// <param name="dimensions">
+        /// Number of dimensions for the output embedding. Range: 1-1024.
+        /// </param>
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
+        /// </param>
+        /// <param name="input">
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
+        /// </param>
+        /// <param name="model">
+        /// The CLIP model to use.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
         /// </param>
-        /// <param name="truncate">
-        /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
-        /// Default Value: false
-        /// </param>
-        /// <param name="model">
-        /// The CLIP model to use.
-        /// </param>
-        /// <param name="input">
-        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
-        /// </param>
         /// <param name="task">
         /// Set to `retrieval.query` to optimize for search queries. Leave unset for documents.
         /// </param>
-        /// <param name="dimensions">
-        /// Number of dimensions for the output embedding. Range: 1-1024.
+        /// <param name="truncate">
+        /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
+        /// Default Value: false
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ClipV2Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> input,
+            int? dimensions,
             global::Jina.AnyOf<global::Jina.ClipV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ClipV2RequestEmbeddingTypeItem>, object>? embeddingType,
             bool? normalized,
-            bool? truncate,
             string? task,
-            int? dimensions,
+            bool? truncate,
             string model = "jina-clip-v2")
         {
             this.Input = input;
-            this.EmbeddingType = embeddingType;
-            this.Normalized = normalized;
-            this.Truncate = truncate;
-            this.Model = model;
-            this.Task = task;
             this.Dimensions = dimensions;
+            this.EmbeddingType = embeddingType;
+            this.Model = model;
+            this.Normalized = normalized;
+            this.Task = task;
+            this.Truncate = truncate;
         }
 
         /// <summary>

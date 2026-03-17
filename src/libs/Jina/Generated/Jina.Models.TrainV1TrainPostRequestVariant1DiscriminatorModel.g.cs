@@ -11,11 +11,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaEmbeddingsV2BaseEn,
+        JinaClipV1,
         /// <summary>
         /// 
         /// </summary>
-        JinaEmbeddingsV2BaseZh,
+        JinaClipV2,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaEmbeddingsV2BaseCode,
         /// <summary>
         /// 
         /// </summary>
@@ -23,11 +27,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        JinaEmbeddingsV2BaseEn,
+        /// <summary>
+        /// 
+        /// </summary>
         JinaEmbeddingsV2BaseEs,
         /// <summary>
         /// 
         /// </summary>
-        JinaEmbeddingsV2BaseCode,
+        JinaEmbeddingsV2BaseZh,
         /// <summary>
         /// 
         /// </summary>
@@ -44,14 +52,6 @@ namespace Jina
         /// 
         /// </summary>
         JinaEmbeddingsV5TextSmall,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaClipV1,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaClipV2,
     }
 
     /// <summary>
@@ -66,17 +66,17 @@ namespace Jina
         {
             return value switch
             {
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEn => "jina-embeddings-v2-base-en",
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseDe => "jina-embeddings-v2-base-de",
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEs => "jina-embeddings-v2-base-es",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV1 => "jina-clip-v1",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV2 => "jina-clip-v2",
                 TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseCode => "jina-embeddings-v2-base-code",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseDe => "jina-embeddings-v2-base-de",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEn => "jina-embeddings-v2-base-en",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEs => "jina-embeddings-v2-base-es",
+                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
                 TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV3 => "jina-embeddings-v3",
                 TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV4 => "jina-embeddings-v4",
                 TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV5TextNano => "jina-embeddings-v5-text-nano",
                 TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV5TextSmall => "jina-embeddings-v5-text-small",
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV1 => "jina-clip-v1",
-                TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV2 => "jina-clip-v2",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -87,17 +87,17 @@ namespace Jina
         {
             return value switch
             {
-                "jina-embeddings-v2-base-en" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEn,
-                "jina-embeddings-v2-base-zh" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseZh,
-                "jina-embeddings-v2-base-de" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseDe,
-                "jina-embeddings-v2-base-es" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEs,
+                "jina-clip-v1" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV1,
+                "jina-clip-v2" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV2,
                 "jina-embeddings-v2-base-code" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseCode,
+                "jina-embeddings-v2-base-de" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseDe,
+                "jina-embeddings-v2-base-en" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEn,
+                "jina-embeddings-v2-base-es" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEs,
+                "jina-embeddings-v2-base-zh" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseZh,
                 "jina-embeddings-v3" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV3,
                 "jina-embeddings-v4" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV4,
                 "jina-embeddings-v5-text-nano" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV5TextNano,
                 "jina-embeddings-v5-text-small" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV5TextSmall,
-                "jina-clip-v1" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV1,
-                "jina-clip-v2" => TrainV1TrainPostRequestVariant1DiscriminatorModel.JinaClipV2,
                 _ => null,
             };
         }

@@ -12,18 +12,17 @@ namespace Jina
     public sealed partial class ColbertV2Request
     {
         /// <summary>
+        /// Dimensions per token: `64`, `96`, or `128`. Defaults to 128.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
+        public int? Dimensions { get; set; }
+
+        /// <summary>
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.ColbertV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV2RequestEmbeddingTypeItem>, object>))]
         public global::Jina.AnyOf<global::Jina.ColbertV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV2RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
-
-        /// <summary>
-        /// The ColBERT model to use.
-        /// </summary>
-        /// <default>"jina-colbert-v2"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "jina-colbert-v2";
 
         /// <summary>
         /// Text to embed: a string, `TextDoc`, or a list of items.
@@ -41,10 +40,11 @@ namespace Jina
         public global::Jina.ColbertV2RequestInputType2? InputType { get; set; }
 
         /// <summary>
-        /// Dimensions per token: `64`, `96`, or `128`. Defaults to 128.
+        /// The ColBERT model to use.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("dimensions")]
-        public int? Dimensions { get; set; }
+        /// <default>"jina-colbert-v2"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string Model { get; set; } = "jina-colbert-v2";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,11 +55,11 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ColbertV2Request" /> class.
         /// </summary>
+        /// <param name="dimensions">
+        /// Dimensions per token: `64`, `96`, or `128`. Defaults to 128.
+        /// </param>
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
-        /// <param name="model">
-        /// The ColBERT model to use.
         /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
@@ -68,24 +68,24 @@ namespace Jina
         /// Role of the input: `query` for search queries, `document` for passages.<br/>
         /// Default Value: document
         /// </param>
-        /// <param name="dimensions">
-        /// Dimensions per token: `64`, `96`, or `128`. Defaults to 128.
+        /// <param name="model">
+        /// The ColBERT model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ColbertV2Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
+            int? dimensions,
             global::Jina.AnyOf<global::Jina.ColbertV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV2RequestEmbeddingTypeItem>, object>? embeddingType,
             global::Jina.ColbertV2RequestInputType2? inputType,
-            int? dimensions,
             string model = "jina-colbert-v2")
         {
             this.Input = input;
-            this.EmbeddingType = embeddingType;
-            this.Model = model;
-            this.InputType = inputType;
             this.Dimensions = dimensions;
+            this.EmbeddingType = embeddingType;
+            this.InputType = inputType;
+            this.Model = model;
         }
 
         /// <summary>

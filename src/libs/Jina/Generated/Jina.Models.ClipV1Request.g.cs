@@ -19,6 +19,21 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.ClipV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ClipV1RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
+
+        /// <summary>
+        /// The CLIP model to use.
+        /// </summary>
+        /// <default>"jina-clip-v1"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string Model { get; set; } = "jina-clip-v1";
+
+        /// <summary>
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
         /// </summary>
@@ -33,21 +48,6 @@ namespace Jina
         public bool? Truncate { get; set; }
 
         /// <summary>
-        /// The CLIP model to use.
-        /// </summary>
-        /// <default>"jina-clip-v1"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "jina-clip-v1";
-
-        /// <summary>
-        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +59,12 @@ namespace Jina
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
+        /// <param name="input">
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
+        /// </param>
+        /// <param name="model">
+        /// The CLIP model to use.
+        /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
@@ -66,12 +72,6 @@ namespace Jina
         /// <param name="truncate">
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
         /// Default Value: false
-        /// </param>
-        /// <param name="model">
-        /// The CLIP model to use.
-        /// </param>
-        /// <param name="input">
-        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -85,9 +85,9 @@ namespace Jina
         {
             this.Input = input;
             this.EmbeddingType = embeddingType;
+            this.Model = model;
             this.Normalized = normalized;
             this.Truncate = truncate;
-            this.Model = model;
         }
 
         /// <summary>

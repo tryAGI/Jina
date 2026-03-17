@@ -11,6 +11,19 @@ namespace Jina
     public sealed partial class RerankingResult
     {
         /// <summary>
+        /// Document content, if `return_documents=true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("document")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>))]
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? Document { get; set; }
+
+        /// <summary>
+        /// Document embedding, if `return_embeddings=true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("embedding")]
+        public global::System.Collections.Generic.IList<double>? Embedding { get; set; }
+
+        /// <summary>
         /// Position of this document in the original input list.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("index")]
@@ -25,19 +38,6 @@ namespace Jina
         public required double RelevanceScore { get; set; }
 
         /// <summary>
-        /// Document content, if `return_documents=true`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("document")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>))]
-        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? Document { get; set; }
-
-        /// <summary>
-        /// Document embedding, if `return_embeddings=true`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embedding")]
-        public global::System.Collections.Generic.IList<double>? Embedding { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,17 +46,17 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="RerankingResult" /> class.
         /// </summary>
-        /// <param name="index">
-        /// Position of this document in the original input list.
-        /// </param>
-        /// <param name="relevanceScore">
-        /// Relevance score. Higher is more relevant.
-        /// </param>
         /// <param name="document">
         /// Document content, if `return_documents=true`.
         /// </param>
         /// <param name="embedding">
         /// Document embedding, if `return_embeddings=true`.
+        /// </param>
+        /// <param name="index">
+        /// Position of this document in the original input list.
+        /// </param>
+        /// <param name="relevanceScore">
+        /// Relevance score. Higher is more relevant.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

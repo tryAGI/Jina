@@ -9,13 +9,6 @@ namespace Jina
     public sealed partial class ELSERV2EmbeddingUsage
     {
         /// <summary>
-        /// Total number of tokens processed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("total_tokens")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TotalTokens { get; set; }
-
-        /// <summary>
         /// Number of tokens in the input.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_tokens")]
@@ -30,6 +23,13 @@ namespace Jina
         public required int OutputTokens { get; set; }
 
         /// <summary>
+        /// Total number of tokens processed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_tokens")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int TotalTokens { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,26 +38,26 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ELSERV2EmbeddingUsage" /> class.
         /// </summary>
-        /// <param name="totalTokens">
-        /// Total number of tokens processed.
-        /// </param>
         /// <param name="inputTokens">
         /// Number of tokens in the input.
         /// </param>
         /// <param name="outputTokens">
         /// Number of tokens in the output.
         /// </param>
+        /// <param name="totalTokens">
+        /// Total number of tokens processed.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ELSERV2EmbeddingUsage(
-            int totalTokens,
             int inputTokens,
-            int outputTokens)
+            int outputTokens,
+            int totalTokens)
         {
-            this.TotalTokens = totalTokens;
             this.InputTokens = inputTokens;
             this.OutputTokens = outputTokens;
+            this.TotalTokens = totalTokens;
         }
 
         /// <summary>

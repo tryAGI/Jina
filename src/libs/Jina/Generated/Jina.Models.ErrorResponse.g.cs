@@ -9,6 +9,14 @@ namespace Jina
     public sealed partial class ErrorResponse
     {
         /// <summary>
+        /// Machine-readable error code for programmatic handling<br/>
+        /// Example: AUTH_INVALID_API_KEY
+        /// </summary>
+        /// <example>AUTH_INVALID_API_KEY</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
         /// Human-readable error message<br/>
         /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
         /// </summary>
@@ -16,14 +24,6 @@ namespace Jina
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Detail { get; set; }
-
-        /// <summary>
-        /// Machine-readable error code for programmatic handling<br/>
-        /// Example: AUTH_INVALID_API_KEY
-        /// </summary>
-        /// <example>AUTH_INVALID_API_KEY</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public string? Code { get; set; }
 
         /// <summary>
         /// Unique request identifier for tracing and support<br/>
@@ -42,13 +42,13 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorResponse" /> class.
         /// </summary>
-        /// <param name="detail">
-        /// Human-readable error message<br/>
-        /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
-        /// </param>
         /// <param name="code">
         /// Machine-readable error code for programmatic handling<br/>
         /// Example: AUTH_INVALID_API_KEY
+        /// </param>
+        /// <param name="detail">
+        /// Human-readable error message<br/>
+        /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
         /// </param>
         /// <param name="requestId">
         /// Unique request identifier for tracing and support<br/>

@@ -23,18 +23,18 @@ namespace Jina
         public string? Object { get; set; }
 
         /// <summary>
-        /// Token usage statistics.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.BaseUsage Usage { get; set; }
-
-        /// <summary>
         /// Ranked documents, sorted by relevance score descending.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Jina.RerankingResult> Results { get; set; }
+
+        /// <summary>
+        /// Token usage statistics.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.BaseUsage Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,24 +52,24 @@ namespace Jina
         /// Object type, always `list`.<br/>
         /// Default Value: list
         /// </param>
-        /// <param name="usage">
-        /// Token usage statistics.
-        /// </param>
         /// <param name="results">
         /// Ranked documents, sorted by relevance score descending.
+        /// </param>
+        /// <param name="usage">
+        /// Token usage statistics.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RerankingResponse(
             string model,
-            global::Jina.BaseUsage usage,
             global::System.Collections.Generic.IList<global::Jina.RerankingResult> results,
+            global::Jina.BaseUsage usage,
             string? @object)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
-            this.Usage = usage ?? throw new global::System.ArgumentNullException(nameof(usage));
             this.Results = results ?? throw new global::System.ArgumentNullException(nameof(results));
+            this.Usage = usage ?? throw new global::System.ArgumentNullException(nameof(usage));
             this.Object = @object;
         }
 

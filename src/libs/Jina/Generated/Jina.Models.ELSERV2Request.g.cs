@@ -19,19 +19,19 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.ELSERV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ELSERV2RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
-        /// The sparse embedding model to use.
-        /// </summary>
-        /// <default>"elser-v2"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "elser-v2";
-
-        /// <summary>
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+
+        /// <summary>
+        /// The sparse embedding model to use.
+        /// </summary>
+        /// <default>"elser-v2"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string Model { get; set; } = "elser-v2";
 
         /// <summary>
         /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.
@@ -51,11 +51,11 @@ namespace Jina
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
-        /// <param name="model">
-        /// The sparse embedding model to use.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// </param>
+        /// <param name="model">
+        /// The sparse embedding model to use.
         /// </param>
         /// <param name="task">
         /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.
