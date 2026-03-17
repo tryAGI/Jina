@@ -1,7 +1,7 @@
 set -e
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl --fail --silent --show-error https://api.jina.ai/openapi.json | jq . > openapi.json
+curl --fail --silent --show-error https://api.jina.ai/openapi.json | jq -S . > openapi.json
 autosdk generate openapi.json \
   --namespace Jina \
   --clientClassName JinaClient \
