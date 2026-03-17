@@ -1,7 +1,8 @@
+set -e
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl -o openapi.yaml https://api.jina.ai/openapi.json
-autosdk generate openapi.yaml \
+curl --fail --silent --show-error https://api.jina.ai/openapi.json | jq . > openapi.json
+autosdk generate openapi.json \
   --namespace Jina \
   --clientClassName JinaClient \
   --targetFramework net10.0 \
@@ -11,8 +12,8 @@ autosdk generate openapi.yaml \
   --base-url https://api.jina.ai/ \
   --security-scheme Http:Header:Bearer
 
-#curl -o segment-openapi.yaml https://segment.jina.ai/openapi.json
-#autosdk generate segment-openapi.yaml \
+#curl --fail https://segment.jina.ai/openapi.json | jq . > segment-openapi.json
+#autosdk generate segment-openapi.json \
 #  --namespace Jina \
 #  --clientClassName SegmentApi \
 #  --targetFramework net10.0 \
