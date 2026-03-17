@@ -16,11 +16,11 @@ namespace Jina
         public string? Access { get; set; }
 
         /// <summary>
-        /// Number of iterations for the training process.<br/>
-        /// Default Value: 10
+        /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("num_iters")]
-        public int? NumIters { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; }
 
         /// <summary>
         /// Text embedding model for zero-shot classification.
@@ -30,11 +30,11 @@ namespace Jina
         public string Model { get; set; } = "jina-embeddings-v3";
 
         /// <summary>
-        /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
+        /// Number of iterations for the training process.<br/>
+        /// Default Value: 10
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.TextTrainingItem> Input { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("num_iters")]
+        public int? NumIters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,15 +49,15 @@ namespace Jina
         /// Access level for the training data. Can be 'public' or 'private'.<br/>
         /// Default Value: public
         /// </param>
-        /// <param name="numIters">
-        /// Number of iterations for the training process.<br/>
-        /// Default Value: 10
+        /// <param name="input">
+        /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
         /// </param>
         /// <param name="model">
         /// Text embedding model for zero-shot classification.
         /// </param>
-        /// <param name="input">
-        /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
+        /// <param name="numIters">
+        /// Number of iterations for the training process.<br/>
+        /// Default Value: 10
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -70,8 +70,8 @@ namespace Jina
         {
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Access = access;
-            this.NumIters = numIters;
             this.Model = model;
+            this.NumIters = numIters;
         }
 
         /// <summary>

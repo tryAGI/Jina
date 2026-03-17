@@ -21,12 +21,12 @@ namespace Jina.JsonConverters
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.RerankV1RerankPostRequestDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Jina.TextRerankerRequest? jinaRerankerV2BaseMultilingual = default;
-            if (discriminator?.Model == global::Jina.RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual)
+            global::Jina.TextRerankerRequest? jinaColbertV1En = default;
+            if (discriminator?.Model == global::Jina.RerankV1RerankPostRequestDiscriminatorModel.JinaColbertV1En)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.TextRerankerRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.TextRerankerRequest> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.TextRerankerRequest)}");
-                jinaRerankerV2BaseMultilingual = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                jinaColbertV1En = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Jina.RerankerM0Request? jinaRerankerM0 = default;
             if (discriminator?.Model == global::Jina.RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerM0)
@@ -45,7 +45,7 @@ namespace Jina.JsonConverters
 
             var __value = new global::Jina.RerankV1RerankPostRequest(
                 discriminator?.Model,
-                jinaRerankerV2BaseMultilingual,
+                jinaColbertV1En,
 
                 jinaRerankerM0,
 
@@ -64,11 +64,11 @@ namespace Jina.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsJinaRerankerV2BaseMultilingual)
+            if (value.IsJinaColbertV1En)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.TextRerankerRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.TextRerankerRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.TextRerankerRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaRerankerV2BaseMultilingual, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaColbertV1En, typeInfo);
             }
             else if (value.IsJinaRerankerM0)
             {

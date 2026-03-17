@@ -18,18 +18,18 @@ namespace Jina
         /// Example: {"access":"private","input":[{"label":"Biology","text":"Explain the process of photosynthesis."},{"label":"Geography","text":"What is the capital of France?"}],"model":"jina-embeddings-v2-base-en","num_iters":15}
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Jina.EmbeddingsV2CreateTrainingRequest? JinaEmbeddingsV2BaseEn { get; init; }
+        public global::Jina.EmbeddingsV2CreateTrainingRequest? JinaEmbeddingsV2BaseCode { get; init; }
 #else
-        public global::Jina.EmbeddingsV2CreateTrainingRequest? JinaEmbeddingsV2BaseEn { get; }
+        public global::Jina.EmbeddingsV2CreateTrainingRequest? JinaEmbeddingsV2BaseCode { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV2BaseEn))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV2BaseCode))]
 #endif
-        public bool IsJinaEmbeddingsV2BaseEn => JinaEmbeddingsV2BaseEn != null;
+        public bool IsJinaEmbeddingsV2BaseCode => JinaEmbeddingsV2BaseCode != null;
 
         /// <summary>
         /// Example: {"access":"public","input":[{"label":"Biology","text":"Describe the structure of a plant cell."},{"label":"Creative writing","text":"Write a poem about the ocean."}],"model":"jina-embeddings-v3","num_iters":20}
@@ -106,14 +106,14 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Jina.EmbeddingsV2CreateTrainingRequest?(TrainV1TrainPostRequestVariant1 @this) => @this.JinaEmbeddingsV2BaseEn;
+        public static implicit operator global::Jina.EmbeddingsV2CreateTrainingRequest?(TrainV1TrainPostRequestVariant1 @this) => @this.JinaEmbeddingsV2BaseCode;
 
         /// <summary>
         /// 
         /// </summary>
         public TrainV1TrainPostRequestVariant1(global::Jina.EmbeddingsV2CreateTrainingRequest? value)
         {
-            JinaEmbeddingsV2BaseEn = value;
+            JinaEmbeddingsV2BaseCode = value;
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Jina
         /// </summary>
         public TrainV1TrainPostRequestVariant1(
             global::Jina.TrainV1TrainPostRequestVariant1DiscriminatorModel? model,
-            global::Jina.EmbeddingsV2CreateTrainingRequest? jinaEmbeddingsV2BaseEn,
+            global::Jina.EmbeddingsV2CreateTrainingRequest? jinaEmbeddingsV2BaseCode,
             global::Jina.EmbeddingsV3CreateTrainingRequest? jinaEmbeddingsV3,
             global::Jina.EmbeddingsV4CreateTrainingRequest? jinaEmbeddingsV4,
             global::Jina.EmbeddingsV5CreateTrainingRequest? jinaEmbeddingsV5TextNano,
@@ -202,7 +202,7 @@ namespace Jina
         {
             Model = model;
 
-            JinaEmbeddingsV2BaseEn = jinaEmbeddingsV2BaseEn;
+            JinaEmbeddingsV2BaseCode = jinaEmbeddingsV2BaseCode;
             JinaEmbeddingsV3 = jinaEmbeddingsV3;
             JinaEmbeddingsV4 = jinaEmbeddingsV4;
             JinaEmbeddingsV5TextNano = jinaEmbeddingsV5TextNano;
@@ -217,14 +217,14 @@ namespace Jina
             JinaEmbeddingsV5TextNano as object ??
             JinaEmbeddingsV4 as object ??
             JinaEmbeddingsV3 as object ??
-            JinaEmbeddingsV2BaseEn as object 
+            JinaEmbeddingsV2BaseCode as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            JinaEmbeddingsV2BaseEn?.ToString() ??
+            JinaEmbeddingsV2BaseCode?.ToString() ??
             JinaEmbeddingsV3?.ToString() ??
             JinaEmbeddingsV4?.ToString() ??
             JinaEmbeddingsV5TextNano?.ToString() ??
@@ -236,14 +236,14 @@ namespace Jina
         /// </summary>
         public bool Validate()
         {
-            return IsJinaEmbeddingsV2BaseEn && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseEn && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseEn && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseEn && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseEn && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && IsJinaClipV1;
+            return IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseCode && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && IsJinaEmbeddingsV5TextNano && !IsJinaClipV1 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5TextNano && IsJinaClipV1;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Jina.EmbeddingsV2CreateTrainingRequest?, TResult>? jinaEmbeddingsV2BaseEn = null,
+            global::System.Func<global::Jina.EmbeddingsV2CreateTrainingRequest?, TResult>? jinaEmbeddingsV2BaseCode = null,
             global::System.Func<global::Jina.EmbeddingsV3CreateTrainingRequest?, TResult>? jinaEmbeddingsV3 = null,
             global::System.Func<global::Jina.EmbeddingsV4CreateTrainingRequest?, TResult>? jinaEmbeddingsV4 = null,
             global::System.Func<global::Jina.EmbeddingsV5CreateTrainingRequest?, TResult>? jinaEmbeddingsV5TextNano = null,
@@ -255,9 +255,9 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseEn && jinaEmbeddingsV2BaseEn != null)
+            if (IsJinaEmbeddingsV2BaseCode && jinaEmbeddingsV2BaseCode != null)
             {
-                return jinaEmbeddingsV2BaseEn(JinaEmbeddingsV2BaseEn!);
+                return jinaEmbeddingsV2BaseCode(JinaEmbeddingsV2BaseCode!);
             }
             else if (IsJinaEmbeddingsV3 && jinaEmbeddingsV3 != null)
             {
@@ -283,7 +283,7 @@ namespace Jina
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Jina.EmbeddingsV2CreateTrainingRequest?>? jinaEmbeddingsV2BaseEn = null,
+            global::System.Action<global::Jina.EmbeddingsV2CreateTrainingRequest?>? jinaEmbeddingsV2BaseCode = null,
             global::System.Action<global::Jina.EmbeddingsV3CreateTrainingRequest?>? jinaEmbeddingsV3 = null,
             global::System.Action<global::Jina.EmbeddingsV4CreateTrainingRequest?>? jinaEmbeddingsV4 = null,
             global::System.Action<global::Jina.EmbeddingsV5CreateTrainingRequest?>? jinaEmbeddingsV5TextNano = null,
@@ -295,9 +295,9 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseEn)
+            if (IsJinaEmbeddingsV2BaseCode)
             {
-                jinaEmbeddingsV2BaseEn?.Invoke(JinaEmbeddingsV2BaseEn!);
+                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
             }
             else if (IsJinaEmbeddingsV3)
             {
@@ -324,7 +324,7 @@ namespace Jina
         {
             var fields = new object?[]
             {
-                JinaEmbeddingsV2BaseEn,
+                JinaEmbeddingsV2BaseCode,
                 typeof(global::Jina.EmbeddingsV2CreateTrainingRequest),
                 JinaEmbeddingsV3,
                 typeof(global::Jina.EmbeddingsV3CreateTrainingRequest),
@@ -350,7 +350,7 @@ namespace Jina
         public bool Equals(TrainV1TrainPostRequestVariant1 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV2CreateTrainingRequest?>.Default.Equals(JinaEmbeddingsV2BaseEn, other.JinaEmbeddingsV2BaseEn) &&
+                global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV2CreateTrainingRequest?>.Default.Equals(JinaEmbeddingsV2BaseCode, other.JinaEmbeddingsV2BaseCode) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV3CreateTrainingRequest?>.Default.Equals(JinaEmbeddingsV3, other.JinaEmbeddingsV3) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV4CreateTrainingRequest?>.Default.Equals(JinaEmbeddingsV4, other.JinaEmbeddingsV4) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV5CreateTrainingRequest?>.Default.Equals(JinaEmbeddingsV5TextNano, other.JinaEmbeddingsV5TextNano) &&

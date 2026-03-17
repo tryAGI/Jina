@@ -19,6 +19,22 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
+        /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+
+        /// <summary>
+        /// The embedding model to use.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV2RequestModelJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.EmbeddingsV2RequestModel Model { get; set; }
+
+        /// <summary>
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
         /// </summary>
@@ -33,22 +49,6 @@ namespace Jina
         public bool? Truncate { get; set; }
 
         /// <summary>
-        /// The embedding model to use.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV2RequestModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.EmbeddingsV2RequestModel Model { get; set; }
-
-        /// <summary>
-        /// Text to embed: a string, `TextDoc`, or a list of items.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +60,12 @@ namespace Jina
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
+        /// <param name="input">
+        /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// </param>
+        /// <param name="model">
+        /// The embedding model to use.
+        /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
         /// Default Value: true
@@ -68,24 +74,18 @@ namespace Jina
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="model">
-        /// The embedding model to use.
-        /// </param>
-        /// <param name="input">
-        /// Text to embed: a string, `TextDoc`, or a list of items.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbeddingsV2Request(
-            global::Jina.EmbeddingsV2RequestModel model,
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
+            global::Jina.EmbeddingsV2RequestModel model,
             global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>, object>? embeddingType,
             bool? normalized,
             bool? truncate)
         {
-            this.Model = model;
             this.Input = input;
+            this.Model = model;
             this.EmbeddingType = embeddingType;
             this.Normalized = normalized;
             this.Truncate = truncate;

@@ -19,13 +19,6 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
-        /// The ColBERT model to use.
-        /// </summary>
-        /// <default>"jina-colbert-v1-en"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = "jina-colbert-v1-en";
-
-        /// <summary>
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
@@ -41,6 +34,13 @@ namespace Jina
         public global::Jina.ColbertV1RequestInputType2? InputType { get; set; }
 
         /// <summary>
+        /// The ColBERT model to use.
+        /// </summary>
+        /// <default>"jina-colbert-v1-en"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        public string Model { get; set; } = "jina-colbert-v1-en";
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,15 +52,15 @@ namespace Jina
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
-        /// <param name="model">
-        /// The ColBERT model to use.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </param>
         /// <param name="inputType">
         /// Role of the input: `query` for search queries, `document` for passages.<br/>
         /// Default Value: document
+        /// </param>
+        /// <param name="model">
+        /// The ColBERT model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -73,8 +73,8 @@ namespace Jina
         {
             this.Input = input;
             this.EmbeddingType = embeddingType;
-            this.Model = model;
             this.InputType = inputType;
+            this.Model = model;
         }
 
         /// <summary>

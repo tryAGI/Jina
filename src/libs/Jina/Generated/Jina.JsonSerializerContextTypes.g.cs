@@ -40,19 +40,19 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.BatchEmbeddingRequestModel? Type3 { get; set; }
+        public object? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Type4 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type5 { get; set; }
+        public string? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type6 { get; set; }
+        public global::Jina.BatchEmbeddingRequestModel? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -84,31 +84,31 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<double?, global::System.Collections.Generic.Dictionary<string, double>>? Type14 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>>? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type15 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, double>? Type16 { get; set; }
+        public global::Jina.ClassificationPredictionLabel? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>>? Type17 { get; set; }
+        public double? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>? Type18 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClassificationPredictionLabel? Type19 { get; set; }
+        public global::Jina.AnyOf<double?, global::System.Collections.Generic.Dictionary<string, double>>? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>? Type20 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, double>? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -128,11 +128,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type25 { get; set; }
+        public global::System.DateTime? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type26 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -140,23 +140,23 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClipCreateTrainingRequestModel? Type28 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>? Type29 { get; set; }
+        public global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>? Type30 { get; set; }
+        public global::Jina.TextTrainingItem? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextTrainingItem? Type31 { get; set; }
+        public global::Jina.ImageTrainingItem? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ImageTrainingItem? Type32 { get; set; }
+        public global::Jina.ClipCreateTrainingRequestModel? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -228,19 +228,19 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>? Type50 { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>? Type51 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClipZeroShotClassificationRequestModel? Type52 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>? Type53 { get; set; }
+        public global::Jina.ClipZeroShotClassificationRequestModel? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -392,51 +392,51 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.EmbeddingUsage, global::Jina.ELSERV2EmbeddingUsage, global::Jina.BaseUsage>? Type91 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>, global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>, global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>>? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.EmbeddingUsage? Type92 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>, global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>, global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>>? Type93 { get; set; }
+        public global::Jina.SingleEmbeddingData? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>? Type94 { get; set; }
+        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>>? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.SingleEmbeddingData? Type95 { get; set; }
+        public global::System.Collections.Generic.IList<double>? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>>? Type96 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type97 { get; set; }
+        public global::Jina.MultiEmbeddingData? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>? Type98 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>>? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.MultiEmbeddingData? Type99 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>>? Type100 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type101 { get; set; }
+        public global::Jina.AnyOf<global::Jina.EmbeddingUsage, global::Jina.ELSERV2EmbeddingUsage, global::Jina.BaseUsage>? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>? Type102 { get; set; }
+        public global::Jina.EmbeddingUsage? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -444,11 +444,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.EmbeddingsV2CreateTrainingRequestModel? Type104 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.TextTrainingItem>? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.TextTrainingItem>? Type105 { get; set; }
+        public global::Jina.EmbeddingsV2CreateTrainingRequestModel? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -592,35 +592,35 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.FewShotClassificationRequest? Type141 { get; set; }
+        public global::Jina.ErrorResponse? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.HTTPValidationError? Type142 { get; set; }
+        public global::Jina.FewShotClassificationRequest? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.HTTPValidationErrorError>? Type143 { get; set; }
+        public global::Jina.HTTPValidationError? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.HTTPValidationErrorError? Type144 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.HTTPValidationErrorError>? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ModelDatacenter? Type145 { get; set; }
+        public global::Jina.HTTPValidationErrorError? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ModelInfo? Type146 { get; set; }
+        public global::Jina.ModelDatacenter? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTimeOffset? Type147 { get; set; }
+        public global::Jina.ModelInfo? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ModelPricing? Type148 { get; set; }
+        public global::System.DateTimeOffset? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -628,99 +628,99 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ModelListResponse? Type150 { get; set; }
+        public global::Jina.ModelPricing? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ModelInfo>? Type151 { get; set; }
+        public global::Jina.ModelListResponse? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankerM0Request? Type152 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ModelInfo>? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankerV3Request? Type153 { get; set; }
+        public global::Jina.RerankerM0Request? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankingResponse? Type154 { get; set; }
+        public global::Jina.RerankerV3Request? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.RerankingResult>? Type155 { get; set; }
+        public global::Jina.RerankingResponse? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankingResult? Type156 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.RerankingResult>? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? Type157 { get; set; }
+        public global::Jina.RerankingResult? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextRerankerRequest? Type158 { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TextRerankerRequestModel? Type159 { get; set; }
+        public global::Jina.TextRerankerRequest? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.TrainingResponse? Type160 { get; set; }
+        public global::Jina.TextRerankerRequestModel? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.UpdateTrainingRequest? Type161 { get; set; }
+        public global::Jina.TrainingResponse? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>>? Type162 { get; set; }
+        public global::Jina.UpdateTrainingRequest? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ErrorResponse? Type163 { get; set; }
+        public global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>>? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.EmbeddingsV1EmbeddingsPostRequest? Type164 { get; set; }
+        public global::Jina.AnyOf<global::Jina.ClassifyV1ClassifyPostRequestVariant1?, global::Jina.FewShotClassificationRequest>? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminator? Type165 { get; set; }
+        public global::Jina.ClassifyV1ClassifyPostRequestVariant1? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel? Type166 { get; set; }
+        public global::Jina.ClassifyV1ClassifyPostRequestVariant1Discriminator? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankV1RerankPostRequest? Type167 { get; set; }
+        public global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankV1RerankPostRequestDiscriminator? Type168 { get; set; }
+        public global::Jina.EmbeddingsV1EmbeddingsPostRequest? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.RerankV1RerankPostRequestDiscriminatorModel? Type169 { get; set; }
+        public global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminator? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::Jina.ClassifyV1ClassifyPostRequestVariant1?, global::Jina.FewShotClassificationRequest>? Type170 { get; set; }
+        public global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClassifyV1ClassifyPostRequestVariant1? Type171 { get; set; }
+        public global::Jina.RerankV1RerankPostRequest? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClassifyV1ClassifyPostRequestVariant1Discriminator? Type172 { get; set; }
+        public global::Jina.RerankV1RerankPostRequestDiscriminator? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel? Type173 { get; set; }
+        public global::Jina.RerankV1RerankPostRequestDiscriminatorModel? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -740,11 +740,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.ClassifierSummary>? Type178 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.BatchStatus>? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Jina.BatchStatus>? Type179 { get; set; }
+        public global::System.Collections.Generic.IList<global::Jina.ClassifierSummary>? Type179 { get; set; }
 
         /// <summary>
         /// 
@@ -801,15 +801,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<global::System.Collections.Generic.List<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>>? ListType13 { get; set; }
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.List<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>? ListType13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? ListType14 { get; set; }
+        public global::Jina.AnyOf<global::System.Collections.Generic.List<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>>? ListType14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.List<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>? ListType15 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? ListType15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -949,10 +949,10 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Jina.ClassifierSummary>? ListType50 { get; set; }
+        public global::System.Collections.Generic.List<global::Jina.BatchStatus>? ListType50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Jina.BatchStatus>? ListType51 { get; set; }
+        public global::System.Collections.Generic.List<global::Jina.ClassifierSummary>? ListType51 { get; set; }
     }
 }

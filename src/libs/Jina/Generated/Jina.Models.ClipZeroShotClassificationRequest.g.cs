@@ -12,6 +12,14 @@ namespace Jina
     public sealed partial class ClipZeroShotClassificationRequest
     {
         /// <summary>
+        /// Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
+
+        /// <summary>
         /// Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
@@ -28,14 +36,6 @@ namespace Jina
         public required global::Jina.ClipZeroShotClassificationRequestModel Model { get; set; }
 
         /// <summary>
-        /// Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> Input { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,26 +44,26 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ClipZeroShotClassificationRequest" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.
+        /// </param>
         /// <param name="labels">
         /// Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.
         /// </param>
         /// <param name="model">
         /// The CLIP model to use.
         /// </param>
-        /// <param name="input">
-        /// Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ClipZeroShotClassificationRequest(
+            global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> input,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>> labels,
-            global::Jina.ClipZeroShotClassificationRequestModel model,
-            global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>>> input)
+            global::Jina.ClipZeroShotClassificationRequestModel model)
         {
+            this.Input = input;
             this.Labels = labels;
             this.Model = model;
-            this.Input = input;
         }
 
         /// <summary>

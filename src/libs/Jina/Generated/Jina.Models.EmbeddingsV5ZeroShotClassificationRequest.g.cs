@@ -12,6 +12,14 @@ namespace Jina
     public sealed partial class EmbeddingsV5ZeroShotClassificationRequest
     {
         /// <summary>
+        /// Text to classify: a string, `TextDoc`, or list of up to 512 items.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+
+        /// <summary>
         /// Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
@@ -28,14 +36,6 @@ namespace Jina
         public required global::Jina.EmbeddingsV5ZeroShotClassificationRequestModel Model { get; set; }
 
         /// <summary>
-        /// Text to classify: a string, `TextDoc`, or list of up to 512 items.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,26 +44,26 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingsV5ZeroShotClassificationRequest" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Text to classify: a string, `TextDoc`, or list of up to 512 items.
+        /// </param>
         /// <param name="labels">
         /// Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.
         /// </param>
         /// <param name="model">
         /// The embedding model to use.
         /// </param>
-        /// <param name="input">
-        /// Text to classify: a string, `TextDoc`, or list of up to 512 items.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbeddingsV5ZeroShotClassificationRequest(
+            global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>> labels,
-            global::Jina.EmbeddingsV5ZeroShotClassificationRequestModel model,
-            global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input)
+            global::Jina.EmbeddingsV5ZeroShotClassificationRequestModel model)
         {
+            this.Input = input;
             this.Labels = labels;
             this.Model = model;
-            this.Input = input;
         }
 
         /// <summary>

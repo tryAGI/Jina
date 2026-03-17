@@ -21,12 +21,12 @@ namespace Jina.JsonConverters
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.ClassifyV1ClassifyPostRequestVariant1Discriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Jina.EmbeddingsV2ZeroShotClassificationRequest? jinaEmbeddingsV2BaseEn = default;
-            if (discriminator?.Model == global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseEn)
+            global::Jina.EmbeddingsV2ZeroShotClassificationRequest? jinaEmbeddingsV2BaseCode = default;
+            if (discriminator?.Model == global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV2BaseCode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV2ZeroShotClassificationRequest> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest)}");
-                jinaEmbeddingsV2BaseEn = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                jinaEmbeddingsV2BaseCode = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Jina.EmbeddingsV3ZeroShotClassificationRequest? jinaEmbeddingsV3 = default;
             if (discriminator?.Model == global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel.JinaEmbeddingsV3)
@@ -66,7 +66,7 @@ namespace Jina.JsonConverters
 
             var __value = new global::Jina.ClassifyV1ClassifyPostRequestVariant1(
                 discriminator?.Model,
-                jinaEmbeddingsV2BaseEn,
+                jinaEmbeddingsV2BaseCode,
 
                 jinaEmbeddingsV3,
 
@@ -91,11 +91,11 @@ namespace Jina.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsJinaEmbeddingsV2BaseEn)
+            if (value.IsJinaEmbeddingsV2BaseCode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV2ZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseEn, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseCode, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV3)
             {

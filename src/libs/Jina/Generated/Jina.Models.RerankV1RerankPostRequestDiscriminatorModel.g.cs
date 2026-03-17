@@ -11,7 +11,19 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaRerankerV2BaseMultilingual,
+        JinaColbertV1En,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaColbertV2,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaRerankerM0,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaRerankerV1BaseEn,
         /// <summary>
         /// 
         /// </summary>
@@ -23,19 +35,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaRerankerV1BaseEn,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaColbertV1En,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaColbertV2,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaRerankerM0,
+        JinaRerankerV2BaseMultilingual,
         /// <summary>
         /// 
         /// </summary>
@@ -54,13 +54,13 @@ namespace Jina
         {
             return value switch
             {
-                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual => "jina-reranker-v2-base-multilingual",
-                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TinyEn => "jina-reranker-v1-tiny-en",
-                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn => "jina-reranker-v1-turbo-en",
-                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1BaseEn => "jina-reranker-v1-base-en",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaColbertV1En => "jina-colbert-v1-en",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaColbertV2 => "jina-colbert-v2",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerM0 => "jina-reranker-m0",
+                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1BaseEn => "jina-reranker-v1-base-en",
+                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TinyEn => "jina-reranker-v1-tiny-en",
+                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn => "jina-reranker-v1-turbo-en",
+                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual => "jina-reranker-v2-base-multilingual",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV3 => "jina-reranker-v3",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -72,13 +72,13 @@ namespace Jina
         {
             return value switch
             {
-                "jina-reranker-v2-base-multilingual" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual,
-                "jina-reranker-v1-tiny-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TinyEn,
-                "jina-reranker-v1-turbo-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn,
-                "jina-reranker-v1-base-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1BaseEn,
                 "jina-colbert-v1-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaColbertV1En,
                 "jina-colbert-v2" => RerankV1RerankPostRequestDiscriminatorModel.JinaColbertV2,
                 "jina-reranker-m0" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerM0,
+                "jina-reranker-v1-base-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1BaseEn,
+                "jina-reranker-v1-tiny-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TinyEn,
+                "jina-reranker-v1-turbo-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn,
+                "jina-reranker-v2-base-multilingual" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual,
                 "jina-reranker-v3" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV3,
                 _ => null,
             };

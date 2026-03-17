@@ -12,30 +12,11 @@ namespace Jina
     public sealed partial class RerankerM0Request
     {
         /// <summary>
-        /// The search query to rank documents against.
+        /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Query { get; set; }
-
-        /// <summary>
-        /// Number of top results to return. If not set, returns all documents.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_n")]
-        public int? TopN { get; set; }
-
-        /// <summary>
-        /// If true (default), includes document content in each result.<br/>
-        /// Default Value: true
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("return_documents")]
-        public bool? ReturnDocuments { get; set; }
-
-        /// <summary>
-        /// If true, truncates documents exceeding the model's max token limit.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("truncation")]
-        public bool? Truncation { get; set; }
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>> Documents { get; set; }
 
         /// <summary>
         /// The multimodal reranking model to use.
@@ -45,11 +26,30 @@ namespace Jina
         public string Model { get; set; } = "jina-reranker-m0";
 
         /// <summary>
-        /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
+        /// The search query to rank documents against.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("query")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>> Documents { get; set; }
+        public required string Query { get; set; }
+
+        /// <summary>
+        /// If true (default), includes document content in each result.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("return_documents")]
+        public bool? ReturnDocuments { get; set; }
+
+        /// <summary>
+        /// Number of top results to return. If not set, returns all documents.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_n")]
+        public int? TopN { get; set; }
+
+        /// <summary>
+        /// If true, truncates documents exceeding the model's max token limit.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("truncation")]
+        public bool? Truncation { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -60,42 +60,42 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="RerankerM0Request" /> class.
         /// </summary>
+        /// <param name="documents">
+        /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
+        /// </param>
+        /// <param name="model">
+        /// The multimodal reranking model to use.
+        /// </param>
         /// <param name="query">
         /// The search query to rank documents against.
-        /// </param>
-        /// <param name="topN">
-        /// Number of top results to return. If not set, returns all documents.
         /// </param>
         /// <param name="returnDocuments">
         /// If true (default), includes document content in each result.<br/>
         /// Default Value: true
         /// </param>
+        /// <param name="topN">
+        /// Number of top results to return. If not set, returns all documents.
+        /// </param>
         /// <param name="truncation">
         /// If true, truncates documents exceeding the model's max token limit.
-        /// </param>
-        /// <param name="model">
-        /// The multimodal reranking model to use.
-        /// </param>
-        /// <param name="documents">
-        /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RerankerM0Request(
-            string query,
             global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>> documents,
-            int? topN,
+            string query,
             bool? returnDocuments,
+            int? topN,
             bool? truncation,
             string model = "jina-reranker-m0")
         {
-            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
-            this.TopN = topN;
-            this.ReturnDocuments = returnDocuments;
-            this.Truncation = truncation;
+            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.Model = model;
+            this.ReturnDocuments = returnDocuments;
+            this.TopN = topN;
+            this.Truncation = truncation;
         }
 
         /// <summary>

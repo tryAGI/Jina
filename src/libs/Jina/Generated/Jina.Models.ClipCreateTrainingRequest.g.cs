@@ -18,11 +18,11 @@ namespace Jina
         public string? Access { get; set; }
 
         /// <summary>
-        /// Number of iterations for the training process.<br/>
-        /// Default Value: 10
+        /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("num_iters")]
-        public int? NumIters { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; }
 
         /// <summary>
         /// CLIP model for zero-shot classification of images and text.
@@ -33,11 +33,11 @@ namespace Jina
         public required global::Jina.ClipCreateTrainingRequestModel Model { get; set; }
 
         /// <summary>
-        /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.
+        /// Number of iterations for the training process.<br/>
+        /// Default Value: 10
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> Input { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("num_iters")]
+        public int? NumIters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,27 +52,27 @@ namespace Jina
         /// Access level for the training data. Can be 'public' or 'private'.<br/>
         /// Default Value: public
         /// </param>
-        /// <param name="numIters">
-        /// Number of iterations for the training process.<br/>
-        /// Default Value: 10
+        /// <param name="input">
+        /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.
         /// </param>
         /// <param name="model">
         /// CLIP model for zero-shot classification of images and text.
         /// </param>
-        /// <param name="input">
-        /// Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.
+        /// <param name="numIters">
+        /// Number of iterations for the training process.<br/>
+        /// Default Value: 10
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ClipCreateTrainingRequest(
-            global::Jina.ClipCreateTrainingRequestModel model,
             global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>> input,
+            global::Jina.ClipCreateTrainingRequestModel model,
             string? access,
             int? numIters)
         {
-            this.Model = model;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
+            this.Model = model;
             this.Access = access;
             this.NumIters = numIters;
         }

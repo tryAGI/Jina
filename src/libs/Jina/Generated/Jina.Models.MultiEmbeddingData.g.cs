@@ -11,11 +11,12 @@ namespace Jina
     public sealed partial class MultiEmbeddingData
     {
         /// <summary>
-        /// Object type, always `embeddings` for multi-vector output.<br/>
-        /// Default Value: embeddings
+        /// Per-token embedding vectors. Each is a list of floats or base64 string.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        public string? Object { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("embeddings")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>> Embeddings { get; set; }
 
         /// <summary>
         /// Position of this result in the input list.
@@ -25,12 +26,11 @@ namespace Jina
         public required int Index { get; set; }
 
         /// <summary>
-        /// Per-token embedding vectors. Each is a list of floats or base64 string.
+        /// Object type, always `embeddings` for multi-vector output.<br/>
+        /// Default Value: embeddings
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("embeddings")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>> Embeddings { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
+        public string? Object { get; set; }
 
         /// <summary>
         /// Tokens corresponding to each embedding, if `return_tokenized_input=true`.
@@ -47,15 +47,15 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiEmbeddingData" /> class.
         /// </summary>
-        /// <param name="object">
-        /// Object type, always `embeddings` for multi-vector output.<br/>
-        /// Default Value: embeddings
+        /// <param name="embeddings">
+        /// Per-token embedding vectors. Each is a list of floats or base64 string.
         /// </param>
         /// <param name="index">
         /// Position of this result in the input list.
         /// </param>
-        /// <param name="embeddings">
-        /// Per-token embedding vectors. Each is a list of floats or base64 string.
+        /// <param name="object">
+        /// Object type, always `embeddings` for multi-vector output.<br/>
+        /// Default Value: embeddings
         /// </param>
         /// <param name="tokenizedInput">
         /// Tokens corresponding to each embedding, if `return_tokenized_input=true`.
@@ -64,13 +64,13 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public MultiEmbeddingData(
-            int index,
             global::Jina.AnyOf<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>> embeddings,
+            int index,
             string? @object,
             global::System.Collections.Generic.IList<string>? tokenizedInput)
         {
-            this.Index = index;
             this.Embeddings = embeddings;
+            this.Index = index;
             this.Object = @object;
             this.TokenizedInput = tokenizedInput;
         }
