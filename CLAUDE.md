@@ -29,7 +29,6 @@ cd src/libs/Jina && ./generate.sh
 The SDK code is **entirely auto-generated** — do not manually edit files in `src/libs/Jina/Generated/`.
 
 1. `src/libs/Jina/openapi.json` — the Jina OpenAPI spec (fetched from `https://api.jina.ai/openapi.json`, formatted with `jq`)
-2. `src/helpers/FixOpenApiSpec/` — converts OpenAPI 3.1 → 3.0 format for compatibility
 3. `src/libs/Jina/generate.sh` — orchestrates: download spec → fix spec → run AutoSDK CLI → output to `Generated/`
 4. CI auto-updates the spec every 3 hours and creates PRs if changes are detected
 
@@ -39,8 +38,6 @@ The SDK code is **entirely auto-generated** — do not manually edit files in `s
 |---------|---------|
 | `src/libs/Jina/` | Main SDK library (`JinaClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real Jina API |
-| `src/helpers/FixOpenApiSpec/` | OpenAPI spec fixer tool |
-| `src/helpers/GenerateDocs/` | Documentation generator from integration tests |
 
 ### Build Configuration
 
