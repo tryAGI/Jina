@@ -95,8 +95,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_400 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_400, JsonSerializerContext).ConfigureAwait(false);
+                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_400 = global::Jina.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -132,8 +133,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_401 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_401, JsonSerializerContext).ConfigureAwait(false);
+                        __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_401 = global::Jina.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -169,8 +171,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_403 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_403 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_403, JsonSerializerContext).ConfigureAwait(false);
+                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_403 = global::Jina.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -206,8 +209,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_404 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_404 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_404, JsonSerializerContext).ConfigureAwait(false);
+                        __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_404 = global::Jina.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -243,8 +247,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_409 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_409 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_409, JsonSerializerContext).ConfigureAwait(false);
+                        __content_409 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_409 = global::Jina.ErrorResponse.FromJson(__content_409, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -280,8 +285,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_429 = global::Jina.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -317,8 +323,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_500 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_500, JsonSerializerContext).ConfigureAwait(false);
+                        __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_500 = global::Jina.ErrorResponse.FromJson(__content_500, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -354,8 +361,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_503 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_503 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_503, JsonSerializerContext).ConfigureAwait(false);
+                        __content_503 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_503 = global::Jina.ErrorResponse.FromJson(__content_503, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -391,8 +399,9 @@ namespace Jina
                     }
                     else
                     {
-                        var __contentStream_504 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_504 = await global::Jina.ErrorResponse.FromJsonStreamAsync(__contentStream_504, JsonSerializerContext).ConfigureAwait(false);
+                        __content_504 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_504 = global::Jina.ErrorResponse.FromJson(__content_504, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -468,11 +477,25 @@ namespace Jina
                 }
                 catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Jina.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
