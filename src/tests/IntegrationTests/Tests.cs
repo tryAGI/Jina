@@ -13,4 +13,6 @@ public partial class Tests
         
         return client;
     }
+
+    private static JinaClient CreateTestClient() => new(apiKey: "test-key");
 }
