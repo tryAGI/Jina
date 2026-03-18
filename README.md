@@ -33,6 +33,22 @@ var response = await api.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
 Console.WriteLine($"[{string.Join(", ", response.Data[0].Embedding ?? [])}]");
 ```
 
+### Microsoft.Extensions.AI
+
+The SDK implements [`IEmbeddingGenerator`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2):
+```csharp
+using Jina;
+using Microsoft.Extensions.AI;
+
+IEmbeddingGenerator<string, Embedding<float>> generator = new JinaApi(apiKey);
+
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions { ModelId = "jina-embeddings-v3" });
+
+Console.WriteLine($"Embedding dimension: {embeddings[0].Vector.Length}");
+```
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Jina/issues  
