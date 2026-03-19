@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Create Embedding
+slug: create-embedding
+*/
+
 namespace Jina.IntegrationTests;
 
 public partial class Tests

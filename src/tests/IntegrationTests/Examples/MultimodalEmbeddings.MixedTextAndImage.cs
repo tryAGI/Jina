@@ -1,25 +1,15 @@
+/*
+order: 80
+title: Multimodal Embeddings Mixed Text And Image
+slug: multimodal-embeddings-mixed-text-and-image
+*/
+
 using Microsoft.Extensions.AI;
 
 namespace Jina.IntegrationTests;
 
 public partial class Tests
 {
-    [TestMethod]
-    public async Task MultimodalEmbeddings_SingleImage()
-    {
-        using var client = GetAuthenticatedClient();
-
-        var embeddings = await client.GenerateImageEmbeddingsAsync(
-            ["https://i.ibb.co/nQNGqL0/beach1.jpg"],
-            new EmbeddingGenerationOptions
-            {
-                Dimensions = 256,
-            });
-
-        embeddings.Should().ContainSingle();
-        embeddings[0].Vector.Length.Should().Be(256);
-    }
-
     [TestMethod]
     public async Task MultimodalEmbeddings_MixedTextAndImage()
     {

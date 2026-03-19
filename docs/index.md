@@ -11,6 +11,7 @@
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
+- Microsoft.Extensions.AI `IEmbeddingGenerator` support
 
 ### Usage
 ```csharp
@@ -31,6 +32,22 @@ var response = await api.Embeddings.CreateEmbeddingAsync(new TextEmbeddingInput
 });
 
 Console.WriteLine($"[{string.Join(", ", response.Data[0].Embedding ?? [])}]");
+```
+
+### Microsoft.Extensions.AI
+
+The SDK implements [`IEmbeddingGenerator`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.iembeddinggenerator-2):
+```csharp
+using Jina;
+using Microsoft.Extensions.AI;
+
+IEmbeddingGenerator<string, Embedding<float>> generator = new JinaApi(apiKey);
+
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions { ModelId = "jina-embeddings-v3" });
+
+Console.WriteLine($"Embedding dimension: {embeddings[0].Vector.Length}");
 ```
 
 ## Support

@@ -5,8 +5,16 @@ nav:
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
 - Examples:
-  - CreateEmbedding: samples/CreateEmbedding.md
-  - Rerank: samples/Rerank.md
+  - Create Embedding: examples/create-embedding.md
+  - Embedding Generator Batch Texts: examples/embedding-generator-batch-texts.md
+  - Embedding Generator Custom Dimensions: examples/embedding-generator-custom-dimensions.md
+  - Embedding Generator Get Service Returns Metadata: examples/embedding-generator-get-service-returns-metadata.md
+  - Embedding Generator Get Service Returns Null For Unknown Key: examples/embedding-generator-get-service-returns-null-for-unknown-key.md
+  - Embedding Generator Get Service Returns Self: examples/embedding-generator-get-service-returns-self.md
+  - Embedding Generator Single Text: examples/embedding-generator-single-text.md
+  - Multimodal Embeddings Mixed Text And Image: examples/multimodal-embeddings-mixed-text-and-image.md
+  - Multimodal Embeddings Single Image: examples/multimodal-embeddings-single-image.md
+  - Rerank: examples/rerank.md
 # EXAMPLES:END
         
 theme:

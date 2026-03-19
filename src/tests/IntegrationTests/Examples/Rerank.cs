@@ -1,3 +1,9 @@
+/*
+order: 100
+title: Rerank
+slug: rerank
+*/
+
 namespace Jina.IntegrationTests;
 
 public partial class Tests
