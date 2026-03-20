@@ -17,7 +17,6 @@ namespace Jina
 
             global::Jina.AnyOf<global::Jina.ClassifyV1ClassifyPostRequestVariant1?, global::Jina.FewShotClassificationRequest> request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Classify<br/>
         /// Classify text or images into categories.<br/>

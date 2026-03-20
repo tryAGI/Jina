@@ -17,7 +17,6 @@ namespace Jina
 
             global::Jina.EmbeddingsV1EmbeddingsPostRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Embeddings<br/>
         /// Generate embeddings for text, images, or documents.<br/>

@@ -15,7 +15,6 @@ namespace Jina
 
             global::Jina.BatchEmbeddingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a batch embedding job<br/>
         /// Submit a batch of texts for asynchronous embedding processing.

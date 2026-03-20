@@ -560,7 +560,6 @@ namespace Jina
                 }
             }
         }
-
         /// <summary>
         /// Classify<br/>
         /// Classify text or images into categories.<br/>
