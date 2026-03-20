@@ -16,7 +16,6 @@ namespace Jina
 
             global::Jina.RerankV1RerankPostRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Rerank<br/>
         /// Rerank documents by relevance to a query.<br/>

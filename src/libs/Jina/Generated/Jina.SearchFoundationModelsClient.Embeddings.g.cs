@@ -560,7 +560,6 @@ namespace Jina
                 }
             }
         }
-
         /// <summary>
         /// Embeddings<br/>
         /// Generate embeddings for text, images, or documents.<br/>

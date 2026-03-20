@@ -560,7 +560,6 @@ namespace Jina
                 }
             }
         }
-
         /// <summary>
         /// Train<br/>
         /// Train or update a few-shot classifier.<br/>

@@ -559,7 +559,6 @@ namespace Jina
                 }
             }
         }
-
         /// <summary>
         /// Rerank<br/>
         /// Rerank documents by relevance to a query.<br/>

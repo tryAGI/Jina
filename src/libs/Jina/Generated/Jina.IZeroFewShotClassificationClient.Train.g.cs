@@ -17,7 +17,6 @@ namespace Jina
 
             global::Jina.AnyOf<global::Jina.TrainV1TrainPostRequestVariant1?, global::Jina.UpdateTrainingRequest> request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Train<br/>
         /// Train or update a few-shot classifier.<br/>

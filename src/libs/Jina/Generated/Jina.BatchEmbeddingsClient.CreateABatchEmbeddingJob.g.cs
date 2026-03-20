@@ -560,7 +560,6 @@ namespace Jina
                 }
             }
         }
-
         /// <summary>
         /// Create a batch embedding job<br/>
         /// Submit a batch of texts for asynchronous embedding processing.
