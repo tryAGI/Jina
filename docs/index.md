@@ -50,6 +50,175 @@ var embeddings = await generator.GenerateAsync(
 Console.WriteLine($"Embedding dimension: {embeddings[0].Vector.Length}");
 ```
 
+<!-- EXAMPLES:START -->
+### Create Embedding
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+var response = await client.SearchFoundationModels.EmbeddingsAsync(
+    new EmbeddingsV2Request
+    {
+        Model = EmbeddingsV2RequestModel.JinaEmbeddingsV2BaseEn,
+        Input = "Hello, world!",
+    });
+
+var embedding = response.Data.Value1![0].Embedding.Value2;
+Console.WriteLine($"[{string.Join(", ", embedding ?? [])}]");
+```
+
+### Embedding Generator Batch Texts
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+var embeddings = await generator.GenerateAsync(
+    ["Hello", "World", "Test"],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "jina-embeddings-v3",
+    });
+
+foreach (var embedding in embeddings)
+{
+}
+```
+
+### Embedding Generator Custom Dimensions
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "jina-embeddings-v3",
+        Dimensions = 256,
+    });
+```
+
+### Embedding Generator Get Service Returns Metadata
+
+
+```csharp
+using var client = CreateTestClient();
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+
+var metadata = generator.GetService<EmbeddingGeneratorMetadata>();
+```
+
+### Embedding Generator Get Service Returns Null For Unknown Key
+
+
+```csharp
+using var client = CreateTestClient();
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+
+var result = generator.GetService<EmbeddingGeneratorMetadata>(serviceKey: "unknown");
+```
+
+### Embedding Generator Get Service Returns Self
+
+
+```csharp
+using var client = CreateTestClient();
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+
+var self = generator.GetService<JinaClient>();
+```
+
+### Embedding Generator Single Text
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+var embeddings = await generator.GenerateAsync(
+    ["Hello, world!"],
+    new EmbeddingGenerationOptions
+    {
+        ModelId = "jina-embeddings-v3",
+    });
+```
+
+### Multimodal Embeddings Mixed Text And Image
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+var items = new AnyOf<string, TextDoc, ImageDoc>[]
+{
+    "A beautiful sunset over the ocean",
+    new ImageDoc { Image = "https://i.ibb.co/nQNGqL0/beach1.jpg" },
+};
+
+var embeddings = await client.GenerateMixedEmbeddingsAsync(
+    items,
+    new EmbeddingGenerationOptions
+    {
+        Dimensions = 256,
+    });
+
+foreach (var embedding in embeddings)
+{
+}
+```
+
+### Multimodal Embeddings Single Image
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+var embeddings = await client.GenerateImageEmbeddingsAsync(
+    ["https://i.ibb.co/nQNGqL0/beach1.jpg"],
+    new EmbeddingGenerationOptions
+    {
+        Dimensions = 256,
+    });
+```
+
+### Rerank
+
+
+```csharp
+using var client = new JinaClient(apiKey);
+
+        RerankingResponse output = await client.SearchFoundationModels.RerankAsync(
+            new TextRerankerRequest
+            {
+                Model = TextRerankerRequestModel.JinaRerankerV2BaseMultilingual,
+                Query = "Organic skincare products for sensitive skin",
+                TopN = 3,
+                Documents =
+                [
+                    "Organic skincare for sensitive skin with aloe vera and chamomile.",
+                    "New makeup trends focus on bold colors and innovative techniques.",
+                    "Bio-Hautpflege für empfindliche Haut mit Aloe Vera und Kamille.",
+                    "Neue Make-up-Trends setzen auf kräftige Farben und innovative Techniken.",
+                    "Cuidado de la piel orgánico para piel sensible con aloe vera y manzanilla.",
+                    "Las nuevas tendencias de maquillaje se centran en colores vivos y técnicas innovadoras.",
+                ],
+            });
+
+        foreach (RerankingResult result in output.Results)
+        {
+            Console.WriteLine($@"
+Index: {result.Index}
+Document: {result.Document?.Value1 ?? result.Document?.Value2?.Text}
+RelevanceScore: {result.RelevanceScore}");
+        }
+```
+<!-- EXAMPLES:END -->
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Jina/issues  
