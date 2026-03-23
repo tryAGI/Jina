@@ -11,19 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Nl2codeQuery,
-        /// <summary>
-        /// 
-        /// </summary>
-        Nl2codePassage,
-        /// <summary>
-        /// 
-        /// </summary>
-        QaQuery,
-        /// <summary>
-        /// 
-        /// </summary>
-        QaPassage,
+        Code2codePassage,
         /// <summary>
         /// 
         /// </summary>
@@ -31,15 +19,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Code2codePassage,
-        /// <summary>
-        /// 
-        /// </summary>
-        Code2nlQuery,
-        /// <summary>
-        /// 
-        /// </summary>
-        Code2nlPassage,
+        Code2completionPassage,
         /// <summary>
         /// 
         /// </summary>
@@ -47,7 +27,27 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Code2completionPassage,
+        Code2nlPassage,
+        /// <summary>
+        /// 
+        /// </summary>
+        Code2nlQuery,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nl2codePassage,
+        /// <summary>
+        /// 
+        /// </summary>
+        Nl2codeQuery,
+        /// <summary>
+        /// 
+        /// </summary>
+        QaPassage,
+        /// <summary>
+        /// 
+        /// </summary>
+        QaQuery,
     }
 
     /// <summary>
@@ -62,16 +62,16 @@ namespace Jina
         {
             return value switch
             {
-                CodeEmbeddings1500MRequestTask2.Nl2codeQuery => "nl2code.query",
-                CodeEmbeddings1500MRequestTask2.Nl2codePassage => "nl2code.passage",
-                CodeEmbeddings1500MRequestTask2.QaQuery => "qa.query",
-                CodeEmbeddings1500MRequestTask2.QaPassage => "qa.passage",
-                CodeEmbeddings1500MRequestTask2.Code2codeQuery => "code2code.query",
                 CodeEmbeddings1500MRequestTask2.Code2codePassage => "code2code.passage",
-                CodeEmbeddings1500MRequestTask2.Code2nlQuery => "code2nl.query",
-                CodeEmbeddings1500MRequestTask2.Code2nlPassage => "code2nl.passage",
-                CodeEmbeddings1500MRequestTask2.Code2completionQuery => "code2completion.query",
+                CodeEmbeddings1500MRequestTask2.Code2codeQuery => "code2code.query",
                 CodeEmbeddings1500MRequestTask2.Code2completionPassage => "code2completion.passage",
+                CodeEmbeddings1500MRequestTask2.Code2completionQuery => "code2completion.query",
+                CodeEmbeddings1500MRequestTask2.Code2nlPassage => "code2nl.passage",
+                CodeEmbeddings1500MRequestTask2.Code2nlQuery => "code2nl.query",
+                CodeEmbeddings1500MRequestTask2.Nl2codePassage => "nl2code.passage",
+                CodeEmbeddings1500MRequestTask2.Nl2codeQuery => "nl2code.query",
+                CodeEmbeddings1500MRequestTask2.QaPassage => "qa.passage",
+                CodeEmbeddings1500MRequestTask2.QaQuery => "qa.query",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -82,16 +82,16 @@ namespace Jina
         {
             return value switch
             {
-                "nl2code.query" => CodeEmbeddings1500MRequestTask2.Nl2codeQuery,
-                "nl2code.passage" => CodeEmbeddings1500MRequestTask2.Nl2codePassage,
-                "qa.query" => CodeEmbeddings1500MRequestTask2.QaQuery,
-                "qa.passage" => CodeEmbeddings1500MRequestTask2.QaPassage,
-                "code2code.query" => CodeEmbeddings1500MRequestTask2.Code2codeQuery,
                 "code2code.passage" => CodeEmbeddings1500MRequestTask2.Code2codePassage,
-                "code2nl.query" => CodeEmbeddings1500MRequestTask2.Code2nlQuery,
-                "code2nl.passage" => CodeEmbeddings1500MRequestTask2.Code2nlPassage,
-                "code2completion.query" => CodeEmbeddings1500MRequestTask2.Code2completionQuery,
+                "code2code.query" => CodeEmbeddings1500MRequestTask2.Code2codeQuery,
                 "code2completion.passage" => CodeEmbeddings1500MRequestTask2.Code2completionPassage,
+                "code2completion.query" => CodeEmbeddings1500MRequestTask2.Code2completionQuery,
+                "code2nl.passage" => CodeEmbeddings1500MRequestTask2.Code2nlPassage,
+                "code2nl.query" => CodeEmbeddings1500MRequestTask2.Code2nlQuery,
+                "nl2code.passage" => CodeEmbeddings1500MRequestTask2.Nl2codePassage,
+                "nl2code.query" => CodeEmbeddings1500MRequestTask2.Nl2codeQuery,
+                "qa.passage" => CodeEmbeddings1500MRequestTask2.QaPassage,
+                "qa.query" => CodeEmbeddings1500MRequestTask2.QaQuery,
                 _ => null,
             };
         }

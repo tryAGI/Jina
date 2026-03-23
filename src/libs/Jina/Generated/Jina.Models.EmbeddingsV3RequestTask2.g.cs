@@ -11,7 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        RetrievalQuery,
+        Classification,
         /// <summary>
         /// 
         /// </summary>
@@ -19,15 +19,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        TextMatching,
-        /// <summary>
-        /// 
-        /// </summary>
-        Classification,
+        RetrievalQuery,
         /// <summary>
         /// 
         /// </summary>
         Separation,
+        /// <summary>
+        /// 
+        /// </summary>
+        TextMatching,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Jina
         {
             return value switch
             {
-                EmbeddingsV3RequestTask2.RetrievalQuery => "retrieval.query",
-                EmbeddingsV3RequestTask2.RetrievalPassage => "retrieval.passage",
-                EmbeddingsV3RequestTask2.TextMatching => "text-matching",
                 EmbeddingsV3RequestTask2.Classification => "classification",
+                EmbeddingsV3RequestTask2.RetrievalPassage => "retrieval.passage",
+                EmbeddingsV3RequestTask2.RetrievalQuery => "retrieval.query",
                 EmbeddingsV3RequestTask2.Separation => "separation",
+                EmbeddingsV3RequestTask2.TextMatching => "text-matching",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Jina
         {
             return value switch
             {
-                "retrieval.query" => EmbeddingsV3RequestTask2.RetrievalQuery,
-                "retrieval.passage" => EmbeddingsV3RequestTask2.RetrievalPassage,
-                "text-matching" => EmbeddingsV3RequestTask2.TextMatching,
                 "classification" => EmbeddingsV3RequestTask2.Classification,
+                "retrieval.passage" => EmbeddingsV3RequestTask2.RetrievalPassage,
+                "retrieval.query" => EmbeddingsV3RequestTask2.RetrievalQuery,
                 "separation" => EmbeddingsV3RequestTask2.Separation,
+                "text-matching" => EmbeddingsV3RequestTask2.TextMatching,
                 _ => null,
             };
         }

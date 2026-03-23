@@ -11,15 +11,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Float,
-        /// <summary>
-        /// 
-        /// </summary>
         Base64,
         /// <summary>
         /// 
         /// </summary>
         Binary,
+        /// <summary>
+        /// 
+        /// </summary>
+        Float,
         /// <summary>
         /// 
         /// </summary>
@@ -38,9 +38,9 @@ namespace Jina
         {
             return value switch
             {
-                CodeEmbeddings500MRequestEmbeddingType.Float => "float",
                 CodeEmbeddings500MRequestEmbeddingType.Base64 => "base64",
                 CodeEmbeddings500MRequestEmbeddingType.Binary => "binary",
+                CodeEmbeddings500MRequestEmbeddingType.Float => "float",
                 CodeEmbeddings500MRequestEmbeddingType.Ubinary => "ubinary",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -52,9 +52,9 @@ namespace Jina
         {
             return value switch
             {
-                "float" => CodeEmbeddings500MRequestEmbeddingType.Float,
                 "base64" => CodeEmbeddings500MRequestEmbeddingType.Base64,
                 "binary" => CodeEmbeddings500MRequestEmbeddingType.Binary,
+                "float" => CodeEmbeddings500MRequestEmbeddingType.Float,
                 "ubinary" => CodeEmbeddings500MRequestEmbeddingType.Ubinary,
                 _ => null,
             };

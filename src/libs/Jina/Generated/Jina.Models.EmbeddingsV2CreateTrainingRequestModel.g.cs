@@ -11,11 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaEmbeddingsV2BaseEn,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaEmbeddingsV2BaseZh,
+        JinaEmbeddingsV2BaseCode,
         /// <summary>
         /// 
         /// </summary>
@@ -23,11 +19,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        JinaEmbeddingsV2BaseEn,
+        /// <summary>
+        /// 
+        /// </summary>
         JinaEmbeddingsV2BaseEs,
         /// <summary>
         /// 
         /// </summary>
-        JinaEmbeddingsV2BaseCode,
+        JinaEmbeddingsV2BaseZh,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Jina
         {
             return value switch
             {
-                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEn => "jina-embeddings-v2-base-en",
-                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
-                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseDe => "jina-embeddings-v2-base-de",
-                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEs => "jina-embeddings-v2-base-es",
                 EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseCode => "jina-embeddings-v2-base-code",
+                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseDe => "jina-embeddings-v2-base-de",
+                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEn => "jina-embeddings-v2-base-en",
+                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEs => "jina-embeddings-v2-base-es",
+                EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Jina
         {
             return value switch
             {
-                "jina-embeddings-v2-base-en" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEn,
-                "jina-embeddings-v2-base-zh" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseZh,
-                "jina-embeddings-v2-base-de" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseDe,
-                "jina-embeddings-v2-base-es" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEs,
                 "jina-embeddings-v2-base-code" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseCode,
+                "jina-embeddings-v2-base-de" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseDe,
+                "jina-embeddings-v2-base-en" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEn,
+                "jina-embeddings-v2-base-es" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseEs,
+                "jina-embeddings-v2-base-zh" => EmbeddingsV2CreateTrainingRequestModel.JinaEmbeddingsV2BaseZh,
                 _ => null,
             };
         }

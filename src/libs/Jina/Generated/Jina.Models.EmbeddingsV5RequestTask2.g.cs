@@ -11,15 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        RetrievalQuery,
-        /// <summary>
-        /// 
-        /// </summary>
-        RetrievalPassage,
-        /// <summary>
-        /// 
-        /// </summary>
-        TextMatching,
+        Classification,
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +19,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Classification,
+        RetrievalPassage,
+        /// <summary>
+        /// 
+        /// </summary>
+        RetrievalQuery,
+        /// <summary>
+        /// 
+        /// </summary>
+        TextMatching,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Jina
         {
             return value switch
             {
-                EmbeddingsV5RequestTask2.RetrievalQuery => "retrieval.query",
-                EmbeddingsV5RequestTask2.RetrievalPassage => "retrieval.passage",
-                EmbeddingsV5RequestTask2.TextMatching => "text-matching",
-                EmbeddingsV5RequestTask2.Clustering => "clustering",
                 EmbeddingsV5RequestTask2.Classification => "classification",
+                EmbeddingsV5RequestTask2.Clustering => "clustering",
+                EmbeddingsV5RequestTask2.RetrievalPassage => "retrieval.passage",
+                EmbeddingsV5RequestTask2.RetrievalQuery => "retrieval.query",
+                EmbeddingsV5RequestTask2.TextMatching => "text-matching",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Jina
         {
             return value switch
             {
-                "retrieval.query" => EmbeddingsV5RequestTask2.RetrievalQuery,
-                "retrieval.passage" => EmbeddingsV5RequestTask2.RetrievalPassage,
-                "text-matching" => EmbeddingsV5RequestTask2.TextMatching,
-                "clustering" => EmbeddingsV5RequestTask2.Clustering,
                 "classification" => EmbeddingsV5RequestTask2.Classification,
+                "clustering" => EmbeddingsV5RequestTask2.Clustering,
+                "retrieval.passage" => EmbeddingsV5RequestTask2.RetrievalPassage,
+                "retrieval.query" => EmbeddingsV5RequestTask2.RetrievalQuery,
+                "text-matching" => EmbeddingsV5RequestTask2.TextMatching,
                 _ => null,
             };
         }

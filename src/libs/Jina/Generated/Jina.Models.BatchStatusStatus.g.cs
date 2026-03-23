@@ -11,11 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Pending,
-        /// <summary>
-        /// 
-        /// </summary>
-        Processing,
+        Cancelled,
         /// <summary>
         /// 
         /// </summary>
@@ -23,15 +19,19 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Failed,
-        /// <summary>
-        /// 
-        /// </summary>
         Expired,
         /// <summary>
         /// 
         /// </summary>
-        Cancelled,
+        Failed,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pending,
+        /// <summary>
+        /// 
+        /// </summary>
+        Processing,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Jina
         {
             return value switch
             {
+                BatchStatusStatus.Cancelled => "cancelled",
+                BatchStatusStatus.Completed => "completed",
+                BatchStatusStatus.Expired => "expired",
+                BatchStatusStatus.Failed => "failed",
                 BatchStatusStatus.Pending => "pending",
                 BatchStatusStatus.Processing => "processing",
-                BatchStatusStatus.Completed => "completed",
-                BatchStatusStatus.Failed => "failed",
-                BatchStatusStatus.Expired => "expired",
-                BatchStatusStatus.Cancelled => "cancelled",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Jina
         {
             return value switch
             {
+                "cancelled" => BatchStatusStatus.Cancelled,
+                "completed" => BatchStatusStatus.Completed,
+                "expired" => BatchStatusStatus.Expired,
+                "failed" => BatchStatusStatus.Failed,
                 "pending" => BatchStatusStatus.Pending,
                 "processing" => BatchStatusStatus.Processing,
-                "completed" => BatchStatusStatus.Completed,
-                "failed" => BatchStatusStatus.Failed,
-                "expired" => BatchStatusStatus.Expired,
-                "cancelled" => BatchStatusStatus.Cancelled,
                 _ => null,
             };
         }
