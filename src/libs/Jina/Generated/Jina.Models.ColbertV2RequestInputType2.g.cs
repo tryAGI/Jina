@@ -11,11 +11,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Query,
+        Document,
         /// <summary>
         /// 
         /// </summary>
-        Document,
+        Query,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Jina
         {
             return value switch
             {
-                ColbertV2RequestInputType2.Query => "query",
                 ColbertV2RequestInputType2.Document => "document",
+                ColbertV2RequestInputType2.Query => "query",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Jina
         {
             return value switch
             {
-                "query" => ColbertV2RequestInputType2.Query,
                 "document" => ColbertV2RequestInputType2.Document,
+                "query" => ColbertV2RequestInputType2.Query,
                 _ => null,
             };
         }

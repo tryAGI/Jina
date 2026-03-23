@@ -11,15 +11,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        TextMatching,
-        /// <summary>
-        /// 
-        /// </summary>
-        RetrievalQuery,
-        /// <summary>
-        /// 
-        /// </summary>
-        RetrievalPassage,
+        CodePassage,
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +19,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        CodePassage,
+        RetrievalPassage,
+        /// <summary>
+        /// 
+        /// </summary>
+        RetrievalQuery,
+        /// <summary>
+        /// 
+        /// </summary>
+        TextMatching,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Jina
         {
             return value switch
             {
-                EmbeddingsV4RequestTask2.TextMatching => "text-matching",
-                EmbeddingsV4RequestTask2.RetrievalQuery => "retrieval.query",
-                EmbeddingsV4RequestTask2.RetrievalPassage => "retrieval.passage",
-                EmbeddingsV4RequestTask2.CodeQuery => "code.query",
                 EmbeddingsV4RequestTask2.CodePassage => "code.passage",
+                EmbeddingsV4RequestTask2.CodeQuery => "code.query",
+                EmbeddingsV4RequestTask2.RetrievalPassage => "retrieval.passage",
+                EmbeddingsV4RequestTask2.RetrievalQuery => "retrieval.query",
+                EmbeddingsV4RequestTask2.TextMatching => "text-matching",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Jina
         {
             return value switch
             {
-                "text-matching" => EmbeddingsV4RequestTask2.TextMatching,
-                "retrieval.query" => EmbeddingsV4RequestTask2.RetrievalQuery,
-                "retrieval.passage" => EmbeddingsV4RequestTask2.RetrievalPassage,
-                "code.query" => EmbeddingsV4RequestTask2.CodeQuery,
                 "code.passage" => EmbeddingsV4RequestTask2.CodePassage,
+                "code.query" => EmbeddingsV4RequestTask2.CodeQuery,
+                "retrieval.passage" => EmbeddingsV4RequestTask2.RetrievalPassage,
+                "retrieval.query" => EmbeddingsV4RequestTask2.RetrievalQuery,
+                "text-matching" => EmbeddingsV4RequestTask2.TextMatching,
                 _ => null,
             };
         }

@@ -11,11 +11,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        RetrievalQuery,
+        RetrievalPassage,
         /// <summary>
         /// 
         /// </summary>
-        RetrievalPassage,
+        RetrievalQuery,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Jina
         {
             return value switch
             {
-                ELSERV2RequestTask2.RetrievalQuery => "retrieval.query",
                 ELSERV2RequestTask2.RetrievalPassage => "retrieval.passage",
+                ELSERV2RequestTask2.RetrievalQuery => "retrieval.query",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Jina
         {
             return value switch
             {
-                "retrieval.query" => ELSERV2RequestTask2.RetrievalQuery,
                 "retrieval.passage" => ELSERV2RequestTask2.RetrievalPassage,
+                "retrieval.query" => ELSERV2RequestTask2.RetrievalQuery,
                 _ => null,
             };
         }

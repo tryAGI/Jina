@@ -11,7 +11,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaRerankerV2BaseMultilingual,
+        JinaColbertV1En,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaColbertV2,
+        /// <summary>
+        /// 
+        /// </summary>
+        JinaRerankerV1BaseEn,
         /// <summary>
         /// 
         /// </summary>
@@ -23,15 +31,7 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        JinaRerankerV1BaseEn,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaColbertV1En,
-        /// <summary>
-        /// 
-        /// </summary>
-        JinaColbertV2,
+        JinaRerankerV2BaseMultilingual,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Jina
         {
             return value switch
             {
-                TextRerankerRequestModel.JinaRerankerV2BaseMultilingual => "jina-reranker-v2-base-multilingual",
-                TextRerankerRequestModel.JinaRerankerV1TinyEn => "jina-reranker-v1-tiny-en",
-                TextRerankerRequestModel.JinaRerankerV1TurboEn => "jina-reranker-v1-turbo-en",
-                TextRerankerRequestModel.JinaRerankerV1BaseEn => "jina-reranker-v1-base-en",
                 TextRerankerRequestModel.JinaColbertV1En => "jina-colbert-v1-en",
                 TextRerankerRequestModel.JinaColbertV2 => "jina-colbert-v2",
+                TextRerankerRequestModel.JinaRerankerV1BaseEn => "jina-reranker-v1-base-en",
+                TextRerankerRequestModel.JinaRerankerV1TinyEn => "jina-reranker-v1-tiny-en",
+                TextRerankerRequestModel.JinaRerankerV1TurboEn => "jina-reranker-v1-turbo-en",
+                TextRerankerRequestModel.JinaRerankerV2BaseMultilingual => "jina-reranker-v2-base-multilingual",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Jina
         {
             return value switch
             {
-                "jina-reranker-v2-base-multilingual" => TextRerankerRequestModel.JinaRerankerV2BaseMultilingual,
-                "jina-reranker-v1-tiny-en" => TextRerankerRequestModel.JinaRerankerV1TinyEn,
-                "jina-reranker-v1-turbo-en" => TextRerankerRequestModel.JinaRerankerV1TurboEn,
-                "jina-reranker-v1-base-en" => TextRerankerRequestModel.JinaRerankerV1BaseEn,
                 "jina-colbert-v1-en" => TextRerankerRequestModel.JinaColbertV1En,
                 "jina-colbert-v2" => TextRerankerRequestModel.JinaColbertV2,
+                "jina-reranker-v1-base-en" => TextRerankerRequestModel.JinaRerankerV1BaseEn,
+                "jina-reranker-v1-tiny-en" => TextRerankerRequestModel.JinaRerankerV1TinyEn,
+                "jina-reranker-v1-turbo-en" => TextRerankerRequestModel.JinaRerankerV1TurboEn,
+                "jina-reranker-v2-base-multilingual" => TextRerankerRequestModel.JinaRerankerV2BaseMultilingual,
                 _ => null,
             };
         }

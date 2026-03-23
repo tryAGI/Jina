@@ -11,15 +11,15 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
-        Float,
-        /// <summary>
-        /// 
-        /// </summary>
         Base64,
         /// <summary>
         /// 
         /// </summary>
         Binary,
+        /// <summary>
+        /// 
+        /// </summary>
+        Float,
         /// <summary>
         /// 
         /// </summary>
@@ -38,9 +38,9 @@ namespace Jina
         {
             return value switch
             {
-                ColbertV2RequestEmbeddingType.Float => "float",
                 ColbertV2RequestEmbeddingType.Base64 => "base64",
                 ColbertV2RequestEmbeddingType.Binary => "binary",
+                ColbertV2RequestEmbeddingType.Float => "float",
                 ColbertV2RequestEmbeddingType.Ubinary => "ubinary",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -52,9 +52,9 @@ namespace Jina
         {
             return value switch
             {
-                "float" => ColbertV2RequestEmbeddingType.Float,
                 "base64" => ColbertV2RequestEmbeddingType.Base64,
                 "binary" => ColbertV2RequestEmbeddingType.Binary,
+                "float" => ColbertV2RequestEmbeddingType.Float,
                 "ubinary" => ColbertV2RequestEmbeddingType.Ubinary,
                 _ => null,
             };
