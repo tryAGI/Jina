@@ -15,6 +15,7 @@ public static class JinaClientMultimodalExtensions
     /// <param name="options">Optional embedding generation options (ModelId, Dimensions).</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Generated embeddings for each image.</returns>
+    [CLSCompliant(false)]
     public static async Task<GeneratedEmbeddings<Embedding<float>>> GenerateImageEmbeddingsAsync(
         this JinaClient client,
         IEnumerable<string> imageUrls,
@@ -54,6 +55,8 @@ public static class JinaClientMultimodalExtensions
     /// <param name="options">Optional embedding generation options (ModelId, Dimensions).</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Generated embedding for the PDF.</returns>
+    [CLSCompliant(false)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1054:URI-like parameters should not be strings")]
     public static async Task<GeneratedEmbeddings<Embedding<float>>> GeneratePdfEmbeddingAsync(
         this JinaClient client,
         string pdfUrl,
@@ -86,6 +89,7 @@ public static class JinaClientMultimodalExtensions
     /// <param name="options">Optional embedding generation options (ModelId, Dimensions).</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Generated embeddings for each item.</returns>
+    [CLSCompliant(false)]
     public static async Task<GeneratedEmbeddings<Embedding<float>>> GenerateMixedEmbeddingsAsync(
         this JinaClient client,
         IEnumerable<AnyOf<string, TextDoc, ImageDoc>> items,
