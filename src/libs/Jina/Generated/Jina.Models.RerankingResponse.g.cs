@@ -48,15 +48,15 @@ namespace Jina
         /// <param name="model">
         /// The model used for reranking.
         /// </param>
-        /// <param name="object">
-        /// Object type, always `list`.<br/>
-        /// Default Value: list
-        /// </param>
         /// <param name="results">
         /// Ranked documents, sorted by relevance score descending.
         /// </param>
         /// <param name="usage">
         /// Token usage statistics.
+        /// </param>
+        /// <param name="object">
+        /// Object type, always `list`.<br/>
+        /// Default Value: list
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -68,9 +68,9 @@ namespace Jina
             string? @object)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Object = @object;
             this.Results = results ?? throw new global::System.ArgumentNullException(nameof(results));
             this.Usage = usage ?? throw new global::System.ArgumentNullException(nameof(usage));
-            this.Object = @object;
         }
 
         /// <summary>

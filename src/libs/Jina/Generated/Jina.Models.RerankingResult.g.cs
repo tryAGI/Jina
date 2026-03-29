@@ -44,17 +44,17 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="RerankingResult" /> class.
         /// </summary>
-        /// <param name="document">
-        /// Document content, if `return_documents=true`.
-        /// </param>
-        /// <param name="embedding">
-        /// Document embedding, if `return_embeddings=true`.
-        /// </param>
         /// <param name="index">
         /// Position of this document in the original input list.
         /// </param>
         /// <param name="relevanceScore">
         /// Relevance score. Higher is more relevant.
+        /// </param>
+        /// <param name="document">
+        /// Document content, if `return_documents=true`.
+        /// </param>
+        /// <param name="embedding">
+        /// Document embedding, if `return_embeddings=true`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -65,10 +65,10 @@ namespace Jina
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? document,
             global::System.Collections.Generic.IList<double>? embedding)
         {
-            this.Index = index;
-            this.RelevanceScore = relevanceScore;
             this.Document = document;
             this.Embedding = embedding;
+            this.Index = index;
+            this.RelevanceScore = relevanceScore;
         }
 
         /// <summary>

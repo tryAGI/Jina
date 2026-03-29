@@ -63,6 +63,9 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchEmbeddingRequest" /> class.
         /// </summary>
+        /// <param name="model">
+        /// The embedding model to use for batch processing.
+        /// </param>
         /// <param name="dimensions">
         /// Number of dimensions for output embeddings (1-1024).
         /// </param>
@@ -71,9 +74,6 @@ namespace Jina
         /// </param>
         /// <param name="inputUrl">
         /// URL to input JSONL file (GCS, S3, or HTTP). Either input_url or input must be provided.
-        /// </param>
-        /// <param name="model">
-        /// The embedding model to use for batch processing.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
@@ -98,10 +98,10 @@ namespace Jina
             string? task,
             string? webhookUrl)
         {
-            this.Model = model;
             this.Dimensions = dimensions;
             this.Input = input;
             this.InputUrl = inputUrl;
+            this.Model = model;
             this.Normalized = normalized;
             this.Task = task;
             this.WebhookUrl = webhookUrl;

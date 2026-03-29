@@ -54,14 +54,11 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ClipV1Request" /> class.
         /// </summary>
-        /// <param name="embeddingType">
-        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
         /// <param name="input">
         /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB.
         /// </param>
-        /// <param name="model">
-        /// The CLIP model to use.
+        /// <param name="embeddingType">
+        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
@@ -70,6 +67,9 @@ namespace Jina
         /// <param name="truncate">
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="model">
+        /// The CLIP model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -81,8 +81,8 @@ namespace Jina
             bool? truncate,
             string model = "jina-clip-v1")
         {
-            this.Input = input;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.Model = model;
             this.Normalized = normalized;
             this.Truncate = truncate;

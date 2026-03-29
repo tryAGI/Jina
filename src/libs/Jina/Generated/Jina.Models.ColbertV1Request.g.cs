@@ -47,11 +47,11 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ColbertV1Request" /> class.
         /// </summary>
-        /// <param name="embeddingType">
-        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// </param>
+        /// <param name="embeddingType">
+        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
         /// <param name="inputType">
         /// Role of the input: `query` for search queries, `document` for passages.<br/>
@@ -69,8 +69,8 @@ namespace Jina
             global::Jina.ColbertV1RequestInputType2? inputType,
             string model = "jina-colbert-v1-en")
         {
-            this.Input = input;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.InputType = inputType;
             this.Model = model;
         }

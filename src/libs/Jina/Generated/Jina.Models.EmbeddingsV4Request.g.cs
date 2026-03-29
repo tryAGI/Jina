@@ -79,20 +79,17 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingsV4Request" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB; PDFs up to 8MB.
+        /// </param>
         /// <param name="dimensions">
         /// Number of dimensions for the output embedding. Range: 1-2048.
         /// </param>
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
-        /// <param name="input">
-        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `PDFDoc`, or a list of items. PDFs must be sent individually. Images up to 8MB; PDFs up to 8MB.
-        /// </param>
         /// <param name="lateChunking">
         /// If true, concatenates all text inputs and processes as one sequence before splitting. Only works with text.
-        /// </param>
-        /// <param name="model">
-        /// The embedding model to use.
         /// </param>
         /// <param name="returnMultivector">
         /// If true, returns one embedding per token. Cannot be used with `dimensions`.<br/>
@@ -110,6 +107,9 @@ namespace Jina
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="model">
+        /// The embedding model to use.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -124,9 +124,9 @@ namespace Jina
             bool? truncate,
             string model = "jina-embeddings-v4")
         {
-            this.Input = input;
             this.Dimensions = dimensions;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.LateChunking = lateChunking;
             this.Model = model;
             this.ReturnMultivector = returnMultivector;

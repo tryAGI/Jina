@@ -46,17 +46,17 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ELSERV2Request" /> class.
         /// </summary>
-        /// <param name="embeddingType">
-        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </param>
-        /// <param name="model">
-        /// The sparse embedding model to use.
+        /// <param name="embeddingType">
+        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
         /// <param name="task">
         /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.
+        /// </param>
+        /// <param name="model">
+        /// The sparse embedding model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -67,8 +67,8 @@ namespace Jina
             global::Jina.ELSERV2RequestTask2? task,
             string model = "elser-v2")
         {
-            this.Input = input;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.Model = model;
             this.Task = task;
         }
