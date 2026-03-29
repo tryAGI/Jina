@@ -61,9 +61,6 @@ namespace Jina
         /// <param name="documents">
         /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
         /// </param>
-        /// <param name="model">
-        /// The multimodal reranking model to use.
-        /// </param>
         /// <param name="query">
         /// The search query to rank documents against.
         /// </param>
@@ -77,6 +74,9 @@ namespace Jina
         /// <param name="truncation">
         /// If true, truncates documents exceeding the model's max token limit.
         /// </param>
+        /// <param name="model">
+        /// The multimodal reranking model to use.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -89,8 +89,8 @@ namespace Jina
             string model = "jina-reranker-m0")
         {
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
-            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.Model = model;
+            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.ReturnDocuments = returnDocuments;
             this.TopN = topN;
             this.Truncation = truncation;

@@ -59,17 +59,14 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeEmbeddings1500MRequest" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Code or text to embed: a string, `TextDoc`, or a list of items.
+        /// </param>
         /// <param name="dimensions">
         /// Number of dimensions for the output embedding. Range: 1-1536.
         /// </param>
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
-        /// <param name="input">
-        /// Code or text to embed: a string, `TextDoc`, or a list of items.
-        /// </param>
-        /// <param name="model">
-        /// The code embedding model to use.
         /// </param>
         /// <param name="task">
         /// Task type: `nl2code`, `qa`, `code2code`, `code2nl`, or `code2completion`. Use `.query` for queries, `.passage` for documents.<br/>
@@ -78,6 +75,9 @@ namespace Jina
         /// <param name="truncate">
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="model">
+        /// The code embedding model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -90,9 +90,9 @@ namespace Jina
             bool? truncate,
             string model = "jina-code-embeddings-1.5b")
         {
-            this.Input = input;
             this.Dimensions = dimensions;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.Model = model;
             this.Task = task;
             this.Truncate = truncate;

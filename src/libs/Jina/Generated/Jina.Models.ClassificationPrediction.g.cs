@@ -58,10 +58,6 @@ namespace Jina
         /// <param name="index">
         /// Position of this result in the input list.
         /// </param>
-        /// <param name="object">
-        /// Object type, always `classification`.<br/>
-        /// Default Value: classification
-        /// </param>
         /// <param name="prediction">
         /// Predicted label, or a dict of labels per group.
         /// </param>
@@ -70,6 +66,10 @@ namespace Jina
         /// </param>
         /// <param name="score">
         /// Confidence score, or a dict of scores per group.
+        /// </param>
+        /// <param name="object">
+        /// Object type, always `classification`.<br/>
+        /// Default Value: classification
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -82,10 +82,10 @@ namespace Jina
             string? @object)
         {
             this.Index = index;
+            this.Object = @object;
             this.Prediction = prediction;
             this.Predictions = predictions;
             this.Score = score;
-            this.Object = @object;
         }
 
         /// <summary>

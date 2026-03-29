@@ -55,14 +55,14 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingsV2Request" /> class.
         /// </summary>
-        /// <param name="embeddingType">
-        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </param>
         /// <param name="model">
         /// The embedding model to use.
+        /// </param>
+        /// <param name="embeddingType">
+        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
@@ -82,9 +82,9 @@ namespace Jina
             bool? normalized,
             bool? truncate)
         {
+            this.EmbeddingType = embeddingType;
             this.Input = input;
             this.Model = model;
-            this.EmbeddingType = embeddingType;
             this.Normalized = normalized;
             this.Truncate = truncate;
         }

@@ -53,12 +53,12 @@ namespace Jina
         /// <param name="model">
         /// The model used to generate the embeddings.
         /// </param>
+        /// <param name="usage">
+        /// Token usage statistics.
+        /// </param>
         /// <param name="object">
         /// Object type, always `list`.<br/>
         /// Default Value: list
-        /// </param>
-        /// <param name="usage">
-        /// Token usage statistics.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -71,8 +71,8 @@ namespace Jina
         {
             this.Data = data;
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
-            this.Usage = usage;
             this.Object = @object;
+            this.Usage = usage;
         }
 
         /// <summary>

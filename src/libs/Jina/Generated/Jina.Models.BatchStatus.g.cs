@@ -85,11 +85,17 @@ namespace Jina
         /// <param name="batchId">
         /// Unique identifier for the batch job.
         /// </param>
-        /// <param name="completedAt">
-        /// ISO 8601 timestamp when job completed (if finished).
-        /// </param>
         /// <param name="createdAt">
         /// ISO 8601 timestamp when job was created.
+        /// </param>
+        /// <param name="model">
+        /// The model used for embedding.
+        /// </param>
+        /// <param name="status">
+        /// Current status of the batch job.
+        /// </param>
+        /// <param name="completedAt">
+        /// ISO 8601 timestamp when job completed (if finished).
         /// </param>
         /// <param name="error">
         /// Error message if job failed.
@@ -100,17 +106,11 @@ namespace Jina
         /// <param name="expiresAt">
         /// ISO 8601 timestamp when output URL expires (created_at + 24h).
         /// </param>
-        /// <param name="model">
-        /// The model used for embedding.
-        /// </param>
         /// <param name="outputUrl">
         /// Signed URL to download output JSONL (24h expiry).
         /// </param>
         /// <param name="stats">
         /// Processing statistics.
-        /// </param>
-        /// <param name="status">
-        /// Current status of the batch job.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -128,15 +128,15 @@ namespace Jina
             global::Jina.BatchStats? stats)
         {
             this.BatchId = batchId ?? throw new global::System.ArgumentNullException(nameof(batchId));
-            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
-            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
-            this.Status = status;
             this.CompletedAt = completedAt;
+            this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
             this.Error = error;
             this.ErrorFileUrl = errorFileUrl;
             this.ExpiresAt = expiresAt;
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.OutputUrl = outputUrl;
             this.Stats = stats;
+            this.Status = status;
         }
 
         /// <summary>

@@ -46,15 +46,15 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingsV2CreateTrainingRequest" /> class.
         /// </summary>
-        /// <param name="access">
-        /// Access level for the training data. Can be 'public' or 'private'.<br/>
-        /// Default Value: public
-        /// </param>
         /// <param name="input">
         /// Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.
         /// </param>
         /// <param name="model">
         /// Text embedding model for zero-shot classification.
+        /// </param>
+        /// <param name="access">
+        /// Access level for the training data. Can be 'public' or 'private'.<br/>
+        /// Default Value: public
         /// </param>
         /// <param name="numIters">
         /// Number of iterations for the training process.<br/>
@@ -69,9 +69,9 @@ namespace Jina
             string? access,
             int? numIters)
         {
+            this.Access = access;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Model = model;
-            this.Access = access;
             this.NumIters = numIters;
         }
 

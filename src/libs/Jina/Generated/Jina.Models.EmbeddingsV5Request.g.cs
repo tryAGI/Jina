@@ -68,17 +68,17 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingsV5Request" /> class.
         /// </summary>
-        /// <param name="dimensions">
-        /// Number of dimensions for the output embedding. Range: 1-1024.
-        /// </param>
-        /// <param name="embeddingType">
-        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
         /// <param name="input">
         /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </param>
         /// <param name="model">
         /// The embedding model to use.
+        /// </param>
+        /// <param name="dimensions">
+        /// Number of dimensions for the output embedding. Range: 1-1024.
+        /// </param>
+        /// <param name="embeddingType">
+        /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </param>
         /// <param name="normalized">
         /// If true (default), embeddings are L2-normalized to unit length.<br/>
@@ -104,10 +104,10 @@ namespace Jina
             global::Jina.EmbeddingsV5RequestTask2? task,
             bool? truncate)
         {
-            this.Input = input;
-            this.Model = model;
             this.Dimensions = dimensions;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
+            this.Model = model;
             this.Normalized = normalized;
             this.Task = task;
             this.Truncate = truncate;

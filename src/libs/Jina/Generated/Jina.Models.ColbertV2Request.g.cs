@@ -53,14 +53,14 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ColbertV2Request" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// </param>
         /// <param name="dimensions">
         /// Dimensions per token: `64`, `96`, or `128`. Defaults to 128.
         /// </param>
         /// <param name="embeddingType">
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
-        /// </param>
-        /// <param name="input">
-        /// Text to embed: a string, `TextDoc`, or a list of items.
         /// </param>
         /// <param name="inputType">
         /// Role of the input: `query` for search queries, `document` for passages.<br/>
@@ -79,9 +79,9 @@ namespace Jina
             global::Jina.ColbertV2RequestInputType2? inputType,
             string model = "jina-colbert-v2")
         {
-            this.Input = input;
             this.Dimensions = dimensions;
             this.EmbeddingType = embeddingType;
+            this.Input = input;
             this.InputType = inputType;
             this.Model = model;
         }

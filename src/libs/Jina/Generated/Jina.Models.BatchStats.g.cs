@@ -45,6 +45,9 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchStats" /> class.
         /// </summary>
+        /// <param name="total">
+        /// Total number of input lines.
+        /// </param>
         /// <param name="completed">
         /// Number of successfully processed lines.<br/>
         /// Default Value: 0
@@ -52,9 +55,6 @@ namespace Jina
         /// <param name="failed">
         /// Number of failed lines.<br/>
         /// Default Value: 0
-        /// </param>
-        /// <param name="total">
-        /// Total number of input lines.
         /// </param>
         /// <param name="totalTokens">
         /// Total tokens consumed across all processed lines.<br/>
@@ -69,9 +69,9 @@ namespace Jina
             int? failed,
             int? totalTokens)
         {
-            this.Total = total;
             this.Completed = completed;
             this.Failed = failed;
+            this.Total = total;
             this.TotalTokens = totalTokens;
         }
 

@@ -42,13 +42,13 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorResponse" /> class.
         /// </summary>
-        /// <param name="code">
-        /// Machine-readable error code for programmatic handling<br/>
-        /// Example: AUTH_INVALID_API_KEY
-        /// </param>
         /// <param name="detail">
         /// Human-readable error message<br/>
         /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
+        /// </param>
+        /// <param name="code">
+        /// Machine-readable error code for programmatic handling<br/>
+        /// Example: AUTH_INVALID_API_KEY
         /// </param>
         /// <param name="requestId">
         /// Unique request identifier for tracing and support<br/>
@@ -62,8 +62,8 @@ namespace Jina
             string? code,
             string? requestId)
         {
-            this.Detail = detail ?? throw new global::System.ArgumentNullException(nameof(detail));
             this.Code = code;
+            this.Detail = detail ?? throw new global::System.ArgumentNullException(nameof(detail));
             this.RequestId = requestId;
         }
 

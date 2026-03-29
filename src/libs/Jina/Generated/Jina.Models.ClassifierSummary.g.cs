@@ -115,19 +115,8 @@ namespace Jina
         /// <param name="createdAt">
         /// Creation timestamp
         /// </param>
-        /// <param name="isActive">
-        /// Whether the classifier is currently active<br/>
-        /// Default Value: true
-        /// </param>
-        /// <param name="isLatest">
-        /// Whether this is the latest version of the classifier<br/>
-        /// Default Value: true
-        /// </param>
         /// <param name="labels">
         /// List of classification labels
-        /// </param>
-        /// <param name="metadata">
-        /// Additional metadata
         /// </param>
         /// <param name="model">
         /// Name of the model used
@@ -138,14 +127,25 @@ namespace Jina
         /// <param name="updatedNumber">
         /// Number of times updated
         /// </param>
-        /// <param name="usedAt">
-        /// Last used timestamp
-        /// </param>
         /// <param name="usedNumber">
         /// Number of times used
         /// </param>
         /// <param name="userId">
         /// User ID who owns the classifier
+        /// </param>
+        /// <param name="isActive">
+        /// Whether the classifier is currently active<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="isLatest">
+        /// Whether this is the latest version of the classifier<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="metadata">
+        /// Additional metadata
+        /// </param>
+        /// <param name="usedAt">
+        /// Last used timestamp
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -168,16 +168,16 @@ namespace Jina
             this.Access = access ?? throw new global::System.ArgumentNullException(nameof(access));
             this.ClassifierId = classifierId;
             this.CreatedAt = createdAt;
+            this.IsActive = isActive;
+            this.IsLatest = isLatest;
             this.Labels = labels ?? throw new global::System.ArgumentNullException(nameof(labels));
+            this.Metadata = metadata;
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.UpdatedAt = updatedAt;
             this.UpdatedNumber = updatedNumber;
+            this.UsedAt = usedAt;
             this.UsedNumber = usedNumber;
             this.UserId = userId;
-            this.IsActive = isActive;
-            this.IsLatest = isLatest;
-            this.Metadata = metadata;
-            this.UsedAt = usedAt;
         }
 
         /// <summary>

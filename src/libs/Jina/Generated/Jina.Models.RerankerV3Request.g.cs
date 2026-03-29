@@ -74,15 +74,12 @@ namespace Jina
         /// <param name="documents">
         /// Documents to rank: strings or `TextDoc` objects.
         /// </param>
+        /// <param name="query">
+        /// The search query to rank documents against.
+        /// </param>
         /// <param name="maxDocLength">
         /// Maximum tokens per document. Range: 1-8192. Default: 2048.<br/>
         /// Default Value: 2048
-        /// </param>
-        /// <param name="model">
-        /// The reranking model to use.
-        /// </param>
-        /// <param name="query">
-        /// The search query to rank documents against.
         /// </param>
         /// <param name="returnDocuments">
         /// If true (default), includes document content in each result.<br/>
@@ -96,6 +93,9 @@ namespace Jina
         /// </param>
         /// <param name="truncation">
         /// If true, truncates documents exceeding the model's max token limit.
+        /// </param>
+        /// <param name="model">
+        /// The reranking model to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -111,9 +111,9 @@ namespace Jina
             string model = "jina-reranker-v3")
         {
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
-            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.MaxDocLength = maxDocLength;
             this.Model = model;
+            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.ReturnDocuments = returnDocuments;
             this.ReturnEmbeddings = returnEmbeddings;
             this.TopN = topN;

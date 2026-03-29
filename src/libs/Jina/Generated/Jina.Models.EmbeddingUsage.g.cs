@@ -37,14 +37,14 @@ namespace Jina
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddingUsage" /> class.
         /// </summary>
-        /// <param name="imageTokens">
-        /// Number of tokens from image inputs.
-        /// </param>
         /// <param name="promptTokens">
         /// Number of tokens in the input.
         /// </param>
         /// <param name="totalTokens">
         /// Total number of tokens processed.
+        /// </param>
+        /// <param name="imageTokens">
+        /// Number of tokens from image inputs.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -54,9 +54,9 @@ namespace Jina
             int totalTokens,
             int? imageTokens)
         {
+            this.ImageTokens = imageTokens;
             this.PromptTokens = promptTokens;
             this.TotalTokens = totalTokens;
-            this.ImageTokens = imageTokens;
         }
 
         /// <summary>
