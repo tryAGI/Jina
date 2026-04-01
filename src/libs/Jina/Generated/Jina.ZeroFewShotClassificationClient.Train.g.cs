@@ -571,7 +571,6 @@ namespace Jina
         public async global::System.Threading.Tasks.Task<global::Jina.TrainingResponse> TrainAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Jina.AnyOf<global::Jina.TrainV1TrainPostRequestVariant1?, global::Jina.UpdateTrainingRequest>
             {
             };
