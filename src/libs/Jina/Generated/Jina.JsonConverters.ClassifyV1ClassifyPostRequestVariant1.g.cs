@@ -95,37 +95,37 @@ namespace Jina.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV2ZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV2ZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseCode, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseCode!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV3ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV3ZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV3ZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV3, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV3!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV4)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV4ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV4ZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV4ZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV4, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV4!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV5TextNano)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV5ZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV5ZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV5ZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5TextNano, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5TextNano!, typeInfo);
             }
             else if (value.IsJinaClipV1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ClipZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ClipZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.ClipZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaClipV1, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaClipV1!, typeInfo);
             }
             else if (value.IsJinaCodeEmbeddings05b)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.CodeEmbeddingsZeroShotClassificationRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.CodeEmbeddingsZeroShotClassificationRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.CodeEmbeddingsZeroShotClassificationRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaCodeEmbeddings05b, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaCodeEmbeddings05b!, typeInfo);
             }
         }
     }

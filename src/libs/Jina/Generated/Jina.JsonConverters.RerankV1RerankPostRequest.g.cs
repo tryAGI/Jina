@@ -68,19 +68,19 @@ namespace Jina.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.TextRerankerRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.TextRerankerRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.TextRerankerRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaColbertV1En, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaColbertV1En!, typeInfo);
             }
             else if (value.IsJinaRerankerM0)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.RerankerM0Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.RerankerM0Request?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.RerankerM0Request).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaRerankerM0, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaRerankerM0!, typeInfo);
             }
             else if (value.IsJinaRerankerV3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.RerankerV3Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.RerankerV3Request?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.RerankerV3Request).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaRerankerV3, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaRerankerV3!, typeInfo);
             }
         }
     }

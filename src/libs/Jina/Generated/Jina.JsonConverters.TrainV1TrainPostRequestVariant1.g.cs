@@ -86,31 +86,31 @@ namespace Jina.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV2CreateTrainingRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV2CreateTrainingRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV2CreateTrainingRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseCode, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV2BaseCode!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV3CreateTrainingRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV3CreateTrainingRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV3CreateTrainingRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV3, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV3!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV4)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV4CreateTrainingRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV4CreateTrainingRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV4CreateTrainingRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV4, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV4!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV5TextNano)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV5CreateTrainingRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV5CreateTrainingRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV5CreateTrainingRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5TextNano, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5TextNano!, typeInfo);
             }
             else if (value.IsJinaClipV1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ClipCreateTrainingRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ClipCreateTrainingRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.ClipCreateTrainingRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaClipV1, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaClipV1!, typeInfo);
             }
         }
     }

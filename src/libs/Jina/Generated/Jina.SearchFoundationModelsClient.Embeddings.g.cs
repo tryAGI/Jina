@@ -571,6 +571,7 @@ namespace Jina
         public async global::System.Threading.Tasks.Task<global::Jina.EmbeddingResponse> EmbeddingsAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Jina.EmbeddingsV1EmbeddingsPostRequest
             {
             };
