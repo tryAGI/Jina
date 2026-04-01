@@ -569,7 +569,6 @@ namespace Jina
         public async global::System.Threading.Tasks.Task<global::Jina.RerankingResponse> RerankAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Jina.RerankV1RerankPostRequest
             {
             };

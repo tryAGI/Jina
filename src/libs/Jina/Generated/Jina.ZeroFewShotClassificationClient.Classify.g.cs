@@ -571,7 +571,6 @@ namespace Jina
         public async global::System.Threading.Tasks.Task<global::Jina.ClassificationResponse> ClassifyAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Jina.AnyOf<global::Jina.ClassifyV1ClassifyPostRequestVariant1?, global::Jina.FewShotClassificationRequest>
             {
             };
