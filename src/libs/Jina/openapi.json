@@ -4642,7 +4642,7 @@
     "/v1/classifiers": {
       "get": {
         "description": "List all classifiers owned by the authenticated user.",
-        "operationId": "list_classifiers_v1_classifiers_post",
+        "operationId": "list_classifiers_v1_classifiers_get",
         "responses": {
           "200": {
             "content": {
@@ -4651,7 +4651,7 @@
                   "items": {
                     "$ref": "#/components/schemas/ClassifierSummary"
                   },
-                  "title": "Response List Classifiers V1 Classifiers Post",
+                  "title": "Response List Classifiers V1 Classifiers Get",
                   "type": "array"
                 }
               }
@@ -4698,7 +4698,7 @@
       },
       "post": {
         "description": "List all classifiers owned by the authenticated user.",
-        "operationId": "list_classifiers_v1_classifiers_post",
+        "operationId": "list_classifiers_v1_classifiers_get",
         "responses": {
           "200": {
             "content": {
@@ -4707,7 +4707,7 @@
                   "items": {
                     "$ref": "#/components/schemas/ClassifierSummary"
                   },
-                  "title": "Response List Classifiers V1 Classifiers Post",
+                  "title": "Response List Classifiers V1 Classifiers Get",
                   "type": "array"
                 }
               }
