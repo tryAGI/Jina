@@ -5,6 +5,25 @@ namespace Jina
 {
     public partial class BatchEmbeddingsClient
     {
+
+
+        private static readonly global::Jina.EndPointSecurityRequirement s_CreateABatchEmbeddingJobSecurityRequirement0 =
+            new global::Jina.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Jina.EndPointAuthorizationRequirement[]
+                {                    new global::Jina.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Jina.EndPointSecurityRequirement[] s_CreateABatchEmbeddingJobSecurityRequirements =
+            new global::Jina.EndPointSecurityRequirement[]
+            {                s_CreateABatchEmbeddingJobSecurityRequirement0,
+            };
         partial void PrepareCreateABatchEmbeddingJobArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Jina.BatchEmbeddingRequest request);
@@ -41,9 +60,15 @@ namespace Jina
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Jina.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateABatchEmbeddingJobSecurityRequirements,
+                operationName: "CreateABatchEmbeddingJobAsync");
+
             var __pathBuilder = new global::Jina.PathBuilder(
                 path: "/v1/batch/embeddings",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -53,7 +78,7 @@ namespace Jina
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

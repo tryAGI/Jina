@@ -5,6 +5,25 @@ namespace Jina
 {
     public partial class ModelListClient
     {
+
+
+        private static readonly global::Jina.EndPointSecurityRequirement s_GetModelSecurityRequirement0 =
+            new global::Jina.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Jina.EndPointAuthorizationRequirement[]
+                {                    new global::Jina.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Jina.EndPointSecurityRequirement[] s_GetModelSecurityRequirements =
+            new global::Jina.EndPointSecurityRequirement[]
+            {                s_GetModelSecurityRequirement0,
+            };
         partial void PrepareGetModelArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelId);
@@ -40,9 +59,15 @@ namespace Jina
                 httpClient: HttpClient,
                 modelId: ref modelId);
 
+
+            var __authorizations = global::Jina.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetModelSecurityRequirements,
+                operationName: "GetModelAsync");
+
             var __pathBuilder = new global::Jina.PathBuilder(
                 path: $"/v1/models/{modelId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -52,7 +77,7 @@ namespace Jina
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

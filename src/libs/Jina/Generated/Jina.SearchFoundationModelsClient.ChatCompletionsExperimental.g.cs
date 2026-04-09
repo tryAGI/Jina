@@ -5,6 +5,25 @@ namespace Jina
 {
     public partial class SearchFoundationModelsClient
     {
+
+
+        private static readonly global::Jina.EndPointSecurityRequirement s_ChatCompletionsExperimentalSecurityRequirement0 =
+            new global::Jina.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Jina.EndPointAuthorizationRequirement[]
+                {                    new global::Jina.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Jina.EndPointSecurityRequirement[] s_ChatCompletionsExperimentalSecurityRequirements =
+            new global::Jina.EndPointSecurityRequirement[]
+            {                s_ChatCompletionsExperimentalSecurityRequirement0,
+            };
         partial void PrepareChatCompletionsExperimentalArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareChatCompletionsExperimentalRequest(
@@ -34,9 +53,15 @@ namespace Jina
             PrepareChatCompletionsExperimentalArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Jina.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ChatCompletionsExperimentalSecurityRequirements,
+                operationName: "ChatCompletionsExperimentalAsync");
+
             var __pathBuilder = new global::Jina.PathBuilder(
                 path: "/v1/chat/completions",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -46,7 +71,7 @@ namespace Jina
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
