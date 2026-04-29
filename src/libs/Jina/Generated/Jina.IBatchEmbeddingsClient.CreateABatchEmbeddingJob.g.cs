@@ -9,11 +9,13 @@ namespace Jina
         /// Submit a batch of texts for asynchronous embedding processing.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Jina.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Jina.BatchStatus> CreateABatchEmbeddingJobAsync(
 
             global::Jina.BatchEmbeddingRequest request,
+            global::Jina.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a batch embedding job<br/>
@@ -42,6 +44,7 @@ namespace Jina
         /// <param name="webhookUrl">
         /// URL to POST notification when job completes.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Jina.BatchStatus> CreateABatchEmbeddingJobAsync(
@@ -52,6 +55,7 @@ namespace Jina
             bool? normalized = default,
             string? task = default,
             string? webhookUrl = default,
+            global::Jina.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
