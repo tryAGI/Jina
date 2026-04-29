@@ -9,10 +9,12 @@ namespace Jina
         /// Stream the error JSONL file for a completed batch job.
         /// </summary>
         /// <param name="batchId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Jina.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> DownloadBatchJobErrorFileAsync(
             string batchId,
+            global::Jina.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
