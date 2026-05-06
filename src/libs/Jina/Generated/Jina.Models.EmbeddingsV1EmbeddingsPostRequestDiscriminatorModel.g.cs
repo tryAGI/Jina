@@ -67,6 +67,10 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        JinaEmbeddingsV5OmniSmall,
+        /// <summary>
+        /// 
+        /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
         /// 
@@ -100,6 +104,7 @@ namespace Jina
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV3 => "jina-embeddings-v3",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV4 => "jina-embeddings-v4",
+                EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniSmall => "jina-embeddings-v5-omni-small",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextNano => "jina-embeddings-v5-text-nano",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextSmall => "jina-embeddings-v5-text-small",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -126,6 +131,7 @@ namespace Jina
                 "jina-embeddings-v2-base-zh" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV2BaseZh,
                 "jina-embeddings-v3" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV3,
                 "jina-embeddings-v4" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV4,
+                "jina-embeddings-v5-omni-small" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniSmall,
                 "jina-embeddings-v5-text-nano" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextNano,
                 "jina-embeddings-v5-text-small" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextSmall,
                 _ => null,

@@ -11,6 +11,10 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        JinaEmbeddingsV5OmniSmall,
+        /// <summary>
+        /// 
+        /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
         /// 
@@ -30,6 +34,7 @@ namespace Jina
         {
             return value switch
             {
+                EmbeddingsV5RequestModel.JinaEmbeddingsV5OmniSmall => "jina-embeddings-v5-omni-small",
                 EmbeddingsV5RequestModel.JinaEmbeddingsV5TextNano => "jina-embeddings-v5-text-nano",
                 EmbeddingsV5RequestModel.JinaEmbeddingsV5TextSmall => "jina-embeddings-v5-text-small",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -42,6 +47,7 @@ namespace Jina
         {
             return value switch
             {
+                "jina-embeddings-v5-omni-small" => EmbeddingsV5RequestModel.JinaEmbeddingsV5OmniSmall,
                 "jina-embeddings-v5-text-nano" => EmbeddingsV5RequestModel.JinaEmbeddingsV5TextNano,
                 "jina-embeddings-v5-text-small" => EmbeddingsV5RequestModel.JinaEmbeddingsV5TextSmall,
                 _ => null,

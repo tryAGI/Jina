@@ -35,12 +35,12 @@ namespace Jina.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.EmbeddingsV3Request)}");
                 jinaEmbeddingsV3 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Jina.EmbeddingsV5Request? jinaEmbeddingsV5TextNano = default;
-            if (discriminator?.Model == global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextNano)
+            global::Jina.EmbeddingsV5Request? jinaEmbeddingsV5OmniSmall = default;
+            if (discriminator?.Model == global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniSmall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV5Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV5Request> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.EmbeddingsV5Request)}");
-                jinaEmbeddingsV5TextNano = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                jinaEmbeddingsV5OmniSmall = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Jina.EmbeddingsV4Request? jinaEmbeddingsV4 = default;
             if (discriminator?.Model == global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV4)
@@ -105,7 +105,7 @@ namespace Jina.JsonConverters
 
                 jinaEmbeddingsV3,
 
-                jinaEmbeddingsV5TextNano,
+                jinaEmbeddingsV5OmniSmall,
 
                 jinaEmbeddingsV4,
 
@@ -148,11 +148,11 @@ namespace Jina.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV3Request).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV3!, typeInfo);
             }
-            else if (value.IsJinaEmbeddingsV5TextNano)
+            else if (value.IsJinaEmbeddingsV5OmniSmall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.EmbeddingsV5Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.EmbeddingsV5Request?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.EmbeddingsV5Request).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5TextNano!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.JinaEmbeddingsV5OmniSmall!, typeInfo);
             }
             else if (value.IsJinaEmbeddingsV4)
             {
