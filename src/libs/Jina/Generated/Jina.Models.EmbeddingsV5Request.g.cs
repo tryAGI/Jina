@@ -4,8 +4,13 @@
 namespace Jina
 {
     /// <summary>
-    /// Jina Embeddings v5 text-only model with task-specific LoRA adapters and flexible dimensions.<br/>
-    /// Example: {"dimensions":512,"embedding_type":"float","input":["A beautiful sunset over the beach"],"model":"jina-embeddings-v5-text-small","normalized":true,"task":"retrieval.query"}
+    /// Jina Embeddings v5 model with task-specific LoRA adapters and flexible<br/>
+    /// dimensions. Small/nano sizes support text-only; the omni variant also<br/>
+    /// accepts images, videos, audio, and PDFs in a single shared vector space.<br/>
+    /// Each top-level list item is a single modality (one Doc class), with one<br/>
+    /// exception: a `MergedContentGroup` (`{"content": [...]}`) fuses multiple<br/>
+    /// chunks (text + image/video/audio) into a single embedding via one model<br/>
+    /// forward pass.
     /// </summary>
     public sealed partial class EmbeddingsV5Request
     {
@@ -23,12 +28,12 @@ namespace Jina
         public global::Jina.AnyOf<global::Jina.EmbeddingsV5RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV5RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
 
         /// <summary>
-        /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `VideoDoc`, `AudioDoc`, `PDFDoc`, or a list of items. List items may also be `{content: [...]}` groups — mixed-modality chunks fused into ONE embedding per group. PDFs must be sent as single inputs, not in a list. Text-only model variants reject non-text items.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.MergedContentGroup>>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> Input { get; set; }
+        public required global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.MergedContentGroup>>> Input { get; set; }
 
         /// <summary>
         /// The embedding model to use.
@@ -69,7 +74,7 @@ namespace Jina
         /// Initializes a new instance of the <see cref="EmbeddingsV5Request" /> class.
         /// </summary>
         /// <param name="input">
-        /// Text to embed: a string, `TextDoc`, or a list of items.
+        /// Content to embed: a string, `TextDoc`, `ImageDoc`, `VideoDoc`, `AudioDoc`, `PDFDoc`, or a list of items. List items may also be `{content: [...]}` groups — mixed-modality chunks fused into ONE embedding per group. PDFs must be sent as single inputs, not in a list. Text-only model variants reject non-text items.
         /// </param>
         /// <param name="model">
         /// The embedding model to use.
@@ -96,7 +101,7 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EmbeddingsV5Request(
-            global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
+            global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.PDFDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.MergedContentGroup>>> input,
             global::Jina.EmbeddingsV5RequestModel model,
             int? dimensions,
             global::Jina.AnyOf<global::Jina.EmbeddingsV5RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV5RequestEmbeddingTypeItem>, object>? embeddingType,
