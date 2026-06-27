@@ -32,6 +32,26 @@ namespace Jina
         public bool IsJinaEmbeddingsV2BaseCode => JinaEmbeddingsV2BaseCode != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV2BaseCode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV2CreateTrainingRequest? value)
+        {
+            value = JinaEmbeddingsV2BaseCode;
+            return IsJinaEmbeddingsV2BaseCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV2CreateTrainingRequest PickJinaEmbeddingsV2BaseCode() => IsJinaEmbeddingsV2BaseCode
+            ? JinaEmbeddingsV2BaseCode!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV2BaseCode' but the value was {ToString()}.");
+
+        /// <summary>
         /// Example: {"access":"public","input":[{"label":"Biology","text":"Describe the structure of a plant cell."},{"label":"Creative writing","text":"Write a poem about the ocean."}],"model":"jina-embeddings-v3","num_iters":20}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -47,6 +67,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV3))]
 #endif
         public bool IsJinaEmbeddingsV3 => JinaEmbeddingsV3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV3CreateTrainingRequest? value)
+        {
+            value = JinaEmbeddingsV3;
+            return IsJinaEmbeddingsV3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV3CreateTrainingRequest PickJinaEmbeddingsV3() => IsJinaEmbeddingsV3
+            ? JinaEmbeddingsV3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV3' but the value was {ToString()}.");
 
         /// <summary>
         /// Example: {"access":"private","input":[{"label":"Dog","text":"A dog playing in the park."},{"image":"https://images.unsplash.com/photo-1465101046530-73398c7f28ca","label":"Rocket"}],"model":"jina-embeddings-v4","num_iters":25}
@@ -66,6 +106,26 @@ namespace Jina
         public bool IsJinaEmbeddingsV4 => JinaEmbeddingsV4 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV4(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV4CreateTrainingRequest? value)
+        {
+            value = JinaEmbeddingsV4;
+            return IsJinaEmbeddingsV4;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV4CreateTrainingRequest PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
+            ? JinaEmbeddingsV4!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
+
+        /// <summary>
         /// Example: {"access":"public","input":[{"label":"Biology","text":"Describe the structure of a plant cell."},{"label":"Creative writing","text":"Write a poem about the ocean."}],"model":"jina-embeddings-v5-text-small","num_iters":20}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -83,6 +143,26 @@ namespace Jina
         public bool IsJinaEmbeddingsV5TextNano => JinaEmbeddingsV5TextNano != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV5TextNano(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV5CreateTrainingRequest? value)
+        {
+            value = JinaEmbeddingsV5TextNano;
+            return IsJinaEmbeddingsV5TextNano;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV5CreateTrainingRequest PickJinaEmbeddingsV5TextNano() => IsJinaEmbeddingsV5TextNano
+            ? JinaEmbeddingsV5TextNano!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5TextNano' but the value was {ToString()}.");
+
+        /// <summary>
         /// Example: {"access":"public","input":[{"image":"https://images.unsplash.com/photo-1518717758536-85ae29035b6d","label":"Cat"},{"label":"Art","text":"A painting of a sunset over the mountains."}],"model":"jina-clip-v2","num_iters":12}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -98,6 +178,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaClipV1))]
 #endif
         public bool IsJinaClipV1 => JinaClipV1 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaClipV1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.ClipCreateTrainingRequest? value)
+        {
+            value = JinaClipV1;
+            return IsJinaClipV1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.ClipCreateTrainingRequest PickJinaClipV1() => IsJinaClipV1
+            ? JinaClipV1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaClipV1' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -115,6 +215,11 @@ namespace Jina
         {
             JinaEmbeddingsV2BaseCode = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrainV1TrainPostRequestVariant1 FromJinaEmbeddingsV2BaseCode(global::Jina.EmbeddingsV2CreateTrainingRequest? value) => new TrainV1TrainPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -137,6 +242,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static TrainV1TrainPostRequestVariant1 FromJinaEmbeddingsV3(global::Jina.EmbeddingsV3CreateTrainingRequest? value) => new TrainV1TrainPostRequestVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrainV1TrainPostRequestVariant1(global::Jina.EmbeddingsV4CreateTrainingRequest value) => new TrainV1TrainPostRequestVariant1((global::Jina.EmbeddingsV4CreateTrainingRequest?)value);
 
         /// <summary>
@@ -151,6 +261,11 @@ namespace Jina
         {
             JinaEmbeddingsV4 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrainV1TrainPostRequestVariant1 FromJinaEmbeddingsV4(global::Jina.EmbeddingsV4CreateTrainingRequest? value) => new TrainV1TrainPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -173,6 +288,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static TrainV1TrainPostRequestVariant1 FromJinaEmbeddingsV5TextNano(global::Jina.EmbeddingsV5CreateTrainingRequest? value) => new TrainV1TrainPostRequestVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TrainV1TrainPostRequestVariant1(global::Jina.ClipCreateTrainingRequest value) => new TrainV1TrainPostRequestVariant1((global::Jina.ClipCreateTrainingRequest?)value);
 
         /// <summary>
@@ -187,6 +307,11 @@ namespace Jina
         {
             JinaClipV1 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TrainV1TrainPostRequestVariant1 FromJinaClipV1(global::Jina.ClipCreateTrainingRequest? value) => new TrainV1TrainPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -243,11 +368,11 @@ namespace Jina
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Jina.EmbeddingsV2CreateTrainingRequest?, TResult>? jinaEmbeddingsV2BaseCode = null,
-            global::System.Func<global::Jina.EmbeddingsV3CreateTrainingRequest?, TResult>? jinaEmbeddingsV3 = null,
-            global::System.Func<global::Jina.EmbeddingsV4CreateTrainingRequest?, TResult>? jinaEmbeddingsV4 = null,
-            global::System.Func<global::Jina.EmbeddingsV5CreateTrainingRequest?, TResult>? jinaEmbeddingsV5TextNano = null,
-            global::System.Func<global::Jina.ClipCreateTrainingRequest?, TResult>? jinaClipV1 = null,
+            global::System.Func<global::Jina.EmbeddingsV2CreateTrainingRequest, TResult>? jinaEmbeddingsV2BaseCode = null,
+            global::System.Func<global::Jina.EmbeddingsV3CreateTrainingRequest, TResult>? jinaEmbeddingsV3 = null,
+            global::System.Func<global::Jina.EmbeddingsV4CreateTrainingRequest, TResult>? jinaEmbeddingsV4 = null,
+            global::System.Func<global::Jina.EmbeddingsV5CreateTrainingRequest, TResult>? jinaEmbeddingsV5TextNano = null,
+            global::System.Func<global::Jina.ClipCreateTrainingRequest, TResult>? jinaClipV1 = null,
             bool validate = true)
         {
             if (validate)
@@ -283,11 +408,53 @@ namespace Jina
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Jina.EmbeddingsV2CreateTrainingRequest?>? jinaEmbeddingsV2BaseCode = null,
-            global::System.Action<global::Jina.EmbeddingsV3CreateTrainingRequest?>? jinaEmbeddingsV3 = null,
-            global::System.Action<global::Jina.EmbeddingsV4CreateTrainingRequest?>? jinaEmbeddingsV4 = null,
-            global::System.Action<global::Jina.EmbeddingsV5CreateTrainingRequest?>? jinaEmbeddingsV5TextNano = null,
-            global::System.Action<global::Jina.ClipCreateTrainingRequest?>? jinaClipV1 = null,
+            global::System.Action<global::Jina.EmbeddingsV2CreateTrainingRequest>? jinaEmbeddingsV2BaseCode = null,
+
+            global::System.Action<global::Jina.EmbeddingsV3CreateTrainingRequest>? jinaEmbeddingsV3 = null,
+
+            global::System.Action<global::Jina.EmbeddingsV4CreateTrainingRequest>? jinaEmbeddingsV4 = null,
+
+            global::System.Action<global::Jina.EmbeddingsV5CreateTrainingRequest>? jinaEmbeddingsV5TextNano = null,
+
+            global::System.Action<global::Jina.ClipCreateTrainingRequest>? jinaClipV1 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsJinaEmbeddingsV2BaseCode)
+            {
+                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+            }
+            else if (IsJinaEmbeddingsV3)
+            {
+                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+            }
+            else if (IsJinaEmbeddingsV4)
+            {
+                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+            }
+            else if (IsJinaEmbeddingsV5TextNano)
+            {
+                jinaEmbeddingsV5TextNano?.Invoke(JinaEmbeddingsV5TextNano!);
+            }
+            else if (IsJinaClipV1)
+            {
+                jinaClipV1?.Invoke(JinaClipV1!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Jina.EmbeddingsV2CreateTrainingRequest>? jinaEmbeddingsV2BaseCode = null,
+            global::System.Action<global::Jina.EmbeddingsV3CreateTrainingRequest>? jinaEmbeddingsV3 = null,
+            global::System.Action<global::Jina.EmbeddingsV4CreateTrainingRequest>? jinaEmbeddingsV4 = null,
+            global::System.Action<global::Jina.EmbeddingsV5CreateTrainingRequest>? jinaEmbeddingsV5TextNano = null,
+            global::System.Action<global::Jina.ClipCreateTrainingRequest>? jinaClipV1 = null,
             bool validate = true)
         {
             if (validate)

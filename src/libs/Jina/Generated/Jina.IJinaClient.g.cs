@@ -32,6 +32,7 @@ namespace Jina
     /// | `INPUT_MODEL_NOT_FOUND` | 400 | Model 'X' not found |<br/>
     /// | `INPUT_INVALID_LABELS` | 400 | Invalid training labels |<br/>
     /// | `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: {current} labels provided, maximum N allowed for your plan |<br/>
+    /// | `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of {max_tokens} tokens |<br/>
     /// | `AUTH_MISSING_API_KEY` | 401 | Authentication required |<br/>
     /// | `AUTH_INVALID_API_KEY` | 401 | Invalid API key |<br/>
     /// | `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |<br/>
@@ -45,7 +46,7 @@ namespace Jina
     /// | `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |<br/>
     /// | `INTERNAL_ERROR` | 500 | An unexpected error occurred |<br/>
     /// | `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |<br/>
-    /// | `SERVICE_TIMEOUT` | 504 | Request timed out after {timeout_seconds} seconds |<br/>
+    /// | `SERVICE_TIMEOUT` | 504 | Service request timed out |<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -74,6 +75,11 @@ namespace Jina
         /// ensuring <see cref="ApiException.ResponseBody"/> is populated.
         /// </summary>
         public bool ReadResponseAsString { get; set; }
+        /// <summary>
+        /// Client-wide request defaults such as headers, query parameters, retries, and timeout.
+        /// </summary>
+        public global::Jina.AutoSDKClientOptions Options { get; }
+
 
         /// <summary>
         /// 
@@ -104,7 +110,7 @@ namespace Jina
 
         /// <summary>
         /// Generate embeddings and rerank documents using state-of-the-art models.<br/>
-        /// **Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).<br/>
+        /// **Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), `jina-embeddings-v5-omni-small` (multilingual multimodal, 32K context, 1024-dim), `jina-embeddings-v5-omni-nano` (multilingual multimodal, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).<br/>
         /// **Reranking** refines search results by scoring query-document relevance. Models include `jina-reranker-v3` (0.6B, 131K context, listwise reranking), `jina-reranker-m0` (multimodal, 29 languages), `jina-reranker-v2-base-multilingual` (100+ languages, function calling support), and `jina-colbert-v2` (late interaction for high precision).
         /// </summary>
         public SearchFoundationModelsClient SearchFoundationModels { get; }

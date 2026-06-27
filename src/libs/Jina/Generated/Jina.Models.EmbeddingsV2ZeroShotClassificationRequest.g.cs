@@ -70,5 +70,6 @@ namespace Jina
         public EmbeddingsV2ZeroShotClassificationRequest()
         {
         }
+
     }
 }

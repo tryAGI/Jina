@@ -66,5 +66,6 @@ namespace Jina
         public HTTPValidationErrorError()
         {
         }
+
     }
 }

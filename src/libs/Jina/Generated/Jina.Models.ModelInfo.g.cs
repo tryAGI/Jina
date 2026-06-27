@@ -199,5 +199,6 @@ namespace Jina
         public ModelInfo()
         {
         }
+
     }
 }

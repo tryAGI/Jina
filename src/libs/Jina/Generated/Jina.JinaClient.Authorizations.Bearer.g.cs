@@ -25,6 +25,7 @@ namespace Jina
             Authorizations.Add(new global::Jina.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,
