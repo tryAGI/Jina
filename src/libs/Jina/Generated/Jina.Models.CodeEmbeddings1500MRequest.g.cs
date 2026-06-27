@@ -104,5 +104,6 @@ namespace Jina
         public CodeEmbeddings1500MRequest()
         {
         }
+
     }
 }

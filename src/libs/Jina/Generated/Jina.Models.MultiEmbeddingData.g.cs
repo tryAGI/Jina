@@ -79,5 +79,6 @@ namespace Jina
         public MultiEmbeddingData()
         {
         }
+
     }
 }

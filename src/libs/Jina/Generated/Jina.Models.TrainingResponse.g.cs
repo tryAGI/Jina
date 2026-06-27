@@ -65,5 +65,6 @@ namespace Jina
         public TrainingResponse()
         {
         }
+
     }
 }

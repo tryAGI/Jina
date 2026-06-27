@@ -77,5 +77,6 @@ namespace Jina
         public RerankingResult()
         {
         }
+
     }
 }

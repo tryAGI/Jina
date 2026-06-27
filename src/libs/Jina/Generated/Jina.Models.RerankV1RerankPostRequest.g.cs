@@ -33,6 +33,26 @@ namespace Jina
         public bool IsJinaColbertV1En => JinaColbertV1En != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaColbertV1En(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.TextRerankerRequest? value)
+        {
+            value = JinaColbertV1En;
+            return IsJinaColbertV1En;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.TextRerankerRequest PickJinaColbertV1En() => IsJinaColbertV1En
+            ? JinaColbertV1En!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV1En' but the value was {ToString()}.");
+
+        /// <summary>
         /// Multimodal reranking for text and images.<br/>
         /// Example: {"documents":[{"image":"https://raw.githubusercontent.com/jina-ai/multimodal-reranker-test/main/paper-11.png"},{"text":"Attention Is All You Need: This groundbreaking paper introduced the Transformer architecture, revolutionizing natural language processing and becoming the foundation for modern large language models like GPT and BERT."},"Recent advances in computer vision have led to the development of vision transformers (ViTs) that achieve state-of-the-art performance on image classification tasks by treating images as sequences of patches.",{"image":"https://raw.githubusercontent.com/jina-ai/multimodal-reranker-test/main/wired-preview.png"},{"text":"Graph Neural Networks: A Review of Methods and Applications. This comprehensive survey covers the latest developments in graph-based machine learning, including graph convolutional networks and graph attention mechanisms."},"Traditional database systems struggle with the volume and variety of modern data workloads, leading to the adoption of distributed computing frameworks like Apache Spark and Hadoop for big data processing."],"model":"jina-reranker-m0","query":"innovative artificial intelligence research papers and visual data analysis","return_documents":false,"top_n":4}
         /// </summary>
@@ -51,6 +71,26 @@ namespace Jina
         public bool IsJinaRerankerM0 => JinaRerankerM0 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaRerankerM0(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.RerankerM0Request? value)
+        {
+            value = JinaRerankerM0;
+            return IsJinaRerankerM0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.RerankerM0Request PickJinaRerankerM0() => IsJinaRerankerM0
+            ? JinaRerankerM0!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerM0' but the value was {ToString()}.");
+
+        /// <summary>
         /// Reranker v3 listwise model for high-quality multilingual retrieval.<br/>
         /// Example: {"documents":["Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.","Le changement climatique et l\u0027\u00E9nergie renouvelable : une perspective europ\u00E9enne. L\u0027Union europ\u00E9enne investit massivement dans les technologies vertes pour atteindre la neutralit\u00E9 carbone d\u0027ici 2050.","Klimawandel und erneuerbare Energien: Deutsche Energiewende. Deutschland f\u00FChrt die Transformation des Energiesektors durch innovative Technologien und politische Ma\u00DFnahmen an.","\u6C14\u5019\u53D8\u5316\u5BF9\u53EF\u518D\u751F\u80FD\u6E90\u7684\u5F71\u54CD\uFF1A\u4E2D\u56FD\u7684\u7EFF\u8272\u53D1\u5C55\u6218\u7565\u3002\u4E2D\u56FD\u6B63\u5728\u5927\u529B\u63A8\u8FDB\u592A\u9633\u80FD\u548C\u98CE\u80FD\u9879\u76EE\uFF0C\u4EE5\u5B9E\u73B0\u78B3\u4E2D\u548C\u76EE\u6807\u3002","Artificial Intelligence in Healthcare: Revolutionizing Medical Diagnosis. AI-powered systems are improving accuracy in disease detection and treatment recommendations.","Blockchain Technology: Transforming Financial Services. Decentralized finance applications are reshaping traditional banking and payment systems."],"model":"jina-reranker-v3","query":"Climate change impact on renewable energy adoption","return_documents":false,"return_embeddings":false,"top_n":4}
         /// </summary>
@@ -67,6 +107,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaRerankerV3))]
 #endif
         public bool IsJinaRerankerV3 => JinaRerankerV3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaRerankerV3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.RerankerV3Request? value)
+        {
+            value = JinaRerankerV3;
+            return IsJinaRerankerV3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.RerankerV3Request PickJinaRerankerV3() => IsJinaRerankerV3
+            ? JinaRerankerV3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerV3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -84,6 +144,11 @@ namespace Jina
         {
             JinaColbertV1En = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RerankV1RerankPostRequest FromJinaColbertV1En(global::Jina.TextRerankerRequest? value) => new RerankV1RerankPostRequest(value);
 
         /// <summary>
         /// 
@@ -106,6 +171,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static RerankV1RerankPostRequest FromJinaRerankerM0(global::Jina.RerankerM0Request? value) => new RerankV1RerankPostRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RerankV1RerankPostRequest(global::Jina.RerankerV3Request value) => new RerankV1RerankPostRequest((global::Jina.RerankerV3Request?)value);
 
         /// <summary>
@@ -120,6 +190,11 @@ namespace Jina
         {
             JinaRerankerV3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RerankV1RerankPostRequest FromJinaRerankerV3(global::Jina.RerankerV3Request? value) => new RerankV1RerankPostRequest(value);
 
         /// <summary>
         /// 
@@ -168,9 +243,9 @@ namespace Jina
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Jina.TextRerankerRequest?, TResult>? jinaColbertV1En = null,
-            global::System.Func<global::Jina.RerankerM0Request?, TResult>? jinaRerankerM0 = null,
-            global::System.Func<global::Jina.RerankerV3Request?, TResult>? jinaRerankerV3 = null,
+            global::System.Func<global::Jina.TextRerankerRequest, TResult>? jinaColbertV1En = null,
+            global::System.Func<global::Jina.RerankerM0Request, TResult>? jinaRerankerM0 = null,
+            global::System.Func<global::Jina.RerankerV3Request, TResult>? jinaRerankerV3 = null,
             bool validate = true)
         {
             if (validate)
@@ -198,9 +273,39 @@ namespace Jina
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Jina.TextRerankerRequest?>? jinaColbertV1En = null,
-            global::System.Action<global::Jina.RerankerM0Request?>? jinaRerankerM0 = null,
-            global::System.Action<global::Jina.RerankerV3Request?>? jinaRerankerV3 = null,
+            global::System.Action<global::Jina.TextRerankerRequest>? jinaColbertV1En = null,
+
+            global::System.Action<global::Jina.RerankerM0Request>? jinaRerankerM0 = null,
+
+            global::System.Action<global::Jina.RerankerV3Request>? jinaRerankerV3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsJinaColbertV1En)
+            {
+                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+            }
+            else if (IsJinaRerankerM0)
+            {
+                jinaRerankerM0?.Invoke(JinaRerankerM0!);
+            }
+            else if (IsJinaRerankerV3)
+            {
+                jinaRerankerV3?.Invoke(JinaRerankerV3!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Jina.TextRerankerRequest>? jinaColbertV1En = null,
+            global::System.Action<global::Jina.RerankerM0Request>? jinaRerankerM0 = null,
+            global::System.Action<global::Jina.RerankerV3Request>? jinaRerankerV3 = null,
             bool validate = true)
         {
             if (validate)

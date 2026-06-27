@@ -43,5 +43,6 @@ namespace Jina
         public ModelListResponse()
         {
         }
+
     }
 }

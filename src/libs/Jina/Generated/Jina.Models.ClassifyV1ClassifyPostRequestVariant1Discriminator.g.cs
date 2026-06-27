@@ -40,5 +40,6 @@ namespace Jina
         public ClassifyV1ClassifyPostRequestVariant1Discriminator()
         {
         }
+
     }
 }
