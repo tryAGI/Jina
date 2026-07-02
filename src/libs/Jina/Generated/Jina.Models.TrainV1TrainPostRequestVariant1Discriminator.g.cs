@@ -40,5 +40,6 @@ namespace Jina
         public TrainV1TrainPostRequestVariant1Discriminator()
         {
         }
+
     }
 }

@@ -126,5 +126,6 @@ namespace Jina
         public RerankerV3Request()
         {
         }
+
     }
 }

@@ -102,5 +102,6 @@ namespace Jina
         public ModelPricing()
         {
         }
+
     }
 }

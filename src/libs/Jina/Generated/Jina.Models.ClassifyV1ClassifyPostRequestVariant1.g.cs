@@ -33,6 +33,26 @@ namespace Jina
         public bool IsJinaEmbeddingsV2BaseCode => JinaEmbeddingsV2BaseCode != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV2BaseCode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV2ZeroShotClassificationRequest? value)
+        {
+            value = JinaEmbeddingsV2BaseCode;
+            return IsJinaEmbeddingsV2BaseCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV2ZeroShotClassificationRequest PickJinaEmbeddingsV2BaseCode() => IsJinaEmbeddingsV2BaseCode
+            ? JinaEmbeddingsV2BaseCode!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV2BaseCode' but the value was {ToString()}.");
+
+        /// <summary>
         /// Zero-shot classification using Embeddings v3.<br/>
         /// Example: {"input":["Explain the theory of relativity in simple terms.","Design a database schema for an e-commerce platform."],"labels":["Technical explanation","Creative writing","Business solution"],"model":"jina-embeddings-v3"}
         /// </summary>
@@ -49,6 +69,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV3))]
 #endif
         public bool IsJinaEmbeddingsV3 => JinaEmbeddingsV3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV3ZeroShotClassificationRequest? value)
+        {
+            value = JinaEmbeddingsV3;
+            return IsJinaEmbeddingsV3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV3ZeroShotClassificationRequest PickJinaEmbeddingsV3() => IsJinaEmbeddingsV3
+            ? JinaEmbeddingsV3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV3' but the value was {ToString()}.");
 
         /// <summary>
         /// Zero-shot classification using Embeddings v4.<br/>
@@ -69,6 +109,26 @@ namespace Jina
         public bool IsJinaEmbeddingsV4 => JinaEmbeddingsV4 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV4(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV4ZeroShotClassificationRequest? value)
+        {
+            value = JinaEmbeddingsV4;
+            return IsJinaEmbeddingsV4;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV4ZeroShotClassificationRequest PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
+            ? JinaEmbeddingsV4!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
+
+        /// <summary>
         /// Zero-shot classification using Embeddings v5 text models.<br/>
         /// Example: {"input":["Explain the theory of relativity in simple terms.","Design a database schema for an e-commerce platform."],"labels":["Technical explanation","Creative writing","Business solution"],"model":"jina-embeddings-v5-text-small"}
         /// </summary>
@@ -85,6 +145,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV5TextNano))]
 #endif
         public bool IsJinaEmbeddingsV5TextNano => JinaEmbeddingsV5TextNano != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV5TextNano(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV5ZeroShotClassificationRequest? value)
+        {
+            value = JinaEmbeddingsV5TextNano;
+            return IsJinaEmbeddingsV5TextNano;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.EmbeddingsV5ZeroShotClassificationRequest PickJinaEmbeddingsV5TextNano() => IsJinaEmbeddingsV5TextNano
+            ? JinaEmbeddingsV5TextNano!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5TextNano' but the value was {ToString()}.");
 
         /// <summary>
         /// Zero-shot classification using CLIP for text and images.<br/>
@@ -105,6 +185,26 @@ namespace Jina
         public bool IsJinaClipV1 => JinaClipV1 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaClipV1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.ClipZeroShotClassificationRequest? value)
+        {
+            value = JinaClipV1;
+            return IsJinaClipV1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.ClipZeroShotClassificationRequest PickJinaClipV1() => IsJinaClipV1
+            ? JinaClipV1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaClipV1' but the value was {ToString()}.");
+
+        /// <summary>
         /// Zero-shot classification using code embedding models.<br/>
         /// Example: {"input":["def hello_world():\n    print(\u0027Hello, World!\u0027)","SELECT * FROM users WHERE id = 1;"],"labels":["Python","JavaScript","SQL","Rust"],"model":"jina-code-embeddings-0.5b"}
         /// </summary>
@@ -121,6 +221,26 @@ namespace Jina
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaCodeEmbeddings05b))]
 #endif
         public bool IsJinaCodeEmbeddings05b => JinaCodeEmbeddings05b != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJinaCodeEmbeddings05b(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.CodeEmbeddingsZeroShotClassificationRequest? value)
+        {
+            value = JinaCodeEmbeddings05b;
+            return IsJinaCodeEmbeddings05b;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Jina.CodeEmbeddingsZeroShotClassificationRequest PickJinaCodeEmbeddings05b() => IsJinaCodeEmbeddings05b
+            ? JinaCodeEmbeddings05b!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaCodeEmbeddings05b' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -138,6 +258,11 @@ namespace Jina
         {
             JinaEmbeddingsV2BaseCode = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaEmbeddingsV2BaseCode(global::Jina.EmbeddingsV2ZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -160,6 +285,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaEmbeddingsV3(global::Jina.EmbeddingsV3ZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ClassifyV1ClassifyPostRequestVariant1(global::Jina.EmbeddingsV4ZeroShotClassificationRequest value) => new ClassifyV1ClassifyPostRequestVariant1((global::Jina.EmbeddingsV4ZeroShotClassificationRequest?)value);
 
         /// <summary>
@@ -174,6 +304,11 @@ namespace Jina
         {
             JinaEmbeddingsV4 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaEmbeddingsV4(global::Jina.EmbeddingsV4ZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -196,6 +331,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaEmbeddingsV5TextNano(global::Jina.EmbeddingsV5ZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ClassifyV1ClassifyPostRequestVariant1(global::Jina.ClipZeroShotClassificationRequest value) => new ClassifyV1ClassifyPostRequestVariant1((global::Jina.ClipZeroShotClassificationRequest?)value);
 
         /// <summary>
@@ -214,6 +354,11 @@ namespace Jina
         /// <summary>
         /// 
         /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaClipV1(global::Jina.ClipZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ClassifyV1ClassifyPostRequestVariant1(global::Jina.CodeEmbeddingsZeroShotClassificationRequest value) => new ClassifyV1ClassifyPostRequestVariant1((global::Jina.CodeEmbeddingsZeroShotClassificationRequest?)value);
 
         /// <summary>
@@ -228,6 +373,11 @@ namespace Jina
         {
             JinaCodeEmbeddings05b = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ClassifyV1ClassifyPostRequestVariant1 FromJinaCodeEmbeddings05b(global::Jina.CodeEmbeddingsZeroShotClassificationRequest? value) => new ClassifyV1ClassifyPostRequestVariant1(value);
 
         /// <summary>
         /// 
@@ -288,12 +438,12 @@ namespace Jina
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Jina.EmbeddingsV2ZeroShotClassificationRequest?, TResult>? jinaEmbeddingsV2BaseCode = null,
-            global::System.Func<global::Jina.EmbeddingsV3ZeroShotClassificationRequest?, TResult>? jinaEmbeddingsV3 = null,
-            global::System.Func<global::Jina.EmbeddingsV4ZeroShotClassificationRequest?, TResult>? jinaEmbeddingsV4 = null,
-            global::System.Func<global::Jina.EmbeddingsV5ZeroShotClassificationRequest?, TResult>? jinaEmbeddingsV5TextNano = null,
-            global::System.Func<global::Jina.ClipZeroShotClassificationRequest?, TResult>? jinaClipV1 = null,
-            global::System.Func<global::Jina.CodeEmbeddingsZeroShotClassificationRequest?, TResult>? jinaCodeEmbeddings05b = null,
+            global::System.Func<global::Jina.EmbeddingsV2ZeroShotClassificationRequest, TResult>? jinaEmbeddingsV2BaseCode = null,
+            global::System.Func<global::Jina.EmbeddingsV3ZeroShotClassificationRequest, TResult>? jinaEmbeddingsV3 = null,
+            global::System.Func<global::Jina.EmbeddingsV4ZeroShotClassificationRequest, TResult>? jinaEmbeddingsV4 = null,
+            global::System.Func<global::Jina.EmbeddingsV5ZeroShotClassificationRequest, TResult>? jinaEmbeddingsV5TextNano = null,
+            global::System.Func<global::Jina.ClipZeroShotClassificationRequest, TResult>? jinaClipV1 = null,
+            global::System.Func<global::Jina.CodeEmbeddingsZeroShotClassificationRequest, TResult>? jinaCodeEmbeddings05b = null,
             bool validate = true)
         {
             if (validate)
@@ -333,12 +483,60 @@ namespace Jina
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Jina.EmbeddingsV2ZeroShotClassificationRequest?>? jinaEmbeddingsV2BaseCode = null,
-            global::System.Action<global::Jina.EmbeddingsV3ZeroShotClassificationRequest?>? jinaEmbeddingsV3 = null,
-            global::System.Action<global::Jina.EmbeddingsV4ZeroShotClassificationRequest?>? jinaEmbeddingsV4 = null,
-            global::System.Action<global::Jina.EmbeddingsV5ZeroShotClassificationRequest?>? jinaEmbeddingsV5TextNano = null,
-            global::System.Action<global::Jina.ClipZeroShotClassificationRequest?>? jinaClipV1 = null,
-            global::System.Action<global::Jina.CodeEmbeddingsZeroShotClassificationRequest?>? jinaCodeEmbeddings05b = null,
+            global::System.Action<global::Jina.EmbeddingsV2ZeroShotClassificationRequest>? jinaEmbeddingsV2BaseCode = null,
+
+            global::System.Action<global::Jina.EmbeddingsV3ZeroShotClassificationRequest>? jinaEmbeddingsV3 = null,
+
+            global::System.Action<global::Jina.EmbeddingsV4ZeroShotClassificationRequest>? jinaEmbeddingsV4 = null,
+
+            global::System.Action<global::Jina.EmbeddingsV5ZeroShotClassificationRequest>? jinaEmbeddingsV5TextNano = null,
+
+            global::System.Action<global::Jina.ClipZeroShotClassificationRequest>? jinaClipV1 = null,
+
+            global::System.Action<global::Jina.CodeEmbeddingsZeroShotClassificationRequest>? jinaCodeEmbeddings05b = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsJinaEmbeddingsV2BaseCode)
+            {
+                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+            }
+            else if (IsJinaEmbeddingsV3)
+            {
+                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+            }
+            else if (IsJinaEmbeddingsV4)
+            {
+                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+            }
+            else if (IsJinaEmbeddingsV5TextNano)
+            {
+                jinaEmbeddingsV5TextNano?.Invoke(JinaEmbeddingsV5TextNano!);
+            }
+            else if (IsJinaClipV1)
+            {
+                jinaClipV1?.Invoke(JinaClipV1!);
+            }
+            else if (IsJinaCodeEmbeddings05b)
+            {
+                jinaCodeEmbeddings05b?.Invoke(JinaCodeEmbeddings05b!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Jina.EmbeddingsV2ZeroShotClassificationRequest>? jinaEmbeddingsV2BaseCode = null,
+            global::System.Action<global::Jina.EmbeddingsV3ZeroShotClassificationRequest>? jinaEmbeddingsV3 = null,
+            global::System.Action<global::Jina.EmbeddingsV4ZeroShotClassificationRequest>? jinaEmbeddingsV4 = null,
+            global::System.Action<global::Jina.EmbeddingsV5ZeroShotClassificationRequest>? jinaEmbeddingsV5TextNano = null,
+            global::System.Action<global::Jina.ClipZeroShotClassificationRequest>? jinaClipV1 = null,
+            global::System.Action<global::Jina.CodeEmbeddingsZeroShotClassificationRequest>? jinaCodeEmbeddings05b = null,
             bool validate = true)
         {
             if (validate)

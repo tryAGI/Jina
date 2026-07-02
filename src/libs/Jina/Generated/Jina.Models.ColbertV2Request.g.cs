@@ -92,5 +92,6 @@ namespace Jina
         public ColbertV2Request()
         {
         }
+
     }
 }

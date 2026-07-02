@@ -24,11 +24,12 @@ namespace Jina
         public string Model { get; set; } = "jina-reranker-m0";
 
         /// <summary>
-        /// The search query to rank documents against.
+        /// The query to rank documents against: a text string, or an image object (`{"image": &lt;url|base64&gt;}`) for a visual query.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.ImageDoc>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Query { get; set; }
+        public required global::Jina.AnyOf<string, global::Jina.ImageDoc> Query { get; set; }
 
         /// <summary>
         /// If true (default), includes document content in each result.<br/>
@@ -62,7 +63,7 @@ namespace Jina
         /// Documents to rank: strings, `TextDoc`, or `ImageDoc` objects.
         /// </param>
         /// <param name="query">
-        /// The search query to rank documents against.
+        /// The query to rank documents against: a text string, or an image object (`{"image": &lt;url|base64&gt;}`) for a visual query.
         /// </param>
         /// <param name="returnDocuments">
         /// If true (default), includes document content in each result.<br/>
@@ -82,7 +83,7 @@ namespace Jina
 #endif
         public RerankerM0Request(
             global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>> documents,
-            string query,
+            global::Jina.AnyOf<string, global::Jina.ImageDoc> query,
             bool? returnDocuments,
             int? topN,
             bool? truncation,
@@ -90,7 +91,7 @@ namespace Jina
         {
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
             this.Model = model;
-            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
+            this.Query = query;
             this.ReturnDocuments = returnDocuments;
             this.TopN = topN;
             this.Truncation = truncation;
@@ -102,5 +103,6 @@ namespace Jina
         public RerankerM0Request()
         {
         }
+
     }
 }

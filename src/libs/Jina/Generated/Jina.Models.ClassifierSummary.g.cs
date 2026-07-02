@@ -186,5 +186,6 @@ namespace Jina
         public ClassifierSummary()
         {
         }
+
     }
 }
