@@ -95,5 +95,6 @@ namespace Jina
         public EmbeddingsV2Request()
         {
         }
+
     }
 }

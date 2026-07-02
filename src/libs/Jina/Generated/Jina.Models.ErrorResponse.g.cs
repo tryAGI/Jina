@@ -73,5 +73,6 @@ namespace Jina
         public ErrorResponse()
         {
         }
+
     }
 }

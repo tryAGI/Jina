@@ -103,5 +103,6 @@ namespace Jina
         public TextRerankerRequest()
         {
         }
+
     }
 }

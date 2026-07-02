@@ -54,5 +54,6 @@ namespace Jina
         public TextTrainingItem()
         {
         }
+
     }
 }

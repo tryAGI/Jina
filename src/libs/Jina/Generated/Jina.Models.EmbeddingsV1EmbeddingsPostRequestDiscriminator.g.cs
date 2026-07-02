@@ -40,5 +40,6 @@ namespace Jina
         public EmbeddingsV1EmbeddingsPostRequestDiscriminator()
         {
         }
+
     }
 }
