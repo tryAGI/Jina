@@ -7,7 +7,7 @@ namespace Jina
     /// Best-in-class embeddings, rerankers, and classifiers. Search AI for multilingual and multimodal data.<br/>
     /// ## Capabilities<br/>
     /// - **Text Embeddings**: Dense vector representations for semantic search, similarity, and classification<br/>
-    /// - **Multimodal Embeddings**: Process images, PDFs, and text in a unified vector space<br/>
+    /// - **Multimodal Embeddings**: Process images, video, audio, PDFs, and text in a unified vector space<br/>
     /// - **Reranking**: Refine search results with precise relevance scoring<br/>
     /// - **Classification**: Zero-shot and few-shot text classification<br/>
     /// - **Multi-vector Embeddings**: Token-level embeddings for ColBERT and late interaction<br/>
@@ -32,6 +32,7 @@ namespace Jina
     /// | `INPUT_MODEL_NOT_FOUND` | 400 | Model 'X' not found |<br/>
     /// | `INPUT_INVALID_LABELS` | 400 | Invalid training labels |<br/>
     /// | `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: {current} labels provided, maximum N allowed for your plan |<br/>
+    /// | `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of {max_tokens} tokens |<br/>
     /// | `AUTH_MISSING_API_KEY` | 401 | Authentication required |<br/>
     /// | `AUTH_INVALID_API_KEY` | 401 | Invalid API key |<br/>
     /// | `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |<br/>
@@ -45,14 +46,14 @@ namespace Jina
     /// | `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |<br/>
     /// | `INTERNAL_ERROR` | 500 | An unexpected error occurred |<br/>
     /// | `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |<br/>
-    /// | `SERVICE_TIMEOUT` | 504 | Request timed out after {timeout_seconds} seconds |<br/>
+    /// | `SERVICE_TIMEOUT` | 504 | Service request timed out |<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
     public sealed partial class JinaClient : global::Jina.IJinaClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.jina.ai/";
 
@@ -72,10 +73,20 @@ namespace Jina
 #if DEBUG
             = true;
 #endif
+
+        /// <inheritdoc/>
+        public global::Jina.AutoSDKClientOptions Options { get; }
+
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Jina.SourceGenerationContext.Default);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Jina.SourceGenerationContext.Default;
+        public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
+        {
+            get => JsonSerializerContextProvider.Value;
+            set => JsonSerializerContextProvider = new(() => value);
+        }
 
 
         /// <summary>
@@ -86,52 +97,52 @@ namespace Jina
         /// **Supported models**: `jina-embeddings-v5-text-small` (1024-dim, 32K context) and `jina-embeddings-v5-text-nano` (768-dim, 8K context). All task types supported: retrieval, text-matching, clustering, classification.<br/>
         /// Output files expire after 24 hours. Optional webhook notifications on job completion.
         /// </summary>
-        public BatchEmbeddingsClient BatchEmbeddings => new BatchEmbeddingsClient(HttpClient, authorizations: Authorizations)
+        public BatchEmbeddingsClient BatchEmbeddings => new BatchEmbeddingsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
         };
 
         /// <summary>
         /// Liveness and readiness probes for service health monitoring. For internal use only.
         /// </summary>
-        public HealthCheckClient HealthCheck => new HealthCheckClient(HttpClient, authorizations: Authorizations)
+        public HealthCheckClient HealthCheck => new HealthCheckClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
         };
 
         /// <summary>
         /// List available Jina AI models and their capabilities.<br/>
         /// Returns model metadata in OpenRouter-compatible format including model IDs, input/output modalities, context lengths, and pricing information. Use this endpoint to discover available models before making API calls.
         /// </summary>
-        public ModelListClient ModelList => new ModelListClient(HttpClient, authorizations: Authorizations)
+        public ModelListClient ModelList => new ModelListClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
         };
 
         /// <summary>
         /// Generate embeddings and rerank documents using state-of-the-art models.<br/>
-        /// **Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).<br/>
-        /// **Reranking** refines search results by scoring query-document relevance. Models include `jina-reranker-v3` (0.6B, 131K context, listwise reranking), `jina-reranker-m0` (multimodal, 29 languages), `jina-reranker-v2-base-multilingual` (100+ languages, function calling support), and `jina-colbert-v2` (late interaction for high precision).
+        /// **Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), `jina-embeddings-v5-omni-small` (multilingual multimodal, 32K context, 1024-dim), `jina-embeddings-v5-omni-nano` (multilingual multimodal, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).<br/>
+        /// **Reranking** refines search results by scoring query-document relevance. Models include `jina-reranker-v3.5` and `jina-reranker-v3` (0.6B, 131K context, listwise reranking), `jina-reranker-m0` (multimodal, 29 languages), `jina-reranker-v2-base-multilingual` (100+ languages, function calling support), and `jina-colbert-v2` (late interaction for high precision).
         /// </summary>
-        public SearchFoundationModelsClient SearchFoundationModels => new SearchFoundationModelsClient(HttpClient, authorizations: Authorizations)
+        public SearchFoundationModelsClient SearchFoundationModels => new SearchFoundationModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
         };
 
         /// <summary>
         /// Categorize text and images using embedding-based classification.<br/>
-        /// **Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 256 classes. Best for flexible, immediate classification with descriptive labels.<br/>
+        /// **Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 512 labels, or 8 label groups of up to 64 labels each. Best for flexible, immediate classification with descriptive labels.<br/>
         /// **Few-shot**: Train custom classifiers with labeled examples (200-400 samples recommended). Supports incremental updates and handles domain-specific or time-sensitive data. Limited to 16 classes and 16 classifiers per API key.<br/>
         /// Supports multilingual text via `jina-embeddings-v3`, `jina-embeddings-v5-text-small`, `jina-embeddings-v5-text-nano`, and multimodal (text/image) via `jina-clip-v2` or `jina-embeddings-v4`.
         /// </summary>
-        public ZeroFewShotClassificationClient ZeroFewShotClassification => new ZeroFewShotClassificationClient(HttpClient, authorizations: Authorizations)
+        public ZeroFewShotClassificationClient ZeroFewShotClassification => new ZeroFewShotClassificationClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
         };
 
         /// <summary>
@@ -147,11 +158,58 @@ namespace Jina
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri,
+                authorizations,
+                options: null,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the JinaClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public JinaClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations,
+            global::Jina.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the JinaClient.
+        /// If no httpClient is provided, a new one will be created.
+        /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public JinaClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations,
+            global::Jina.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
+
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>();
+            Options = options ?? new global::Jina.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
 
             Initialized(HttpClient);

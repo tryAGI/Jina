@@ -9,11 +9,11 @@ namespace Jina
     public enum CodeEmbeddingsZeroShotClassificationRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings05b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings15b,
     }

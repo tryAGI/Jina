@@ -127,5 +127,6 @@ namespace Jina
         public EmbeddingsV3Request()
         {
         }
+
     }
 }

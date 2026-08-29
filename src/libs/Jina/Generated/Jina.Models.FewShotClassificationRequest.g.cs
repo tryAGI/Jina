@@ -56,5 +56,6 @@ namespace Jina
         public FewShotClassificationRequest()
         {
         }
+
     }
 }

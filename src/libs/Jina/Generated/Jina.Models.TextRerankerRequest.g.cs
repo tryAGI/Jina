@@ -45,12 +45,6 @@ namespace Jina
         public int? TopN { get; set; }
 
         /// <summary>
-        /// If true, truncates documents exceeding the model's max token limit.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("truncation")]
-        public bool? Truncation { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -75,9 +69,6 @@ namespace Jina
         /// <param name="topN">
         /// Number of top results to return. If not set, returns all documents.
         /// </param>
-        /// <param name="truncation">
-        /// If true, truncates documents exceeding the model's max token limit.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,15 +77,13 @@ namespace Jina
             global::Jina.TextRerankerRequestModel model,
             string query,
             bool? returnDocuments,
-            int? topN,
-            bool? truncation)
+            int? topN)
         {
             this.Documents = documents ?? throw new global::System.ArgumentNullException(nameof(documents));
             this.Model = model;
             this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
             this.ReturnDocuments = returnDocuments;
             this.TopN = topN;
-            this.Truncation = truncation;
         }
 
         /// <summary>
@@ -103,5 +92,6 @@ namespace Jina
         public TextRerankerRequest()
         {
         }
+
     }
 }

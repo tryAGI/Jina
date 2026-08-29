@@ -5,7 +5,7 @@ namespace Jina
 {
     /// <summary>
     /// Categorize text and images using embedding-based classification.<br/>
-    /// **Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 256 classes. Best for flexible, immediate classification with descriptive labels.<br/>
+    /// **Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 512 labels, or 8 label groups of up to 64 labels each. Best for flexible, immediate classification with descriptive labels.<br/>
     /// **Few-shot**: Train custom classifiers with labeled examples (200-400 samples recommended). Supports incremental updates and handles domain-specific or time-sensitive data. Limited to 16 classes and 16 classifiers per API key.<br/>
     /// Supports multilingual text via `jina-embeddings-v3`, `jina-embeddings-v5-text-small`, `jina-embeddings-v5-text-nano`, and multimodal (text/image) via `jina-clip-v2` or `jina-embeddings-v4`.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
@@ -14,7 +14,7 @@ namespace Jina
     public sealed partial class ZeroFewShotClassificationClient : global::Jina.IZeroFewShotClassificationClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.jina.ai/";
 
@@ -34,10 +34,20 @@ namespace Jina
 #if DEBUG
             = true;
 #endif
+
+        /// <inheritdoc/>
+        public global::Jina.AutoSDKClientOptions Options { get; }
+
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Jina.SourceGenerationContext.Default);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Jina.SourceGenerationContext.Default;
+        public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
+        {
+            get => JsonSerializerContextProvider.Value;
+            set => JsonSerializerContextProvider = new(() => value);
+        }
 
 
         /// <summary>
@@ -53,11 +63,58 @@ namespace Jina
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri,
+                authorizations,
+                options: null,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the ZeroFewShotClassificationClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public ZeroFewShotClassificationClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations,
+            global::Jina.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the ZeroFewShotClassificationClient.
+        /// If no httpClient is provided, a new one will be created.
+        /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public ZeroFewShotClassificationClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>? authorizations,
+            global::Jina.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
+
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Jina.EndPointAuthorization>();
+            Options = options ?? new global::Jina.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
 
             Initialized(HttpClient);

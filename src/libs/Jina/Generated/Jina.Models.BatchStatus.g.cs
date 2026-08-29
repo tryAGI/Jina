@@ -145,5 +145,6 @@ namespace Jina
         public BatchStatus()
         {
         }
+
     }
 }

@@ -4,16 +4,16 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ELSERV2RequestTask2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalQuery,
     }

@@ -9,11 +9,11 @@ namespace Jina
     public enum ClipCreateTrainingRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV2,
     }

@@ -9,27 +9,27 @@ namespace Jina
     public enum TextRerankerRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV1En,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1BaseEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1TinyEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1TurboEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV2BaseMultilingual,
     }

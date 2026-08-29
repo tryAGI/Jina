@@ -4,7 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ClassifierSummary
     {
@@ -186,5 +186,6 @@ namespace Jina
         public ClassifierSummary()
         {
         }
+
     }
 }

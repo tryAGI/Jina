@@ -113,5 +113,6 @@ namespace Jina
         public BatchEmbeddingRequest()
         {
         }
+
     }
 }

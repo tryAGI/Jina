@@ -4,7 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TextTrainingItem
     {
@@ -54,5 +54,6 @@ namespace Jina
         public TextTrainingItem()
         {
         }
+
     }
 }

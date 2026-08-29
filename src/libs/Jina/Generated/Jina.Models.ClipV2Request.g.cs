@@ -116,5 +116,6 @@ namespace Jina
         public ClipV2Request()
         {
         }
+
     }
 }

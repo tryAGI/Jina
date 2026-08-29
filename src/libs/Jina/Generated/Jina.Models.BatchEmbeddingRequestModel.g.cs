@@ -9,11 +9,11 @@ namespace Jina
     public enum BatchEmbeddingRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextSmall,
     }

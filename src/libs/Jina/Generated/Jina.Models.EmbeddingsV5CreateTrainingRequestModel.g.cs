@@ -9,11 +9,11 @@ namespace Jina
     public enum EmbeddingsV5CreateTrainingRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextSmall,
     }

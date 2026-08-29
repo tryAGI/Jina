@@ -4,12 +4,12 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ClassifyV1ClassifyPostRequestVariant1Discriminator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModelJsonConverter))]
@@ -40,5 +40,6 @@ namespace Jina
         public ClassifyV1ClassifyPostRequestVariant1Discriminator()
         {
         }
+
     }
 }

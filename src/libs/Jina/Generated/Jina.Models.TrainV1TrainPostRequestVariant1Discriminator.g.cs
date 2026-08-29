@@ -4,12 +4,12 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TrainV1TrainPostRequestVariant1Discriminator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.TrainV1TrainPostRequestVariant1DiscriminatorModelJsonConverter))]
@@ -40,5 +40,6 @@ namespace Jina
         public TrainV1TrainPostRequestVariant1Discriminator()
         {
         }
+
     }
 }

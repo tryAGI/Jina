@@ -4,12 +4,12 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RerankV1RerankPostRequestDiscriminator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.RerankV1RerankPostRequestDiscriminatorModelJsonConverter))]
@@ -40,5 +40,6 @@ namespace Jina
         public RerankV1RerankPostRequestDiscriminator()
         {
         }
+
     }
 }

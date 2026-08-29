@@ -4,12 +4,12 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class EmbeddingsV1EmbeddingsPostRequestDiscriminator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModelJsonConverter))]
@@ -40,5 +40,6 @@ namespace Jina
         public EmbeddingsV1EmbeddingsPostRequestDiscriminator()
         {
         }
+
     }
 }

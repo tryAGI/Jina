@@ -4,18 +4,18 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class HTTPValidationError
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         public string? Detail { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("errors")]
         public global::System.Collections.Generic.IList<global::Jina.HTTPValidationErrorError>? Errors { get; set; }
@@ -48,5 +48,6 @@ namespace Jina
         public HTTPValidationError()
         {
         }
+
     }
 }

@@ -4,72 +4,80 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElserV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings05b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings15b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV1En,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseDe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseZh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV4,
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        JinaEmbeddingsV5OmniNano,
+        /// <summary>
+        ///
+        /// </summary>
+        JinaEmbeddingsV5OmniSmall,
+        /// <summary>
+        ///
         /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextSmall,
     }
@@ -100,6 +108,8 @@ namespace Jina
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV2BaseZh => "jina-embeddings-v2-base-zh",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV3 => "jina-embeddings-v3",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV4 => "jina-embeddings-v4",
+                EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniNano => "jina-embeddings-v5-omni-nano",
+                EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniSmall => "jina-embeddings-v5-omni-small",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextNano => "jina-embeddings-v5-text-nano",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextSmall => "jina-embeddings-v5-text-small",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -126,6 +136,8 @@ namespace Jina
                 "jina-embeddings-v2-base-zh" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV2BaseZh,
                 "jina-embeddings-v3" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV3,
                 "jina-embeddings-v4" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV4,
+                "jina-embeddings-v5-omni-nano" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniNano,
+                "jina-embeddings-v5-omni-small" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5OmniSmall,
                 "jina-embeddings-v5-text-nano" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextNano,
                 "jina-embeddings-v5-text-small" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaEmbeddingsV5TextSmall,
                 _ => null,
