@@ -4,30 +4,30 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class HTTPValidationErrorError
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("field")]
         public string? Field { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         public object? Input { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string? Type { get; set; }
@@ -66,5 +66,6 @@ namespace Jina
         public HTTPValidationErrorError()
         {
         }
+
     }
 }

@@ -4,7 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ErrorResponse
     {
@@ -73,5 +73,6 @@ namespace Jina
         public ErrorResponse()
         {
         }
+
     }
 }

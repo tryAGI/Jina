@@ -4,7 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ImageDoc
     {
@@ -42,5 +42,6 @@ namespace Jina
         public ImageDoc()
         {
         }
+
     }
 }

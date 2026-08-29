@@ -4,42 +4,46 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RerankV1RerankPostRequestDiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV1En,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaColbertV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerM0,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1BaseEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1TinyEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV1TurboEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV2BaseMultilingual,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaRerankerV3,
+        /// <summary>
+        ///
+        /// </summary>
+        JinaRerankerV35,
     }
 
     /// <summary>
@@ -62,6 +66,7 @@ namespace Jina
                 RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn => "jina-reranker-v1-turbo-en",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual => "jina-reranker-v2-base-multilingual",
                 RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV3 => "jina-reranker-v3",
+                RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV35 => "jina-reranker-v3.5",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -80,6 +85,7 @@ namespace Jina
                 "jina-reranker-v1-turbo-en" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV1TurboEn,
                 "jina-reranker-v2-base-multilingual" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV2BaseMultilingual,
                 "jina-reranker-v3" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV3,
+                "jina-reranker-v3.5" => RerankV1RerankPostRequestDiscriminatorModel.JinaRerankerV35,
                 _ => null,
             };
         }

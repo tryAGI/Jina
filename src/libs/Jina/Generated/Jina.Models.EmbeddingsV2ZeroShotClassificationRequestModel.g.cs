@@ -9,23 +9,23 @@ namespace Jina
     public enum EmbeddingsV2ZeroShotClassificationRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseDe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseZh,
     }

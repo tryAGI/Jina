@@ -52,7 +52,7 @@ namespace Jina
         public required string Id { get; set; }
 
         /// <summary>
-        /// Supported input types: `text`, `image`.
+        /// Supported input modalities: `text`, `image`, `video`, `audio`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_modalities")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -135,7 +135,7 @@ namespace Jina
         /// Unique model identifier (e.g., `jina-ai/jina-embeddings-v3`).
         /// </param>
         /// <param name="inputModalities">
-        /// Supported input types: `text`, `image`.
+        /// Supported input modalities: `text`, `image`, `video`, `audio`.
         /// </param>
         /// <param name="maxOutputLength">
         /// Maximum output dimensions.
@@ -199,5 +199,6 @@ namespace Jina
         public ModelInfo()
         {
         }
+
     }
 }

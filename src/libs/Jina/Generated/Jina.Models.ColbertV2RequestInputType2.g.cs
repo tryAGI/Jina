@@ -4,16 +4,16 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ColbertV2RequestInputType2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Document,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Query,
     }

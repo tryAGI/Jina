@@ -20,7 +20,7 @@ namespace Jina.JsonConverters
                     {
                         return global::Jina.ClipV1RequestEmbeddingTypeExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

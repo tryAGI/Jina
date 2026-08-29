@@ -4,28 +4,28 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EmbeddingsV5RequestTask2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Classification,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Clustering,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextMatching,
     }

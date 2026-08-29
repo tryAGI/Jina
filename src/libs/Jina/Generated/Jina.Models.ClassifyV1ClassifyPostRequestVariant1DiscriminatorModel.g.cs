@@ -4,60 +4,60 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ClassifyV1ClassifyPostRequestVariant1DiscriminatorModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaClipV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings05b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaCodeEmbeddings15b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseDe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV2BaseZh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV4,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextNano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JinaEmbeddingsV5TextSmall,
     }

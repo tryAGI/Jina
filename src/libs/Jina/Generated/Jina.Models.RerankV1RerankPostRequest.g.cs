@@ -5,12 +5,12 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct RerankV1RerankPostRequest : global::System.IEquatable<RerankV1RerankPostRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Jina.RerankV1RerankPostRequestDiscriminatorModel? Model { get; }
 
@@ -25,12 +25,32 @@ namespace Jina
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaColbertV1En))]
 #endif
         public bool IsJinaColbertV1En => JinaColbertV1En != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickJinaColbertV1En(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.TextRerankerRequest? value)
+        {
+            value = JinaColbertV1En;
+            return IsJinaColbertV1En;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Jina.TextRerankerRequest PickJinaColbertV1En() => IsJinaColbertV1En
+            ? JinaColbertV1En!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV1En' but the value was {ToString()}.");
 
         /// <summary>
         /// Multimodal reranking for text and images.<br/>
@@ -43,7 +63,7 @@ namespace Jina
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaRerankerM0))]
@@ -51,7 +71,29 @@ namespace Jina
         public bool IsJinaRerankerM0 => JinaRerankerM0 != null;
 
         /// <summary>
-        /// Reranker v3 listwise model for high-quality multilingual retrieval.<br/>
+        ///
+        /// </summary>
+        public bool TryPickJinaRerankerM0(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.RerankerM0Request? value)
+        {
+            value = JinaRerankerM0;
+            return IsJinaRerankerM0;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Jina.RerankerM0Request PickJinaRerankerM0() => IsJinaRerankerM0
+            ? JinaRerankerM0!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerM0' but the value was {ToString()}.");
+
+        /// <summary>
+        /// Listwise reranker for high-quality multilingual retrieval. `max_doc_length`<br/>
+        /// is an optional override; when omitted it stays `None` and the serving executor<br/>
+        /// applies its configured per-model default, keeping that default in one place.<br/>
         /// Example: {"documents":["Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.","Le changement climatique et l\u0027\u00E9nergie renouvelable : une perspective europ\u00E9enne. L\u0027Union europ\u00E9enne investit massivement dans les technologies vertes pour atteindre la neutralit\u00E9 carbone d\u0027ici 2050.","Klimawandel und erneuerbare Energien: Deutsche Energiewende. Deutschland f\u00FChrt die Transformation des Energiesektors durch innovative Technologien und politische Ma\u00DFnahmen an.","\u6C14\u5019\u53D8\u5316\u5BF9\u53EF\u518D\u751F\u80FD\u6E90\u7684\u5F71\u54CD\uFF1A\u4E2D\u56FD\u7684\u7EFF\u8272\u53D1\u5C55\u6218\u7565\u3002\u4E2D\u56FD\u6B63\u5728\u5927\u529B\u63A8\u8FDB\u592A\u9633\u80FD\u548C\u98CE\u80FD\u9879\u76EE\uFF0C\u4EE5\u5B9E\u73B0\u78B3\u4E2D\u548C\u76EE\u6807\u3002","Artificial Intelligence in Healthcare: Revolutionizing Medical Diagnosis. AI-powered systems are improving accuracy in disease detection and treatment recommendations.","Blockchain Technology: Transforming Financial Services. Decentralized finance applications are reshaping traditional banking and payment systems."],"model":"jina-reranker-v3","query":"Climate change impact on renewable energy adoption","return_documents":false,"return_embeddings":false,"top_n":4}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -61,24 +103,44 @@ namespace Jina
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaRerankerV3))]
 #endif
         public bool IsJinaRerankerV3 => JinaRerankerV3 != null;
+
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public bool TryPickJinaRerankerV3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.RerankerV3Request? value)
+        {
+            value = JinaRerankerV3;
+            return IsJinaRerankerV3;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Jina.RerankerV3Request PickJinaRerankerV3() => IsJinaRerankerV3
+            ? JinaRerankerV3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerV3' but the value was {ToString()}.");
+        /// <summary>
+        ///
         /// </summary>
         public static implicit operator RerankV1RerankPostRequest(global::Jina.TextRerankerRequest value) => new RerankV1RerankPostRequest((global::Jina.TextRerankerRequest?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Jina.TextRerankerRequest?(RerankV1RerankPostRequest @this) => @this.JinaColbertV1En;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RerankV1RerankPostRequest(global::Jina.TextRerankerRequest? value)
         {
@@ -86,17 +148,22 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public static RerankV1RerankPostRequest FromJinaColbertV1En(global::Jina.TextRerankerRequest? value) => new RerankV1RerankPostRequest(value);
+
+        /// <summary>
+        ///
         /// </summary>
         public static implicit operator RerankV1RerankPostRequest(global::Jina.RerankerM0Request value) => new RerankV1RerankPostRequest((global::Jina.RerankerM0Request?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Jina.RerankerM0Request?(RerankV1RerankPostRequest @this) => @this.JinaRerankerM0;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RerankV1RerankPostRequest(global::Jina.RerankerM0Request? value)
         {
@@ -104,17 +171,22 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public static RerankV1RerankPostRequest FromJinaRerankerM0(global::Jina.RerankerM0Request? value) => new RerankV1RerankPostRequest(value);
+
+        /// <summary>
+        ///
         /// </summary>
         public static implicit operator RerankV1RerankPostRequest(global::Jina.RerankerV3Request value) => new RerankV1RerankPostRequest((global::Jina.RerankerV3Request?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Jina.RerankerV3Request?(RerankV1RerankPostRequest @this) => @this.JinaRerankerV3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RerankV1RerankPostRequest(global::Jina.RerankerV3Request? value)
         {
@@ -122,7 +194,12 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public static RerankV1RerankPostRequest FromJinaRerankerV3(global::Jina.RerankerV3Request? value) => new RerankV1RerankPostRequest(value);
+
+        /// <summary>
+        ///
         /// </summary>
         public RerankV1RerankPostRequest(
             global::Jina.RerankV1RerankPostRequestDiscriminatorModel? model,
@@ -139,25 +216,25 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             JinaRerankerV3 as object ??
             JinaRerankerM0 as object ??
-            JinaColbertV1En as object 
+            JinaColbertV1En as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             JinaColbertV1En?.ToString() ??
             JinaRerankerM0?.ToString() ??
-            JinaRerankerV3?.ToString() 
+            JinaRerankerV3?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,12 +242,12 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Jina.TextRerankerRequest?, TResult>? jinaColbertV1En = null,
-            global::System.Func<global::Jina.RerankerM0Request?, TResult>? jinaRerankerM0 = null,
-            global::System.Func<global::Jina.RerankerV3Request?, TResult>? jinaRerankerV3 = null,
+            global::System.Func<global::Jina.TextRerankerRequest, TResult>? jinaColbertV1En = null,
+            global::System.Func<global::Jina.RerankerM0Request, TResult>? jinaRerankerM0 = null,
+            global::System.Func<global::Jina.RerankerV3Request, TResult>? jinaRerankerV3 = null,
             bool validate = true)
         {
             if (validate)
@@ -195,12 +272,14 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Jina.TextRerankerRequest?>? jinaColbertV1En = null,
-            global::System.Action<global::Jina.RerankerM0Request?>? jinaRerankerM0 = null,
-            global::System.Action<global::Jina.RerankerV3Request?>? jinaRerankerV3 = null,
+            global::System.Action<global::Jina.TextRerankerRequest>? jinaColbertV1En = null,
+
+            global::System.Action<global::Jina.RerankerM0Request>? jinaRerankerM0 = null,
+
+            global::System.Action<global::Jina.RerankerV3Request>? jinaRerankerV3 = null,
             bool validate = true)
         {
             if (validate)
@@ -223,7 +302,35 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Jina.TextRerankerRequest>? jinaColbertV1En = null,
+            global::System.Action<global::Jina.RerankerM0Request>? jinaRerankerM0 = null,
+            global::System.Action<global::Jina.RerankerV3Request>? jinaRerankerV3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsJinaColbertV1En)
+            {
+                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+            }
+            else if (IsJinaRerankerM0)
+            {
+                jinaRerankerM0?.Invoke(JinaRerankerM0!);
+            }
+            else if (IsJinaRerankerV3)
+            {
+                jinaRerankerV3?.Invoke(JinaRerankerV3!);
+            }
+        }
+
+        /// <summary>
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -246,19 +353,19 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(RerankV1RerankPostRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Jina.TextRerankerRequest?>.Default.Equals(JinaColbertV1En, other.JinaColbertV1En) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.RerankerM0Request?>.Default.Equals(JinaRerankerM0, other.JinaRerankerM0) &&
-                global::System.Collections.Generic.EqualityComparer<global::Jina.RerankerV3Request?>.Default.Equals(JinaRerankerV3, other.JinaRerankerV3) 
+                global::System.Collections.Generic.EqualityComparer<global::Jina.RerankerV3Request?>.Default.Equals(JinaRerankerV3, other.JinaRerankerV3)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(RerankV1RerankPostRequest obj1, RerankV1RerankPostRequest obj2)
         {
@@ -266,7 +373,7 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(RerankV1RerankPostRequest obj1, RerankV1RerankPostRequest obj2)
         {
@@ -274,7 +381,7 @@ namespace Jina
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

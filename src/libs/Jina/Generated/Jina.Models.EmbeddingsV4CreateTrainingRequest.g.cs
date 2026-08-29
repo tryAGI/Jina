@@ -80,5 +80,6 @@ namespace Jina
         public EmbeddingsV4CreateTrainingRequest()
         {
         }
+
     }
 }

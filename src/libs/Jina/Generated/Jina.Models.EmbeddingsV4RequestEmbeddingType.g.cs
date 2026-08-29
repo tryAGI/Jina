@@ -4,24 +4,24 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EmbeddingsV4RequestEmbeddingType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Base64,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Binary,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Float,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ubinary,
     }

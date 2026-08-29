@@ -4,28 +4,28 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EmbeddingsV4RequestTask2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CodePassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CodeQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetrievalQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TextMatching,
     }

@@ -20,7 +20,7 @@ namespace Jina.JsonConverters
                     {
                         return global::Jina.ClassifyV1ClassifyPostRequestVariant1DiscriminatorModelExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

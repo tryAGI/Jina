@@ -66,5 +66,6 @@ namespace Jina
         public ELSERV2EmbeddingUsage()
         {
         }
+
     }
 }

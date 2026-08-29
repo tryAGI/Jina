@@ -141,5 +141,6 @@ namespace Jina
         public EmbeddingsV4Request()
         {
         }
+
     }
 }

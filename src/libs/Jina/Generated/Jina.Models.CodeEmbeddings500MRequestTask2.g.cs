@@ -4,48 +4,48 @@
 namespace Jina
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CodeEmbeddings500MRequestTask2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2codePassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2codeQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2completionPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2completionQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2nlPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code2nlQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nl2codePassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nl2codeQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QaPassage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QaQuery,
     }
