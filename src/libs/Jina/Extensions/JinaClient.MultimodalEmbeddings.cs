@@ -121,7 +121,7 @@ public static class JinaClientMultimodalExtensions
         CancellationToken cancellationToken)
     {
         var response = await client.SearchFoundationModels.EmbeddingsAsync(
-            request, cancellationToken).ConfigureAwait(false);
+            request, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         var embeddings = new GeneratedEmbeddings<Embedding<float>>();
 

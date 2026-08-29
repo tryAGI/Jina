@@ -41,7 +41,7 @@ public partial class JinaClient : IEmbeddingGenerator<string, Embedding<float>>
         }
 
         var response = await SearchFoundationModels.EmbeddingsAsync(
-            request, cancellationToken).ConfigureAwait(false);
+            request, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         var embeddings = new GeneratedEmbeddings<Embedding<float>>();
 
