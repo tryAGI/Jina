@@ -53,9 +53,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.CodeEmbeddings1500MRequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.CodeEmbeddings1500MRequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.CodeEmbeddings1500MRequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.CodeEmbeddings1500MRequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.CodeEmbeddings1500MRequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestEmbeddingTypeJsonConverter),
 
@@ -65,9 +65,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.CodeEmbeddings500MRequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.CodeEmbeddingsZeroShotClassificationRequestModelJsonConverter),
 
@@ -81,9 +81,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.ColbertV1RequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ColbertV1RequestInputType2JsonConverter),
+            typeof(global::Jina.JsonConverters.ColbertV1RequestInputTypeJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ColbertV1RequestInputType2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.ColbertV1RequestInputTypeNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.ColbertV2RequestEmbeddingTypeJsonConverter),
 
@@ -93,9 +93,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.ColbertV2RequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ColbertV2RequestInputType2JsonConverter),
+            typeof(global::Jina.JsonConverters.ColbertV2RequestInputTypeJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ColbertV2RequestInputType2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.ColbertV2RequestInputTypeNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.ELSERV2RequestEmbeddingTypeJsonConverter),
 
@@ -105,9 +105,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.ELSERV2RequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ELSERV2RequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.ELSERV2RequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.ELSERV2RequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.ELSERV2RequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.EmbeddingsV2CreateTrainingRequestModelJsonConverter),
 
@@ -137,9 +137,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.EmbeddingsV3RequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV3RequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV3RequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV3RequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV3RequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.EmbeddingsV4RequestEmbeddingTypeJsonConverter),
 
@@ -149,9 +149,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.EmbeddingsV4RequestEmbeddingTypeItemNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV4RequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV4RequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV4RequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV4RequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.EmbeddingsV5CreateTrainingRequestModelJsonConverter),
 
@@ -169,9 +169,9 @@ namespace Jina
 
             typeof(global::Jina.JsonConverters.EmbeddingsV5RequestModelNullableJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV5RequestTask2JsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV5RequestTaskJsonConverter),
 
-            typeof(global::Jina.JsonConverters.EmbeddingsV5RequestTask2NullableJsonConverter),
+            typeof(global::Jina.JsonConverters.EmbeddingsV5RequestTaskNullableJsonConverter),
 
             typeof(global::Jina.JsonConverters.EmbeddingsV5ZeroShotClassificationRequestModelJsonConverter),
 
@@ -420,13 +420,13 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>>), TypeInfoPropertyName = "AnyOfStringTextDocIListAnyOfStringTextDoc2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::Jina.TextDoc>), TypeInfoPropertyName = "AnyOfStringTextDoc2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings1500MRequestTask2), TypeInfoPropertyName = "CodeEmbeddings1500MRequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings1500MRequestTask), TypeInfoPropertyName = "CodeEmbeddings1500MRequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings500MRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>, object>), TypeInfoPropertyName = "AnyOfCodeEmbeddings500MRequestEmbeddingTypeIListCodeEmbeddings500MRequestEmbeddingTypeItemObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings500MRequestEmbeddingType), TypeInfoPropertyName = "CodeEmbeddings500MRequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem), TypeInfoPropertyName = "CodeEmbeddings500MRequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings500MRequestTask2), TypeInfoPropertyName = "CodeEmbeddings500MRequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddings500MRequestTask), TypeInfoPropertyName = "CodeEmbeddings500MRequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddingsZeroShotClassificationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.CodeEmbeddingsZeroShotClassificationRequestModel), TypeInfoPropertyName = "CodeEmbeddingsZeroShotClassificationRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV1Request))]
@@ -434,20 +434,20 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV1RequestEmbeddingType), TypeInfoPropertyName = "ColbertV1RequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV1RequestEmbeddingTypeItem), TypeInfoPropertyName = "ColbertV1RequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV1RequestInputType2), TypeInfoPropertyName = "ColbertV1RequestInputType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV1RequestInputType), TypeInfoPropertyName = "ColbertV1RequestInputType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV2Request))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<global::Jina.ColbertV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV2RequestEmbeddingTypeItem>, object>), TypeInfoPropertyName = "AnyOfColbertV2RequestEmbeddingTypeIListColbertV2RequestEmbeddingTypeItemObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV2RequestEmbeddingType), TypeInfoPropertyName = "ColbertV2RequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.ColbertV2RequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV2RequestEmbeddingTypeItem), TypeInfoPropertyName = "ColbertV2RequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV2RequestInputType2), TypeInfoPropertyName = "ColbertV2RequestInputType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ColbertV2RequestInputType), TypeInfoPropertyName = "ColbertV2RequestInputType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2EmbeddingUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2Request))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<global::Jina.ELSERV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ELSERV2RequestEmbeddingTypeItem>, object>), TypeInfoPropertyName = "AnyOfELSERV2RequestEmbeddingTypeIListELSERV2RequestEmbeddingTypeItemObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2RequestEmbeddingType), TypeInfoPropertyName = "ELSERV2RequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.ELSERV2RequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2RequestEmbeddingTypeItem), TypeInfoPropertyName = "ELSERV2RequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2RequestTask2), TypeInfoPropertyName = "ELSERV2RequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ELSERV2RequestTask), TypeInfoPropertyName = "ELSERV2RequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>, global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>, global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>>), TypeInfoPropertyName = "AnyOfIListSingleEmbeddingDataIListMultiEmbeddingDataIListDictionaryStringDouble2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>))]
@@ -474,7 +474,7 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV3RequestEmbeddingType), TypeInfoPropertyName = "EmbeddingsV3RequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.EmbeddingsV3RequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV3RequestEmbeddingTypeItem), TypeInfoPropertyName = "EmbeddingsV3RequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV3RequestTask2), TypeInfoPropertyName = "EmbeddingsV3RequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV3RequestTask), TypeInfoPropertyName = "EmbeddingsV3RequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV3ZeroShotClassificationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4CreateTrainingRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4Request))]
@@ -482,7 +482,7 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4RequestEmbeddingType), TypeInfoPropertyName = "EmbeddingsV4RequestEmbeddingType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.EmbeddingsV4RequestEmbeddingTypeItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4RequestEmbeddingTypeItem), TypeInfoPropertyName = "EmbeddingsV4RequestEmbeddingTypeItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4RequestTask2), TypeInfoPropertyName = "EmbeddingsV4RequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4RequestTask), TypeInfoPropertyName = "EmbeddingsV4RequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV4ZeroShotClassificationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5CreateTrainingRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5CreateTrainingRequestModel), TypeInfoPropertyName = "EmbeddingsV5CreateTrainingRequestModel2")]
@@ -497,7 +497,7 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, global::Jina.VideoDoc, global::Jina.AudioDoc, global::Jina.MergedContentGroup>), TypeInfoPropertyName = "AnyOfStringTextDocImageDocVideoDocAudioDocMergedContentGroup2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.MergedContentGroup))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5RequestModel), TypeInfoPropertyName = "EmbeddingsV5RequestModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5RequestTask2), TypeInfoPropertyName = "EmbeddingsV5RequestTask22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5RequestTask), TypeInfoPropertyName = "EmbeddingsV5RequestTask2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5ZeroShotClassificationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.EmbeddingsV5ZeroShotClassificationRequestModel), TypeInfoPropertyName = "EmbeddingsV5ZeroShotClassificationRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ErrorResponse))]

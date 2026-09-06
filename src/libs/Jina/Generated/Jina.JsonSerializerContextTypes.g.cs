@@ -285,7 +285,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.CodeEmbeddings1500MRequestTask2? Type63 { get; set; }
+        public global::Jina.CodeEmbeddings1500MRequestTask? Type63 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -309,7 +309,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.CodeEmbeddings500MRequestTask2? Type69 { get; set; }
+        public global::Jina.CodeEmbeddings500MRequestTask? Type69 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -341,7 +341,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ColbertV1RequestInputType2? Type77 { get; set; }
+        public global::Jina.ColbertV1RequestInputType? Type77 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -365,7 +365,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ColbertV2RequestInputType2? Type83 { get; set; }
+        public global::Jina.ColbertV2RequestInputType? Type83 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -393,7 +393,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ELSERV2RequestTask2? Type90 { get; set; }
+        public global::Jina.ELSERV2RequestTask? Type90 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -501,7 +501,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV3RequestTask2? Type117 { get; set; }
+        public global::Jina.EmbeddingsV3RequestTask? Type117 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -533,7 +533,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV4RequestTask2? Type125 { get; set; }
+        public global::Jina.EmbeddingsV4RequestTask? Type125 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -589,7 +589,7 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV5RequestTask2? Type139 { get; set; }
+        public global::Jina.EmbeddingsV5RequestTask? Type139 { get; set; }
         /// <summary>
         ///
         /// </summary>

@@ -61,7 +61,7 @@ namespace Jina
         /// Default Value: text-matching
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public global::Jina.EmbeddingsV4RequestTask2? Task { get; set; }
+        public global::Jina.EmbeddingsV4RequestTask? Task { get; set; }
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -120,7 +120,7 @@ namespace Jina
             bool? lateChunking,
             bool? returnMultivector,
             bool? returnTokenizedInput,
-            global::Jina.EmbeddingsV4RequestTask2? task,
+            global::Jina.EmbeddingsV4RequestTask? task,
             bool? truncate,
             string model = "jina-embeddings-v4")
         {

@@ -4,16 +4,48 @@
 namespace Jina
 {
     /// <summary>
-    /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.
+    ///
     /// </summary>
-    public sealed partial class ELSERV2RequestTask
+    public enum ELSERV2RequestTask
     {
-
         /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
+        ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+        RetrievalPassage,
+        /// <summary>
+        ///
+        /// </summary>
+        RetrievalQuery,
+    }
 
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class ELSERV2RequestTaskExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this ELSERV2RequestTask value)
+        {
+            return value switch
+            {
+                ELSERV2RequestTask.RetrievalPassage => "retrieval.passage",
+                ELSERV2RequestTask.RetrievalQuery => "retrieval.query",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static ELSERV2RequestTask? ToEnum(string value)
+        {
+            return value switch
+            {
+                "retrieval.passage" => ELSERV2RequestTask.RetrievalPassage,
+                "retrieval.query" => ELSERV2RequestTask.RetrievalQuery,
+                _ => null,
+            };
+        }
     }
 }

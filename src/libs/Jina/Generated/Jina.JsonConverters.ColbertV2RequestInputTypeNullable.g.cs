@@ -3,10 +3,10 @@
 namespace Jina.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class EmbeddingsV3RequestTask2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.EmbeddingsV3RequestTask2?>
+    public sealed class ColbertV2RequestInputTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.ColbertV2RequestInputType?>
     {
         /// <inheritdoc />
-        public override global::Jina.EmbeddingsV3RequestTask2? Read(
+        public override global::Jina.ColbertV2RequestInputType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Jina.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Jina.EmbeddingsV3RequestTask2Extensions.ToEnum(stringValue);
+                        return global::Jina.ColbertV2RequestInputTypeExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Jina.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Jina.EmbeddingsV3RequestTask2)numValue;
+                    return (global::Jina.ColbertV2RequestInputType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Jina.EmbeddingsV3RequestTask2?);
+                    return default(global::Jina.ColbertV2RequestInputType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Jina.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Jina.EmbeddingsV3RequestTask2? value,
+            global::Jina.ColbertV2RequestInputType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Jina.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Jina.EmbeddingsV3RequestTask2Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Jina.ColbertV2RequestInputTypeExtensions.ToValueString(value.Value));
             }
         }
     }

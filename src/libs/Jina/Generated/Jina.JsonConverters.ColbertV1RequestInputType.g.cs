@@ -3,10 +3,10 @@
 namespace Jina.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class CodeEmbeddings500MRequestTask2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.CodeEmbeddings500MRequestTask2?>
+    public sealed class ColbertV1RequestInputTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.ColbertV1RequestInputType>
     {
         /// <inheritdoc />
-        public override global::Jina.CodeEmbeddings500MRequestTask2? Read(
+        public override global::Jina.ColbertV1RequestInputType Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Jina.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Jina.CodeEmbeddings500MRequestTask2Extensions.ToEnum(stringValue);
+                        return global::Jina.ColbertV1RequestInputTypeExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Jina.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Jina.CodeEmbeddings500MRequestTask2)numValue;
+                    return (global::Jina.ColbertV1RequestInputType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Jina.CodeEmbeddings500MRequestTask2?);
+                    return default(global::Jina.ColbertV1RequestInputType);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Jina.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Jina.CodeEmbeddings500MRequestTask2? value,
+            global::Jina.ColbertV1RequestInputType value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Jina.CodeEmbeddings500MRequestTask2Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Jina.ColbertV1RequestInputTypeExtensions.ToValueString(value));
         }
     }
 }

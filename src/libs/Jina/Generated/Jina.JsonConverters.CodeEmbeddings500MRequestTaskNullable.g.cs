@@ -3,10 +3,10 @@
 namespace Jina.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class CodeEmbeddings1500MRequestTask2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.CodeEmbeddings1500MRequestTask2?>
+    public sealed class CodeEmbeddings500MRequestTaskNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.CodeEmbeddings500MRequestTask?>
     {
         /// <inheritdoc />
-        public override global::Jina.CodeEmbeddings1500MRequestTask2? Read(
+        public override global::Jina.CodeEmbeddings500MRequestTask? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Jina.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Jina.CodeEmbeddings1500MRequestTask2Extensions.ToEnum(stringValue);
+                        return global::Jina.CodeEmbeddings500MRequestTaskExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Jina.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Jina.CodeEmbeddings1500MRequestTask2)numValue;
+                    return (global::Jina.CodeEmbeddings500MRequestTask)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Jina.CodeEmbeddings1500MRequestTask2?);
+                    return default(global::Jina.CodeEmbeddings500MRequestTask?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Jina.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Jina.CodeEmbeddings1500MRequestTask2? value,
+            global::Jina.CodeEmbeddings500MRequestTask? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Jina.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Jina.CodeEmbeddings1500MRequestTask2Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Jina.CodeEmbeddings500MRequestTaskExtensions.ToValueString(value.Value));
             }
         }
     }
