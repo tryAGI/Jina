@@ -55,7 +55,7 @@ namespace Jina
         /// Default Value: text-matching
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public global::Jina.EmbeddingsV5RequestTask2? Task { get; set; }
+        public global::Jina.EmbeddingsV5RequestTask? Task { get; set; }
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -106,7 +106,7 @@ namespace Jina
             int? dimensions,
             global::Jina.AnyOf<global::Jina.EmbeddingsV5RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV5RequestEmbeddingTypeItem>, object>? embeddingType,
             bool? normalized,
-            global::Jina.EmbeddingsV5RequestTask2? task,
+            global::Jina.EmbeddingsV5RequestTask? task,
             bool? truncate)
         {
             this.Dimensions = dimensions;

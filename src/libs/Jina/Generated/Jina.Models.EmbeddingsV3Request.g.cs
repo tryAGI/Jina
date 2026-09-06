@@ -54,7 +54,7 @@ namespace Jina
         /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents, `text-matching` for similarity, `classification`, or `separation` for clustering.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public global::Jina.EmbeddingsV3RequestTask2? Task { get; set; }
+        public global::Jina.EmbeddingsV3RequestTask? Task { get; set; }
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -107,7 +107,7 @@ namespace Jina
             global::Jina.AnyOf<global::Jina.EmbeddingsV3RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV3RequestEmbeddingTypeItem>, object>? embeddingType,
             bool? lateChunking,
             bool? normalized,
-            global::Jina.EmbeddingsV3RequestTask2? task,
+            global::Jina.EmbeddingsV3RequestTask? task,
             bool? truncate,
             string model = "jina-embeddings-v3")
         {

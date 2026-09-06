@@ -35,7 +35,7 @@ namespace Jina
         /// Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public global::Jina.ELSERV2RequestTask2? Task { get; set; }
+        public global::Jina.ELSERV2RequestTask? Task { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -64,7 +64,7 @@ namespace Jina
         public ELSERV2Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
             global::Jina.AnyOf<global::Jina.ELSERV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ELSERV2RequestEmbeddingTypeItem>, object>? embeddingType,
-            global::Jina.ELSERV2RequestTask2? task,
+            global::Jina.ELSERV2RequestTask? task,
             string model = "elser-v2")
         {
             this.EmbeddingType = embeddingType;

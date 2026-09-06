@@ -3,10 +3,10 @@
 namespace Jina.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class EmbeddingsV5RequestTask2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.EmbeddingsV5RequestTask2>
+    public sealed class EmbeddingsV5RequestTaskJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Jina.EmbeddingsV5RequestTask>
     {
         /// <inheritdoc />
-        public override global::Jina.EmbeddingsV5RequestTask2 Read(
+        public override global::Jina.EmbeddingsV5RequestTask Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Jina.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Jina.EmbeddingsV5RequestTask2Extensions.ToEnum(stringValue) ?? default;
+                        return global::Jina.EmbeddingsV5RequestTaskExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Jina.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Jina.EmbeddingsV5RequestTask2)numValue;
+                    return (global::Jina.EmbeddingsV5RequestTask)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Jina.EmbeddingsV5RequestTask2);
+                    return default(global::Jina.EmbeddingsV5RequestTask);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,12 @@ namespace Jina.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Jina.EmbeddingsV5RequestTask2 value,
+            global::Jina.EmbeddingsV5RequestTask value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Jina.EmbeddingsV5RequestTask2Extensions.ToValueString(value));
+            writer.WriteStringValue(global::Jina.EmbeddingsV5RequestTaskExtensions.ToValueString(value));
         }
     }
 }

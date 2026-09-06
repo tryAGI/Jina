@@ -41,7 +41,7 @@ namespace Jina
         /// Default Value: nl2code.query
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        public global::Jina.CodeEmbeddings500MRequestTask2? Task { get; set; }
+        public global::Jina.CodeEmbeddings500MRequestTask? Task { get; set; }
 
         /// <summary>
         /// If true, truncates input exceeding the model's max token limit instead of returning an error.<br/>
@@ -86,7 +86,7 @@ namespace Jina
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
             int? dimensions,
             global::Jina.AnyOf<global::Jina.CodeEmbeddings500MRequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.CodeEmbeddings500MRequestEmbeddingTypeItem>, object>? embeddingType,
-            global::Jina.CodeEmbeddings500MRequestTask2? task,
+            global::Jina.CodeEmbeddings500MRequestTask? task,
             bool? truncate,
             string model = "jina-code-embeddings-0.5b")
         {

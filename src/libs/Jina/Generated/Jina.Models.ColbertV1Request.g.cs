@@ -29,7 +29,7 @@ namespace Jina
         /// Default Value: document
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_type")]
-        public global::Jina.ColbertV1RequestInputType2? InputType { get; set; }
+        public global::Jina.ColbertV1RequestInputType? InputType { get; set; }
 
         /// <summary>
         /// The ColBERT model to use.
@@ -66,7 +66,7 @@ namespace Jina
         public ColbertV1Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
             global::Jina.AnyOf<global::Jina.ColbertV1RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.ColbertV1RequestEmbeddingTypeItem>, object>? embeddingType,
-            global::Jina.ColbertV1RequestInputType2? inputType,
+            global::Jina.ColbertV1RequestInputType? inputType,
             string model = "jina-colbert-v1-en")
         {
             this.EmbeddingType = embeddingType;
