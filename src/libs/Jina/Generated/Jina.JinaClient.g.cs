@@ -104,6 +104,17 @@ namespace Jina
         };
 
         /// <summary>
+        /// Transcribe and extract structured data from document images.<br/>
+        /// `jina-ocr-v1` reads a page and returns its content as markdown, preserving tables and layout. The endpoint follows the OpenAI chat completions schema, so any OpenAI-compatible client works unchanged — point it at `https://api.jina.ai/v1` and set `model`.<br/>
+        /// Set `stream: true` for server-sent events. Use `response_format` with a `json_schema` to constrain the output to a schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// </summary>
+        public GenerativeModelsClient GenerativeModels => new GenerativeModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
         /// Liveness and readiness probes for service health monitoring. For internal use only.
         /// </summary>
         public HealthCheckClient HealthCheck => new HealthCheckClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
