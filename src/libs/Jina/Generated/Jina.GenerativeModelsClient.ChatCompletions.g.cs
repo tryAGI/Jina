@@ -3,11 +3,11 @@
 
 namespace Jina
 {
-    public partial class SearchFoundationModelsClient
+    public partial class GenerativeModelsClient
     {
 
 
-        private static readonly global::Jina.EndPointSecurityRequirement s_ChatCompletionsExperimentalSecurityRequirement0 =
+        private static readonly global::Jina.EndPointSecurityRequirement s_ChatCompletionsSecurityRequirement0 =
             new global::Jina.EndPointSecurityRequirement
             {
                 Authorizations = new global::Jina.EndPointAuthorizationRequirement[]
@@ -21,37 +21,44 @@ namespace Jina
                     },
                 },
             };
-        private static readonly global::Jina.EndPointSecurityRequirement[] s_ChatCompletionsExperimentalSecurityRequirements =
+        private static readonly global::Jina.EndPointSecurityRequirement[] s_ChatCompletionsSecurityRequirements =
             new global::Jina.EndPointSecurityRequirement[]
-            {                s_ChatCompletionsExperimentalSecurityRequirement0,
+            {                s_ChatCompletionsSecurityRequirement0,
             };
-        partial void PrepareChatCompletionsExperimentalArguments(
-            global::System.Net.Http.HttpClient httpClient);
-        partial void PrepareChatCompletionsExperimentalRequest(
+        partial void PrepareChatCompletionsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
-        partial void ProcessChatCompletionsExperimentalResponse(
+            global::Jina.ChatCompletionRequest request);
+        partial void PrepareChatCompletionsRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Jina.ChatCompletionRequest request);
+        partial void ProcessChatCompletionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessChatCompletionsExperimentalResponseContent(
+        partial void ProcessChatCompletionsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Chat Completions (Experimental)<br/>
-        /// **Experimental** - This endpoint is for testing purposes only. We do not guarantee its availability, scalability, or production-readiness. It may be removed or changed without notice.<br/>
-        /// Generate a chat completion using jina-vlm (Vision Language Model). Supports text-only and multimodal (text + image) inputs in OpenAI-compatible format.
+        /// Chat Completions<br/>
+        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
+        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
         /// </summary>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Jina.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> ChatCompletionsExperimentalAsync(
+        public async global::System.Threading.Tasks.Task<string> ChatCompletionsAsync(
+
+            global::Jina.ChatCompletionRequest request,
             global::Jina.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ChatCompletionsExperimentalAsResponseAsync(
+            var __response = await ChatCompletionsAsResponseAsync(
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -59,27 +66,33 @@ namespace Jina
             return __response.Body;
         }
         /// <summary>
-        /// Chat Completions (Experimental)<br/>
-        /// **Experimental** - This endpoint is for testing purposes only. We do not guarantee its availability, scalability, or production-readiness. It may be removed or changed without notice.<br/>
-        /// Generate a chat completion using jina-vlm (Vision Language Model). Supports text-only and multimodal (text + image) inputs in OpenAI-compatible format.
+        /// Chat Completions<br/>
+        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
+        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
         /// </summary>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Jina.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Jina.AutoSDKHttpResponse<string>> ChatCompletionsExperimentalAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Jina.AutoSDKHttpResponse<string>> ChatCompletionsAsResponseAsync(
+
+            global::Jina.ChatCompletionRequest request,
             global::Jina.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareChatCompletionsExperimentalArguments(
-                httpClient: HttpClient);
+            PrepareChatCompletionsArguments(
+                httpClient: HttpClient,
+                request: request);
 
 
             var __authorizations = global::Jina.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ChatCompletionsExperimentalSecurityRequirements,
-                operationName: "ChatCompletionsExperimentalAsync");
+                securityRequirements: s_ChatCompletionsSecurityRequirements,
+                operationName: "ChatCompletionsAsync");
 
             using var __timeoutCancellationTokenSource = global::Jina.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -93,7 +106,7 @@ namespace Jina
             var __maxAttempts = global::Jina.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
@@ -130,6 +143,12 @@ namespace Jina
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Jina.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -138,9 +157,10 @@ namespace Jina
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareChatCompletionsExperimentalRequest(
+                PrepareChatCompletionsRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest);
+                    httpRequestMessage: __httpRequest,
+                    request: request);
 
                 return __httpRequest;
             }
@@ -157,8 +177,8 @@ namespace Jina
                     await global::Jina.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Jina.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ChatCompletionsExperimental",
-                                methodName: "ChatCompletionsExperimentalAsync",
+                                operationId: "ChatCompletions",
+                                methodName: "ChatCompletionsAsync",
                                 pathTemplate: "\"/v1/chat/completions\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -191,8 +211,8 @@ namespace Jina
                         await global::Jina.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Jina.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ChatCompletionsExperimental",
-                                methodName: "ChatCompletionsExperimentalAsync",
+                                operationId: "ChatCompletions",
+                                methodName: "ChatCompletionsAsync",
                                 pathTemplate: "\"/v1/chat/completions\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -232,8 +252,8 @@ namespace Jina
                         await global::Jina.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Jina.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ChatCompletionsExperimental",
-                                methodName: "ChatCompletionsExperimentalAsync",
+                                operationId: "ChatCompletions",
+                                methodName: "ChatCompletionsAsync",
                                 pathTemplate: "\"/v1/chat/completions\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -272,7 +292,7 @@ namespace Jina
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessChatCompletionsExperimentalResponse(
+                ProcessChatCompletionsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -280,8 +300,8 @@ namespace Jina
                     await global::Jina.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Jina.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ChatCompletionsExperimental",
-                                methodName: "ChatCompletionsExperimentalAsync",
+                                operationId: "ChatCompletions",
+                                methodName: "ChatCompletionsAsync",
                                 pathTemplate: "\"/v1/chat/completions\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -302,8 +322,8 @@ namespace Jina
                     await global::Jina.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Jina.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ChatCompletionsExperimental",
-                                methodName: "ChatCompletionsExperimentalAsync",
+                                operationId: "ChatCompletions",
+                                methodName: "ChatCompletionsAsync",
                                 pathTemplate: "\"/v1/chat/completions\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -504,6 +524,43 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Validation Error
+                            if ((int)__response.StatusCode == 422)
+                            {
+                                string? __content_422 = null;
+                                global::System.Exception? __exception_422 = null;
+                                global::Jina.HTTPValidationError? __value_422 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_422 = global::Jina.HTTPValidationError.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_422 = global::Jina.HTTPValidationError.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_422 = __ex;
+                                }
+
+
+                                throw global::Jina.ApiException<global::Jina.HTTPValidationError>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_422,
+                                    responseBody: __content_422,
+                                    responseObject: __value_422,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // - **RATE_REQUEST_LIMIT_EXCEEDED**: Request rate limit exceeded: {current}/N requests per minute. Reduce request frequency or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_TOKEN_LIMIT_EXCEEDED**: Token rate limit exceeded: {current:,}/{limit:,} tokens per minute. Reduce batch sizes or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_CONCURRENCY_LIMIT_EXCEEDED**: Concurrency limit exceeded: {current}/N concurrent requests. Wait for pending requests to complete before sending new ones. - **RATE_IP_LIMIT_EXCEEDED**: IP rate limit exceeded. Too many requests from this IP address. Reduce request frequency.
                             if ((int)__response.StatusCode == 429)
                             {
@@ -665,7 +722,7 @@ namespace Jina
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessChatCompletionsExperimentalResponseContent(
+                                ProcessChatCompletionsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -743,6 +800,76 @@ namespace Jina
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Chat Completions<br/>
+        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
+        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// </summary>
+        /// <param name="frequencyPenalty"></param>
+        /// <param name="logitBias"></param>
+        /// <param name="logprobs"></param>
+        /// <param name="maxCompletionTokens"></param>
+        /// <param name="messages"></param>
+        /// <param name="model">
+        /// The model to use.
+        /// </param>
+        /// <param name="presencePenalty"></param>
+        /// <param name="responseFormat"></param>
+        /// <param name="seed"></param>
+        /// <param name="stop"></param>
+        /// <param name="stream">
+        /// Default Value: false
+        /// </param>
+        /// <param name="streamOptions"></param>
+        /// <param name="temperature"></param>
+        /// <param name="topLogprobs"></param>
+        /// <param name="topP"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<string> ChatCompletionsAsync(
+            global::System.Collections.Generic.IList<global::Jina.ChatMessage> messages,
+            double? frequencyPenalty = default,
+            global::System.Collections.Generic.Dictionary<string, double>? logitBias = default,
+            bool? logprobs = default,
+            int? maxCompletionTokens = default,
+            string model = "jina-ocr-v1",
+            double? presencePenalty = default,
+            global::Jina.ResponseFormatVariant1? responseFormat = default,
+            int? seed = default,
+            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>? stop = default,
+            bool? stream = default,
+            global::Jina.StreamOptions? streamOptions = default,
+            double? temperature = default,
+            int? topLogprobs = default,
+            double? topP = default,
+            global::Jina.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Jina.ChatCompletionRequest
+            {
+                FrequencyPenalty = frequencyPenalty,
+                LogitBias = logitBias,
+                Logprobs = logprobs,
+                MaxCompletionTokens = maxCompletionTokens,
+                Messages = messages,
+                Model = model,
+                PresencePenalty = presencePenalty,
+                ResponseFormat = responseFormat,
+                Seed = seed,
+                Stop = stop,
+                Stream = stream,
+                StreamOptions = streamOptions,
+                Temperature = temperature,
+                TopLogprobs = topLogprobs,
+                TopP = topP,
+            };
+
+            return await ChatCompletionsAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

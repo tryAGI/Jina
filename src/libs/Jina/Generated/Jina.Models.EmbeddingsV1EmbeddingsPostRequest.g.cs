@@ -91,6 +91,43 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV3' but the value was {ToString()}.");
 
         /// <summary>
+        /// Jina Embeddings v4 multimodal model for text, images, and PDFs.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Jina.EmbeddingsV4Request? JinaEmbeddingsV4 { get; init; }
+#else
+        public global::Jina.EmbeddingsV4Request? JinaEmbeddingsV4 { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV4))]
+#endif
+        public bool IsJinaEmbeddingsV4 => JinaEmbeddingsV4 != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickJinaEmbeddingsV4(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Jina.EmbeddingsV4Request? value)
+        {
+            value = JinaEmbeddingsV4;
+            return IsJinaEmbeddingsV4;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Jina.EmbeddingsV4Request PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
+            ? JinaEmbeddingsV4!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
+
+        /// <summary>
         /// Jina Embeddings v5 model with task-specific LoRA adapters and flexible<br/>
         /// dimensions. Small/nano sizes support text-only; the omni variant also<br/>
         /// accepts images, videos, audio, and PDFs in a single shared vector space.<br/>
@@ -132,43 +169,6 @@ namespace Jina
         public global::Jina.EmbeddingsV5Request PickJinaEmbeddingsV5OmniNano() => IsJinaEmbeddingsV5OmniNano
             ? JinaEmbeddingsV5OmniNano!
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5OmniNano' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Jina Embeddings v4 multimodal model for text, images, and PDFs.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Jina.EmbeddingsV4Request? JinaEmbeddingsV4 { get; init; }
-#else
-        public global::Jina.EmbeddingsV4Request? JinaEmbeddingsV4 { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JinaEmbeddingsV4))]
-#endif
-        public bool IsJinaEmbeddingsV4 => JinaEmbeddingsV4 != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickJinaEmbeddingsV4(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Jina.EmbeddingsV4Request? value)
-        {
-            value = JinaEmbeddingsV4;
-            return IsJinaEmbeddingsV4;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Jina.EmbeddingsV4Request PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
-            ? JinaEmbeddingsV4!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
 
         /// <summary>
         /// Code embedding model (500M) for code search and understanding.
@@ -482,29 +482,6 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator EmbeddingsV1EmbeddingsPostRequest(global::Jina.EmbeddingsV5Request value) => new EmbeddingsV1EmbeddingsPostRequest((global::Jina.EmbeddingsV5Request?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Jina.EmbeddingsV5Request?(EmbeddingsV1EmbeddingsPostRequest @this) => @this.JinaEmbeddingsV5OmniNano;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public EmbeddingsV1EmbeddingsPostRequest(global::Jina.EmbeddingsV5Request? value)
-        {
-            JinaEmbeddingsV5OmniNano = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static EmbeddingsV1EmbeddingsPostRequest FromJinaEmbeddingsV5OmniNano(global::Jina.EmbeddingsV5Request? value) => new EmbeddingsV1EmbeddingsPostRequest(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public static implicit operator EmbeddingsV1EmbeddingsPostRequest(global::Jina.EmbeddingsV4Request value) => new EmbeddingsV1EmbeddingsPostRequest((global::Jina.EmbeddingsV4Request?)value);
 
         /// <summary>
@@ -524,6 +501,29 @@ namespace Jina
         ///
         /// </summary>
         public static EmbeddingsV1EmbeddingsPostRequest FromJinaEmbeddingsV4(global::Jina.EmbeddingsV4Request? value) => new EmbeddingsV1EmbeddingsPostRequest(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator EmbeddingsV1EmbeddingsPostRequest(global::Jina.EmbeddingsV5Request value) => new EmbeddingsV1EmbeddingsPostRequest((global::Jina.EmbeddingsV5Request?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Jina.EmbeddingsV5Request?(EmbeddingsV1EmbeddingsPostRequest @this) => @this.JinaEmbeddingsV5OmniNano;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public EmbeddingsV1EmbeddingsPostRequest(global::Jina.EmbeddingsV5Request? value)
+        {
+            JinaEmbeddingsV5OmniNano = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static EmbeddingsV1EmbeddingsPostRequest FromJinaEmbeddingsV5OmniNano(global::Jina.EmbeddingsV5Request? value) => new EmbeddingsV1EmbeddingsPostRequest(value);
 
         /// <summary>
         ///
@@ -693,8 +693,8 @@ namespace Jina
             global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel? model,
             global::Jina.EmbeddingsV2Request? jinaEmbeddingsV2BaseCode,
             global::Jina.EmbeddingsV3Request? jinaEmbeddingsV3,
-            global::Jina.EmbeddingsV5Request? jinaEmbeddingsV5OmniNano,
             global::Jina.EmbeddingsV4Request? jinaEmbeddingsV4,
+            global::Jina.EmbeddingsV5Request? jinaEmbeddingsV5OmniNano,
             global::Jina.CodeEmbeddings500MRequest? jinaCodeEmbeddings05b,
             global::Jina.CodeEmbeddings1500MRequest? jinaCodeEmbeddings15b,
             global::Jina.ClipV1Request? jinaClipV1,
@@ -708,8 +708,8 @@ namespace Jina
 
             JinaEmbeddingsV2BaseCode = jinaEmbeddingsV2BaseCode;
             JinaEmbeddingsV3 = jinaEmbeddingsV3;
-            JinaEmbeddingsV5OmniNano = jinaEmbeddingsV5OmniNano;
             JinaEmbeddingsV4 = jinaEmbeddingsV4;
+            JinaEmbeddingsV5OmniNano = jinaEmbeddingsV5OmniNano;
             JinaCodeEmbeddings05b = jinaCodeEmbeddings05b;
             JinaCodeEmbeddings15b = jinaCodeEmbeddings15b;
             JinaClipV1 = jinaClipV1;
@@ -730,8 +730,8 @@ namespace Jina
             JinaClipV1 as object ??
             JinaCodeEmbeddings15b as object ??
             JinaCodeEmbeddings05b as object ??
-            JinaEmbeddingsV4 as object ??
             JinaEmbeddingsV5OmniNano as object ??
+            JinaEmbeddingsV4 as object ??
             JinaEmbeddingsV3 as object ??
             JinaEmbeddingsV2BaseCode as object
             ;
@@ -742,8 +742,8 @@ namespace Jina
         public override string? ToString() =>
             JinaEmbeddingsV2BaseCode?.ToString() ??
             JinaEmbeddingsV3?.ToString() ??
-            JinaEmbeddingsV5OmniNano?.ToString() ??
             JinaEmbeddingsV4?.ToString() ??
+            JinaEmbeddingsV5OmniNano?.ToString() ??
             JinaCodeEmbeddings05b?.ToString() ??
             JinaCodeEmbeddings15b?.ToString() ??
             JinaClipV1?.ToString() ??
@@ -758,7 +758,7 @@ namespace Jina
         /// </summary>
         public bool Validate()
         {
-            return IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV5OmniNano && !IsJinaEmbeddingsV4 && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && IsElserV2;
+            return IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && IsElserV2;
         }
 
         /// <summary>
@@ -767,8 +767,8 @@ namespace Jina
         public TResult? Match<TResult>(
             global::System.Func<global::Jina.EmbeddingsV2Request, TResult>? jinaEmbeddingsV2BaseCode = null,
             global::System.Func<global::Jina.EmbeddingsV3Request, TResult>? jinaEmbeddingsV3 = null,
-            global::System.Func<global::Jina.EmbeddingsV5Request, TResult>? jinaEmbeddingsV5OmniNano = null,
             global::System.Func<global::Jina.EmbeddingsV4Request, TResult>? jinaEmbeddingsV4 = null,
+            global::System.Func<global::Jina.EmbeddingsV5Request, TResult>? jinaEmbeddingsV5OmniNano = null,
             global::System.Func<global::Jina.CodeEmbeddings500MRequest, TResult>? jinaCodeEmbeddings05b = null,
             global::System.Func<global::Jina.CodeEmbeddings1500MRequest, TResult>? jinaCodeEmbeddings15b = null,
             global::System.Func<global::Jina.ClipV1Request, TResult>? jinaClipV1 = null,
@@ -791,13 +791,13 @@ namespace Jina
             {
                 return jinaEmbeddingsV3(JinaEmbeddingsV3!);
             }
-            else if (IsJinaEmbeddingsV5OmniNano && jinaEmbeddingsV5OmniNano != null)
-            {
-                return jinaEmbeddingsV5OmniNano(JinaEmbeddingsV5OmniNano!);
-            }
             else if (IsJinaEmbeddingsV4 && jinaEmbeddingsV4 != null)
             {
                 return jinaEmbeddingsV4(JinaEmbeddingsV4!);
+            }
+            else if (IsJinaEmbeddingsV5OmniNano && jinaEmbeddingsV5OmniNano != null)
+            {
+                return jinaEmbeddingsV5OmniNano(JinaEmbeddingsV5OmniNano!);
             }
             else if (IsJinaCodeEmbeddings05b && jinaCodeEmbeddings05b != null)
             {
@@ -839,9 +839,9 @@ namespace Jina
 
             global::System.Action<global::Jina.EmbeddingsV3Request>? jinaEmbeddingsV3 = null,
 
-            global::System.Action<global::Jina.EmbeddingsV5Request>? jinaEmbeddingsV5OmniNano = null,
-
             global::System.Action<global::Jina.EmbeddingsV4Request>? jinaEmbeddingsV4 = null,
+
+            global::System.Action<global::Jina.EmbeddingsV5Request>? jinaEmbeddingsV5OmniNano = null,
 
             global::System.Action<global::Jina.CodeEmbeddings500MRequest>? jinaCodeEmbeddings05b = null,
 
@@ -871,13 +871,13 @@ namespace Jina
             {
                 jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
             }
-            else if (IsJinaEmbeddingsV5OmniNano)
-            {
-                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
-            }
             else if (IsJinaEmbeddingsV4)
             {
                 jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+            }
+            else if (IsJinaEmbeddingsV5OmniNano)
+            {
+                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
             }
             else if (IsJinaCodeEmbeddings05b)
             {
@@ -915,8 +915,8 @@ namespace Jina
         public void Switch(
             global::System.Action<global::Jina.EmbeddingsV2Request>? jinaEmbeddingsV2BaseCode = null,
             global::System.Action<global::Jina.EmbeddingsV3Request>? jinaEmbeddingsV3 = null,
-            global::System.Action<global::Jina.EmbeddingsV5Request>? jinaEmbeddingsV5OmniNano = null,
             global::System.Action<global::Jina.EmbeddingsV4Request>? jinaEmbeddingsV4 = null,
+            global::System.Action<global::Jina.EmbeddingsV5Request>? jinaEmbeddingsV5OmniNano = null,
             global::System.Action<global::Jina.CodeEmbeddings500MRequest>? jinaCodeEmbeddings05b = null,
             global::System.Action<global::Jina.CodeEmbeddings1500MRequest>? jinaCodeEmbeddings15b = null,
             global::System.Action<global::Jina.ClipV1Request>? jinaClipV1 = null,
@@ -939,13 +939,13 @@ namespace Jina
             {
                 jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
             }
-            else if (IsJinaEmbeddingsV5OmniNano)
-            {
-                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
-            }
             else if (IsJinaEmbeddingsV4)
             {
                 jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+            }
+            else if (IsJinaEmbeddingsV5OmniNano)
+            {
+                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
             }
             else if (IsJinaCodeEmbeddings05b)
             {
@@ -988,10 +988,10 @@ namespace Jina
                 typeof(global::Jina.EmbeddingsV2Request),
                 JinaEmbeddingsV3,
                 typeof(global::Jina.EmbeddingsV3Request),
-                JinaEmbeddingsV5OmniNano,
-                typeof(global::Jina.EmbeddingsV5Request),
                 JinaEmbeddingsV4,
                 typeof(global::Jina.EmbeddingsV4Request),
+                JinaEmbeddingsV5OmniNano,
+                typeof(global::Jina.EmbeddingsV5Request),
                 JinaCodeEmbeddings05b,
                 typeof(global::Jina.CodeEmbeddings500MRequest),
                 JinaCodeEmbeddings15b,
@@ -1024,8 +1024,8 @@ namespace Jina
             return
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV2Request?>.Default.Equals(JinaEmbeddingsV2BaseCode, other.JinaEmbeddingsV2BaseCode) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV3Request?>.Default.Equals(JinaEmbeddingsV3, other.JinaEmbeddingsV3) &&
-                global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV5Request?>.Default.Equals(JinaEmbeddingsV5OmniNano, other.JinaEmbeddingsV5OmniNano) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV4Request?>.Default.Equals(JinaEmbeddingsV4, other.JinaEmbeddingsV4) &&
+                global::System.Collections.Generic.EqualityComparer<global::Jina.EmbeddingsV5Request?>.Default.Equals(JinaEmbeddingsV5OmniNano, other.JinaEmbeddingsV5OmniNano) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.CodeEmbeddings500MRequest?>.Default.Equals(JinaCodeEmbeddings05b, other.JinaCodeEmbeddings05b) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.CodeEmbeddings1500MRequest?>.Default.Equals(JinaCodeEmbeddings15b, other.JinaCodeEmbeddings15b) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.ClipV1Request?>.Default.Equals(JinaClipV1, other.JinaClipV1) &&
