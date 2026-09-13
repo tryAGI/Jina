@@ -36,7 +36,7 @@ namespace Jina
         /// <inheritdoc/>
         public global::Jina.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Jina.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Jina.ModelListSourceGenerationContext.Default);
 
         /// <summary>
         ///
