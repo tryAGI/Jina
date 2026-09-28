@@ -47,8 +47,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV2CreateTrainingRequest PickJinaEmbeddingsV2BaseCode() => IsJinaEmbeddingsV2BaseCode
-            ? JinaEmbeddingsV2BaseCode!
+        public global::Jina.EmbeddingsV2CreateTrainingRequest PickJinaEmbeddingsV2BaseCode() => JinaEmbeddingsV2BaseCode is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV2BaseCode' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV3CreateTrainingRequest PickJinaEmbeddingsV3() => IsJinaEmbeddingsV3
-            ? JinaEmbeddingsV3!
+        public global::Jina.EmbeddingsV3CreateTrainingRequest PickJinaEmbeddingsV3() => JinaEmbeddingsV3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV3' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV4CreateTrainingRequest PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
-            ? JinaEmbeddingsV4!
+        public global::Jina.EmbeddingsV4CreateTrainingRequest PickJinaEmbeddingsV4() => JinaEmbeddingsV4 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV5CreateTrainingRequest PickJinaEmbeddingsV5TextNano() => IsJinaEmbeddingsV5TextNano
-            ? JinaEmbeddingsV5TextNano!
+        public global::Jina.EmbeddingsV5CreateTrainingRequest PickJinaEmbeddingsV5TextNano() => JinaEmbeddingsV5TextNano is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5TextNano' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ClipCreateTrainingRequest PickJinaClipV1() => IsJinaClipV1
-            ? JinaClipV1!
+        public global::Jina.ClipCreateTrainingRequest PickJinaClipV1() => JinaClipV1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaClipV1' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -380,25 +380,25 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode && jinaEmbeddingsV2BaseCode != null)
+            if (JinaEmbeddingsV2BaseCode is { } __value0 && jinaEmbeddingsV2BaseCode != null)
             {
-                return jinaEmbeddingsV2BaseCode(JinaEmbeddingsV2BaseCode!);
+                return jinaEmbeddingsV2BaseCode(__value0);
             }
-            else if (IsJinaEmbeddingsV3 && jinaEmbeddingsV3 != null)
+            else if (JinaEmbeddingsV3 is { } __value1 && jinaEmbeddingsV3 != null)
             {
-                return jinaEmbeddingsV3(JinaEmbeddingsV3!);
+                return jinaEmbeddingsV3(__value1);
             }
-            else if (IsJinaEmbeddingsV4 && jinaEmbeddingsV4 != null)
+            else if (JinaEmbeddingsV4 is { } __value2 && jinaEmbeddingsV4 != null)
             {
-                return jinaEmbeddingsV4(JinaEmbeddingsV4!);
+                return jinaEmbeddingsV4(__value2);
             }
-            else if (IsJinaEmbeddingsV5TextNano && jinaEmbeddingsV5TextNano != null)
+            else if (JinaEmbeddingsV5TextNano is { } __value3 && jinaEmbeddingsV5TextNano != null)
             {
-                return jinaEmbeddingsV5TextNano(JinaEmbeddingsV5TextNano!);
+                return jinaEmbeddingsV5TextNano(__value3);
             }
-            else if (IsJinaClipV1 && jinaClipV1 != null)
+            else if (JinaClipV1 is { } __value4 && jinaClipV1 != null)
             {
-                return jinaClipV1(JinaClipV1!);
+                return jinaClipV1(__value4);
             }
 
             return default(TResult);
@@ -424,25 +424,25 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode)
+            if (JinaEmbeddingsV2BaseCode is { } __value0)
             {
-                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+                jinaEmbeddingsV2BaseCode?.Invoke(__value0);
             }
-            else if (IsJinaEmbeddingsV3)
+            else if (JinaEmbeddingsV3 is { } __value1)
             {
-                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+                jinaEmbeddingsV3?.Invoke(__value1);
             }
-            else if (IsJinaEmbeddingsV4)
+            else if (JinaEmbeddingsV4 is { } __value2)
             {
-                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+                jinaEmbeddingsV4?.Invoke(__value2);
             }
-            else if (IsJinaEmbeddingsV5TextNano)
+            else if (JinaEmbeddingsV5TextNano is { } __value3)
             {
-                jinaEmbeddingsV5TextNano?.Invoke(JinaEmbeddingsV5TextNano!);
+                jinaEmbeddingsV5TextNano?.Invoke(__value3);
             }
-            else if (IsJinaClipV1)
+            else if (JinaClipV1 is { } __value4)
             {
-                jinaClipV1?.Invoke(JinaClipV1!);
+                jinaClipV1?.Invoke(__value4);
             }
         }
 
@@ -462,25 +462,25 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode)
+            if (JinaEmbeddingsV2BaseCode is { } __value0)
             {
-                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+                jinaEmbeddingsV2BaseCode?.Invoke(__value0);
             }
-            else if (IsJinaEmbeddingsV3)
+            else if (JinaEmbeddingsV3 is { } __value1)
             {
-                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+                jinaEmbeddingsV3?.Invoke(__value1);
             }
-            else if (IsJinaEmbeddingsV4)
+            else if (JinaEmbeddingsV4 is { } __value2)
             {
-                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+                jinaEmbeddingsV4?.Invoke(__value2);
             }
-            else if (IsJinaEmbeddingsV5TextNano)
+            else if (JinaEmbeddingsV5TextNano is { } __value3)
             {
-                jinaEmbeddingsV5TextNano?.Invoke(JinaEmbeddingsV5TextNano!);
+                jinaEmbeddingsV5TextNano?.Invoke(__value3);
             }
-            else if (IsJinaClipV1)
+            else if (JinaClipV1 is { } __value4)
             {
-                jinaClipV1?.Invoke(JinaClipV1!);
+                jinaClipV1?.Invoke(__value4);
             }
         }
 

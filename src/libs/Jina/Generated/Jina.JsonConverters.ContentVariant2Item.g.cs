@@ -59,13 +59,13 @@ namespace Jina.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.TextContentPart), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.TextContentPart?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.TextContentPart).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Text!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickText(), typeInfo);
             }
             else if (value.IsImageUrl)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ImageContentPart), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ImageContentPart?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.ImageContentPart).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ImageUrl!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickImageUrl(), typeInfo);
             }
         }
     }
