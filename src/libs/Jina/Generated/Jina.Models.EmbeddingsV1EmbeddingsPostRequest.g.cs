@@ -48,8 +48,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV2Request PickJinaEmbeddingsV2BaseCode() => IsJinaEmbeddingsV2BaseCode
-            ? JinaEmbeddingsV2BaseCode!
+        public global::Jina.EmbeddingsV2Request PickJinaEmbeddingsV2BaseCode() => JinaEmbeddingsV2BaseCode is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV2BaseCode' but the value was {ToString()}.");
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV3Request PickJinaEmbeddingsV3() => IsJinaEmbeddingsV3
-            ? JinaEmbeddingsV3!
+        public global::Jina.EmbeddingsV3Request PickJinaEmbeddingsV3() => JinaEmbeddingsV3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV3' but the value was {ToString()}.");
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV4Request PickJinaEmbeddingsV4() => IsJinaEmbeddingsV4
-            ? JinaEmbeddingsV4!
+        public global::Jina.EmbeddingsV4Request PickJinaEmbeddingsV4() => JinaEmbeddingsV4 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
 
         /// <summary>
@@ -166,8 +166,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.EmbeddingsV5Request PickJinaEmbeddingsV5OmniNano() => IsJinaEmbeddingsV5OmniNano
-            ? JinaEmbeddingsV5OmniNano!
+        public global::Jina.EmbeddingsV5Request PickJinaEmbeddingsV5OmniNano() => JinaEmbeddingsV5OmniNano is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5OmniNano' but the value was {ToString()}.");
 
         /// <summary>
@@ -203,8 +203,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.CodeEmbeddings500MRequest PickJinaCodeEmbeddings05b() => IsJinaCodeEmbeddings05b
-            ? JinaCodeEmbeddings05b!
+        public global::Jina.CodeEmbeddings500MRequest PickJinaCodeEmbeddings05b() => JinaCodeEmbeddings05b is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaCodeEmbeddings05b' but the value was {ToString()}.");
 
         /// <summary>
@@ -240,8 +240,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.CodeEmbeddings1500MRequest PickJinaCodeEmbeddings15b() => IsJinaCodeEmbeddings15b
-            ? JinaCodeEmbeddings15b!
+        public global::Jina.CodeEmbeddings1500MRequest PickJinaCodeEmbeddings15b() => JinaCodeEmbeddings15b is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaCodeEmbeddings15b' but the value was {ToString()}.");
 
         /// <summary>
@@ -278,8 +278,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ClipV1Request PickJinaClipV1() => IsJinaClipV1
-            ? JinaClipV1!
+        public global::Jina.ClipV1Request PickJinaClipV1() => JinaClipV1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaClipV1' but the value was {ToString()}.");
 
         /// <summary>
@@ -316,8 +316,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ClipV2Request PickJinaClipV2() => IsJinaClipV2
-            ? JinaClipV2!
+        public global::Jina.ClipV2Request PickJinaClipV2() => JinaClipV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaClipV2' but the value was {ToString()}.");
 
         /// <summary>
@@ -354,8 +354,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ColbertV1Request PickJinaColbertV1En() => IsJinaColbertV1En
-            ? JinaColbertV1En!
+        public global::Jina.ColbertV1Request PickJinaColbertV1En() => JinaColbertV1En is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV1En' but the value was {ToString()}.");
 
         /// <summary>
@@ -392,8 +392,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ColbertV2Request PickJinaColbertV2() => IsJinaColbertV2
-            ? JinaColbertV2!
+        public global::Jina.ColbertV2Request PickJinaColbertV2() => JinaColbertV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV2' but the value was {ToString()}.");
 
         /// <summary>
@@ -430,8 +430,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.ELSERV2Request PickElserV2() => IsElserV2
-            ? ElserV2!
+        public global::Jina.ELSERV2Request PickElserV2() => ElserV2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ElserV2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -783,49 +783,49 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode && jinaEmbeddingsV2BaseCode != null)
+            if (JinaEmbeddingsV2BaseCode is { } __value0 && jinaEmbeddingsV2BaseCode != null)
             {
-                return jinaEmbeddingsV2BaseCode(JinaEmbeddingsV2BaseCode!);
+                return jinaEmbeddingsV2BaseCode(__value0);
             }
-            else if (IsJinaEmbeddingsV3 && jinaEmbeddingsV3 != null)
+            else if (JinaEmbeddingsV3 is { } __value1 && jinaEmbeddingsV3 != null)
             {
-                return jinaEmbeddingsV3(JinaEmbeddingsV3!);
+                return jinaEmbeddingsV3(__value1);
             }
-            else if (IsJinaEmbeddingsV4 && jinaEmbeddingsV4 != null)
+            else if (JinaEmbeddingsV4 is { } __value2 && jinaEmbeddingsV4 != null)
             {
-                return jinaEmbeddingsV4(JinaEmbeddingsV4!);
+                return jinaEmbeddingsV4(__value2);
             }
-            else if (IsJinaEmbeddingsV5OmniNano && jinaEmbeddingsV5OmniNano != null)
+            else if (JinaEmbeddingsV5OmniNano is { } __value3 && jinaEmbeddingsV5OmniNano != null)
             {
-                return jinaEmbeddingsV5OmniNano(JinaEmbeddingsV5OmniNano!);
+                return jinaEmbeddingsV5OmniNano(__value3);
             }
-            else if (IsJinaCodeEmbeddings05b && jinaCodeEmbeddings05b != null)
+            else if (JinaCodeEmbeddings05b is { } __value4 && jinaCodeEmbeddings05b != null)
             {
-                return jinaCodeEmbeddings05b(JinaCodeEmbeddings05b!);
+                return jinaCodeEmbeddings05b(__value4);
             }
-            else if (IsJinaCodeEmbeddings15b && jinaCodeEmbeddings15b != null)
+            else if (JinaCodeEmbeddings15b is { } __value5 && jinaCodeEmbeddings15b != null)
             {
-                return jinaCodeEmbeddings15b(JinaCodeEmbeddings15b!);
+                return jinaCodeEmbeddings15b(__value5);
             }
-            else if (IsJinaClipV1 && jinaClipV1 != null)
+            else if (JinaClipV1 is { } __value6 && jinaClipV1 != null)
             {
-                return jinaClipV1(JinaClipV1!);
+                return jinaClipV1(__value6);
             }
-            else if (IsJinaClipV2 && jinaClipV2 != null)
+            else if (JinaClipV2 is { } __value7 && jinaClipV2 != null)
             {
-                return jinaClipV2(JinaClipV2!);
+                return jinaClipV2(__value7);
             }
-            else if (IsJinaColbertV1En && jinaColbertV1En != null)
+            else if (JinaColbertV1En is { } __value8 && jinaColbertV1En != null)
             {
-                return jinaColbertV1En(JinaColbertV1En!);
+                return jinaColbertV1En(__value8);
             }
-            else if (IsJinaColbertV2 && jinaColbertV2 != null)
+            else if (JinaColbertV2 is { } __value9 && jinaColbertV2 != null)
             {
-                return jinaColbertV2(JinaColbertV2!);
+                return jinaColbertV2(__value9);
             }
-            else if (IsElserV2 && elserV2 != null)
+            else if (ElserV2 is { } __value10 && elserV2 != null)
             {
-                return elserV2(ElserV2!);
+                return elserV2(__value10);
             }
 
             return default(TResult);
@@ -863,49 +863,49 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode)
+            if (JinaEmbeddingsV2BaseCode is { } __value0)
             {
-                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+                jinaEmbeddingsV2BaseCode?.Invoke(__value0);
             }
-            else if (IsJinaEmbeddingsV3)
+            else if (JinaEmbeddingsV3 is { } __value1)
             {
-                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+                jinaEmbeddingsV3?.Invoke(__value1);
             }
-            else if (IsJinaEmbeddingsV4)
+            else if (JinaEmbeddingsV4 is { } __value2)
             {
-                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+                jinaEmbeddingsV4?.Invoke(__value2);
             }
-            else if (IsJinaEmbeddingsV5OmniNano)
+            else if (JinaEmbeddingsV5OmniNano is { } __value3)
             {
-                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
+                jinaEmbeddingsV5OmniNano?.Invoke(__value3);
             }
-            else if (IsJinaCodeEmbeddings05b)
+            else if (JinaCodeEmbeddings05b is { } __value4)
             {
-                jinaCodeEmbeddings05b?.Invoke(JinaCodeEmbeddings05b!);
+                jinaCodeEmbeddings05b?.Invoke(__value4);
             }
-            else if (IsJinaCodeEmbeddings15b)
+            else if (JinaCodeEmbeddings15b is { } __value5)
             {
-                jinaCodeEmbeddings15b?.Invoke(JinaCodeEmbeddings15b!);
+                jinaCodeEmbeddings15b?.Invoke(__value5);
             }
-            else if (IsJinaClipV1)
+            else if (JinaClipV1 is { } __value6)
             {
-                jinaClipV1?.Invoke(JinaClipV1!);
+                jinaClipV1?.Invoke(__value6);
             }
-            else if (IsJinaClipV2)
+            else if (JinaClipV2 is { } __value7)
             {
-                jinaClipV2?.Invoke(JinaClipV2!);
+                jinaClipV2?.Invoke(__value7);
             }
-            else if (IsJinaColbertV1En)
+            else if (JinaColbertV1En is { } __value8)
             {
-                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+                jinaColbertV1En?.Invoke(__value8);
             }
-            else if (IsJinaColbertV2)
+            else if (JinaColbertV2 is { } __value9)
             {
-                jinaColbertV2?.Invoke(JinaColbertV2!);
+                jinaColbertV2?.Invoke(__value9);
             }
-            else if (IsElserV2)
+            else if (ElserV2 is { } __value10)
             {
-                elserV2?.Invoke(ElserV2!);
+                elserV2?.Invoke(__value10);
             }
         }
 
@@ -931,49 +931,49 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaEmbeddingsV2BaseCode)
+            if (JinaEmbeddingsV2BaseCode is { } __value0)
             {
-                jinaEmbeddingsV2BaseCode?.Invoke(JinaEmbeddingsV2BaseCode!);
+                jinaEmbeddingsV2BaseCode?.Invoke(__value0);
             }
-            else if (IsJinaEmbeddingsV3)
+            else if (JinaEmbeddingsV3 is { } __value1)
             {
-                jinaEmbeddingsV3?.Invoke(JinaEmbeddingsV3!);
+                jinaEmbeddingsV3?.Invoke(__value1);
             }
-            else if (IsJinaEmbeddingsV4)
+            else if (JinaEmbeddingsV4 is { } __value2)
             {
-                jinaEmbeddingsV4?.Invoke(JinaEmbeddingsV4!);
+                jinaEmbeddingsV4?.Invoke(__value2);
             }
-            else if (IsJinaEmbeddingsV5OmniNano)
+            else if (JinaEmbeddingsV5OmniNano is { } __value3)
             {
-                jinaEmbeddingsV5OmniNano?.Invoke(JinaEmbeddingsV5OmniNano!);
+                jinaEmbeddingsV5OmniNano?.Invoke(__value3);
             }
-            else if (IsJinaCodeEmbeddings05b)
+            else if (JinaCodeEmbeddings05b is { } __value4)
             {
-                jinaCodeEmbeddings05b?.Invoke(JinaCodeEmbeddings05b!);
+                jinaCodeEmbeddings05b?.Invoke(__value4);
             }
-            else if (IsJinaCodeEmbeddings15b)
+            else if (JinaCodeEmbeddings15b is { } __value5)
             {
-                jinaCodeEmbeddings15b?.Invoke(JinaCodeEmbeddings15b!);
+                jinaCodeEmbeddings15b?.Invoke(__value5);
             }
-            else if (IsJinaClipV1)
+            else if (JinaClipV1 is { } __value6)
             {
-                jinaClipV1?.Invoke(JinaClipV1!);
+                jinaClipV1?.Invoke(__value6);
             }
-            else if (IsJinaClipV2)
+            else if (JinaClipV2 is { } __value7)
             {
-                jinaClipV2?.Invoke(JinaClipV2!);
+                jinaClipV2?.Invoke(__value7);
             }
-            else if (IsJinaColbertV1En)
+            else if (JinaColbertV1En is { } __value8)
             {
-                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+                jinaColbertV1En?.Invoke(__value8);
             }
-            else if (IsJinaColbertV2)
+            else if (JinaColbertV2 is { } __value9)
             {
-                jinaColbertV2?.Invoke(JinaColbertV2!);
+                jinaColbertV2?.Invoke(__value9);
             }
-            else if (IsElserV2)
+            else if (ElserV2 is { } __value10)
             {
-                elserV2?.Invoke(ElserV2!);
+                elserV2?.Invoke(__value10);
             }
         }
 

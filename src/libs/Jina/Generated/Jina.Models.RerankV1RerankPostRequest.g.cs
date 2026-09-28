@@ -48,8 +48,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.TextRerankerRequest PickJinaColbertV1En() => IsJinaColbertV1En
-            ? JinaColbertV1En!
+        public global::Jina.TextRerankerRequest PickJinaColbertV1En() => JinaColbertV1En is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV1En' but the value was {ToString()}.");
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.RerankerM0Request PickJinaRerankerM0() => IsJinaRerankerM0
-            ? JinaRerankerM0!
+        public global::Jina.RerankerM0Request PickJinaRerankerM0() => JinaRerankerM0 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerM0' but the value was {ToString()}.");
 
         /// <summary>
@@ -126,8 +126,8 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public global::Jina.RerankerV3Request PickJinaRerankerV3() => IsJinaRerankerV3
-            ? JinaRerankerV3!
+        public global::Jina.RerankerV3Request PickJinaRerankerV3() => JinaRerankerV3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerV3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -255,17 +255,17 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaColbertV1En && jinaColbertV1En != null)
+            if (JinaColbertV1En is { } __value0 && jinaColbertV1En != null)
             {
-                return jinaColbertV1En(JinaColbertV1En!);
+                return jinaColbertV1En(__value0);
             }
-            else if (IsJinaRerankerM0 && jinaRerankerM0 != null)
+            else if (JinaRerankerM0 is { } __value1 && jinaRerankerM0 != null)
             {
-                return jinaRerankerM0(JinaRerankerM0!);
+                return jinaRerankerM0(__value1);
             }
-            else if (IsJinaRerankerV3 && jinaRerankerV3 != null)
+            else if (JinaRerankerV3 is { } __value2 && jinaRerankerV3 != null)
             {
-                return jinaRerankerV3(JinaRerankerV3!);
+                return jinaRerankerV3(__value2);
             }
 
             return default(TResult);
@@ -287,17 +287,17 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaColbertV1En)
+            if (JinaColbertV1En is { } __value0)
             {
-                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+                jinaColbertV1En?.Invoke(__value0);
             }
-            else if (IsJinaRerankerM0)
+            else if (JinaRerankerM0 is { } __value1)
             {
-                jinaRerankerM0?.Invoke(JinaRerankerM0!);
+                jinaRerankerM0?.Invoke(__value1);
             }
-            else if (IsJinaRerankerV3)
+            else if (JinaRerankerV3 is { } __value2)
             {
-                jinaRerankerV3?.Invoke(JinaRerankerV3!);
+                jinaRerankerV3?.Invoke(__value2);
             }
         }
 
@@ -315,17 +315,17 @@ namespace Jina
                 Validate();
             }
 
-            if (IsJinaColbertV1En)
+            if (JinaColbertV1En is { } __value0)
             {
-                jinaColbertV1En?.Invoke(JinaColbertV1En!);
+                jinaColbertV1En?.Invoke(__value0);
             }
-            else if (IsJinaRerankerM0)
+            else if (JinaRerankerM0 is { } __value1)
             {
-                jinaRerankerM0?.Invoke(JinaRerankerM0!);
+                jinaRerankerM0?.Invoke(__value1);
             }
-            else if (IsJinaRerankerV3)
+            else if (JinaRerankerV3 is { } __value2)
             {
-                jinaRerankerV3?.Invoke(JinaRerankerV3!);
+                jinaRerankerV3?.Invoke(__value2);
             }
         }
 
