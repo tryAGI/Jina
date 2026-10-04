@@ -13,8 +13,8 @@ namespace Jina
         /// Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>, object>))]
-        public global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>, object>? EmbeddingType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>>))]
+        public global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>>? EmbeddingType { get; set; }
 
         /// <summary>
         /// Text to embed: a string, `TextDoc`, or a list of items.
@@ -78,7 +78,7 @@ namespace Jina
         public EmbeddingsV2Request(
             global::Jina.AnyOf<string, global::Jina.TextDoc, global::System.Collections.Generic.IList<global::Jina.AnyOf<string, global::Jina.TextDoc>>> input,
             global::Jina.EmbeddingsV2RequestModel model,
-            global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>, object>? embeddingType,
+            global::Jina.AnyOf<global::Jina.EmbeddingsV2RequestEmbeddingType?, global::System.Collections.Generic.IList<global::Jina.EmbeddingsV2RequestEmbeddingTypeItem>>? embeddingType,
             bool? normalized,
             bool? truncate)
         {

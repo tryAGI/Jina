@@ -68,8 +68,8 @@ namespace Jina
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stop")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>, object>))]
-        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>? Stop { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>>))]
+        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>>? Stop { get; set; }
 
         /// <summary>
         /// Default Value: false
@@ -141,7 +141,7 @@ namespace Jina
             double? presencePenalty,
             global::Jina.ResponseFormatVariant1? responseFormat,
             int? seed,
-            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>? stop,
+            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>>? stop,
             bool? stream,
             global::Jina.StreamOptions? streamOptions,
             double? temperature,
