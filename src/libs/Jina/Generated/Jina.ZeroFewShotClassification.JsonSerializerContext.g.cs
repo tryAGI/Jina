@@ -174,7 +174,7 @@ namespace Jina
         {
             options.Converters.Add(new global::Jina.JsonConverters.ClassifyV1ClassifyPostRequestVariant1JsonConverter());
             options.Converters.Add(new global::Jina.JsonConverters.TrainV1TrainPostRequestVariant1JsonConverter());
-            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>, object>());
+            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.Dictionary<string, string>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Jina.ClassificationPredictionLabel>>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<double?, global::System.Collections.Generic.Dictionary<string, double>>());
@@ -221,7 +221,7 @@ namespace Jina
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.ImageDoc>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc>());
-            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>());
+            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<double>, global::System.Collections.Generic.Dictionary<string, double>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem, global::System.Collections.Generic.IList<global::Jina.AnyOf<global::Jina.TextTrainingItem, global::Jina.ImageTrainingItem>>>());

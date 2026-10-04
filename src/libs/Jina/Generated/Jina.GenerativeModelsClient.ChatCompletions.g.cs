@@ -838,7 +838,7 @@ namespace Jina
             double? presencePenalty = default,
             global::Jina.ResponseFormatVariant1? responseFormat = default,
             int? seed = default,
-            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>? stop = default,
+            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>>? stop = default,
             bool? stream = default,
             global::Jina.StreamOptions? streamOptions = default,
             double? temperature = default,

@@ -12,8 +12,8 @@ namespace Jina
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>))]
-        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>? Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>))]
+        public global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>? Content { get; set; }
 
         /// <summary>
         ///
@@ -39,7 +39,7 @@ namespace Jina
 #endif
         public ChatMessage(
             global::Jina.ChatMessageRole role,
-            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>? content)
+            global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>? content)
         {
             this.Content = content;
             this.Role = role;

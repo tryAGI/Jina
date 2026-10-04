@@ -28,10 +28,10 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ResponseFormatJSONSchema))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ChatCompletionRequestResponseFormatVariant1Discriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ChatCompletionRequestResponseFormatVariant1DiscriminatorType), TypeInfoPropertyName = "ChatCompletionRequestResponseFormatVariant1DiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>), TypeInfoPropertyName = "AnyOfStringIListStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>>), TypeInfoPropertyName = "AnyOfStringIListString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.StreamOptions))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>), TypeInfoPropertyName = "AnyOfStringIListContentVariant2ItemObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>), TypeInfoPropertyName = "AnyOfStringIListContentVariant2Item2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ContentVariant2Item), TypeInfoPropertyName = "ContentVariant2Item2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.TextContentPart))]
@@ -47,15 +47,15 @@ namespace Jina
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.JSONSchemaSpec))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ChatCompletionRequestResponseFormatVariant1DiscriminatorType?), TypeInfoPropertyName = "NullableChatCompletionRequestResponseFormatVariant1DiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>, object>?), TypeInfoPropertyName = "NullableAnyOfStringIListStringObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>?), TypeInfoPropertyName = "NullableAnyOfStringIListContentVariant2ItemObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<string>>?), TypeInfoPropertyName = "NullableAnyOfStringIListString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>?), TypeInfoPropertyName = "NullableAnyOfStringIListContentVariant2Item2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ContentVariant2Item?), TypeInfoPropertyName = "NullableContentVariant2Item2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ChatMessageContentVariant2ItemDiscriminatorType?), TypeInfoPropertyName = "NullableChatMessageContentVariant2ItemDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.ChatMessageRole?), TypeInfoPropertyName = "NullableChatMessageRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Jina.ChatMessage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.List<string>, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.List<global::Jina.ContentVariant2Item>, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Jina.AnyOf<string, global::System.Collections.Generic.List<global::Jina.ContentVariant2Item>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Jina.ContentVariant2Item>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Jina.HTTPValidationErrorError>))]
     internal sealed partial class GenerativeModelsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -107,8 +107,8 @@ namespace Jina
         {
             options.Converters.Add(new global::Jina.JsonConverters.ResponseFormatVariant1JsonConverter());
             options.Converters.Add(new global::Jina.JsonConverters.ContentVariant2ItemJsonConverter());
-            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>, object>());
-            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>, object>());
+            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.IList<global::Jina.ContentVariant2Item>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<string, global::System.Collections.Generic.Dictionary<string, string>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<double?, global::System.Collections.Generic.Dictionary<string, double>>());
             options.Converters.Add(new global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<string>, global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<string>>>());

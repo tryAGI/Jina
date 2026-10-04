@@ -12,8 +12,8 @@ namespace Jina
         /// Document content, if `return_documents=true`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("document")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>))]
-        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? Document { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<string, global::Jina.TextDoc, global::Jina.ImageDoc>))]
+        public global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>? Document { get; set; }
 
         /// <summary>
         /// Document embedding, if `return_embeddings=true`.
@@ -62,7 +62,7 @@ namespace Jina
         public RerankingResult(
             int index,
             double relevanceScore,
-            global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc, object>? document,
+            global::Jina.AnyOf<string, global::Jina.TextDoc, global::Jina.ImageDoc>? document,
             global::System.Collections.Generic.IList<double>? embedding)
         {
             this.Document = document;
