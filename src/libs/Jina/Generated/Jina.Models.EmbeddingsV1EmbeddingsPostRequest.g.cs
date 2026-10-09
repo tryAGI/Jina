@@ -128,13 +128,13 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV4' but the value was {ToString()}.");
 
         /// <summary>
-        /// Jina Embeddings v5 model with task-specific LoRA adapters and flexible<br/>
-        /// dimensions. Small/nano sizes support text-only; the omni variant also<br/>
-        /// accepts images, videos, audio, and PDFs in a single shared vector space.<br/>
-        /// Each top-level list item is a single modality (one Doc class), with one<br/>
-        /// exception: a `MergedContentGroup` (`{"content": [...]}`) fuses multiple<br/>
-        /// chunks (text + image/video/audio) into a single embedding via one model<br/>
-        /// forward pass.
+        /// Jina Embeddings v5, with task-specific adapters and truncatable<br/>
+        /// dimensions. Text, images, video, audio and PDFs share one vector space, so<br/>
+        /// a query in any of them retrieves any other; the `omni` names are the ones<br/>
+        /// to reach for when the corpus is not text.<br/>
+        /// Each list item is one modality, except a `MergedContentGroup`<br/>
+        /// (`{"content": [...]}`), which fuses several chunks into a single embedding<br/>
+        /// in one forward pass.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.EmbeddingsV5Request? JinaEmbeddingsV5OmniNano { get; init; }
@@ -171,7 +171,7 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaEmbeddingsV5OmniNano' but the value was {ToString()}.");
 
         /// <summary>
-        /// Code embedding model (500M) for code search and understanding.
+        /// Code embeddings (0.5b) for search over source, and between source and prose.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.CodeEmbeddings500MRequest? JinaCodeEmbeddings05b { get; init; }
@@ -208,7 +208,7 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaCodeEmbeddings05b' but the value was {ToString()}.");
 
         /// <summary>
-        /// Code embedding model (1.5B) for code search and understanding.
+        /// Code embeddings (1.5b) for search over source, and between source and prose.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Jina.CodeEmbeddings1500MRequest? JinaCodeEmbeddings15b { get; init; }
@@ -395,44 +395,6 @@ namespace Jina
         public global::Jina.ColbertV2Request PickJinaColbertV2() => JinaColbertV2 is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV2' but the value was {ToString()}.");
-
-        /// <summary>
-        /// ELSER v2 request schema.<br/>
-        /// Example: {"input":["What is machine learning?","How does AI work?"],"model":"elser-v2","task":"retrieval.query"}
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Jina.ELSERV2Request? ElserV2 { get; init; }
-#else
-        public global::Jina.ELSERV2Request? ElserV2 { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElserV2))]
-#endif
-        public bool IsElserV2 => ElserV2 != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickElserV2(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Jina.ELSERV2Request? value)
-        {
-            value = ElserV2;
-            return IsElserV2;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Jina.ELSERV2Request PickElserV2() => ElserV2 is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'ElserV2' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -666,29 +628,6 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator EmbeddingsV1EmbeddingsPostRequest(global::Jina.ELSERV2Request value) => new EmbeddingsV1EmbeddingsPostRequest((global::Jina.ELSERV2Request?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Jina.ELSERV2Request?(EmbeddingsV1EmbeddingsPostRequest @this) => @this.ElserV2;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public EmbeddingsV1EmbeddingsPostRequest(global::Jina.ELSERV2Request? value)
-        {
-            ElserV2 = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static EmbeddingsV1EmbeddingsPostRequest FromElserV2(global::Jina.ELSERV2Request? value) => new EmbeddingsV1EmbeddingsPostRequest(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public EmbeddingsV1EmbeddingsPostRequest(
             global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel? model,
             global::Jina.EmbeddingsV2Request? jinaEmbeddingsV2BaseCode,
@@ -700,8 +639,7 @@ namespace Jina
             global::Jina.ClipV1Request? jinaClipV1,
             global::Jina.ClipV2Request? jinaClipV2,
             global::Jina.ColbertV1Request? jinaColbertV1En,
-            global::Jina.ColbertV2Request? jinaColbertV2,
-            global::Jina.ELSERV2Request? elserV2
+            global::Jina.ColbertV2Request? jinaColbertV2
             )
         {
             Model = model;
@@ -716,14 +654,12 @@ namespace Jina
             JinaClipV2 = jinaClipV2;
             JinaColbertV1En = jinaColbertV1En;
             JinaColbertV2 = jinaColbertV2;
-            ElserV2 = elserV2;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            ElserV2 as object ??
             JinaColbertV2 as object ??
             JinaColbertV1En as object ??
             JinaClipV2 as object ??
@@ -749,8 +685,7 @@ namespace Jina
             JinaClipV1?.ToString() ??
             JinaClipV2?.ToString() ??
             JinaColbertV1En?.ToString() ??
-            JinaColbertV2?.ToString() ??
-            ElserV2?.ToString()
+            JinaColbertV2?.ToString()
             ;
 
         /// <summary>
@@ -758,7 +693,7 @@ namespace Jina
         /// </summary>
         public bool Validate()
         {
-            return IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && IsJinaColbertV1En && !IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && IsJinaColbertV2 && !IsElserV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 && IsElserV2;
+            return IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && IsJinaClipV2 && !IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && IsJinaColbertV1En && !IsJinaColbertV2 || !IsJinaEmbeddingsV2BaseCode && !IsJinaEmbeddingsV3 && !IsJinaEmbeddingsV4 && !IsJinaEmbeddingsV5OmniNano && !IsJinaCodeEmbeddings05b && !IsJinaCodeEmbeddings15b && !IsJinaClipV1 && !IsJinaClipV2 && !IsJinaColbertV1En && IsJinaColbertV2;
         }
 
         /// <summary>
@@ -775,7 +710,6 @@ namespace Jina
             global::System.Func<global::Jina.ClipV2Request, TResult>? jinaClipV2 = null,
             global::System.Func<global::Jina.ColbertV1Request, TResult>? jinaColbertV1En = null,
             global::System.Func<global::Jina.ColbertV2Request, TResult>? jinaColbertV2 = null,
-            global::System.Func<global::Jina.ELSERV2Request, TResult>? elserV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -823,10 +757,6 @@ namespace Jina
             {
                 return jinaColbertV2(__value9);
             }
-            else if (ElserV2 is { } __value10 && elserV2 != null)
-            {
-                return elserV2(__value10);
-            }
 
             return default(TResult);
         }
@@ -854,8 +784,6 @@ namespace Jina
             global::System.Action<global::Jina.ColbertV1Request>? jinaColbertV1En = null,
 
             global::System.Action<global::Jina.ColbertV2Request>? jinaColbertV2 = null,
-
-            global::System.Action<global::Jina.ELSERV2Request>? elserV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -902,10 +830,6 @@ namespace Jina
             else if (JinaColbertV2 is { } __value9)
             {
                 jinaColbertV2?.Invoke(__value9);
-            }
-            else if (ElserV2 is { } __value10)
-            {
-                elserV2?.Invoke(__value10);
             }
         }
 
@@ -923,7 +847,6 @@ namespace Jina
             global::System.Action<global::Jina.ClipV2Request>? jinaClipV2 = null,
             global::System.Action<global::Jina.ColbertV1Request>? jinaColbertV1En = null,
             global::System.Action<global::Jina.ColbertV2Request>? jinaColbertV2 = null,
-            global::System.Action<global::Jina.ELSERV2Request>? elserV2 = null,
             bool validate = true)
         {
             if (validate)
@@ -970,10 +893,6 @@ namespace Jina
             else if (JinaColbertV2 is { } __value9)
             {
                 jinaColbertV2?.Invoke(__value9);
-            }
-            else if (ElserV2 is { } __value10)
-            {
-                elserV2?.Invoke(__value10);
             }
         }
 
@@ -1004,8 +923,6 @@ namespace Jina
                 typeof(global::Jina.ColbertV1Request),
                 JinaColbertV2,
                 typeof(global::Jina.ColbertV2Request),
-                ElserV2,
-                typeof(global::Jina.ELSERV2Request),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -1031,8 +948,7 @@ namespace Jina
                 global::System.Collections.Generic.EqualityComparer<global::Jina.ClipV1Request?>.Default.Equals(JinaClipV1, other.JinaClipV1) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.ClipV2Request?>.Default.Equals(JinaClipV2, other.JinaClipV2) &&
                 global::System.Collections.Generic.EqualityComparer<global::Jina.ColbertV1Request?>.Default.Equals(JinaColbertV1En, other.JinaColbertV1En) &&
-                global::System.Collections.Generic.EqualityComparer<global::Jina.ColbertV2Request?>.Default.Equals(JinaColbertV2, other.JinaColbertV2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Jina.ELSERV2Request?>.Default.Equals(ElserV2, other.ElserV2)
+                global::System.Collections.Generic.EqualityComparer<global::Jina.ColbertV2Request?>.Default.Equals(JinaColbertV2, other.JinaColbertV2)
                 ;
         }
 

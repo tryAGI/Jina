@@ -4,32 +4,32 @@
 namespace Jina
 {
     /// <summary>
-    ///
+    /// Failure shape for every endpoint except `/v1/chat/completions`.
     /// </summary>
     public sealed partial class ErrorResponse
     {
         /// <summary>
-        /// Machine-readable error code for programmatic handling<br/>
-        /// Example: AUTH_INVALID_API_KEY
+        /// Machine-readable error code, for programmatic handling.
         /// </summary>
-        /// <example>AUTH_INVALID_API_KEY</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]
         public string? Code { get; set; }
 
         /// <summary>
-        /// Human-readable error message<br/>
-        /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
+        /// Human-readable error message.
         /// </summary>
-        /// <example>Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Detail { get; set; }
 
         /// <summary>
-        /// Unique request identifier for tracing and support<br/>
-        /// Example: 03f58cd9da22fabf
+        /// Per-field detail. Present on 422 only; `detail` summarises it.
         /// </summary>
-        /// <example>03f58cd9da22fabf</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errors")]
+        public global::System.Collections.Generic.IList<global::Jina.FieldError>? Errors { get; set; }
+
+        /// <summary>
+        /// Identifier for this request, quote it in support requests.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
         public string? RequestId { get; set; }
 
@@ -43,16 +43,16 @@ namespace Jina
         /// Initializes a new instance of the <see cref="ErrorResponse" /> class.
         /// </summary>
         /// <param name="detail">
-        /// Human-readable error message<br/>
-        /// Example: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.
+        /// Human-readable error message.
         /// </param>
         /// <param name="code">
-        /// Machine-readable error code for programmatic handling<br/>
-        /// Example: AUTH_INVALID_API_KEY
+        /// Machine-readable error code, for programmatic handling.
+        /// </param>
+        /// <param name="errors">
+        /// Per-field detail. Present on 422 only; `detail` summarises it.
         /// </param>
         /// <param name="requestId">
-        /// Unique request identifier for tracing and support<br/>
-        /// Example: 03f58cd9da22fabf
+        /// Identifier for this request, quote it in support requests.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,10 +60,12 @@ namespace Jina
         public ErrorResponse(
             string detail,
             string? code,
+            global::System.Collections.Generic.IList<global::Jina.FieldError>? errors,
             string? requestId)
         {
             this.Code = code;
             this.Detail = detail ?? throw new global::System.ArgumentNullException(nameof(detail));
+            this.Errors = errors;
             this.RequestId = requestId;
         }
 

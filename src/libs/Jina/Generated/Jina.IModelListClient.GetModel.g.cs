@@ -6,9 +6,8 @@ namespace Jina
     {
         /// <summary>
         /// Get Model<br/>
-        /// Get details for a specific model.<br/>
-        /// Accepts both full form (`jina-ai/jina-embeddings-v3`) and<br/>
-        /// short form (`jina-embeddings-v3`).
+        /// One model by id, in full (`jina-ai/jina-embeddings-v3`) or short<br/>
+        /// (`jina-embeddings-v3`) form.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,9 +19,8 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Model<br/>
-        /// Get details for a specific model.<br/>
-        /// Accepts both full form (`jina-ai/jina-embeddings-v3`) and<br/>
-        /// short form (`jina-embeddings-v3`).
+        /// One model by id, in full (`jina-ai/jina-embeddings-v3`) or short<br/>
+        /// (`jina-embeddings-v3`) form.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

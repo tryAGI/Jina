@@ -4,9 +4,8 @@
 namespace Jina
 {
     /// <summary>
-    /// Transcribe and extract structured data from document images.<br/>
-    /// `jina-ocr-v1` reads a page and returns its content as markdown, preserving tables and layout. The endpoint follows the OpenAI chat completions schema, so any OpenAI-compatible client works unchanged — point it at `https://api.jina.ai/v1` and set `model`.<br/>
-    /// Set `stream: true` for server-sent events. Use `response_format` with a `json_schema` to constrain the output to a schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.<br/>
+    /// Document transcription over the OpenAI chat completions schema. Point any OpenAI-compatible client at the server URL above with `/v1` appended, set `model`, and send a page image; the response is the page as text or markdown, tables and layout preserved.<br/>
+    /// `stream: true` returns server-sent events. `response_format` with a `json_schema` constrains the output to that schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
