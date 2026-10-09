@@ -59,7 +59,7 @@ namespace Jina
         public required global::System.Collections.Generic.IList<string> InputModalities { get; set; }
 
         /// <summary>
-        /// Maximum output dimensions.
+        /// Largest output the model produces: embedding dimensions for an embedding model, tokens for a generative one. `0` where it does not apply.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_output_length")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -138,7 +138,7 @@ namespace Jina
         /// Supported input modalities: `text`, `image`, `video`, `audio`.
         /// </param>
         /// <param name="maxOutputLength">
-        /// Maximum output dimensions.
+        /// Largest output the model produces: embedding dimensions for an embedding model, tokens for a generative one. `0` where it does not apply.
         /// </param>
         /// <param name="name">
         /// Human-readable model name.

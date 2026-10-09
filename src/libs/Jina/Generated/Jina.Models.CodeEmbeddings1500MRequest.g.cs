@@ -4,7 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// Code embedding model (1.5B) for code search and understanding.
+    /// Code embeddings (1.5b) for search over source, and between source and prose.
     /// </summary>
     public sealed partial class CodeEmbeddings1500MRequest
     {

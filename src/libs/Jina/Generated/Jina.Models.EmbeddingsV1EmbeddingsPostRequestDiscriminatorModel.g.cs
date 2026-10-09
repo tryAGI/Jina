@@ -11,10 +11,6 @@ namespace Jina
         /// <summary>
         ///
         /// </summary>
-        ElserV2,
-        /// <summary>
-        ///
-        /// </summary>
         JinaClipV1,
         /// <summary>
         ///
@@ -94,7 +90,6 @@ namespace Jina
         {
             return value switch
             {
-                EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.ElserV2 => "elser-v2",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaClipV1 => "jina-clip-v1",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaClipV2 => "jina-clip-v2",
                 EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaCodeEmbeddings05b => "jina-code-embeddings-0.5b",
@@ -122,7 +117,6 @@ namespace Jina
         {
             return value switch
             {
-                "elser-v2" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.ElserV2,
                 "jina-clip-v1" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaClipV1,
                 "jina-clip-v2" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaClipV2,
                 "jina-code-embeddings-0.5b" => EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.JinaCodeEmbeddings05b,

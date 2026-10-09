@@ -9,7 +9,7 @@ namespace Jina
     public sealed partial class EmbeddingResponse
     {
         /// <summary>
-        /// List of embeddings, one per input item. For sparse embeddings (elser-v2), this is a list of dicts mapping tokens to scores.
+        /// List of embeddings, one per input item. A sparse model returns each as a map of token to weight instead of a vector.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Jina.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Jina.SingleEmbeddingData>, global::System.Collections.Generic.IList<global::Jina.MultiEmbeddingData>, global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, double>>>))]
@@ -48,7 +48,7 @@ namespace Jina
         /// Initializes a new instance of the <see cref="EmbeddingResponse" /> class.
         /// </summary>
         /// <param name="data">
-        /// List of embeddings, one per input item. For sparse embeddings (elser-v2), this is a list of dicts mapping tokens to scores.
+        /// List of embeddings, one per input item. A sparse model returns each as a map of token to weight instead of a vector.
         /// </param>
         /// <param name="model">
         /// The model used to generate the embeddings.

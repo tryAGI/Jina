@@ -6,8 +6,9 @@ namespace Jina
     {
         /// <summary>
         /// Rerank<br/>
-        /// Rerank documents by relevance to a query.<br/>
-        /// World-class reranker for maximizing search relevancy and RAG accuracy.
+        /// Score documents against a query and return them reordered.<br/>
+        /// Results come back sorted by `relevance_score`, each carrying the index<br/>
+        /// it held in the request so the caller can map them back.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,8 +21,9 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rerank<br/>
-        /// Rerank documents by relevance to a query.<br/>
-        /// World-class reranker for maximizing search relevancy and RAG accuracy.
+        /// Score documents against a query and return them reordered.<br/>
+        /// Results come back sorted by `relevance_score`, each carrying the index<br/>
+        /// it held in the request so the caller can map them back.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -34,8 +36,9 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rerank<br/>
-        /// Rerank documents by relevance to a query.<br/>
-        /// World-class reranker for maximizing search relevancy and RAG accuracy.
+        /// Score documents against a query and return them reordered.<br/>
+        /// Results come back sorted by `relevance_score`, each carrying the index<br/>
+        /// it held in the request so the caller can map them back.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

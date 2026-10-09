@@ -91,13 +91,6 @@ namespace Jina.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.ColbertV2Request)}");
                 jinaColbertV2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Jina.ELSERV2Request? elserV2 = default;
-            if (discriminator?.Model == global::Jina.EmbeddingsV1EmbeddingsPostRequestDiscriminatorModel.ElserV2)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ELSERV2Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ELSERV2Request> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Jina.ELSERV2Request)}");
-                elserV2 = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
 
             var __value = new global::Jina.EmbeddingsV1EmbeddingsPostRequest(
                 discriminator?.Model,
@@ -119,9 +112,7 @@ namespace Jina.JsonConverters
 
                 jinaColbertV1En,
 
-                jinaColbertV2,
-
-                elserV2
+                jinaColbertV2
                 );
 
             return __value;
@@ -195,12 +186,6 @@ namespace Jina.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ColbertV2Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ColbertV2Request?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.ColbertV2Request).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickJinaColbertV2(), typeInfo);
-            }
-            else if (value.IsElserV2)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Jina.ELSERV2Request), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Jina.ELSERV2Request?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Jina.ELSERV2Request).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickElserV2(), typeInfo);
             }
         }
     }

@@ -1,97 +1,5 @@
 {
   "components": {
-    "responses": {
-      "BadRequest": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **INPUT_MODEL_NOT_FOUND**: Model 'model_name' not found. Available models: ....\n- **INPUT_INVALID_LABELS**: Invalid training labels. At least {min_labels} unique labels are required for training.\n- **INPUT_LABEL_LIMIT_EXCEEDED**: Label limit exceeded: {current} labels provided, maximum N allowed for your plan. Reduce the number of labels or upgrade your plan at https://jina.ai/api-dashboard/key-manager.\n- **INPUT_TOKEN_LIMIT_EXCEEDED**: Input text exceeds the model's maximum of {max_tokens} tokens. Use 'truncate: true' to automatically truncate, or split into smaller chunks."
-      },
-      "Conflict": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **CONFLICT_RESOURCE_BUSY**: {resource_type} '{resource_id}' is currently being modified. Please retry after a few moments."
-      },
-      "Forbidden": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **AUTHZ_INSUFFICIENT_BALANCE**: Insufficient account balance. Top up your account at https://jina.ai/api-dashboard/key-manager.\n- **AUTHZ_RESOURCE_LIMIT_EXCEEDED**: Resource limit exceeded for your plan. Current: {current}, limit: N. Delete existing resources or upgrade your plan at https://jina.ai/api-dashboard/key-manager."
-      },
-      "GatewayTimeout": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **SERVICE_TIMEOUT**: Service request timed out. Try with smaller inputs or retry later."
-      },
-      "InternalServerError": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **INTERNAL_ERROR**: An unexpected error occurred. If this persists, contact support with the request_id from this response."
-      },
-      "NotFound": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **RESOURCE_NOT_FOUND**: {resource_type} '{resource_id}' not found or access denied. Verify the ID and your permissions."
-      },
-      "ServiceUnavailable": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **SERVICE_UNAVAILABLE**: Service temporarily unavailable. Please retry with exponential backoff."
-      },
-      "TooManyRequests": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **RATE_REQUEST_LIMIT_EXCEEDED**: Request rate limit exceeded: {current}/N requests per minute. Reduce request frequency or upgrade your plan at https://jina.ai/api-dashboard/key-manager.\n- **RATE_TOKEN_LIMIT_EXCEEDED**: Token rate limit exceeded: {current:,}/{limit:,} tokens per minute. Reduce batch sizes or upgrade your plan at https://jina.ai/api-dashboard/key-manager.\n- **RATE_CONCURRENCY_LIMIT_EXCEEDED**: Concurrency limit exceeded: {current}/N concurrent requests. Wait for pending requests to complete before sending new ones.\n- **RATE_IP_LIMIT_EXCEEDED**: IP rate limit exceeded. Too many requests from this IP address. Reduce request frequency."
-      },
-      "Unauthorized": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        },
-        "description": "- **AUTH_MISSING_API_KEY**: Authentication required. Provide your API key via the Authorization header: 'Authorization: Bearer <api-key>'. Get your API key at https://jina.ai/api-dashboard/key-manager.\n- **AUTH_INVALID_API_KEY**: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.\n- **AUTH_INVALID_FORMAT**: Invalid authorization format. Use 'Authorization: Bearer <api-key>' with a valid Jina API key (65 characters, starts with 'jina_')."
-      }
-    },
     "schemas": {
       "AudioDoc": {
         "properties": {
@@ -656,288 +564,6 @@
         "title": "ChatMessage",
         "type": "object"
       },
-      "ClassificationPrediction": {
-        "description": "Classification result for one input item.",
-        "properties": {
-          "index": {
-            "description": "Position of this result in the input list.",
-            "title": "Index",
-            "type": "integer"
-          },
-          "object": {
-            "default": "classification",
-            "description": "Object type, always `classification`.",
-            "title": "Object",
-            "type": "string"
-          },
-          "prediction": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Predicted label, or a dict of labels per group.",
-            "title": "Prediction"
-          },
-          "predictions": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/ClassificationPredictionLabel"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "$ref": "#/components/schemas/ClassificationPredictionLabel"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "All candidate labels with scores, or a dict per group.",
-            "title": "Predictions"
-          },
-          "score": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "additionalProperties": {
-                  "type": "number"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Confidence score, or a dict of scores per group.",
-            "title": "Score"
-          }
-        },
-        "required": [
-          "index",
-          "prediction",
-          "score",
-          "predictions"
-        ],
-        "title": "ClassificationPrediction",
-        "type": "object"
-      },
-      "ClassificationPredictionLabel": {
-        "description": "A label with its confidence score.",
-        "properties": {
-          "label": {
-            "description": "The candidate label.",
-            "title": "Label",
-            "type": "string"
-          },
-          "score": {
-            "description": "Confidence score for this label.",
-            "title": "Score",
-            "type": "number"
-          }
-        },
-        "required": [
-          "label",
-          "score"
-        ],
-        "title": "ClassificationPredictionLabel",
-        "type": "object"
-      },
-      "ClassificationResponse": {
-        "description": "Response containing classification results.",
-        "properties": {
-          "data": {
-            "description": "Classification results, one per input item.",
-            "items": {
-              "$ref": "#/components/schemas/ClassificationPrediction"
-            },
-            "title": "Data",
-            "type": "array"
-          },
-          "usage": {
-            "$ref": "#/components/schemas/BaseUsage",
-            "description": "Token usage statistics."
-          }
-        },
-        "required": [
-          "data",
-          "usage"
-        ],
-        "title": "ClassificationResponse",
-        "type": "object"
-      },
-      "ClassifierSummary": {
-        "properties": {
-          "access": {
-            "description": "Access level (e.g., private, public)",
-            "title": "Access",
-            "type": "string"
-          },
-          "classifier_id": {
-            "description": "Unique identifier for the classifier",
-            "format": "uuid",
-            "title": "Classifier Id",
-            "type": "string"
-          },
-          "created_at": {
-            "description": "Creation timestamp",
-            "format": "date-time",
-            "title": "Created At",
-            "type": "string"
-          },
-          "is_active": {
-            "default": true,
-            "description": "Whether the classifier is currently active",
-            "title": "Is Active",
-            "type": "boolean"
-          },
-          "is_latest": {
-            "default": true,
-            "description": "Whether this is the latest version of the classifier",
-            "title": "Is Latest",
-            "type": "boolean"
-          },
-          "labels": {
-            "description": "List of classification labels",
-            "items": {
-              "type": "string"
-            },
-            "title": "Labels",
-            "type": "array"
-          },
-          "metadata_": {
-            "additionalProperties": true,
-            "description": "Additional metadata",
-            "title": "Metadata",
-            "type": "object"
-          },
-          "model": {
-            "description": "Name of the model used",
-            "title": "Model",
-            "type": "string"
-          },
-          "updated_at": {
-            "description": "Last update timestamp",
-            "format": "date-time",
-            "title": "Updated At",
-            "type": "string"
-          },
-          "updated_number": {
-            "description": "Number of times updated",
-            "title": "Updated Number",
-            "type": "integer"
-          },
-          "used_at": {
-            "anyOf": [
-              {
-                "format": "date-time",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Last used timestamp",
-            "title": "Used At"
-          },
-          "used_number": {
-            "description": "Number of times used",
-            "title": "Used Number",
-            "type": "integer"
-          },
-          "user_id": {
-            "description": "User ID who owns the classifier",
-            "format": "uuid",
-            "title": "User Id",
-            "type": "string"
-          }
-        },
-        "required": [
-          "classifier_id",
-          "user_id",
-          "model",
-          "labels",
-          "access",
-          "updated_number",
-          "used_number",
-          "created_at",
-          "updated_at"
-        ],
-        "title": "ClassifierSummary",
-        "type": "object"
-      },
-      "ClipCreateTrainingRequest": {
-        "example": {
-          "access": "public",
-          "input": [
-            {
-              "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d",
-              "label": "Cat"
-            },
-            {
-              "label": "Art",
-              "text": "A painting of a sunset over the mountains."
-            }
-          ],
-          "model": "jina-clip-v2",
-          "num_iters": 12
-        },
-        "properties": {
-          "access": {
-            "default": "public",
-            "description": "Access level for the training data. Can be 'public' or 'private'.",
-            "title": "Access",
-            "type": "string"
-          },
-          "input": {
-            "description": "Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items. Each image can be up to 8MB.",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/TextTrainingItem"
-                },
-                {
-                  "$ref": "#/components/schemas/ImageTrainingItem"
-                }
-              ]
-            },
-            "maxItems": 512,
-            "minItems": 2,
-            "title": "Input",
-            "type": "array"
-          },
-          "model": {
-            "description": "CLIP model for zero-shot classification of images and text.",
-            "enum": [
-              "jina-clip-v1",
-              "jina-clip-v2"
-            ],
-            "title": "Model",
-            "type": "string"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "ClipCreateTrainingRequest",
-        "type": "object"
-      },
       "ClipV1Request": {
         "description": "CLIP v1 multimodal model for images and text in a shared vector space.",
         "example": {
@@ -1203,95 +829,8 @@
         "title": "ClipV2Request",
         "type": "object"
       },
-      "ClipZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using CLIP for text and images.",
-        "example": {
-          "input": [
-            "A photo of a cat sitting on a windowsill.",
-            {
-              "image": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d"
-            }
-          ],
-          "labels": [
-            "Animal",
-            "Object",
-            "Scene"
-          ],
-          "model": "jina-clip-v2"
-        },
-        "properties": {
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "$ref": "#/components/schemas/ImageDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ImageDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Content to classify: a string, `TextDoc`, `ImageDoc`, or list of up to 512 items. Images up to 8MB.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "description": "The CLIP model to use.",
-            "enum": [
-              "jina-clip-v1",
-              "jina-clip-v2"
-            ],
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "ClipZeroShotClassificationRequest",
-        "type": "object"
-      },
       "CodeEmbeddings1500MRequest": {
-        "description": "Code embedding model (1.5B) for code search and understanding.",
+        "description": "Code embeddings (1.5b) for search over source, and between source and prose.",
         "examples": [
           {
             "dimensions": 512,
@@ -1425,7 +964,7 @@
         "type": "object"
       },
       "CodeEmbeddings500MRequest": {
-        "description": "Code embedding model (500M) for code search and understanding.",
+        "description": "Code embeddings (0.5b) for search over source, and between source and prose.",
         "examples": [
           {
             "dimensions": 512,
@@ -1557,86 +1096,6 @@
           "input"
         ],
         "title": "CodeEmbeddings500MRequest",
-        "type": "object"
-      },
-      "CodeEmbeddingsZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using code embedding models.",
-        "example": {
-          "input": [
-            "def hello_world():\n    print('Hello, World!')",
-            "SELECT * FROM users WHERE id = 1;"
-          ],
-          "labels": [
-            "Python",
-            "JavaScript",
-            "SQL",
-            "Rust"
-          ],
-          "model": "jina-code-embeddings-0.5b"
-        },
-        "properties": {
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Code to classify: a string, `TextDoc`, or list of up to 512 items.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "description": "The code embedding model to use.",
-            "enum": [
-              "jina-code-embeddings-0.5b",
-              "jina-code-embeddings-1.5b"
-            ],
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "CodeEmbeddingsZeroShotClassificationRequest",
         "type": "object"
       },
       "ColbertV1Request": {
@@ -1879,102 +1338,6 @@
         "title": "ELSERV2EmbeddingUsage",
         "type": "object"
       },
-      "ELSERV2Request": {
-        "description": "ELSER v2 request schema.",
-        "example": {
-          "input": [
-            "What is machine learning?",
-            "How does AI work?"
-          ],
-          "model": "elser-v2",
-          "task": "retrieval.query"
-        },
-        "properties": {
-          "embedding_type": {
-            "anyOf": [
-              {
-                "enum": [
-                  "float",
-                  "base64",
-                  "binary",
-                  "ubinary"
-                ],
-                "type": "string"
-              },
-              {
-                "items": {
-                  "enum": [
-                    "float",
-                    "base64",
-                    "binary",
-                    "ubinary"
-                  ],
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Output encoding format: `float`, `base64`, `binary`, `ubinary`, or a list of these.",
-            "title": "Embedding Type"
-          },
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Text to embed: a string, `TextDoc`, or a list of items.",
-            "title": "Input"
-          },
-          "model": {
-            "const": "elser-v2",
-            "description": "The sparse embedding model to use.",
-            "title": "Model",
-            "type": "string"
-          },
-          "task": {
-            "anyOf": [
-              {
-                "enum": [
-                  "retrieval.query",
-                  "retrieval.passage"
-                ],
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Task optimization: `retrieval.query` for queries, `retrieval.passage` for documents.",
-            "title": "Task"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "ELSERV2Request",
-        "type": "object"
-      },
       "EmbeddingResponse": {
         "description": "Response containing embeddings for all input items.",
         "properties": {
@@ -2002,7 +1365,7 @@
                 "type": "array"
               }
             ],
-            "description": "List of embeddings, one per input item. For sparse embeddings (elser-v2), this is a list of dicts mapping tokens to scores.",
+            "description": "List of embeddings, one per input item. A sparse model returns each as a map of token to weight instead of a vector.",
             "title": "Data"
           },
           "model": {
@@ -2095,65 +1458,6 @@
           "prompt_tokens"
         ],
         "title": "EmbeddingUsage",
-        "type": "object"
-      },
-      "EmbeddingsV2CreateTrainingRequest": {
-        "example": {
-          "access": "private",
-          "input": [
-            {
-              "label": "Biology",
-              "text": "Explain the process of photosynthesis."
-            },
-            {
-              "label": "Geography",
-              "text": "What is the capital of France?"
-            }
-          ],
-          "model": "jina-embeddings-v2-base-en",
-          "num_iters": 15
-        },
-        "properties": {
-          "access": {
-            "default": "public",
-            "description": "Access level for the training data. Can be 'public' or 'private'.",
-            "title": "Access",
-            "type": "string"
-          },
-          "input": {
-            "description": "Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.",
-            "items": {
-              "$ref": "#/components/schemas/TextTrainingItem"
-            },
-            "maxItems": 512,
-            "minItems": 2,
-            "title": "Input",
-            "type": "array"
-          },
-          "model": {
-            "description": "Text embedding model for zero-shot classification.",
-            "enum": [
-              "jina-embeddings-v2-base-en",
-              "jina-embeddings-v2-base-zh",
-              "jina-embeddings-v2-base-de",
-              "jina-embeddings-v2-base-es",
-              "jina-embeddings-v2-base-code"
-            ],
-            "title": "Model",
-            "type": "string"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV2CreateTrainingRequest",
         "type": "object"
       },
       "EmbeddingsV2Request": {
@@ -2268,141 +1572,6 @@
           "input"
         ],
         "title": "EmbeddingsV2Request",
-        "type": "object"
-      },
-      "EmbeddingsV2ZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using Embeddings v2.",
-        "example": {
-          "input": [
-            "Write a Python function to reverse a string.",
-            "Summarize the main findings of the research paper."
-          ],
-          "labels": [
-            "Simple task",
-            "Complex reasoning",
-            "Creative writing"
-          ],
-          "model": "jina-embeddings-v2-base-en"
-        },
-        "properties": {
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Text to classify: a string, `TextDoc`, or list of up to 512 items.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "description": "The embedding model to use.",
-            "enum": [
-              "jina-embeddings-v2-base-en",
-              "jina-embeddings-v2-base-zh",
-              "jina-embeddings-v2-base-de",
-              "jina-embeddings-v2-base-es",
-              "jina-embeddings-v2-base-code"
-            ],
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV2ZeroShotClassificationRequest",
-        "type": "object"
-      },
-      "EmbeddingsV3CreateTrainingRequest": {
-        "example": {
-          "access": "public",
-          "input": [
-            {
-              "label": "Biology",
-              "text": "Describe the structure of a plant cell."
-            },
-            {
-              "label": "Creative writing",
-              "text": "Write a poem about the ocean."
-            }
-          ],
-          "model": "jina-embeddings-v3",
-          "num_iters": 20
-        },
-        "properties": {
-          "access": {
-            "default": "public",
-            "description": "Access level for the training data. Can be 'public' or 'private'.",
-            "title": "Access",
-            "type": "string"
-          },
-          "input": {
-            "description": "Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.",
-            "items": {
-              "$ref": "#/components/schemas/TextTrainingItem"
-            },
-            "maxItems": 512,
-            "minItems": 2,
-            "title": "Input",
-            "type": "array"
-          },
-          "model": {
-            "const": "jina-embeddings-v3",
-            "description": "Text embedding model for zero-shot classification.",
-            "title": "Model",
-            "type": "string"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV3CreateTrainingRequest",
         "type": "object"
       },
       "EmbeddingsV3Request": {
@@ -2557,142 +1726,6 @@
           "input"
         ],
         "title": "EmbeddingsV3Request",
-        "type": "object"
-      },
-      "EmbeddingsV3ZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using Embeddings v3.",
-        "example": {
-          "input": [
-            "Explain the theory of relativity in simple terms.",
-            "Design a database schema for an e-commerce platform."
-          ],
-          "labels": [
-            "Technical explanation",
-            "Creative writing",
-            "Business solution"
-          ],
-          "model": "jina-embeddings-v3"
-        },
-        "properties": {
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Text to classify: a string, `TextDoc`, or list of up to 512 items.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "const": "jina-embeddings-v3",
-            "description": "The embedding model to use.",
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV3ZeroShotClassificationRequest",
-        "type": "object"
-      },
-      "EmbeddingsV4CreateTrainingRequest": {
-        "example": {
-          "access": "private",
-          "input": [
-            {
-              "label": "Dog",
-              "text": "A dog playing in the park."
-            },
-            {
-              "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-              "label": "Rocket"
-            }
-          ],
-          "model": "jina-embeddings-v4",
-          "num_iters": 25
-        },
-        "properties": {
-          "access": {
-            "default": "public",
-            "description": "Access level for the training data. Can be 'public' or 'private'.",
-            "title": "Access",
-            "type": "string"
-          },
-          "input": {
-            "description": "Must be a list of text-label or image-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/TextTrainingItem"
-                },
-                {
-                  "$ref": "#/components/schemas/ImageTrainingItem"
-                }
-              ]
-            },
-            "maxItems": 512,
-            "minItems": 2,
-            "title": "Input",
-            "type": "array"
-          },
-          "model": {
-            "const": "jina-embeddings-v4",
-            "description": "Multimodal embedding model for zero-shot classification.",
-            "title": "Model",
-            "type": "string"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV4CreateTrainingRequest",
         "type": "object"
       },
       "EmbeddingsV4Request": {
@@ -2893,140 +1926,8 @@
         "title": "EmbeddingsV4Request",
         "type": "object"
       },
-      "EmbeddingsV4ZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using Embeddings v4.",
-        "example": {
-          "input": [
-            "Describe the process of photosynthesis.",
-            "Analyze the sentiment of the following review: 'The product exceeded my expectations.'"
-          ],
-          "labels": [
-            "Factual answer",
-            "Sentiment analysis",
-            "Marketing content"
-          ],
-          "model": "jina-embeddings-v4"
-        },
-        "properties": {
-          "input": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Text to classify: a string, `TextDoc`, or list of up to 512 items.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
-            ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "const": "jina-embeddings-v4",
-            "description": "The embedding model to use.",
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV4ZeroShotClassificationRequest",
-        "type": "object"
-      },
-      "EmbeddingsV5CreateTrainingRequest": {
-        "example": {
-          "access": "public",
-          "input": [
-            {
-              "label": "Biology",
-              "text": "Describe the structure of a plant cell."
-            },
-            {
-              "label": "Creative writing",
-              "text": "Write a poem about the ocean."
-            }
-          ],
-          "model": "jina-embeddings-v5-text-small",
-          "num_iters": 20
-        },
-        "properties": {
-          "access": {
-            "default": "public",
-            "description": "Access level for the training data. Can be 'public' or 'private'.",
-            "title": "Access",
-            "type": "string"
-          },
-          "input": {
-            "description": "Must be a list of text-label training items with at least two unique labels. For batch training, provide a list with up to 512 items.",
-            "items": {
-              "$ref": "#/components/schemas/TextTrainingItem"
-            },
-            "maxItems": 512,
-            "minItems": 2,
-            "title": "Input",
-            "type": "array"
-          },
-          "model": {
-            "description": "Text embedding model for zero-shot classification.",
-            "enum": [
-              "jina-embeddings-v5-text-nano",
-              "jina-embeddings-v5-text-small"
-            ],
-            "title": "Model",
-            "type": "string"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV5CreateTrainingRequest",
-        "type": "object"
-      },
       "EmbeddingsV5Request": {
-        "description": "Jina Embeddings v5 model with task-specific LoRA adapters and flexible\ndimensions. Small/nano sizes support text-only; the omni variant also\naccepts images, videos, audio, and PDFs in a single shared vector space.\nEach top-level list item is a single modality (one Doc class), with one\nexception: a `MergedContentGroup` (`{\"content\": [...]}`) fuses multiple\nchunks (text + image/video/audio) into a single embedding via one model\nforward pass.",
+        "description": "Jina Embeddings v5, with task-specific adapters and truncatable\ndimensions. Text, images, video, audio and PDFs share one vector space, so\na query in any of them retrieves any other; the `omni` names are the ones\nto reach for when the corpus is not text.\n\nEach list item is one modality, except a `MergedContentGroup`\n(`{\"content\": [...]}`), which fuses several chunks into a single embedding\nin one forward pass.",
         "examples": [
           {
             "dimensions": 512,
@@ -3048,7 +1949,7 @@
                 "text": "A beautiful sunset over the beach"
               }
             ],
-            "model": "jina-embeddings-v5-text-small",
+            "model": "jina-embeddings-v5-omni-small",
             "task": "retrieval.passage"
           }
         ],
@@ -3143,7 +2044,7 @@
                 "type": "array"
               }
             ],
-            "description": "Content to embed: a string, `TextDoc`, `ImageDoc`, `VideoDoc`, `AudioDoc`, `PDFDoc`, or a list of items. List items may also be `{content: [...]}` groups — mixed-modality chunks fused into ONE embedding per group. PDFs must be sent as single inputs, not in a list. Text-only model variants reject non-text items.",
+            "description": "Content to embed: a string, `TextDoc`, `ImageDoc`, `VideoDoc`, `AudioDoc`, `PDFDoc`, or a list of these. A list item may also be a `{content: [...]}` group, fused into one embedding. A PDF must be sent on its own, not inside a list.",
             "title": "Input"
           },
           "model": {
@@ -3211,104 +2112,61 @@
         "title": "EmbeddingsV5Request",
         "type": "object"
       },
-      "EmbeddingsV5ZeroShotClassificationRequest": {
-        "description": "Zero-shot classification using Embeddings v5 text models.",
-        "example": {
-          "input": [
-            "Explain the theory of relativity in simple terms.",
-            "Design a database schema for an e-commerce platform."
-          ],
-          "labels": [
-            "Technical explanation",
-            "Creative writing",
-            "Business solution"
-          ],
-          "model": "jina-embeddings-v5-text-small"
-        },
+      "ErrorResponse": {
+        "description": "Failure shape for every endpoint except `/v1/chat/completions`.",
         "properties": {
-          "input": {
+          "code": {
             "anyOf": [
               {
                 "type": "string"
               },
               {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
+                "type": "null"
               }
             ],
-            "description": "Text to classify: a string, `TextDoc`, or list of up to 512 items.",
-            "title": "Input"
-          },
-          "labels": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "additionalProperties": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "type": "object"
-              }
+            "description": "Machine-readable error code, for programmatic handling.",
+            "examples": [
+              "AUTH_INVALID_API_KEY"
             ],
-            "description": "Candidate labels: a list of up to 512 labels, or a dict of up to 8 groups with max 64 labels each.",
-            "title": "Labels"
-          },
-          "model": {
-            "description": "The embedding model to use.",
-            "enum": [
-              "jina-embeddings-v5-text-nano",
-              "jina-embeddings-v5-text-small"
-            ],
-            "title": "Model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "labels",
-          "model",
-          "input"
-        ],
-        "title": "EmbeddingsV5ZeroShotClassificationRequest",
-        "type": "object"
-      },
-      "ErrorResponse": {
-        "properties": {
-          "code": {
-            "description": "Machine-readable error code for programmatic handling",
-            "example": "AUTH_INVALID_API_KEY",
-            "title": "Code",
-            "type": "string"
+            "title": "Code"
           },
           "detail": {
-            "description": "Human-readable error message",
-            "example": "Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one.",
+            "description": "Human-readable error message.",
+            "examples": [
+              "Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one."
+            ],
             "title": "Detail",
             "type": "string"
           },
+          "errors": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/FieldError"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Per-field detail. Present on 422 only; `detail` summarises it.",
+            "title": "Errors"
+          },
           "request_id": {
-            "description": "Unique request identifier for tracing and support",
-            "example": "03f58cd9da22fabf",
-            "title": "Request ID",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Identifier for this request, quote it in support requests.",
+            "examples": [
+              "03f58cd9da22fabf"
+            ],
+            "title": "Request Id"
           }
         },
         "required": [
@@ -3317,86 +2175,41 @@
         "title": "ErrorResponse",
         "type": "object"
       },
-      "FewShotClassificationRequest": {
-        "description": "Few-shot classification using a trained classifier.",
-        "example": {
-          "classifier_id": "cls-2024-07-14-xyz",
-          "input": [
-            "Summarize the main points of the article.",
-            "Classify the following statement: 'The service was prompt and friendly.'"
-          ]
-        },
+      "FieldError": {
+        "description": "One rejected field, as carried in a 422.",
         "properties": {
-          "classifier_id": {
-            "description": "ID of the trained classifier to use.",
-            "title": "Classifier Id",
+          "field": {
+            "description": "Path to the field, e.g. `body -> input -> 0`.",
+            "title": "Field",
             "type": "string"
           },
           "input": {
             "anyOf": [
+              {},
               {
-                "type": "string"
-              },
-              {
-                "$ref": "#/components/schemas/TextDoc"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TextDoc"
-                    }
-                  ]
-                },
-                "type": "array"
+                "type": "null"
               }
             ],
-            "description": "Text to classify: a string, `TextDoc`, or list of up to 512 items.",
+            "description": "The rejected value. Long strings are truncated and containers dropped.",
             "title": "Input"
+          },
+          "message": {
+            "description": "Why the value was rejected.",
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "description": "Validator that rejected it, e.g. `string_type`.",
+            "title": "Type",
+            "type": "string"
           }
         },
         "required": [
-          "classifier_id",
-          "input"
+          "field",
+          "message",
+          "type"
         ],
-        "title": "FewShotClassificationRequest",
-        "type": "object"
-      },
-      "HTTPValidationError": {
-        "properties": {
-          "detail": {
-            "title": "Detail",
-            "type": "string"
-          },
-          "errors": {
-            "items": {
-              "properties": {
-                "field": {
-                  "title": "Field",
-                  "type": "string"
-                },
-                "input": {
-                  "title": "Input"
-                },
-                "message": {
-                  "title": "Message",
-                  "type": "string"
-                },
-                "type": {
-                  "title": "Type",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "title": "Errors",
-            "type": "array"
-          }
-        },
-        "title": "HTTPValidationError",
+        "title": "FieldError",
         "type": "object"
       },
       "ImageContentPart": {
@@ -3429,26 +2242,6 @@
           "image"
         ],
         "title": "ImageDoc",
-        "type": "object"
-      },
-      "ImageTrainingItem": {
-        "properties": {
-          "image": {
-            "description": "Input image URL or base64 for training.",
-            "title": "Image",
-            "type": "string"
-          },
-          "label": {
-            "description": "Label for the input image.",
-            "title": "Label",
-            "type": "string"
-          }
-        },
-        "required": [
-          "image",
-          "label"
-        ],
-        "title": "ImageTrainingItem",
         "type": "object"
       },
       "ImageURL": {
@@ -3491,7 +2284,7 @@
         "type": "object"
       },
       "MergedContentGroup": {
-        "description": "Mixed-modality chunks fused into ONE embedding per group.\n\nThe executor sends every chunk to the model in a single forward pass\n(interleaved per the model's special-token convention) and returns one\nvector per `MergedContentGroup`. Order within `content` is semantically\nmeaningful — re-ordering may change the resulting embedding.\n\nPDFs are intentionally not allowed inside `content`: they're rasterized\nto N per-page image prompts, which doesn't compose with single-pass\nfusion. Send PDFs as standalone single-input requests instead.",
+        "description": "Several chunks of different modalities fused into one embedding.\n\nThe group returns a single vector, and order within `content` is part of\nthe meaning — reordering it can change the result. A PDF cannot go inside\na group; send it as its own input.",
         "properties": {
           "content": {
             "description": "Ordered list of modality chunks (text / image / video / audio). Must contain at least one chunk.",
@@ -3582,7 +2375,7 @@
             "type": "array"
           },
           "max_output_length": {
-            "description": "Maximum output dimensions.",
+            "description": "Largest output the model produces: embedding dimensions for an embedding model, tokens for a generative one. `0` where it does not apply.",
             "title": "Max Output Length",
             "type": "integer"
           },
@@ -3701,32 +2494,32 @@
         "description": "Pricing information for a model.",
         "properties": {
           "completion": {
-            "description": "Price per completion token.",
+            "description": "USD per output token.",
             "title": "Completion",
             "type": "string"
           },
           "image": {
-            "description": "Price per image.",
+            "description": "USD per image.",
             "title": "Image",
             "type": "string"
           },
           "input_cache_read": {
-            "description": "Price for input cache read.",
+            "description": "USD per cached input token read.",
             "title": "Input Cache Read",
             "type": "string"
           },
           "input_cache_write": {
-            "description": "Price for input cache write.",
+            "description": "USD per cached input token written.",
             "title": "Input Cache Write",
             "type": "string"
           },
           "prompt": {
-            "description": "Price per prompt token.",
+            "description": "USD per input token.",
             "title": "Prompt",
             "type": "string"
           },
           "request": {
-            "description": "Price per request.",
+            "description": "USD per request.",
             "title": "Request",
             "type": "string"
           }
@@ -3800,6 +2593,83 @@
         "title": "MultiEmbeddingData",
         "type": "object"
       },
+      "OpenAIError": {
+        "description": "OpenAI's error object. Our `code` and `request_id` ride inside it because\nthe OpenAI SDK keeps `body[\"error\"]` and discards everything beside it.",
+        "properties": {
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "examples": [
+              "INPUT_MODEL_NOT_FOUND"
+            ],
+            "title": "Code"
+          },
+          "message": {
+            "description": "Human-readable error message.",
+            "title": "Message",
+            "type": "string"
+          },
+          "param": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The request field at fault, when one is named.",
+            "title": "Param"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "examples": [
+              "03f58cd9da22fabf"
+            ],
+            "title": "Request Id"
+          },
+          "type": {
+            "description": "OpenAI's error class, e.g. `invalid_request_error`.",
+            "examples": [
+              "invalid_request_error"
+            ],
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "type"
+        ],
+        "title": "OpenAIError",
+        "type": "object"
+      },
+      "OpenAIErrorResponse": {
+        "description": "Failure shape for `/v1/chat/completions`, so OpenAI clients parse it.",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/OpenAIError"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "OpenAIErrorResponse",
+        "type": "object"
+      },
       "PDFDoc": {
         "properties": {
           "pdf": {
@@ -3815,7 +2685,7 @@
         "type": "object"
       },
       "RerankerM0Request": {
-        "description": "Multimodal reranking for text and images.",
+        "description": "Multimodal reranker: the query and the documents may each be text or an image.",
         "example": {
           "documents": [
             {
@@ -3912,7 +2782,7 @@
         "type": "object"
       },
       "RerankerV3Request": {
-        "description": "Listwise reranker for high-quality multilingual retrieval. `max_doc_length`\nis an optional override; when omitted it stays `None` and the serving executor\napplies its configured per-model default, keeping that default in one place.",
+        "description": "Listwise multilingual reranker: scores the candidate set as a whole\nrather than one document at a time.",
         "example": {
           "documents": [
             "Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.",
@@ -4244,7 +3114,7 @@
         "type": "object"
       },
       "TextRerankerRequest": {
-        "description": "Text reranking request for v1/v2 models.",
+        "description": "Pointwise text reranker: scores each document against the query.",
         "example": {
           "documents": [
             "Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.",
@@ -4329,125 +3199,6 @@
         "title": "TextRerankerRequest",
         "type": "object"
       },
-      "TextTrainingItem": {
-        "properties": {
-          "label": {
-            "description": "Label for the input text.",
-            "title": "Label",
-            "type": "string"
-          },
-          "text": {
-            "description": "Input text for training.",
-            "title": "Text",
-            "type": "string"
-          }
-        },
-        "required": [
-          "text",
-          "label"
-        ],
-        "title": "TextTrainingItem",
-        "type": "object"
-      },
-      "TrainingResponse": {
-        "example": {
-          "classifier_id": "00000000-0000-0000-0000-000000000000",
-          "num_samples": 6,
-          "usage": {
-            "total_tokens": 1830
-          }
-        },
-        "properties": {
-          "classifier_id": {
-            "description": "ID of the classifier that was trained or updated.",
-            "title": "Classifier Id",
-            "type": "string"
-          },
-          "num_samples": {
-            "description": "Number of training samples processed in this request.",
-            "title": "Num Samples",
-            "type": "integer"
-          },
-          "usage": {
-            "$ref": "#/components/schemas/BaseUsage",
-            "description": "Token usage statistics for the training request."
-          }
-        },
-        "required": [
-          "classifier_id",
-          "num_samples"
-        ],
-        "title": "TrainingResponse",
-        "type": "object"
-      },
-      "UpdateTrainingRequest": {
-        "example": {
-          "classifier_id": "cls-2025-07-15-xyz",
-          "input": [
-            {
-              "label": "Physics",
-              "text": "Summarize the theory of relativity."
-            },
-            {
-              "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-              "label": "Landscape"
-            },
-            {
-              "label": "Biology",
-              "text": "Explain the process of photosynthesis."
-            },
-            {
-              "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-              "label": "Rocket"
-            }
-          ],
-          "num_iters": 20
-        },
-        "properties": {
-          "classifier_id": {
-            "description": "ID of the classifier to use for few-shot classification.",
-            "title": "Classifier Id",
-            "type": "string"
-          },
-          "input": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/TextTrainingItem"
-              },
-              {
-                "$ref": "#/components/schemas/ImageTrainingItem"
-              },
-              {
-                "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/TextTrainingItem"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ImageTrainingItem"
-                    }
-                  ]
-                },
-                "type": "array"
-              }
-            ],
-            "description": "Input(s) for updating training. Accepts a `TextTrainingItem`, `ImageTrainingItem`, or a list of them. For batch update, provide a list with up to 512 items.",
-            "title": "Input"
-          },
-          "num_iters": {
-            "default": 10,
-            "description": "Number of iterations for the training process.",
-            "title": "Num Iters",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "classifier_id",
-          "input"
-        ],
-        "title": "UpdateTrainingRequest",
-        "type": "object"
-      },
       "VideoDoc": {
         "properties": {
           "video": {
@@ -4471,158 +3222,12 @@
     }
   },
   "info": {
-    "description": "\nBest-in-class embeddings, rerankers, and classifiers. Search AI for multilingual and multimodal data.\n\n## Capabilities\n\n- **Text Embeddings**: Dense vector representations for semantic search, similarity, and classification\n- **Multimodal Embeddings**: Process images, video, audio, PDFs, and text in a unified vector space\n- **Reranking**: Refine search results with precise relevance scoring\n- **Classification**: Zero-shot and few-shot text classification\n- **Multi-vector Embeddings**: Token-level embeddings for ColBERT and late interaction\n- **Batch Embeddings**: Asynchronous bulk embedding processing via JSONL input/output\n\n## Authentication\n\nInclude your API key in the `Authorization` header:\n\n```\nAuthorization: Bearer jina_YOUR_API_KEY\n```\n\nGet your API key at [jina.ai/api-dashboard/key-manager](https://jina.ai/api-dashboard/key-manager). New users receive **10M free tokens**.\n\n## Rate Limits\n\n| Tier | RPM | TPM | Concurrency |\n|------|-----|-----|-------------|\n| Free | 500 | 1M | 5 |\n| Tier 1 | 500 | 10M | 50 |\n| Tier 2 | 5,000 | 100M | 500 |\n\nRate limit headers are included in responses: `X-RateLimit-Remaining-Requests`, `X-RateLimit-Remaining-Tokens`.\n\n## Error Codes\n\nAll endpoints may return the following errors. Endpoint-specific errors are documented per operation.\n\n| Code | Status | Description |\n|------|--------|-------------|\n| `INPUT_MODEL_NOT_FOUND` | 400 | Model 'X' not found |\n| `INPUT_INVALID_LABELS` | 400 | Invalid training labels |\n| `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: {current} labels provided, maximum N allowed for your plan |\n| `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of {max_tokens} tokens |\n| `AUTH_MISSING_API_KEY` | 401 | Authentication required |\n| `AUTH_INVALID_API_KEY` | 401 | Invalid API key |\n| `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |\n| `AUTHZ_INSUFFICIENT_BALANCE` | 403 | Insufficient account balance |\n| `AUTHZ_RESOURCE_LIMIT_EXCEEDED` | 403 | Resource limit exceeded for your plan |\n| `RESOURCE_NOT_FOUND` | 404 | {resource_type} '{resource_id}' not found or access denied |\n| `CONFLICT_RESOURCE_BUSY` | 409 | {resource_type} '{resource_id}' is currently being modified |\n| `RATE_REQUEST_LIMIT_EXCEEDED` | 429 | Request rate limit exceeded: {current}/N requests per minute |\n| `RATE_TOKEN_LIMIT_EXCEEDED` | 429 | Token rate limit exceeded: {current:,}/{limit:,} tokens per minute |\n| `RATE_CONCURRENCY_LIMIT_EXCEEDED` | 429 | Concurrency limit exceeded: {current}/N concurrent requests |\n| `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |\n| `INTERNAL_ERROR` | 500 | An unexpected error occurred |\n| `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |\n| `SERVICE_TIMEOUT` | 504 | Service request timed out |\n",
+    "description": "Best-in-class embeddings, rerankers and document models for multilingual and multimodal search.\n\n## Capabilities\n\n- **Text embeddings** — dense vectors for semantic search, similarity, clustering and classification, in 100+ languages.\n- **Multimodal embeddings** — images, video, audio and PDFs embedded into the same space as text, so a query in one modality retrieves another.\n- **Reranking** — score a query against a candidate set and reorder it; more accurate than embedding similarity, and the usual second stage after it.\n- **Document OCR** — read a page image and return its content as text or markdown, with tables and layout preserved, over the OpenAI chat completions schema.\n- **Batch embeddings** — the same embedding models over JSONL, asynchronously, for workloads too large to send inline.\n\n## Authentication\n\nEvery endpoint except `GET /v1/models` requires a key:\n\n```\nAuthorization: Bearer jina_YOUR_API_KEY\n```\n\nGet one at [jina.ai/api-dashboard/key-manager](https://jina.ai/api-dashboard/key-manager).\n\n## Rate limits\n\nRequests per minute and tokens per minute. Anything over a limit answers `429`.\n\n| Endpoint | Free | Paid | Premium |\n|---|---|---|---|\n| `/v1/embeddings` | 500 RPM · 1M TPM | 500 RPM · 10M TPM | 5,000 RPM · 100M TPM |\n| `/v1/rerank` | 500 RPM · 1M TPM | 500 RPM · 10M TPM | 5,000 RPM · 100M TPM |\n| `/v1/chat/completions` | 100 RPM · 500K TPM | 100 RPM · 5M TPM | 1,000 RPM · 50M TPM |\n\n## Errors\n\nFailures carry a `detail`, a `code` from the table below and the `request_id` to quote in a support request. `/v1/chat/completions` is the exception: it answers in OpenAI's error envelope, with the same code inside it.\n\n| Code | Status | Meaning |\n|---|---|---|\n| `INPUT_INVALID_LABELS` | 400 | Invalid training labels |\n| `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: <current> labels provided, maximum <limit> allowed for your plan |\n| `INPUT_MODEL_NOT_FOUND` | 400 | Model '<model>' not found |\n| `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of <max_tokens> tokens |\n| `AUTH_INVALID_API_KEY` | 401 | Invalid API key |\n| `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |\n| `AUTH_MISSING_API_KEY` | 401 | Authentication required |\n| `AUTHZ_INSUFFICIENT_BALANCE` | 403 | Insufficient account balance |\n| `AUTHZ_RESOURCE_LIMIT_EXCEEDED` | 403 | Resource limit exceeded for your plan |\n| `RESOURCE_NOT_FOUND` | 404 | <resource_type> '<resource_id>' not found or access denied |\n| `CONFLICT_RESOURCE_BUSY` | 409 | <resource_type> '<resource_id>' is currently being modified |\n| `RATE_CONCURRENCY_LIMIT_EXCEEDED` | 429 | Concurrency limit exceeded: <current>/<limit> concurrent requests |\n| `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |\n| `RATE_REQUEST_LIMIT_EXCEEDED` | 429 | Request rate limit exceeded: <current>/<limit> requests per minute |\n| `RATE_TOKEN_LIMIT_EXCEEDED` | 429 | Token rate limit exceeded: <current>/<limit> tokens per minute |\n| `INTERNAL_ERROR` | 500 | An unexpected error occurred |\n| `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |\n| `SERVICE_TIMEOUT` | 504 | Service request timed out |",
     "title": "Jina Search Foundation API",
-    "version": "2026.09.17.0130",
-    "x-logo": {
-      "altText": "Jina AI",
-      "href": "https://jina.ai",
-      "url": "https://jina.ai/Jina%20-%20Light.svg"
-    }
+    "version": "2026.10.09.2011"
   },
   "openapi": "3.1.0",
   "paths": {
-    "/health": {
-      "get": {
-        "description": "Basic health check endpoint.\n\nReturns 200 if the service is running. This is the simplest health check\nthat only verifies the process is alive and can handle HTTP requests.",
-        "operationId": "health_health_get",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "summary": "Health",
-        "tags": [
-          "Health Check"
-        ]
-      }
-    },
-    "/live": {
-      "get": {
-        "description": "Liveness probe for Kubernetes/Cloud Run.\n\nLightweight check that the process is responsive. Unlike readiness,\nthis should not check external dependencies - it only verifies that\nthe event loop is not blocked and can handle requests.\n\nA failed liveness probe typically results in container restart.",
-        "operationId": "live_live_get",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "summary": "Live",
-        "tags": [
-          "Health Check"
-        ]
-      }
-    },
-    "/ready": {
-      "get": {
-        "description": "Readiness probe for Kubernetes/Cloud Run.\n\nChecks if the service is ready to accept traffic by verifying:\n- Redis connectivity (if redis_client is provided)\n\nReturns:\n    200 with status details if ready\n    503 with failure details if not ready",
-        "operationId": "ready_ready_get",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "summary": "Ready",
-        "tags": [
-          "Health Check"
-        ]
-      }
-    },
     "/v1/batch/embeddings": {
       "post": {
         "description": "Submit a batch of texts for asynchronous embedding processing.",
@@ -4649,41 +3254,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -4724,41 +3392,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -4797,41 +3528,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -4870,41 +3664,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -4943,41 +3800,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -5023,41 +3943,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -5073,7 +4056,7 @@
     },
     "/v1/chat/completions": {
       "post": {
-        "description": "OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.\n\nSet `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.",
+        "description": "Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.",
         "operationId": "chat_completions_v1_chat_completions_post",
         "requestBody": {
           "content": {
@@ -5095,41 +4078,104 @@
             "description": "An OpenAI chat completion, or a stream of `chat.completion.chunk` events when `stream` is true."
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenAIErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -5143,319 +4189,9 @@
         ]
       }
     },
-    "/v1/classifiers": {
-      "get": {
-        "description": "List all classifiers owned by the authenticated user.",
-        "operationId": "list_classifiers_v1_classifiers_get",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/ClassifierSummary"
-                  },
-                  "title": "Response List Classifiers V1 Classifiers Get",
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "List Classifiers",
-        "tags": [
-          "Zero/Few-shot Classification"
-        ]
-      },
-      "post": {
-        "description": "List all classifiers owned by the authenticated user.",
-        "operationId": "list_classifiers_v1_classifiers_get",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/ClassifierSummary"
-                  },
-                  "title": "Response List Classifiers V1 Classifiers Get",
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "List Classifiers",
-        "tags": [
-          "Zero/Few-shot Classification"
-        ]
-      }
-    },
-    "/v1/classifiers/{classifier_id}": {
-      "delete": {
-        "description": "Delete a classifier by ID.",
-        "operationId": "delete_classifier_v1_classifiers__classifier_id__delete",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "classifier_id",
-            "required": true,
-            "schema": {
-              "title": "Classifier Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": true,
-                  "title": "Response Delete Classifier V1 Classifiers  Classifier Id  Delete",
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Delete Classifier",
-        "tags": [
-          "Zero/Few-shot Classification"
-        ]
-      }
-    },
-    "/v1/classify": {
-      "post": {
-        "description": "Classify text or images into categories.\n\nZero-shot and few-shot classification. Zero-shot uses embedding similarity,\nfew-shot uses a trained classifier.",
-        "operationId": "classify_v1_classify_post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "anyOf": [
-                  {
-                    "discriminator": {
-                      "mapping": {
-                        "jina-clip-v1": "#/components/schemas/ClipZeroShotClassificationRequest",
-                        "jina-clip-v2": "#/components/schemas/ClipZeroShotClassificationRequest",
-                        "jina-code-embeddings-0.5b": "#/components/schemas/CodeEmbeddingsZeroShotClassificationRequest",
-                        "jina-code-embeddings-1.5b": "#/components/schemas/CodeEmbeddingsZeroShotClassificationRequest",
-                        "jina-embeddings-v2-base-code": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest",
-                        "jina-embeddings-v2-base-de": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest",
-                        "jina-embeddings-v2-base-en": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest",
-                        "jina-embeddings-v2-base-es": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest",
-                        "jina-embeddings-v2-base-zh": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest",
-                        "jina-embeddings-v3": "#/components/schemas/EmbeddingsV3ZeroShotClassificationRequest",
-                        "jina-embeddings-v4": "#/components/schemas/EmbeddingsV4ZeroShotClassificationRequest",
-                        "jina-embeddings-v5-text-nano": "#/components/schemas/EmbeddingsV5ZeroShotClassificationRequest",
-                        "jina-embeddings-v5-text-small": "#/components/schemas/EmbeddingsV5ZeroShotClassificationRequest"
-                      },
-                      "propertyName": "model"
-                    },
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV2ZeroShotClassificationRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV3ZeroShotClassificationRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV4ZeroShotClassificationRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV5ZeroShotClassificationRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/ClipZeroShotClassificationRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/CodeEmbeddingsZeroShotClassificationRequest"
-                      }
-                    ]
-                  },
-                  {
-                    "$ref": "#/components/schemas/FewShotClassificationRequest"
-                  }
-                ],
-                "title": "Classification Request"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClassificationResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Classify",
-        "tags": [
-          "Zero/Few-shot Classification"
-        ]
-      }
-    },
     "/v1/embeddings": {
       "post": {
-        "description": "Generate embeddings for text, images, or documents.\n\nWorld-class multimodal multilingual embeddings for semantic search,\nsimilarity matching, clustering, and classification tasks.",
+        "description": "Embed text, images, audio, video or PDFs as dense vectors.\n\n`model` selects the request shape as well as the model: each one below\nlists the inputs and options it accepts.",
         "operationId": "embeddings_v1_embeddings_post",
         "requestBody": {
           "content": {
@@ -5463,7 +4199,6 @@
               "schema": {
                 "discriminator": {
                   "mapping": {
-                    "elser-v2": "#/components/schemas/ELSERV2Request",
                     "jina-clip-v1": "#/components/schemas/ClipV1Request",
                     "jina-clip-v2": "#/components/schemas/ClipV2Request",
                     "jina-code-embeddings-0.5b": "#/components/schemas/CodeEmbeddings500MRequest",
@@ -5514,9 +4249,6 @@
                   },
                   {
                     "$ref": "#/components/schemas/ColbertV2Request"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ELSERV2Request"
                   }
                 ],
                 "title": "Embedding Request"
@@ -5537,41 +4269,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -5587,7 +4382,7 @@
     },
     "/v1/models": {
       "get": {
-        "description": "List all available Jina AI models.\n\nReturns model metadata in OpenRouter-compatible format including\nmodel IDs, input/output modalities, context lengths, and pricing.",
+        "description": "Every model in the catalogue, with its modalities, limits and price.",
         "operationId": "list_models_v1_models_get",
         "responses": {
           "200": {
@@ -5601,31 +4396,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "summary": "List Models",
@@ -5636,7 +4504,7 @@
     },
     "/v1/models/{model_id}": {
       "get": {
-        "description": "Get details for a specific model.\n\nAccepts both full form (`jina-ai/jina-embeddings-v3`) and\nshort form (`jina-embeddings-v3`).",
+        "description": "One model by id, in full (`jina-ai/jina-embeddings-v3`) or short\n(`jina-embeddings-v3`) form.",
         "operationId": "get_model_v1_models__model_id__get",
         "parameters": [
           {
@@ -5661,41 +4529,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "summary": "Get Model",
@@ -5706,7 +4637,7 @@
     },
     "/v1/rerank": {
       "post": {
-        "description": "Rerank documents by relevance to a query.\n\nWorld-class reranker for maximizing search relevancy and RAG accuracy.",
+        "description": "Score documents against a query and return them reordered.\n\nResults come back sorted by `relevance_score`, each carrying the index\nit held in the request so the caller can map them back.",
         "operationId": "rerank_v1_rerank_post",
         "requestBody": {
           "content": {
@@ -5755,41 +4686,104 @@
             "description": "Successful Response"
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found: `RESOURCE_NOT_FOUND`"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict: `CONFLICT_RESOURCE_BUSY`"
           },
           "422": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             },
-            "description": "Validation Error"
+            "description": "The request body failed schema validation. `errors` names each field."
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`"
           },
           "500": {
-            "$ref": "#/components/responses/InternalServerError"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error: `INTERNAL_ERROR`"
           },
           "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable: `SERVICE_UNAVAILABLE`"
           },
           "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Gateway Timeout: `SERVICE_TIMEOUT`"
           }
         },
         "security": [
@@ -5802,146 +4796,29 @@
           "Search Foundation Models"
         ]
       }
-    },
-    "/v1/train": {
-      "post": {
-        "description": "Train or update a few-shot classifier.\n\nCreate a new classifier with labeled examples, or update an existing one\nwith additional training data.",
-        "operationId": "train_v1_train_post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "anyOf": [
-                  {
-                    "discriminator": {
-                      "mapping": {
-                        "jina-clip-v1": "#/components/schemas/ClipCreateTrainingRequest",
-                        "jina-clip-v2": "#/components/schemas/ClipCreateTrainingRequest",
-                        "jina-embeddings-v2-base-code": "#/components/schemas/EmbeddingsV2CreateTrainingRequest",
-                        "jina-embeddings-v2-base-de": "#/components/schemas/EmbeddingsV2CreateTrainingRequest",
-                        "jina-embeddings-v2-base-en": "#/components/schemas/EmbeddingsV2CreateTrainingRequest",
-                        "jina-embeddings-v2-base-es": "#/components/schemas/EmbeddingsV2CreateTrainingRequest",
-                        "jina-embeddings-v2-base-zh": "#/components/schemas/EmbeddingsV2CreateTrainingRequest",
-                        "jina-embeddings-v3": "#/components/schemas/EmbeddingsV3CreateTrainingRequest",
-                        "jina-embeddings-v4": "#/components/schemas/EmbeddingsV4CreateTrainingRequest",
-                        "jina-embeddings-v5-text-nano": "#/components/schemas/EmbeddingsV5CreateTrainingRequest",
-                        "jina-embeddings-v5-text-small": "#/components/schemas/EmbeddingsV5CreateTrainingRequest"
-                      },
-                      "propertyName": "model"
-                    },
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV2CreateTrainingRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV3CreateTrainingRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV4CreateTrainingRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/EmbeddingsV5CreateTrainingRequest"
-                      },
-                      {
-                        "$ref": "#/components/schemas/ClipCreateTrainingRequest"
-                      }
-                    ]
-                  },
-                  {
-                    "$ref": "#/components/schemas/UpdateTrainingRequest"
-                  }
-                ],
-                "title": "Training Request"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TrainingResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Train",
-        "tags": [
-          "Zero/Few-shot Classification"
-        ]
-      }
     }
   },
+  "servers": [
+    {
+      "url": "https://api.jina.ai"
+    }
+  ],
   "tags": [
     {
-      "description": "List available Jina AI models and their capabilities.\n\nReturns model metadata in OpenRouter-compatible format including model IDs, input/output modalities, context lengths, and pricing information. Use this endpoint to discover available models before making API calls.\n",
+      "description": "Every model this API serves, in OpenRouter-compatible form: identifiers, input and output modalities, context lengths and prices. Read it before hardcoding a model name — the catalogue moves.",
       "name": "Model List"
     },
     {
-      "description": "Generate embeddings and rerank documents using state-of-the-art models.\n\n**Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), `jina-embeddings-v5-omni-small` (multilingual multimodal, 32K context, 1024-dim), `jina-embeddings-v5-omni-nano` (multilingual multimodal, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).\n\n**Reranking** refines search results by scoring query-document relevance. Models include `jina-reranker-v3.5` and `jina-reranker-v3` (0.6B, 131K context, listwise reranking), `jina-reranker-m0` (multimodal, 29 languages), `jina-reranker-v2-base-multilingual` (100+ languages, function calling support), and `jina-colbert-v2` (late interaction for high precision).\n",
+      "description": "**Embeddings** turn text, images, audio, video and PDFs into dense vectors for semantic search, RAG, clustering and classification. Task-specific variants (`retrieval.query`, `retrieval.passage`, `text-matching`, `clustering`, `classification`) are selected per request rather than per model, and `dimensions` truncates the output where a model supports it.\n\n**Reranking** scores a query against a candidate set and returns it reordered, which is more accurate than embedding similarity and slower — the usual shape is embeddings to retrieve, reranking to refine.\n\nEach endpoint's `model` field lists the models it accepts.",
       "name": "Search Foundation Models"
     },
     {
-      "description": "Transcribe and extract structured data from document images.\n\n`jina-ocr-v1` reads a page and returns its content as markdown, preserving tables and layout. The endpoint follows the OpenAI chat completions schema, so any OpenAI-compatible client works unchanged — point it at `https://api.jina.ai/v1` and set `model`.\n\nSet `stream: true` for server-sent events. Use `response_format` with a `json_schema` to constrain the output to a schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.\n",
+      "description": "Document transcription over the OpenAI chat completions schema. Point any OpenAI-compatible client at the server URL above with `/v1` appended, set `model`, and send a page image; the response is the page as text or markdown, tables and layout preserved.\n\n`stream: true` returns server-sent events. `response_format` with a `json_schema` constrains the output to that schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.",
       "name": "Generative Models"
     },
     {
-      "description": "Categorize text and images using embedding-based classification.\n\n**Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 512 labels, or 8 label groups of up to 64 labels each. Best for flexible, immediate classification with descriptive labels.\n\n**Few-shot**: Train custom classifiers with labeled examples (200-400 samples recommended). Supports incremental updates and handles domain-specific or time-sensitive data. Limited to 16 classes and 16 classifiers per API key.\n\nSupports multilingual text via `jina-embeddings-v3`, `jina-embeddings-v5-text-small`, `jina-embeddings-v5-text-nano`, and multimodal (text/image) via `jina-clip-v2` or `jina-embeddings-v4`.\n",
-      "name": "Zero/Few-shot Classification"
-    },
-    {
-      "description": "Asynchronous batch embedding processing for large-scale workloads.\n\nSubmit embedding jobs with up to 50,000 inputs via GCS file URL or up to 10,000 inputs inline. Jobs are processed asynchronously - poll for status, then download output as JSONL when complete.\n\n**Workflow**: 1) Submit job via `POST /v1/batch/embeddings` with input data and model selection. 2) Poll `GET /v1/batch/{batch_id}` until status is `completed`. 3) Download results from `GET /v1/batch/{batch_id}/output`.\n\n**Input format**: OpenAI-compatible JSONL with `custom_id` and `body.input` fields. Supports both inline JSON arrays and GCS-hosted JSONL files for larger batches.\n\n**Supported models**: `jina-embeddings-v5-text-small` (1024-dim, 32K context) and `jina-embeddings-v5-text-nano` (768-dim, 8K context). All task types supported: retrieval, text-matching, clustering, classification.\n\nOutput files expire after 24 hours. Optional webhook notifications on job completion.\n",
+      "description": "Asynchronous embedding for large workloads: up to 50,000 inputs from a GCS file URL, or 10,000 inline.\n\nSubmit with `POST /v1/batch/embeddings`, poll `GET /v1/batch/{batch_id}` until the status is `completed`, then fetch `GET /v1/batch/{batch_id}/output`. Input is OpenAI-compatible JSONL with `custom_id` and `body.input`. Output files expire after 24 hours, and a webhook can be called on completion.",
       "name": "Batch Embeddings"
-    },
-    {
-      "description": "Liveness and readiness probes for service health monitoring. For internal use only.",
-      "name": "Health Check"
     }
   ]
 }

@@ -6,9 +6,7 @@ namespace Jina
     {
         /// <summary>
         /// List Models<br/>
-        /// List all available Jina AI models.<br/>
-        /// Returns model metadata in OpenRouter-compatible format including<br/>
-        /// model IDs, input/output modalities, context lengths, and pricing.
+        /// Every model in the catalogue, with its modalities, limits and price.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -18,9 +16,7 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Models<br/>
-        /// List all available Jina AI models.<br/>
-        /// Returns model metadata in OpenRouter-compatible format including<br/>
-        /// model IDs, input/output modalities, context lengths, and pricing.
+        /// Every model in the catalogue, with its modalities, limits and price.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

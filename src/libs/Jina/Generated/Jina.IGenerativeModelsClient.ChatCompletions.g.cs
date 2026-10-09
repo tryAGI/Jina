@@ -6,8 +6,7 @@ namespace Jina
     {
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,8 +19,7 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -34,8 +32,7 @@ namespace Jina
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="frequencyPenalty"></param>
         /// <param name="logitBias"></param>

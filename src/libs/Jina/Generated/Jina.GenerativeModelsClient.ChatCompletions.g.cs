@@ -43,8 +43,7 @@ namespace Jina
 
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -67,8 +66,7 @@ namespace Jina
         }
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -339,24 +337,24 @@ namespace Jina
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // - **INPUT_MODEL_NOT_FOUND**: Model 'model_name' not found. Available models: .... - **INPUT_INVALID_LABELS**: Invalid training labels. At least {min_labels} unique labels are required for training. - **INPUT_LABEL_LIMIT_EXCEEDED**: Label limit exceeded: {current} labels provided, maximum N allowed for your plan. Reduce the number of labels or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **INPUT_TOKEN_LIMIT_EXCEEDED**: Input text exceeds the model's maximum of {max_tokens} tokens. Use 'truncate: true' to automatically truncate, or split into smaller chunks.
+                            // Bad Request: `INPUT_INVALID_LABELS`, `INPUT_LABEL_LIMIT_EXCEEDED`, `INPUT_MODEL_NOT_FOUND`, `INPUT_TOKEN_LIMIT_EXCEEDED`
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Jina.ErrorResponse? __value_400 = null;
+                                global::Jina.OpenAIErrorResponse? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Jina.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Jina.OpenAIErrorResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Jina.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Jina.OpenAIErrorResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -365,7 +363,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -376,7 +374,7 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **AUTH_MISSING_API_KEY**: Authentication required. Provide your API key via the Authorization header: 'Authorization: Bearer <api-key>'. Get your API key at https://jina.ai/api-dashboard/key-manager. - **AUTH_INVALID_API_KEY**: Invalid API key. Verify your API key at https://jina.ai/api-dashboard/key-manager or generate a new one. - **AUTH_INVALID_FORMAT**: Invalid authorization format. Use 'Authorization: Bearer <api-key>' with a valid Jina API key (65 characters, starts with 'jina_').
+                            // Unauthorized: `AUTH_INVALID_API_KEY`, `AUTH_INVALID_FORMAT`, `AUTH_MISSING_API_KEY`
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -413,7 +411,7 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **AUTHZ_INSUFFICIENT_BALANCE**: Insufficient account balance. Top up your account at https://jina.ai/api-dashboard/key-manager. - **AUTHZ_RESOURCE_LIMIT_EXCEEDED**: Resource limit exceeded for your plan. Current: {current}, limit: N. Delete existing resources or upgrade your plan at https://jina.ai/api-dashboard/key-manager.
+                            // Forbidden: `AUTHZ_INSUFFICIENT_BALANCE`, `AUTHZ_RESOURCE_LIMIT_EXCEEDED`
                             if ((int)__response.StatusCode == 403)
                             {
                                 string? __content_403 = null;
@@ -450,24 +448,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **RESOURCE_NOT_FOUND**: {resource_type} '{resource_id}' not found or access denied. Verify the ID and your permissions.
+                            // Not Found: `RESOURCE_NOT_FOUND`
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Jina.ErrorResponse? __value_404 = null;
+                                global::Jina.OpenAIErrorResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Jina.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Jina.OpenAIErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Jina.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Jina.OpenAIErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -476,7 +474,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
@@ -487,24 +485,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **CONFLICT_RESOURCE_BUSY**: {resource_type} '{resource_id}' is currently being modified. Please retry after a few moments.
+                            // Conflict: `CONFLICT_RESOURCE_BUSY`
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
                                 global::System.Exception? __exception_409 = null;
-                                global::Jina.ErrorResponse? __value_409 = null;
+                                global::Jina.OpenAIErrorResponse? __value_409 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_409 = global::Jina.ErrorResponse.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Jina.OpenAIErrorResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_409 = global::Jina.ErrorResponse.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Jina.OpenAIErrorResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -513,7 +511,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_409,
@@ -524,24 +522,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Validation Error
+                            // The request body failed schema validation. `errors` names each field.
                             if ((int)__response.StatusCode == 422)
                             {
                                 string? __content_422 = null;
                                 global::System.Exception? __exception_422 = null;
-                                global::Jina.HTTPValidationError? __value_422 = null;
+                                global::Jina.ErrorResponse? __value_422 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::Jina.HTTPValidationError.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::Jina.ErrorResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::Jina.HTTPValidationError.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::Jina.ErrorResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -550,7 +548,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.HTTPValidationError>.Create(
+                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
@@ -561,7 +559,7 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **RATE_REQUEST_LIMIT_EXCEEDED**: Request rate limit exceeded: {current}/N requests per minute. Reduce request frequency or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_TOKEN_LIMIT_EXCEEDED**: Token rate limit exceeded: {current:,}/{limit:,} tokens per minute. Reduce batch sizes or upgrade your plan at https://jina.ai/api-dashboard/key-manager. - **RATE_CONCURRENCY_LIMIT_EXCEEDED**: Concurrency limit exceeded: {current}/N concurrent requests. Wait for pending requests to complete before sending new ones. - **RATE_IP_LIMIT_EXCEEDED**: IP rate limit exceeded. Too many requests from this IP address. Reduce request frequency.
+                            // Too Many Requests: `RATE_CONCURRENCY_LIMIT_EXCEEDED`, `RATE_IP_LIMIT_EXCEEDED`, `RATE_REQUEST_LIMIT_EXCEEDED`, `RATE_TOKEN_LIMIT_EXCEEDED`
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -598,24 +596,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **INTERNAL_ERROR**: An unexpected error occurred. If this persists, contact support with the request_id from this response.
+                            // Internal Server Error: `INTERNAL_ERROR`
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::Jina.ErrorResponse? __value_500 = null;
+                                global::Jina.OpenAIErrorResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::Jina.ErrorResponse.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Jina.OpenAIErrorResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::Jina.ErrorResponse.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Jina.OpenAIErrorResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -624,7 +622,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
@@ -635,24 +633,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **SERVICE_UNAVAILABLE**: Service temporarily unavailable. Please retry with exponential backoff.
+                            // Service Unavailable: `SERVICE_UNAVAILABLE`
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;
                                 global::System.Exception? __exception_503 = null;
-                                global::Jina.ErrorResponse? __value_503 = null;
+                                global::Jina.OpenAIErrorResponse? __value_503 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_503 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_503 = global::Jina.ErrorResponse.FromJson(__content_503, JsonSerializerContext);
+                                        __value_503 = global::Jina.OpenAIErrorResponse.FromJson(__content_503, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_503 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_503 = global::Jina.ErrorResponse.FromJson(__content_503, JsonSerializerContext);
+                                        __value_503 = global::Jina.OpenAIErrorResponse.FromJson(__content_503, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -661,7 +659,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_503,
@@ -672,24 +670,24 @@ namespace Jina
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // - **SERVICE_TIMEOUT**: Service request timed out. Try with smaller inputs or retry later.
+                            // Gateway Timeout: `SERVICE_TIMEOUT`
                             if ((int)__response.StatusCode == 504)
                             {
                                 string? __content_504 = null;
                                 global::System.Exception? __exception_504 = null;
-                                global::Jina.ErrorResponse? __value_504 = null;
+                                global::Jina.OpenAIErrorResponse? __value_504 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_504 = global::Jina.ErrorResponse.FromJson(__content_504, JsonSerializerContext);
+                                        __value_504 = global::Jina.OpenAIErrorResponse.FromJson(__content_504, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_504 = global::Jina.ErrorResponse.FromJson(__content_504, JsonSerializerContext);
+                                        __value_504 = global::Jina.OpenAIErrorResponse.FromJson(__content_504, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -698,7 +696,7 @@ namespace Jina
                                 }
 
 
-                                throw global::Jina.ApiException<global::Jina.ErrorResponse>.Create(
+                                throw global::Jina.ApiException<global::Jina.OpenAIErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_504,
@@ -803,8 +801,7 @@ namespace Jina
         }
         /// <summary>
         /// Chat Completions<br/>
-        /// OpenAI-compatible chat completions. Point any OpenAI client at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for incremental server-sent events. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Transcribe a document image. Send the page as an `image_url` content part and the reply is its text; `response_format` with a `json_schema` constrains that to a schema instead.
         /// </summary>
         /// <param name="frequencyPenalty"></param>
         /// <param name="logitBias"></param>

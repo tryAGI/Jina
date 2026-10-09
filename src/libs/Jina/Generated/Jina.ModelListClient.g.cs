@@ -4,8 +4,7 @@
 namespace Jina
 {
     /// <summary>
-    /// List available Jina AI models and their capabilities.<br/>
-    /// Returns model metadata in OpenRouter-compatible format including model IDs, input/output modalities, context lengths, and pricing information. Use this endpoint to discover available models before making API calls.<br/>
+    /// Every model this API serves, in OpenRouter-compatible form: identifiers, input and output modalities, context lengths and prices. Read it before hardcoding a model name — the catalogue moves.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

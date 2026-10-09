@@ -4,46 +4,45 @@
 namespace Jina
 {
     /// <summary>
-    /// Best-in-class embeddings, rerankers, and classifiers. Search AI for multilingual and multimodal data.<br/>
+    /// Best-in-class embeddings, rerankers and document models for multilingual and multimodal search.<br/>
     /// ## Capabilities<br/>
-    /// - **Text Embeddings**: Dense vector representations for semantic search, similarity, and classification<br/>
-    /// - **Multimodal Embeddings**: Process images, video, audio, PDFs, and text in a unified vector space<br/>
-    /// - **Reranking**: Refine search results with precise relevance scoring<br/>
-    /// - **Classification**: Zero-shot and few-shot text classification<br/>
-    /// - **Multi-vector Embeddings**: Token-level embeddings for ColBERT and late interaction<br/>
-    /// - **Batch Embeddings**: Asynchronous bulk embedding processing via JSONL input/output<br/>
+    /// - **Text embeddings** — dense vectors for semantic search, similarity, clustering and classification, in 100+ languages.<br/>
+    /// - **Multimodal embeddings** — images, video, audio and PDFs embedded into the same space as text, so a query in one modality retrieves another.<br/>
+    /// - **Reranking** — score a query against a candidate set and reorder it; more accurate than embedding similarity, and the usual second stage after it.<br/>
+    /// - **Document OCR** — read a page image and return its content as text or markdown, with tables and layout preserved, over the OpenAI chat completions schema.<br/>
+    /// - **Batch embeddings** — the same embedding models over JSONL, asynchronously, for workloads too large to send inline.<br/>
     /// ## Authentication<br/>
-    /// Include your API key in the `Authorization` header:<br/>
+    /// Every endpoint except `GET /v1/models` requires a key:<br/>
     /// ```<br/>
     /// Authorization: Bearer jina_YOUR_API_KEY<br/>
     /// ```<br/>
-    /// Get your API key at [jina.ai/api-dashboard/key-manager](https://jina.ai/api-dashboard/key-manager). New users receive **10M free tokens**.<br/>
-    /// ## Rate Limits<br/>
-    /// | Tier | RPM | TPM | Concurrency |<br/>
-    /// |------|-----|-----|-------------|<br/>
-    /// | Free | 500 | 1M | 5 |<br/>
-    /// | Tier 1 | 500 | 10M | 50 |<br/>
-    /// | Tier 2 | 5,000 | 100M | 500 |<br/>
-    /// Rate limit headers are included in responses: `X-RateLimit-Remaining-Requests`, `X-RateLimit-Remaining-Tokens`.<br/>
-    /// ## Error Codes<br/>
-    /// All endpoints may return the following errors. Endpoint-specific errors are documented per operation.<br/>
-    /// | Code | Status | Description |<br/>
-    /// |------|--------|-------------|<br/>
-    /// | `INPUT_MODEL_NOT_FOUND` | 400 | Model 'X' not found |<br/>
+    /// Get one at [jina.ai/api-dashboard/key-manager](https://jina.ai/api-dashboard/key-manager).<br/>
+    /// ## Rate limits<br/>
+    /// Requests per minute and tokens per minute. Anything over a limit answers `429`.<br/>
+    /// | Endpoint | Free | Paid | Premium |<br/>
+    /// |---|---|---|---|<br/>
+    /// | `/v1/embeddings` | 500 RPM · 1M TPM | 500 RPM · 10M TPM | 5,000 RPM · 100M TPM |<br/>
+    /// | `/v1/rerank` | 500 RPM · 1M TPM | 500 RPM · 10M TPM | 5,000 RPM · 100M TPM |<br/>
+    /// | `/v1/chat/completions` | 100 RPM · 500K TPM | 100 RPM · 5M TPM | 1,000 RPM · 50M TPM |<br/>
+    /// ## Errors<br/>
+    /// Failures carry a `detail`, a `code` from the table below and the `request_id` to quote in a support request. `/v1/chat/completions` is the exception: it answers in OpenAI's error envelope, with the same code inside it.<br/>
+    /// | Code | Status | Meaning |<br/>
+    /// |---|---|---|<br/>
     /// | `INPUT_INVALID_LABELS` | 400 | Invalid training labels |<br/>
-    /// | `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: {current} labels provided, maximum N allowed for your plan |<br/>
-    /// | `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of {max_tokens} tokens |<br/>
-    /// | `AUTH_MISSING_API_KEY` | 401 | Authentication required |<br/>
+    /// | `INPUT_LABEL_LIMIT_EXCEEDED` | 400 | Label limit exceeded: &lt;current&gt; labels provided, maximum &lt;limit&gt; allowed for your plan |<br/>
+    /// | `INPUT_MODEL_NOT_FOUND` | 400 | Model '&lt;model&gt;' not found |<br/>
+    /// | `INPUT_TOKEN_LIMIT_EXCEEDED` | 400 | Input text exceeds the model's maximum of &lt;max_tokens&gt; tokens |<br/>
     /// | `AUTH_INVALID_API_KEY` | 401 | Invalid API key |<br/>
     /// | `AUTH_INVALID_FORMAT` | 401 | Invalid authorization format |<br/>
+    /// | `AUTH_MISSING_API_KEY` | 401 | Authentication required |<br/>
     /// | `AUTHZ_INSUFFICIENT_BALANCE` | 403 | Insufficient account balance |<br/>
     /// | `AUTHZ_RESOURCE_LIMIT_EXCEEDED` | 403 | Resource limit exceeded for your plan |<br/>
-    /// | `RESOURCE_NOT_FOUND` | 404 | {resource_type} '{resource_id}' not found or access denied |<br/>
-    /// | `CONFLICT_RESOURCE_BUSY` | 409 | {resource_type} '{resource_id}' is currently being modified |<br/>
-    /// | `RATE_REQUEST_LIMIT_EXCEEDED` | 429 | Request rate limit exceeded: {current}/N requests per minute |<br/>
-    /// | `RATE_TOKEN_LIMIT_EXCEEDED` | 429 | Token rate limit exceeded: {current:,}/{limit:,} tokens per minute |<br/>
-    /// | `RATE_CONCURRENCY_LIMIT_EXCEEDED` | 429 | Concurrency limit exceeded: {current}/N concurrent requests |<br/>
+    /// | `RESOURCE_NOT_FOUND` | 404 | &lt;resource_type&gt; '&lt;resource_id&gt;' not found or access denied |<br/>
+    /// | `CONFLICT_RESOURCE_BUSY` | 409 | &lt;resource_type&gt; '&lt;resource_id&gt;' is currently being modified |<br/>
+    /// | `RATE_CONCURRENCY_LIMIT_EXCEEDED` | 429 | Concurrency limit exceeded: &lt;current&gt;/&lt;limit&gt; concurrent requests |<br/>
     /// | `RATE_IP_LIMIT_EXCEEDED` | 429 | IP rate limit exceeded |<br/>
+    /// | `RATE_REQUEST_LIMIT_EXCEEDED` | 429 | Request rate limit exceeded: &lt;current&gt;/&lt;limit&gt; requests per minute |<br/>
+    /// | `RATE_TOKEN_LIMIT_EXCEEDED` | 429 | Token rate limit exceeded: &lt;current&gt;/&lt;limit&gt; tokens per minute |<br/>
     /// | `INTERNAL_ERROR` | 500 | An unexpected error occurred |<br/>
     /// | `SERVICE_UNAVAILABLE` | 503 | Service temporarily unavailable |<br/>
     /// | `SERVICE_TIMEOUT` | 504 | Service request timed out |<br/>
@@ -88,47 +87,28 @@ namespace Jina
 
 
         /// <summary>
-        /// Asynchronous batch embedding processing for large-scale workloads.<br/>
-        /// Submit embedding jobs with up to 50,000 inputs via GCS file URL or up to 10,000 inputs inline. Jobs are processed asynchronously - poll for status, then download output as JSONL when complete.<br/>
-        /// **Workflow**: 1) Submit job via `POST /v1/batch/embeddings` with input data and model selection. 2) Poll `GET /v1/batch/{batch_id}` until status is `completed`. 3) Download results from `GET /v1/batch/{batch_id}/output`.<br/>
-        /// **Input format**: OpenAI-compatible JSONL with `custom_id` and `body.input` fields. Supports both inline JSON arrays and GCS-hosted JSONL files for larger batches.<br/>
-        /// **Supported models**: `jina-embeddings-v5-text-small` (1024-dim, 32K context) and `jina-embeddings-v5-text-nano` (768-dim, 8K context). All task types supported: retrieval, text-matching, clustering, classification.<br/>
-        /// Output files expire after 24 hours. Optional webhook notifications on job completion.
+        /// Asynchronous embedding for large workloads: up to 50,000 inputs from a GCS file URL, or 10,000 inline.<br/>
+        /// Submit with `POST /v1/batch/embeddings`, poll `GET /v1/batch/{batch_id}` until the status is `completed`, then fetch `GET /v1/batch/{batch_id}/output`. Input is OpenAI-compatible JSONL with `custom_id` and `body.input`. Output files expire after 24 hours, and a webhook can be called on completion.
         /// </summary>
         public BatchEmbeddingsClient BatchEmbeddings { get; }
 
         /// <summary>
-        /// Transcribe and extract structured data from document images.<br/>
-        /// `jina-ocr-v1` reads a page and returns its content as markdown, preserving tables and layout. The endpoint follows the OpenAI chat completions schema, so any OpenAI-compatible client works unchanged — point it at `https://api.jina.ai/v1` and set `model`.<br/>
-        /// Set `stream: true` for server-sent events. Use `response_format` with a `json_schema` to constrain the output to a schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
+        /// Document transcription over the OpenAI chat completions schema. Point any OpenAI-compatible client at the server URL above with `/v1` appended, set `model`, and send a page image; the response is the page as text or markdown, tables and layout preserved.<br/>
+        /// `stream: true` returns server-sent events. `response_format` with a `json_schema` constrains the output to that schema instead of prose. Parameters outside the supported set are accepted and ignored rather than rejected, so an SDK-generated payload always works.
         /// </summary>
         public GenerativeModelsClient GenerativeModels { get; }
 
         /// <summary>
-        /// Liveness and readiness probes for service health monitoring. For internal use only.
-        /// </summary>
-        public HealthCheckClient HealthCheck { get; }
-
-        /// <summary>
-        /// List available Jina AI models and their capabilities.<br/>
-        /// Returns model metadata in OpenRouter-compatible format including model IDs, input/output modalities, context lengths, and pricing information. Use this endpoint to discover available models before making API calls.
+        /// Every model this API serves, in OpenRouter-compatible form: identifiers, input and output modalities, context lengths and prices. Read it before hardcoding a model name — the catalogue moves.
         /// </summary>
         public ModelListClient ModelList { get; }
 
         /// <summary>
-        /// Generate embeddings and rerank documents using state-of-the-art models.<br/>
-        /// **Embeddings** convert text, images, and documents into dense vector representations for semantic search, RAG, and similarity matching. Available models include `jina-embeddings-v3` (multilingual, 8K context), `jina-embeddings-v4` (multimodal, 32K context), `jina-embeddings-v5-text-small` (multilingual, 32K context, 1024-dim), `jina-embeddings-v5-text-nano` (multilingual, 8K context, 768-dim), `jina-embeddings-v5-omni-small` (multilingual multimodal, 32K context, 1024-dim), `jina-embeddings-v5-omni-nano` (multilingual multimodal, 8K context, 768-dim), and `jina-clip-v2` (text-image, 89 languages).<br/>
-        /// **Reranking** refines search results by scoring query-document relevance. Models include `jina-reranker-v3.5` and `jina-reranker-v3` (0.6B, 131K context, listwise reranking), `jina-reranker-m0` (multimodal, 29 languages), `jina-reranker-v2-base-multilingual` (100+ languages, function calling support), and `jina-colbert-v2` (late interaction for high precision).
+        /// **Embeddings** turn text, images, audio, video and PDFs into dense vectors for semantic search, RAG, clustering and classification. Task-specific variants (`retrieval.query`, `retrieval.passage`, `text-matching`, `clustering`, `classification`) are selected per request rather than per model, and `dimensions` truncates the output where a model supports it.<br/>
+        /// **Reranking** scores a query against a candidate set and returns it reordered, which is more accurate than embedding similarity and slower — the usual shape is embeddings to retrieve, reranking to refine.<br/>
+        /// Each endpoint's `model` field lists the models it accepts.
         /// </summary>
         public SearchFoundationModelsClient SearchFoundationModels { get; }
-
-        /// <summary>
-        /// Categorize text and images using embedding-based classification.<br/>
-        /// **Zero-shot**: Classify inputs into semantic labels without training data. Supports up to 512 labels, or 8 label groups of up to 64 labels each. Best for flexible, immediate classification with descriptive labels.<br/>
-        /// **Few-shot**: Train custom classifiers with labeled examples (200-400 samples recommended). Supports incremental updates and handles domain-specific or time-sensitive data. Limited to 16 classes and 16 classifiers per API key.<br/>
-        /// Supports multilingual text via `jina-embeddings-v3`, `jina-embeddings-v5-text-small`, `jina-embeddings-v5-text-nano`, and multimodal (text/image) via `jina-clip-v2` or `jina-embeddings-v4`.
-        /// </summary>
-        public ZeroFewShotClassificationClient ZeroFewShotClassification { get; }
 
     }
 }

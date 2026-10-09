@@ -4,14 +4,10 @@
 namespace Jina
 {
     /// <summary>
-    /// Mixed-modality chunks fused into ONE embedding per group.<br/>
-    /// The executor sends every chunk to the model in a single forward pass<br/>
-    /// (interleaved per the model's special-token convention) and returns one<br/>
-    /// vector per `MergedContentGroup`. Order within `content` is semantically<br/>
-    /// meaningful — re-ordering may change the resulting embedding.<br/>
-    /// PDFs are intentionally not allowed inside `content`: they're rasterized<br/>
-    /// to N per-page image prompts, which doesn't compose with single-pass<br/>
-    /// fusion. Send PDFs as standalone single-input requests instead.
+    /// Several chunks of different modalities fused into one embedding.<br/>
+    /// The group returns a single vector, and order within `content` is part of<br/>
+    /// the meaning — reordering it can change the result. A PDF cannot go inside<br/>
+    /// a group; send it as its own input.
     /// </summary>
     public sealed partial class MergedContentGroup
     {

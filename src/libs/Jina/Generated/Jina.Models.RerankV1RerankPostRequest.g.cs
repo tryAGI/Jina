@@ -15,7 +15,7 @@ namespace Jina
         public global::Jina.RerankV1RerankPostRequestDiscriminatorModel? Model { get; }
 
         /// <summary>
-        /// Text reranking request for v1/v2 models.<br/>
+        /// Pointwise text reranker: scores each document against the query.<br/>
         /// Example: {"documents":["Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.","Le changement climatique et l\u0027\u00E9nergie renouvelable : une perspective europ\u00E9enne. L\u0027Union europ\u00E9enne investit massivement dans les technologies vertes pour atteindre la neutralit\u00E9 carbone d\u0027ici 2050.","Klimawandel und erneuerbare Energien: Deutsche Energiewende. Deutschland f\u00FChrt die Transformation des Energiesektors durch innovative Technologien und politische Ma\u00DFnahmen an.","\u6C14\u5019\u53D8\u5316\u5BF9\u53EF\u518D\u751F\u80FD\u6E90\u7684\u5F71\u54CD\uFF1A\u4E2D\u56FD\u7684\u7EFF\u8272\u53D1\u5C55\u6218\u7565\u3002\u4E2D\u56FD\u6B63\u5728\u5927\u529B\u63A8\u8FDB\u592A\u9633\u80FD\u548C\u98CE\u80FD\u9879\u76EE\uFF0C\u4EE5\u5B9E\u73B0\u78B3\u4E2D\u548C\u76EE\u6807\u3002","Artificial Intelligence in Healthcare: Revolutionizing Medical Diagnosis. AI-powered systems are improving accuracy in disease detection and treatment recommendations.","Blockchain Technology: Transforming Financial Services. Decentralized finance applications are reshaping traditional banking and payment systems."],"model":"jina-reranker-v2-base-multilingual","query":"Climate change impact on renewable energy adoption","return_documents":false,"top_n":4}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -53,7 +53,7 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaColbertV1En' but the value was {ToString()}.");
 
         /// <summary>
-        /// Multimodal reranking for text and images.<br/>
+        /// Multimodal reranker: the query and the documents may each be text or an image.<br/>
         /// Example: {"documents":[{"image":"https://raw.githubusercontent.com/jina-ai/multimodal-reranker-test/main/paper-11.png"},{"text":"Attention Is All You Need: This groundbreaking paper introduced the Transformer architecture, revolutionizing natural language processing and becoming the foundation for modern large language models like GPT and BERT."},"Recent advances in computer vision have led to the development of vision transformers (ViTs) that achieve state-of-the-art performance on image classification tasks by treating images as sequences of patches.",{"image":"https://raw.githubusercontent.com/jina-ai/multimodal-reranker-test/main/wired-preview.png"},{"text":"Graph Neural Networks: A Review of Methods and Applications. This comprehensive survey covers the latest developments in graph-based machine learning, including graph convolutional networks and graph attention mechanisms."},"Traditional database systems struggle with the volume and variety of modern data workloads, leading to the adoption of distributed computing frameworks like Apache Spark and Hadoop for big data processing."],"model":"jina-reranker-m0","query":"innovative artificial intelligence research papers and visual data analysis","return_documents":false,"top_n":4}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -91,9 +91,8 @@ namespace Jina
             : throw new global::System.InvalidOperationException($"Expected union variant 'JinaRerankerM0' but the value was {ToString()}.");
 
         /// <summary>
-        /// Listwise reranker for high-quality multilingual retrieval. `max_doc_length`<br/>
-        /// is an optional override; when omitted it stays `None` and the serving executor<br/>
-        /// applies its configured per-model default, keeping that default in one place.<br/>
+        /// Listwise multilingual reranker: scores the candidate set as a whole<br/>
+        /// rather than one document at a time.<br/>
         /// Example: {"documents":["Climate Change and Renewable Energy: A Global Perspective. Rising temperatures and extreme weather events are accelerating the transition to solar and wind power worldwide.","Le changement climatique et l\u0027\u00E9nergie renouvelable : une perspective europ\u00E9enne. L\u0027Union europ\u00E9enne investit massivement dans les technologies vertes pour atteindre la neutralit\u00E9 carbone d\u0027ici 2050.","Klimawandel und erneuerbare Energien: Deutsche Energiewende. Deutschland f\u00FChrt die Transformation des Energiesektors durch innovative Technologien und politische Ma\u00DFnahmen an.","\u6C14\u5019\u53D8\u5316\u5BF9\u53EF\u518D\u751F\u80FD\u6E90\u7684\u5F71\u54CD\uFF1A\u4E2D\u56FD\u7684\u7EFF\u8272\u53D1\u5C55\u6218\u7565\u3002\u4E2D\u56FD\u6B63\u5728\u5927\u529B\u63A8\u8FDB\u592A\u9633\u80FD\u548C\u98CE\u80FD\u9879\u76EE\uFF0C\u4EE5\u5B9E\u73B0\u78B3\u4E2D\u548C\u76EE\u6807\u3002","Artificial Intelligence in Healthcare: Revolutionizing Medical Diagnosis. AI-powered systems are improving accuracy in disease detection and treatment recommendations.","Blockchain Technology: Transforming Financial Services. Decentralized finance applications are reshaping traditional banking and payment systems."],"model":"jina-reranker-v3","query":"Climate change impact on renewable energy adoption","return_documents":false,"return_embeddings":false,"top_n":4}
         /// </summary>
 #if NET6_0_OR_GREATER
